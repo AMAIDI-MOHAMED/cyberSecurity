@@ -1,0 +1,345 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Icon from '@/components/ui/icons/Icon.astro';
+import Button from '@/components/ui/Button.astro';
+
+const currentPath = Astro.url.pathname;
+const lang = currentPath.startsWith('/fi') ? 'fi' : 'en';
+
+const title = lang === 'fi' ? "Liiketoiminnan Jatkuvuus" : "Business Continuity";
+const description = lang === 'fi' 
+  ? "Ammattimaiset liiketoiminnan jatkuvuus- ja katastrofien palautumissuunnittelupalvelut. Autamme organisaatioita varmistamaan toimintojen jatkuvuuden kriisitilanteissa."
+  : "Professional business continuity and disaster recovery planning services. We help organizations ensure operational continuity during crisis situations.";
+
+const bcComponents = [
+  {
+    title: lang === 'fi' ? "Liiketoiminnan Jatkuvuus Suunnittelu" : "Business Continuity Planning",
+    description: lang === 'fi' 
+      ? "Suunnitellaan organisaation toimintojen jatkuvuus kriisitilanteissa"
+      : "Plan organizational operational continuity during crisis situations",
+    icon: "target",
+    features: [
+      lang === 'fi' ? "Kriisitilanteiden tunnistus" : "Crisis identification",
+      lang === 'fi' ? "Kriittisten toimintojen määrittely" : "Critical operations definition",
+      lang === 'fi' ? "Jatkuvuusstrategiat" : "Continuity strategies"
+    ]
+  },
+  {
+    title: lang === 'fi' ? "Katastrofien Palautuminen" : "Disaster Recovery",
+    description: lang === 'fi' 
+      ? "Suunnitellaan IT-järjestelmien ja tietojen palautuminen"
+      : "Plan IT systems and data recovery",
+    icon: "refresh",
+    features: [
+      lang === 'fi' ? "RTO ja RPO määrittely" : "RTO and RPO definition",
+      lang === 'fi' ? "Palautumissuunnitelmat" : "Recovery plans",
+      lang === 'fi' ? "Testaus ja validointi" : "Testing and validation"
+    ]
+  },
+  {
+    title: lang === 'fi' ? "Kriisiviestintä" : "Crisis Communication",
+    description: lang === 'fi' 
+      ? "Suunnitellaan tehokas viestintä kriisitilanteissa"
+      : "Plan effective communication during crisis situations",
+    icon: "chat",
+    features: [
+      lang === 'fi' ? "Viestintäsuunnitelmat" : "Communication plans",
+      lang === 'fi' ? "Sidosryhmäviestintä" : "Stakeholder communication",
+      lang === 'fi' ? "Media suhdet" : "Media relations"
+    ]
+  },
+  {
+    title: lang === 'fi' ? "Kriisienhallinta" : "Crisis Management",
+    description: lang === 'fi' 
+      ? "Suunnitellaan kriisien hallinta ja vastaus"
+      : "Plan crisis management and response",
+    icon: "alert",
+    features: [
+      lang === 'fi' ? "Kriisienhallintatiimi" : "Crisis management team",
+      lang === 'fi' ? "Vastausprosessit" : "Response processes",
+      lang === 'fi' ? "Koulutus ja simulointi" : "Training and simulation"
+    ]
+  }
+];
+
+const threats = [
+  {
+    title: lang === 'fi' ? "Luonnonkatastrofit" : "Natural Disasters",
+    description: lang === 'fi' 
+      ? "Maat, tulvat, myrskyt ja muut luonnonkatastrofit"
+      : "Earthquakes, floods, storms and other natural disasters",
+    icon: "cloud",
+    examples: [
+      lang === 'fi' ? "Maat" : "Earthquakes",
+      lang === 'fi' ? "Tulvat" : "Floods",
+      lang === 'fi' ? "Myrskyt" : "Storms"
+    ]
+  },
+  {
+    title: lang === 'fi' ? "Kybertuhkat" : "Cyber Threats",
+    description: lang === 'fi' 
+      ? "Ransomware, DDoS hyökkäykset ja tietomurrot"
+      : "Ransomware, DDoS attacks and data breaches",
+    icon: "shield",
+    examples: [
+      lang === 'fi' ? "Ransomware" : "Ransomware",
+      lang === 'fi' ? "DDoS hyökkäykset" : "DDoS attacks",
+      lang === 'fi' ? "Tietomurrot" : "Data breaches"
+    ]
+  },
+  {
+    title: lang === 'fi' ? "Tekniset Viat" : "Technical Failures",
+    description: lang === 'fi' 
+      ? "Järjestelmäviat, sähkökatkot ja laitteistoviat"
+      : "System failures, power outages and hardware failures",
+    icon: "computer",
+    examples: [
+      lang === 'fi' ? "Järjestelmäviat" : "System failures",
+      lang === 'fi' ? "Sähkökatkot" : "Power outages",
+      lang === 'fi' ? "Laitteistoviat" : "Hardware failures"
+    ]
+  },
+  {
+    title: lang === 'fi' ? "Pandemia ja Terveys" : "Pandemic and Health",
+    description: lang === 'fi' 
+      ? "Pandemia, sairaudet ja terveysuhkat"
+      : "Pandemics, diseases and health threats",
+    icon: "user",
+    examples: [
+      lang === 'fi' ? "Pandemia" : "Pandemic",
+      lang === 'fi' ? "Sairaudet" : "Diseases",
+      lang === 'fi' ? "Terveysuhkat" : "Health threats"
+    ]
+  }
+];
+
+const implementationSteps = [
+  {
+    step: "1",
+    title: lang === 'fi' ? "BCM Arviointi" : "BCM Assessment",
+    description: lang === 'fi' 
+      ? "Arvioidaan nykyinen liiketoiminnan jatkuvuus ja tunnistetaan puutteet"
+      : "Assess current business continuity and identify gaps"
+  },
+  {
+    step: "2",
+    title: lang === 'fi' ? "Gap Analysis" : "Gap Analysis",
+    description: lang === 'fi' 
+      ? "Tunnistetaan puutteet ja suunnitellaan korjauskeinot"
+      : "Identify gaps and plan remediation measures"
+  },
+  {
+    step: "3",
+    title: lang === 'fi' ? "Suunnittelu" : "Planning",
+    description: lang === 'fi' 
+      ? "Suunnitellaan liiketoiminnan jatkuvuusohjelma"
+      : "Plan business continuity program"
+  },
+  {
+    step: "4",
+    title: lang === 'fi' ? "Toteutus" : "Implementation",
+    description: lang === 'fi' 
+      ? "Toteutetaan tarvittavat jatkuvuustoimenpiteet"
+      : "Implement required continuity measures"
+  },
+  {
+    step: "5",
+    title: lang === 'fi' ? "Testaus ja Valvonta" : "Testing and Monitoring",
+    description: lang === 'fi' 
+      ? "Testataan ja valvotaan jatkuvuusprosesseja"
+      : "Test and monitor continuity processes"
+  }
+];
+
+const benefits = [
+  lang === 'fi' ? "Varmista toimintojen jatkuvuus" : "Ensure operational continuity",
+  lang === 'fi' ? "Vähennä kriisien vaikutuksia" : "Reduce crisis impacts",
+  lang === 'fi' ? "Paranna asiakkaiden luottamusta" : "Improve customer trust",
+  lang === 'fi' ? "Täytä sääntelyvaatimukset" : "Meet regulatory requirements",
+  lang === 'fi' ? "Vahvista kilpailuetua" : "Strengthen competitive advantage"
+];
+---
+
+<Layout title={title} description={description}>
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-br from-emerald-50 via-white to-teal-50 py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-4xl">
+        <h1 class="text-4xl lg:text-5xl font-bold text-slate-900 mb-6">
+          {title}
+        </h1>
+        <p class="text-xl text-slate-600 mb-8">
+          {lang === 'fi' 
+            ? "Varmista organisaatiosi toimintojen jatkuvuus kriisitilanteissa. Autamme organisaatioita rakentamaan vahvan liiketoiminnan jatkuvuus- ja katastrofien palautumissuunnitelman."
+            : "Ensure your organization's operational continuity during crisis situations. We help organizations build a strong business continuity and disaster recovery plan."
+          }
+        </p>
+        <div class="bg-white rounded-xl p-6 shadow-sm border border-slate-200">
+          <h2 class="text-lg font-semibold text-slate-900 mb-4">
+            {lang === 'fi' ? 'Miksi Liiketoiminnan Jatkuvuus?' : 'Why Business Continuity?'}
+          </h2>
+          <p class="text-slate-600 mb-4">
+            {lang === 'fi'
+              ? "Liiketoiminnan jatkuvuus varmistaa, että organisaatio pystyy toimimaan ja palvelemaan asiakkaitaan myös kriisitilanteissa. Se on kriittinen liiketoiminnan kestävyydelle."
+              : "Business continuity ensures that an organization can operate and serve customers even during crisis situations. It's critical for business resilience."
+            }
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Business Continuity Components -->
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-slate-900 mb-4">
+          {lang === 'fi' ? 'Liiketoiminnan Jatkuvuuden Komponentit' : 'Business Continuity Components'}
+        </h2>
+        <p class="text-xl text-slate-600 max-w-3xl mx-auto">
+          {lang === 'fi'
+            ? "Liiketoiminnan jatkuvuus koostuu neljästä pääkomponentista."
+            : "Business continuity consists of four main components."
+          }
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {bcComponents.map((component) => (
+          <div class="bg-gradient-to-br from-slate-50 to-white p-8 rounded-xl border border-slate-200 hover:shadow-xl transition-all duration-300">
+            <div class="w-16 h-16 bg-emerald-100 rounded-xl flex items-center justify-center mb-6">
+              <Icon name={component.icon} className="w-8 h-8 text-emerald-600" />
+            </div>
+            <h3 class="text-xl font-bold text-slate-900 mb-4">{component.title}</h3>
+            <p class="text-slate-600 mb-6">{component.description}</p>
+            <ul class="space-y-2">
+              {component.features.map((feature) => (
+                <li class="flex items-center text-sm text-slate-600">
+                  <Icon name="check" className="w-4 h-4 text-green-500 mr-2" />
+                  {feature}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Threats and Risks -->
+  <section class="py-20 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-slate-900 mb-4">
+          {lang === 'fi' ? 'Uhat ja Riskit' : 'Threats and Risks'}
+        </h2>
+        <p class="text-xl text-slate-600 max-w-3xl mx-auto">
+          {lang === 'fi'
+            ? "Liiketoiminnan jatkuvuutta uhkaavat erilaiset uhat ja riskit."
+            : "Business continuity is threatened by various threats and risks."
+          }
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {threats.map((threat) => (
+          <div class="bg-white p-8 rounded-xl border border-slate-200 hover:shadow-xl transition-all duration-300">
+            <div class="w-16 h-16 bg-teal-100 rounded-xl flex items-center justify-center mb-6">
+              <Icon name={threat.icon} className="w-8 h-8 text-teal-600" />
+            </div>
+            <h3 class="text-xl font-bold text-slate-900 mb-4">{threat.title}</h3>
+            <p class="text-slate-600 mb-6">{threat.description}</p>
+            <ul class="space-y-2">
+              {threat.examples.map((example) => (
+                <li class="flex items-center text-sm text-slate-600">
+                  <Icon name="alert" className="w-4 h-4 text-orange-500 mr-2" />
+                  {example}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Implementation Process -->
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-slate-900 mb-4">
+          {lang === 'fi' ? 'Toteutusprosessi' : 'Implementation Process'}
+        </h2>
+        <p class="text-xl text-slate-600 max-w-3xl mx-auto">
+          {lang === 'fi'
+            ? "Selkeä ja strukturoitu prosessi liiketoiminnan jatkuvuuden toteuttamiseen."
+            : "Clear and structured process for implementing business continuity."
+          }
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
+        {implementationSteps.map((step) => (
+          <div class="text-center">
+            <div class="w-16 h-16 bg-emerald-600 rounded-full flex items-center justify-center mx-auto mb-4 text-white text-xl font-bold">
+              {step.step}
+            </div>
+            <h3 class="text-lg font-semibold text-slate-900 mb-2">{step.title}</h3>
+            <p class="text-slate-600 text-sm">{step.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits Section -->
+  <section class="py-20 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-slate-900 mb-4">
+          {lang === 'fi' ? 'Liiketoiminnan Jatkuvuuden Edut' : 'Business Continuity Benefits'}
+        </h2>
+        <p class="text-xl text-slate-600 max-w-3xl mx-auto">
+          {lang === 'fi'
+            ? "Saavuta konkreettisia hyötyjä liiketoiminnan jatkuvuuden avulla."
+            : "Achieve concrete benefits with business continuity."
+          }
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {benefits.map((benefit) => (
+          <div class="text-center">
+            <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+              <Icon name="check" className="w-8 h-8 text-green-600" />
+            </div>
+            <p class="text-slate-700 font-medium">{benefit}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-20 bg-slate-900 text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl font-bold mb-6">
+        {lang === 'fi' ? 'Valmiit aloittamaan liiketoiminnan jatkuvuuden?' : 'Ready to start your business continuity?'}
+      </h2>
+      <p class="text-xl text-slate-300 mb-8 max-w-3xl mx-auto">
+        {lang === 'fi'
+          ? "Ota yhteyttä meihin ja aloitetaan liiketoiminnan jatkuvuussuunnittelu."
+          : "Contact us and let's start your business continuity planning."
+        }
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <Button href="/contact" variant="primary" className="text-lg px-8 py-3">
+          {lang === 'fi' ? 'Ota yhteyttä' : 'Get in Touch'}
+        </Button>
+        <Button href="/contact?consultation=true" variant="secondary" className="text-lg px-8 py-3">
+          {lang === 'fi' ? 'Varaa konsultaatio' : 'Book Consultation'}
+        </Button>
+      </div>
+    </div>
+  </section>
+</Layout>

@@ -1,0 +1,80 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Icon from '@/components/ui/icons/Icon.astro';
+import Button from '@/components/ui/Button.astro';
+
+const currentPath = Astro.url.pathname;
+const lang = currentPath.startsWith('/fi') ? 'fi' : 'en';
+
+const title = lang==='fi' ? 'Maksukontrollit' : 'Payment Controls';
+const description = lang==='fi' ? 'Kovennamme maksuprosessit petoksia vastaan ja rakennamme palautumisvalmiuden.' : 'We harden payment processes against fraud and build recovery readiness.';
+
+const pillars = [
+  { icon:'document', fi:'Prosessikontrollit', en:'Process Controls', fiD:'Neljän silmän periaate, maksurajojen ja muutosten hallinta.', enD:'Four‑eyes approvals, payment limits and change control.' },
+  { icon:'lock', fi:'Tekniset kontrollit', en:'Technical Controls', fiD:'SPF/DMARC, treasuryn ja ERP‑integraatiot, vahva tunnistus.', enD:'SPF/DMARC, treasury/ERP integrations, strong authentication.' },
+  { icon:'user', fi:'Ihmiskontrollit', en:'People Controls', fiD:'Soittopaluu, todennus, koulutus ja simulaatiot.', enD:'Call‑backs, verification, training and simulations.' }
+];
+
+const playbooks = [
+  { step:'1', fi:'STOP‑maksu ja pankkikontaktit', en:'Payment STOP and bank contacts' },
+  { step:'2', fi:'Tapahtumaselvitys', en:'Incident triage and scoping' },
+  { step:'3', fi:'Rikosilmoitus ja toimet', en:'Police report and coordination' },
+  { step:'4', fi:'Palautuminen ja parannukset', en:'Recovery and improvements' }
+];
+---
+
+<Layout title={title} description={description}>
+  <section class="bg-gradient-to-br from-emerald-50 via-white to-teal-50 py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-4xl">
+        <h1 class="text-4xl lg:text-5xl font-bold text-slate-900 mb-6">{title}</h1>
+        <p class="text-xl text-slate-600">{description}</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {pillars.map(p => (
+          <div class="bg-gradient-to-br from-slate-50 to-white p-8 rounded-xl border border-slate-200 hover:shadow-xl transition-all duration-300">
+            <div class="w-16 h-16 bg-emerald-100 rounded-xl flex items-center justify-center mb-6">
+              <Icon name={p.icon} className="w-8 h-8 text-emerald-600" />
+            </div>
+            <h3 class="text-xl font-bold text-slate-900">{lang==='fi'?p.fi:p.en}</h3>
+            <p class="text-slate-600 mt-2">{lang==='fi'?p.fiD:p.enD}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-slate-900 mb-4">{lang==='fi'?'Palautumis‑playbookit':'Recovery Playbooks'}</h2>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+        {playbooks.map(pb => (
+          <div class="text-center">
+            <div class="w-16 h-16 bg-teal-600 rounded-full flex items-center justify-center mx-auto mb-4 text-white text-xl font-bold">{pb.step}</div>
+            <p class="text-slate-700 font-medium">{lang==='fi'?pb.fi:pb.en}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 bg-slate-900 text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl font-bold mb-6">{lang==='fi' ? 'Kovennetaanko maksuprosessit?' : 'Ready to harden your payments?'}</h2>
+      <p class="text-xl text-slate-300 mb-8 max-w-3xl mx-auto">{lang==='fi' ? 'Käydään läpi riskit, kontrollit ja palautumiskyky.' : 'We’ll review risks, controls and recovery capability.'}</p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <Button href="/contact" variant="primary" className="text-lg px-8 py-3">{lang==='fi' ? 'Ota yhteyttä' : 'Get in Touch'}</Button>
+        <Button href="/contact?consultation=true" variant="secondary" className="text-lg px-8 py-3">{lang==='fi' ? 'Varaa konsultaatio' : 'Book Consultation'}</Button>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+

@@ -1,0 +1,30 @@
+---
+import Header from '../components/Header.astro';
+import MobileMenu from '../components/MobileMenu.astro';
+import Footer from '@/components/sections/Footer.astro';
+import Breadcrumbs from '@/components/navigation/Breadcrumbs.astro';
+import '@styles/global.css';
+const { title } = Astro.props;
+const path = Astro.url.pathname.replace(/\/$/, '');
+const lang = path.startsWith('/fi') ? 'fi' : 'en';
+---
+<html lang={lang} class="scroll-pt-28">
+  <head>
+    <title>{title ? `${title} | CyberSecurity.fi` : 'CyberSecurity.fi'}</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+  </head>
+  <body class="bg-off-white">
+    <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 bg-white px-4 py-2 rounded shadow">Skip to content</a>
+    <Header />
+    <MobileMenu />
+    {(() => {
+      if (path === '' || path === '/' || path === '/fi') return null;
+      return <div class="bg-white border-b border-slate-200"><div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2"><Breadcrumbs /></div></div>;
+    })()}
+    <main id="main" class="min-h-[60vh]">
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>

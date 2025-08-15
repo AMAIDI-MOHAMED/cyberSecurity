@@ -1,0 +1,32 @@
+---
+import Button from "@ui/Button.astro";
+
+const title = "Transform Your Organization into a Cybersecurity Powerhouse";
+const subTitle =
+  "Get comprehensive cybersecurity compliance with expert guidance and proven frameworks. No guesswork required. Achieve ISO 27001, NIS2, GDPR, and DORA certification with confidence in months, not years.";
+const secondaryCTA = { text: "Start Assessment", href: "/resources/readiness-checks" };
+const primaryCTA = { text: "View Services", href: "/packages" };
+---
+
+{/* Hero Content */}
+<div class="mx-auto max-w-4xl select-none text-left sm:text-center">
+  <h1
+    class="block text-balance text-4xl text-slate-800 sm:text-5xl md:text-6xl lg:text-7xl"
+  >
+    {title}
+  </h1>
+</div>
+
+<div class="mx-auto max-w-3xl text-left sm:text-center">
+  <p class="text-pretty text-lg text-slate-700">
+    {subTitle}
+  </p>
+</div>
+
+{/* CTA Buttons */}
+<div class="flex flex-col justify-center gap-5 sm:flex-row">
+  <Button href={primaryCTA.href} variant="primary"
+    >{primaryCTA.text}</Button
+  >
+  <Button href={primaryCTA.href} variant="primary">{primaryCTA.text}</Button>
+</div>

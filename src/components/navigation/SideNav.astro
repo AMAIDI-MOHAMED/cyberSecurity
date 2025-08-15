@@ -1,0 +1,33 @@
+---
+/**
+ * Contextual Side Navigation
+ * Props: items: { href: string; label: string; children?: Item[] }[]
+ */
+interface Item { href: string; label: string; children?: Item[] }
+interface Props { items: Item[]; title?: string }
+const { items, title } = Astro.props as Props;
+const currentPath = Astro.url.pathname.replace(/\/$/, '');
+---
+<aside class="w-64 shrink-0 border-r border-slate-200 pr-6" aria-label="Section navigation">
+  {title && <h2 class="mb-4 text-xs font-semibold tracking-wide text-slate-500 uppercase">{title}</h2>}
+  <nav class="space-y-1">
+    {items.map(item => {
+      const active = currentPath === item.href || currentPath.startsWith(item.href + '/');
+      return (
+        <div>
+          <a href={item.href} class={`block rounded px-3 py-2 text-sm font-medium focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 ${active ? 'bg-teal-50 text-teal-700' : 'text-slate-700 hover:text-teal-700 hover:bg-slate-50'}`}>{item.label}</a>
+          {item.children && item.children.length > 0 && (
+            <div class="mt-1 ml-3 border-l border-slate-200 pl-3 space-y-1">
+              {item.children.map(child => {
+                const childActive = currentPath === child.href;
+                return (
+                  <a href={child.href} class={`block rounded px-3 py-1.5 text-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 ${childActive ? 'bg-teal-100 text-teal-700' : 'text-slate-600 hover:text-teal-700 hover:bg-slate-50'}`}>{child.label}</a>
+                );
+              })}
+            </div>
+          )}
+        </div>
+      );
+    })}
+  </nav>
+</aside>

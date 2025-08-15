@@ -1,0 +1,171 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import HeroSection from '@/components/sections/HeroSection.astro';
+import FeatureGrid from '@/components/sections/FeatureGrid.astro';
+import CTA from '@/components/sections/CTA.astro';
+
+const title = "Industry Solutions";
+const currentPath = Astro.url.pathname;
+const lang = currentPath.startsWith('/fi') ? 'fi' : 'en';
+
+const heroContent = {
+  title: "Industry-Specific Cybersecurity Solutions",
+  subtitle: "Tailored cybersecurity services designed for your industry's unique challenges and regulatory requirements.",
+  description: "We understand that different industries face different cybersecurity challenges. Our specialized solutions address sector-specific risks, compliance requirements, and operational needs.",
+  primaryCTA: { text: "Explore Industries", href: "#industries" },
+  secondaryCTA: { text: "Get Industry Assessment", href: "/contact?assessment=true" }
+};
+
+const industries = [
+  {
+    title: "Technology and Software",
+    description: "Cybersecurity solutions for tech companies, software developers, and digital service providers.",
+    icon: "code",
+    href: "/industries/technology-software",
+    challenges: ["Intellectual property protection", "DevSecOps integration", "API security", "Customer data protection"]
+  },
+  {
+    title: "Financial Services and Banking",
+    description: "Comprehensive security solutions for banks, fintech, and financial service providers.",
+    icon: "bank",
+    href: "/industries/financial-services",
+    challenges: ["DORA compliance", "PCI DSS requirements", "Anti-fraud measures", "Open banking security"]
+  },
+  {
+    title: "Healthcare and Life Sciences",
+    description: "HIPAA-compliant cybersecurity solutions for healthcare organizations and life sciences companies.",
+    icon: "heart",
+    href: "/industries/healthcare-life-sciences",
+    challenges: ["HIPAA compliance", "Medical device security", "Patient data protection", "Research data security"]
+  },
+  {
+    title: "Critical Infrastructure and Energy",
+    description: "Specialized security for power grids, utilities, and critical infrastructure operators.",
+    icon: "zap",
+    href: "/industries/critical-infrastructure-energy",
+    challenges: ["NIS2 compliance", "SCADA security", "OT/IT convergence", "National security requirements"]
+  },
+  {
+    title: "Manufacturing and Industrial",
+    description: "Industrial cybersecurity solutions for manufacturing and production environments.",
+    icon: "settings",
+    href: "/industries/manufacturing-industrial",
+    challenges: ["ICS/SCADA protection", "Supply chain security", "Production continuity", "Industry 4.0 security"]
+  },
+  {
+    title: "Government and Public Sector",
+    description: "Security solutions tailored for government agencies and public sector organizations.",
+    icon: "shield",
+    href: "/industries/government-public-sector",
+    challenges: ["National security frameworks", "Citizen data protection", "Inter-agency collaboration", "Public service continuity"]
+  }
+];
+---
+
+<Layout title={title}>
+  <HeroSection content={heroContent} />
+  
+  <section id="industries" class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-slate-900 mb-4">Industries We Serve</h2>
+        <p class="text-lg text-slate-600 max-w-3xl mx-auto">
+          Our deep industry expertise allows us to provide targeted cybersecurity solutions 
+          that address sector-specific risks and regulatory requirements.
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {industries.map(industry => (
+          <div class="bg-white rounded-lg shadow-lg border border-slate-200 p-6 hover:shadow-xl transition-shadow">
+            <div class="mb-4">
+              <h3 class="text-xl font-semibold text-slate-900 mb-2">{industry.title}</h3>
+              <p class="text-slate-600 mb-4">{industry.description}</p>
+            </div>
+            
+            <div class="mb-6">
+              <h4 class="text-sm font-medium text-slate-900 mb-2">Key Challenges:</h4>
+              <ul class="space-y-1">
+                {industry.challenges.map(challenge => (
+                  <li class="flex items-center text-sm text-slate-700">
+                    <svg class="w-3 h-3 text-teal-600 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                    </svg>
+                    {challenge}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            
+            <a 
+              href={industry.href}
+              class="block w-full text-center bg-teal-600 text-white py-2 px-4 rounded-md hover:bg-teal-700 transition-colors"
+            >
+              Learn More
+            </a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-slate-900 mb-4">Industry Expertise</h2>
+        <p class="text-lg text-slate-600 max-w-3xl mx-auto">
+          Our team combines deep cybersecurity knowledge with industry-specific experience.
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div class="text-center">
+          <div class="bg-teal-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg class="w-8 h-8 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path>
+            </svg>
+          </div>
+          <h3 class="text-lg font-semibold text-slate-900 mb-2">Regulatory Expertise</h3>
+          <p class="text-slate-600">Deep understanding of industry-specific regulations and compliance requirements.</p>
+        </div>
+        
+        <div class="text-center">
+          <div class="bg-teal-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg class="w-8 h-8 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+            </svg>
+          </div>
+          <h3 class="text-lg font-semibold text-slate-900 mb-2">Rapid Response</h3>
+          <p class="text-slate-600">Quick implementation of security measures tailored to your industry's pace.</p>
+        </div>
+        
+        <div class="text-center">
+          <div class="bg-teal-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg class="w-8 h-8 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+            </svg>
+          </div>
+          <h3 class="text-lg font-semibold text-slate-900 mb-2">Sector Networks</h3>
+          <p class="text-slate-600">Strong relationships within industry sectors for knowledge sharing and collaboration.</p>
+        </div>
+        
+        <div class="text-center">
+          <div class="bg-teal-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg class="w-8 h-8 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+            </svg>
+          </div>
+          <h3 class="text-lg font-semibold text-slate-900 mb-2">Proven Results</h3>
+          <p class="text-slate-600">Track record of successful implementations across various industry sectors.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CTA 
+    title="Ready to Secure Your Industry?"
+    description="Get industry-specific cybersecurity solutions tailored to your sector's unique challenges and requirements."
+    primaryCTA={{ text: "Schedule Consultation", href: "/contact?consultation=true" }}
+    secondaryCTA={{ text: "View Our Services", href: "/services" }}
+  />
+</Layout>

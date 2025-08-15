@@ -1,0 +1,151 @@
+---
+/** SearchBar component (client-side filter stub) */
+import Icon from "@ui/icons/Icon.astro";
+import { searchFacets } from '@data/searchFacets.js';
+
+interface Props { placeholder?: string }
+const { placeholder = 'Search…' } = Astro.props as Props;
+const path = Astro.url.pathname;
+const isFi = path.startsWith('/fi');
+const t = (en: string, fi: string) => isFi ? fi : en;
+---
+<div class="relative" data-search-root>
+  <label class="sr-only" for="site-search">{t('Search site','Hae sivustolta')}</label>
+  <input id="site-search" type="search" class="w-full rounded-md border border-slate-300 bg-white px-4 py-2 pr-9 text-sm shadow-sm focus:border-teal-500 focus:outline-none focus:ring-2 focus:ring-teal-500" placeholder={t(placeholder,'Haku…')} autocomplete="off" data-search-input />
+  <div class="absolute inset-y-0 right-2 flex items-center pointer-events-none text-slate-400">
+    <Icon name="documentMagnifyingGlass" class="w-5 h-5" />
+  </div>
+  <div class="hidden mt-2 flex-col gap-4 rounded-md border border-slate-200 bg-white p-4 shadow-lg text-sm max-h-[500px] overflow-y-auto w-full md:w-[640px] md:absolute md:left-0" data-search-panel aria-live="polite"></div>
+</div>
+
+<script type="module" is:inline>
+  import { searchFacets } from '@data/searchFacets.js';
+  
+  function initSearchBar() {
+    const root = document.currentScript?.previousElementSibling;
+    if (!root) return;
+    
+    const input = root.querySelector('[data-search-input]');
+    const panel = root.querySelector('[data-search-panel]');
+    const isFi = document.documentElement.lang === 'fi';
+    const t = (en, fi) => isFi ? fi : en;
+
+  // Build dataset from menu + facets quickly (could be replaced by real index)
+  const dataset = [];
+  function add(label, href, type){ dataset.push({ label, href, type: type || 'page' }); }
+  
+  async function loadMenuData() {
+    try {
+      const menuMod = await import('@data/menu.js');
+      const flat = (items) => items.forEach(i => { add(i.label_en, i.href, 'nav'); add(i.label_fi, i.href, 'nav'); if (i.children?.length) flat(i.children); });
+      flat(menuMod.menu);
+    } catch {}
+  }
+
+  // Load menu data asynchronously
+  loadMenuData();
+
+  const popular = searchFacets.popularQueries;
+  const facets = {
+    Category: searchFacets.categories,
+    Framework: searchFacets.frameworks,
+    Industry: searchFacets.industries,
+    Type: searchFacets.contentTypes
+  };
+  const active = new Set();
+  let currentResults = [];
+  let highlightIndex = -1;
+
+  function render() {
+    if (!panel) return;
+    const q = (input.value || '').trim().toLowerCase();
+    const facetFilter = active.size ? (item) => true : () => true; // placeholder facet logic
+    currentResults = !q ? [] : dataset.filter(d => d.label.toLowerCase().includes(q)).slice(0, 30).filter(facetFilter);
+
+    const parts = [];
+    // Facet chips
+    parts.push(`<div class='flex flex-wrap gap-2'>${Object.entries(facets).map(([group, values]) => `
+      <details class='group'>
+        <summary class='cursor-pointer px-2 py-1 rounded bg-slate-100 text-xs text-slate-600 hover:bg-slate-200'>${group}</summary>
+        <div class='mt-2 flex flex-wrap gap-1 max-w-[260px]'>${values.map(v => {
+          const sel = active.has(v);
+          return `<button type='button' data-facet='${v}' class='px-2 py-1 rounded text-xs border ${sel ? 'bg-teal-600 text-white border-teal-600' : 'border-slate-300 text-slate-600 hover:bg-slate-100'}'>${v}</button>`;
+        }).join('')}</div>
+      </details>`).join('')}</div>`);
+
+    if (!q) {
+      parts.push(`<div><p class='text-slate-500 mb-2'>${t('Popular:','Suositut:')}</p><div class='flex flex-wrap gap-2'>${popular.map(p => `<button type='button' data-pop='${p}' class='px-3 py-1 rounded-full bg-slate-100 text-slate-600 text-xs hover:bg-teal-600 hover:text-white'>${p}</button>`).join('')}</div></div>`);
+    } else if (currentResults.length === 0) {
+      parts.push(`<p class='text-slate-500'>${t('No results','Ei tuloksia')}</p>`);
+    } else {
+      parts.push(`<ul role='listbox' class='divide-y divide-slate-100'>${currentResults.map((r,i) => `<li role='option' data-idx='${i}' class='py-2 flex items-center gap-3 cursor-pointer px-1 rounded ${i===highlightIndex?'bg-teal-50':''}' data-href='${r.href}'>
+        <span class='text-xs uppercase tracking-wide text-slate-400'>${r.type}</span>
+        <span class='text-slate-700'>${r.label}</span>
+      </li>`).join('')}</ul>`);
+    }
+
+    panel.innerHTML = parts.join('');
+    panel.classList.remove('hidden');
+  }
+
+  function applyMobileMode() {
+    if (!panel) return;
+    const isMobile = window.matchMedia('(max-width: 767px)').matches;
+    if (isMobile) {
+      panel.classList.add('fixed','inset-0','m-0','rounded-none','border-0','max-h-full','w-full','h-full','z-50');
+      panel.classList.add('overflow-y-auto');
+      panel.classList.add('pt-20');
+      if (!panel.querySelector('[data-close-search]')) {
+        const closeBtn = document.createElement('button');
+        closeBtn.type = 'button';
+        closeBtn.setAttribute('data-close-search','');
+        closeBtn.className = 'absolute top-4 right-4 inline-flex items-center px-3 py-2 rounded-md bg-slate-900 text-white text-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-500';
+        closeBtn.textContent = t('Close','Sulje');
+        closeBtn.addEventListener('click', () => { panel.classList.add('hidden'); });
+        panel.appendChild(closeBtn);
+      }
+    } else {
+      panel.classList.remove('fixed','inset-0','m-0','rounded-none','border-0','max-h-full','w-full','h-full','z-50','pt-20');
+    }
+  }
+  applyMobileMode();
+  window.addEventListener('resize', applyMobileMode);
+
+  input.addEventListener('input', () => { highlightIndex = -1; render(); });
+  input.addEventListener('focus', () => { if (input.value || popular.length) render(); });
+  document.addEventListener('click', (e) => { if (!root.contains(e.target)) panel.classList.add('hidden'); });
+
+  panel.addEventListener('click', (e) => {
+    const btnFacet = e.target.closest('[data-facet]');
+    if (btnFacet) { const val = btnFacet.getAttribute('data-facet'); active.has(val) ? active.delete(val) : active.add(val); render(); return; }
+    const pop = e.target.closest('[data-pop]');
+    if (pop) { input.value = pop.getAttribute('data-pop'); input.focus(); render(); return; }
+    const opt = e.target.closest('[data-idx]');
+    if (opt) { location.href = opt.getAttribute('data-href'); }
+  });
+
+  input.addEventListener('keydown', (e) => {
+    if (panel.classList.contains('hidden')) return;
+    if (['ArrowDown','ArrowUp'].includes(e.key)) {
+      e.preventDefault();
+      if (!currentResults.length) return;
+      if (e.key === 'ArrowDown') highlightIndex = (highlightIndex + 1) % currentResults.length; else highlightIndex = (highlightIndex - 1 + currentResults.length) % currentResults.length;
+      render();
+    } else if (e.key === 'Enter' && highlightIndex >= 0) {
+      e.preventDefault();
+      const target = currentResults[highlightIndex];
+      if (target) location.href = target.href;
+    } else if (e.key === 'Escape') {
+      panel.classList.add('hidden');
+    }
+  });
+  
+  } // End of initSearchBar function
+  
+  // Initialize when DOM is ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initSearchBar);
+  } else {
+    initSearchBar();
+  }
+</script>

@@ -1,0 +1,622 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import HeroSection from '@/components/sections/HeroSection.astro';
+import CTA from '@/components/sections/CTA.astro';
+
+const title = "CISO-as-a-Service Plans";
+const currentPath = Astro.url.pathname;
+const lang = currentPath.startsWith('/fi') ? 'fi' : 'en';
+
+const heroContent = {
+  title: "CISO-as-a-Service Plans",
+  subtitle: "Get expert-level cybersecurity leadership without the full-time cost of hiring a Chief Information Security Officer.",
+  description: "Our virtual CISO service provides strategic security leadership, compliance oversight, and risk management expertise tailored to your organization's specific needs and budget.",
+  primaryCTA: { text: "Choose Your Plan", href: "/contact?package=ciso-service" },
+  secondaryCTA: { text: "Download Service Guide", href: "/downloads/ciso-service-guide.pdf" }
+};
+
+const cisoResponsibilities = [
+  {
+    category: "Strategic Planning",
+    responsibilities: [
+      "Cybersecurity strategy development and alignment with business objectives",
+      "Risk assessment and management framework implementation",
+      "Security budget planning and resource allocation",
+      "Board-level security reporting and communication",
+      "Security program roadmap development"
+    ]
+  },
+  {
+    category: "Compliance & Governance",
+    responsibilities: [
+      "Regulatory compliance management (GDPR, ISO 27001, SOC 2, etc.)",
+      "Security policy development and maintenance",
+      "Audit coordination and remediation oversight",
+      "Vendor risk management and third-party assessments",
+      "Security governance framework establishment"
+    ]
+  },
+  {
+    category: "Incident Response",
+    responsibilities: [
+      "Incident response plan development and testing",
+      "Breach notification and regulatory reporting",
+      "Crisis communication and stakeholder management",
+      "Post-incident analysis and improvement recommendations",
+      "Business continuity and disaster recovery planning"
+    ]
+  },
+  {
+    category: "Team Leadership",
+    responsibilities: [
+      "Security team development and mentoring",
+      "Security awareness training program design",
+      "Performance management and career development",
+      "Cross-functional collaboration and communication",
+      "Technical expertise and best practice guidance"
+    ]
+  }
+];
+
+const servicePlans = [
+  {
+    name: "Essential CISO",
+    price: "€3,500/month",
+    commitment: "6-month minimum",
+    hours: "20 hours/month",
+    suitable: "Small to medium businesses (10-100 employees)",
+    description: "Core cybersecurity leadership for growing organizations",
+    features: [
+      "Monthly security strategy review",
+      "Quarterly risk assessments",
+      "Compliance gap analysis",
+      "Security policy development",
+      "Incident response planning",
+      "Executive security reporting",
+      "Email and phone support",
+      "Quarterly executive briefings"
+    ],
+    popular: false
+  },
+  {
+    name: "Business CISO",
+    price: "€6,500/month",
+    commitment: "12-month minimum",
+    hours: "40 hours/month",
+    suitable: "Mid-size organizations (100-500 employees)",
+    description: "Comprehensive cybersecurity leadership and hands-on support",
+    features: [
+      "Bi-weekly strategy sessions",
+      "Monthly risk assessments",
+      "Compliance program management",
+      "Security architecture review",
+      "Vendor risk assessments",
+      "Incident response leadership",
+      "Security team mentoring",
+      "Board presentation support",
+      "24/7 incident support",
+      "Monthly executive reports"
+    ],
+    popular: true
+  },
+  {
+    name: "Enterprise CISO",
+    price: "€12,000/month",
+    commitment: "12-month minimum",
+    hours: "80 hours/month",
+    suitable: "Large enterprises (500+ employees)",
+    description: "Full-service virtual CISO with dedicated support team",
+    features: [
+      "Weekly strategic consultations",
+      "Continuous risk monitoring",
+      "Full compliance management",
+      "Security transformation leadership",
+      "Advanced threat intelligence",
+      "Crisis management support",
+      "Security team development",
+      "Board and C-level engagement",
+      "24/7 emergency response",
+      "Dedicated security analyst support",
+      "Custom reporting and dashboards",
+      "Annual security program review"
+    ],
+    popular: false
+  }
+];
+
+const industryExpertise = [
+  {
+    industry: "Financial Services",
+    regulations: ["PCI DSS", "GDPR", "DORA", "MiFID II"],
+    challenges: ["Data protection", "Fraud prevention", "Regulatory compliance", "Digital transformation security"],
+    experience: "15+ years combined experience in banking, fintech, and payment processing security"
+  },
+  {
+    industry: "Healthcare",
+    regulations: ["HIPAA", "GDPR", "Medical Device Regulation"],
+    challenges: ["Patient data protection", "Medical device security", "Telehealth security", "Supply chain risks"],
+    experience: "Deep expertise in healthcare cybersecurity and medical data protection requirements"
+  },
+  {
+    industry: "Technology",
+    regulations: ["SOC 2", "ISO 27001", "GDPR", "CCPA"],
+    challenges: ["Cloud security", "DevSecOps", "SaaS security", "Data privacy"],
+    experience: "Extensive background in SaaS, cloud platforms, and technology startup security"
+  },
+  {
+    industry: "Manufacturing",
+    regulations: ["IEC 62443", "NIST Cybersecurity Framework", "ISO 27001"],
+    challenges: ["OT/IT convergence", "Supply chain security", "Industrial IoT", "Legacy system protection"],
+    experience: "Industrial cybersecurity expertise with focus on operational technology security"
+  }
+];
+
+const deliverables = [
+  {
+    frequency: "Monthly",
+    items: [
+      "Executive security dashboard and metrics",
+      "Risk register updates and assessments",
+      "Compliance status reports",
+      "Security incident summaries",
+      "Budget and resource recommendations",
+      "Strategic initiative progress updates"
+    ]
+  },
+  {
+    frequency: "Quarterly",
+    items: [
+      "Comprehensive security program review",
+      "Board-ready security presentations",
+      "Regulatory compliance assessments",
+      "Security awareness training updates",
+      "Vendor risk assessment reports",
+      "Business continuity testing results"
+    ]
+  },
+  {
+    frequency: "Annually",
+    items: [
+      "Complete security strategy review",
+      "Cybersecurity maturity assessment",
+      "Security budget planning and ROI analysis",
+      "Regulatory compliance audit preparation",
+      "Security team performance reviews",
+      "Long-term roadmap development"
+    ]
+  }
+];
+
+const cisoCredentials = [
+  {
+    credential: "CISSP",
+    description: "Certified Information Systems Security Professional",
+    focus: "Advanced security architecture and risk management"
+  },
+  {
+    credential: "CISM",
+    description: "Certified Information Security Manager",
+    focus: "Information security management and governance"
+  },
+  {
+    credential: "CISA",
+    description: "Certified Information Systems Auditor",
+    focus: "Information systems auditing and compliance"
+  },
+  {
+    credential: "CRISC",
+    description: "Certified in Risk and Information Systems Control",
+    focus: "Risk identification, assessment, and mitigation"
+  }
+];
+
+const implementation = [
+  {
+    phase: "Week 1-2: Onboarding & Assessment",
+    activities: [
+      "Comprehensive security posture assessment",
+      "Current risk landscape analysis",
+      "Stakeholder interviews and requirements gathering",
+      "Existing documentation and policy review",
+      "Initial security dashboard setup"
+    ]
+  },
+  {
+    phase: "Week 3-4: Strategy Development",
+    activities: [
+      "Security strategy and roadmap creation",
+      "Risk management framework establishment",
+      "Compliance requirements mapping",
+      "Security governance structure design",
+      "Initial executive presentation"
+    ]
+  },
+  {
+    phase: "Month 2-3: Quick Wins & Foundation",
+    activities: [
+      "Critical security gaps remediation",
+      "Essential policy development",
+      "Incident response plan creation",
+      "Security awareness program launch",
+      "Vendor risk assessment initiation"
+    ]
+  },
+  {
+    phase: "Month 4-6: Program Maturation",
+    activities: [
+      "Advanced security controls implementation",
+      "Continuous monitoring establishment",
+      "Compliance program operationalization",
+      "Security team development and training",
+      "Long-term strategy refinement"
+    ]
+  }
+];
+---
+
+<Layout title={title}>
+  <HeroSection content={heroContent} />
+  
+  <!-- Service Overview -->
+  <section class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-slate-900 mb-4">Why Choose Virtual CISO Services?</h2>
+        <p class="text-lg text-slate-600 max-w-4xl mx-auto">
+          Get access to seasoned cybersecurity executives at a fraction of the cost of a full-time hire. 
+          Our virtual CISOs bring enterprise-level expertise to organizations of all sizes.
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="bg-teal-50 border-l-4 border-teal-400 p-6">
+          <div class="flex items-center mb-2">
+            <svg class="w-6 h-6 text-teal-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"></path>
+            </svg>
+            <h3 class="text-lg font-semibold text-teal-900">Cost-Effective</h3>
+          </div>
+          <p class="text-teal-700">Save 60-70% compared to full-time CISO salaries and benefits</p>
+        </div>
+        
+        <div class="bg-blue-50 border-l-4 border-blue-400 p-6">
+          <div class="flex items-center mb-2">
+            <svg class="w-6 h-6 text-blue-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+            </svg>
+            <h3 class="text-lg font-semibold text-blue-900">Immediate Impact</h3>
+          </div>
+          <p class="text-blue-700">Start with experienced professionals who hit the ground running</p>
+        </div>
+        
+        <div class="bg-purple-50 border-l-4 border-purple-400 p-6">
+          <div class="flex items-center mb-2">
+            <svg class="w-6 h-6 text-purple-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.414-4.414a2 2 0 010 2.828L9.828 17.657a2 2 0 01-2.828 0L3.172 13.828a2 2 0 010-2.828L9.757 4.414a2 2 0 012.828 0z"></path>
+            </svg>
+            <h3 class="text-lg font-semibold text-purple-900">Proven Expertise</h3>
+          </div>
+          <p class="text-purple-700">Access to senior professionals with diverse industry experience</p>
+        </div>
+        
+        <div class="bg-orange-50 border-l-4 border-orange-400 p-6">
+          <div class="flex items-center mb-2">
+            <svg class="w-6 h-6 text-orange-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+            </svg>
+            <h3 class="text-lg font-semibold text-orange-900">Scalable Service</h3>
+          </div>
+          <p class="text-orange-700">Adjust engagement level as your organization grows and evolves</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CISO Responsibilities -->
+  <section class="py-16 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-slate-900 mb-4">Comprehensive CISO Responsibilities</h2>
+        <p class="text-lg text-slate-600 max-w-3xl mx-auto">
+          Our virtual CISOs provide complete cybersecurity leadership across all critical areas of your organization.
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {cisoResponsibilities.map(category => (
+          <div class="bg-white rounded-lg shadow-lg p-6">
+            <h3 class="text-xl font-semibold text-slate-900 mb-4">{category.category}</h3>
+            <ul class="space-y-3">
+              {category.responsibilities.map(responsibility => (
+                <li class="flex items-start">
+                  <svg class="w-4 h-4 text-teal-600 mr-3 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                  </svg>
+                  <span class="text-slate-700">{responsibility}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Service Plans -->
+  <section class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-slate-900 mb-4">Choose Your CISO Service Plan</h2>
+        <p class="text-lg text-slate-600 max-w-3xl mx-auto">
+          Flexible service plans designed to meet the security leadership needs of organizations at every stage.
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        {servicePlans.map((plan, index) => (
+          <div class={`rounded-lg shadow-lg p-8 ${plan.popular ? 'bg-teal-50 border-2 border-teal-200 transform scale-105' : 'bg-white border border-slate-200'}`}>
+            {plan.popular && (
+              <div class="text-center mb-4">
+                <span class="bg-teal-600 text-white px-3 py-1 rounded-full text-sm font-medium">Most Popular</span>
+              </div>
+            )}
+            
+            <div class="text-center mb-6">
+              <h3 class="text-2xl font-bold text-slate-900 mb-2">{plan.name}</h3>
+              <div class="mb-2">
+                <span class="text-3xl font-bold text-teal-600">{plan.price}</span>
+              </div>
+              <p class="text-sm text-slate-500 mb-2">{plan.commitment}</p>
+              <p class="text-sm text-slate-600 mb-4">{plan.hours}</p>
+              <p class="text-slate-700">{plan.description}</p>
+            </div>
+            
+            <div class="mb-6">
+              <p class="text-sm font-semibold text-slate-900 mb-2">Suitable for:</p>
+              <p class="text-sm text-slate-600 mb-4">{plan.suitable}</p>
+            </div>
+            
+            <ul class="space-y-3 mb-8">
+              {plan.features.map(feature => (
+                <li class="flex items-start">
+                  <svg class="w-4 h-4 text-teal-600 mr-2 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                  </svg>
+                  <span class="text-sm text-slate-700">{feature}</span>
+                </li>
+              ))}
+            </ul>
+            
+            <a href={`/contact?package=ciso-${plan.name.toLowerCase().replace(' ', '-')}`} 
+               class={`block w-full text-center py-3 px-4 rounded-md font-medium transition-colors ${
+                 plan.popular 
+                   ? 'bg-teal-600 text-white hover:bg-teal-700' 
+                   : 'bg-slate-100 text-slate-900 hover:bg-slate-200'
+               }`}>
+              Get Started
+            </a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Industry Expertise -->
+  <section class="py-16 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-slate-900 mb-4">Industry-Specific Expertise</h2>
+        <p class="text-lg text-slate-600 max-w-3xl mx-auto">
+          Our virtual CISOs bring deep industry knowledge and regulatory expertise across key sectors.
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {industryExpertise.map(industry => (
+          <div class="bg-white rounded-lg shadow-lg p-6">
+            <h3 class="text-xl font-semibold text-slate-900 mb-4">{industry.industry}</h3>
+            
+            <div class="mb-4">
+              <h4 class="text-sm font-semibold text-slate-900 mb-2">Key Regulations:</h4>
+              <div class="flex flex-wrap gap-2">
+                {industry.regulations.map(regulation => (
+                  <span class="bg-teal-100 text-teal-800 px-2 py-1 rounded text-xs">{regulation}</span>
+                ))}
+              </div>
+            </div>
+            
+            <div class="mb-4">
+              <h4 class="text-sm font-semibold text-slate-900 mb-2">Common Challenges:</h4>
+              <ul class="text-sm text-slate-700 space-y-1">
+                {industry.challenges.map(challenge => (
+                  <li class="flex items-start">
+                    <span class="w-1.5 h-1.5 bg-teal-600 rounded-full mr-2 mt-2 flex-shrink-0"></span>
+                    {challenge}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            
+            <div>
+              <h4 class="text-sm font-semibold text-slate-900 mb-2">Our Experience:</h4>
+              <p class="text-sm text-slate-600">{industry.experience}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Credentials -->
+  <section class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-slate-900 mb-4">Certified Security Leadership</h2>
+        <p class="text-lg text-slate-600 max-w-3xl mx-auto">
+          Our virtual CISOs hold the industry's most prestigious cybersecurity certifications and credentials.
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {cisoCredentials.map(credential => (
+          <div class="bg-slate-50 rounded-lg p-6 text-center">
+            <div class="bg-teal-600 text-white text-lg font-bold w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+              {credential.credential}
+            </div>
+            <h3 class="text-lg font-semibold text-slate-900 mb-2">{credential.credential}</h3>
+            <p class="text-sm text-slate-600 mb-3">{credential.description}</p>
+            <p class="text-xs text-slate-500">{credential.focus}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Implementation Timeline -->
+  <section class="py-16 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-slate-900 mb-4">6-Month Implementation Roadmap</h2>
+        <p class="text-lg text-slate-600 max-w-3xl mx-auto">
+          Structured approach to establish comprehensive cybersecurity leadership and governance.
+        </p>
+      </div>
+      
+      <div class="space-y-6">
+        {implementation.map((phase, index) => (
+          <div class="bg-white rounded-lg shadow-lg border border-slate-200 p-6">
+            <div class="flex items-center mb-4">
+              <span class="bg-teal-600 text-white text-sm font-bold px-3 py-1 rounded-full mr-3">
+                Phase {index + 1}
+              </span>
+              <h3 class="text-lg font-semibold text-slate-900">{phase.phase}</h3>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              {phase.activities.map(activity => (
+                <div class="flex items-start">
+                  <svg class="w-4 h-4 text-teal-600 mr-2 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                  </svg>
+                  <span class="text-sm text-slate-700">{activity}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Deliverables -->
+  <section class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-slate-900 mb-4">Regular Deliverables & Reporting</h2>
+        <p class="text-lg text-slate-600 max-w-3xl mx-auto">
+          Comprehensive reporting and documentation to keep leadership informed and demonstrate security program value.
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {deliverables.map(delivery => (
+          <div class="bg-slate-50 rounded-lg p-6">
+            <h3 class="text-lg font-semibold text-slate-900 mb-4">{delivery.frequency} Deliverables</h3>
+            <ul class="space-y-3">
+              {delivery.items.map(item => (
+                <li class="flex items-start">
+                  <svg class="w-4 h-4 text-teal-600 mr-2 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z" clip-rule="evenodd"></path>
+                  </svg>
+                  <span class="text-sm text-slate-700">{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ROI Calculator -->
+  <section class="py-16 bg-slate-50">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-slate-900 mb-4">Calculate Your ROI</h2>
+        <p class="text-lg text-slate-600 max-w-3xl mx-auto">
+          See how much you can save with virtual CISO services compared to hiring a full-time executive.
+        </p>
+      </div>
+      
+      <div class="bg-white rounded-lg shadow-lg p-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div>
+            <h3 class="text-lg font-semibold text-slate-900 mb-4">Full-Time CISO Costs</h3>
+            <ul class="space-y-3 text-sm">
+              <li class="flex justify-between">
+                <span class="text-slate-700">Annual Salary</span>
+                <span class="font-medium">€180,000 - €250,000</span>
+              </li>
+              <li class="flex justify-between">
+                <span class="text-slate-700">Benefits & Taxes (30%)</span>
+                <span class="font-medium">€54,000 - €75,000</span>
+              </li>
+              <li class="flex justify-between">
+                <span class="text-slate-700">Recruitment Costs</span>
+                <span class="font-medium">€25,000 - €40,000</span>
+              </li>
+              <li class="flex justify-between">
+                <span class="text-slate-700">Training & Certifications</span>
+                <span class="font-medium">€10,000 - €15,000</span>
+              </li>
+              <li class="border-t pt-3 flex justify-between font-semibold">
+                <span class="text-slate-900">Total Annual Cost</span>
+                <span class="text-red-600">€269,000 - €380,000</span>
+              </li>
+            </ul>
+          </div>
+          
+          <div>
+            <h3 class="text-lg font-semibold text-slate-900 mb-4">Virtual CISO Service</h3>
+            <ul class="space-y-3 text-sm">
+              <li class="flex justify-between">
+                <span class="text-slate-700">Essential Plan (12 months)</span>
+                <span class="font-medium">€42,000</span>
+              </li>
+              <li class="flex justify-between">
+                <span class="text-slate-700">Business Plan (12 months)</span>
+                <span class="font-medium">€78,000</span>
+              </li>
+              <li class="flex justify-between">
+                <span class="text-slate-700">Enterprise Plan (12 months)</span>
+                <span class="font-medium">€144,000</span>
+              </li>
+              <li class="flex justify-between">
+                <span class="text-slate-700">Setup & Onboarding</span>
+                <span class="font-medium">Included</span>
+              </li>
+              <li class="border-t pt-3 flex justify-between font-semibold">
+                <span class="text-slate-900">Potential Savings</span>
+                <span class="text-teal-600">60% - 85%</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="mt-8 p-4 bg-teal-50 rounded-lg">
+          <p class="text-center text-teal-800">
+            <strong>Additional Benefits:</strong> Immediate availability, proven expertise, 
+            no recruitment risk, and flexible scaling as your organization grows.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CTA 
+    title="Get Expert Cybersecurity Leadership Today"
+    description="Don't let budget constraints compromise your security posture. Get started with professional CISO services tailored to your needs."
+    primaryCTA={{ text: "Schedule Consultation", href: "/contact?package=ciso-service" }}
+    secondaryCTA={{ text: "Download Service Overview", href: "/downloads/ciso-service-overview.pdf" }}
+  />
+</Layout>

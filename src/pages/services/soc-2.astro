@@ -1,0 +1,351 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Icon from '@/components/ui/icons/Icon.astro';
+import Button from '@/components/ui/Button.astro';
+
+const currentPath = Astro.url.pathname;
+const lang = currentPath.startsWith('/fi') ? 'fi' : 'en';
+
+const title = lang === 'fi' ? "SOC 2 -palvelut" : "SOC 2 Readiness and Compliance Services";
+const description = lang === 'fi' 
+  ? "Saavuta SOC 2 -yhteensopivuus kattavalla valmiusohjelmallamme. Autamme organisaatioita toteuttamaan tarvittavat kontrollit ja valmistautumaan onnistuneisiin SOC 2 -auditoihin."
+  : "Achieve SOC 2 compliance with our comprehensive readiness program. We help organizations implement the necessary controls and prepare for successful SOC 2 audits.";
+
+const features = [
+  {
+    title: lang === 'fi' ? "SOC 2 Valmiusarviointi" : "SOC 2 Readiness Assessment",
+    description: lang === 'fi' 
+      ? "Kattava nykyisen tietoturvatason arviointi SOC 2 Trust Service Criteria -vaatimusten mukaan"
+      : "Comprehensive evaluation of your current security posture against SOC 2 Trust Service Criteria",
+    icon: "chart"
+  },
+  {
+    title: lang === 'fi' ? "Kontrollien toteutus" : "Control Implementation",
+    description: lang === 'fi' 
+      ? "Suunnittele ja toteuta tietoturvakontrollit SOC 2 -vaatimusten täyttämiseksi"
+      : "Design and implement security controls to meet SOC 2 requirements",
+    icon: "shield"
+  },
+  {
+    title: lang === 'fi' ? "Dokumentaatio ja politiikat" : "Documentation & Policies",
+    description: lang === 'fi' 
+      ? "Kehitä tarvittavat politiikat, prosessit ja dokumentaatio SOC 2 -yhteensopivuutta varten"
+      : "Develop required policies, procedures, and documentation for SOC 2 compliance",
+    icon: "document"
+  },
+  {
+    title: lang === 'fi' ? "Auditin valmistelu" : "Audit Preparation",
+    description: lang === 'fi' 
+      ? "Valmista organisaatiosi onnistuneisiin SOC 2 Type I ja Type II -auditoihin"
+      : "Prepare your organization for successful SOC 2 Type I and Type II audits",
+    icon: "check"
+  },
+  {
+    title: lang === 'fi' ? "Jatkuva tuki" : "Ongoing Support",
+    description: lang === 'fi' 
+      ? "Jatkuva ohjaus ja tuki koko SOC 2 -matkasi ajan"
+      : "Continuous guidance and support throughout your SOC 2 journey",
+    icon: "support"
+  },
+  {
+    title: lang === 'fi' ? "Yhteensopivuuden seuranta" : "Compliance Monitoring",
+    description: lang === 'fi' 
+      ? "Säännölliset arvioinnit yhteensopivuuden jatkuvan ylläpitämiseksi SOC 2 -standardien mukaisesti"
+      : "Regular assessments to ensure ongoing compliance with SOC 2 standards",
+    icon: "monitor"
+  }
+];
+
+const benefits = [
+  lang === 'fi' ? "Rakenna asiakkaiden luottamusta ja varmuutta" : "Build customer trust and confidence",
+  lang === 'fi' ? "Täytä yritysasiakkaiden vaatimukset" : "Meet enterprise customer requirements",
+  lang === 'fi' ? "Paranna tietoturvatasoa ja riskienhallintaa" : "Improve security posture and risk management",
+  lang === 'fi' ? "Tehosta toimittajien lisäämistä" : "Streamline vendor onboarding processes",
+  lang === 'fi' ? "Paranna kilpailuetua markkinoilla" : "Enhance competitive advantage in the market"
+];
+---
+
+<Layout title={title} description={description}>
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-br from-teal-50 via-white to-blue-50 py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-4xl">
+        <h1 class="text-4xl lg:text-5xl font-bold text-slate-900 mb-6">
+          {title}
+        </h1>
+        <p class="text-xl text-slate-600 mb-8">
+          {lang === 'fi' 
+            ? "Ammattimaiset SOC 2 -valmius- ja yhteensopivuuspalvelut auttavat organisaatiosi saavuttamaan ja ylläpitämään SOC 2 -sertifikaattia"
+            : "Professional SOC 2 readiness and compliance services to help your organization achieve and maintain SOC 2 certification"
+          }
+        </p>
+        <p class="text-lg text-slate-500 mb-10">
+          {lang === 'fi'
+            ? "SOC 2 -palvelumme on suunniteltu ohjaamaan organisaatioita koko yhteensopivuusmatkan läpi, alkaen alustavasta arvioinnista onnistuneen auditin valmisteluun ja jatkuvaan ylläpitoon."
+            : "Our SOC 2 services are designed to guide organizations through the entire compliance journey, from initial assessment to successful audit completion and ongoing maintenance."
+          }
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4">
+          <Button href="/contact?service=soc2" variant="primary">
+            {lang === 'fi' ? 'Hanki SOC 2 -arviointi' : 'Get SOC 2 Assessment'}
+          </Button>
+          <Button href="/contact?consultation=true" variant="secondary">
+            {lang === 'fi' ? 'Varaa konsultaatio' : 'Book Consultation'}
+          </Button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Grid -->
+  <section class="py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-slate-900 mb-4">
+          {lang === 'fi' ? 'SOC 2 -palvelumme' : 'Our SOC 2 Services'}
+        </h2>
+        <p class="text-lg text-slate-600 max-w-3xl mx-auto">
+          {lang === 'fi'
+            ? "Kattava palvelupaketti SOC 2 -yhteensopivuuden saavuttamiseksi"
+            : "Comprehensive service package for achieving SOC 2 compliance"
+          }
+        </p>
+      </div>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {features.map(feature => (
+          <div class="bg-white p-6 rounded-lg shadow-sm border border-slate-200 hover:shadow-md transition-shadow">
+            <div class="w-12 h-12 bg-teal-100 rounded-lg flex items-center justify-center mb-4">
+              <Icon name={feature.icon} class="w-6 h-6 text-teal-600" />
+            </div>
+            <h3 class="text-xl font-semibold text-slate-900 mb-3">{feature.title}</h3>
+            <p class="text-slate-600">{feature.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Choose Us -->
+  <section class="py-16 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-slate-900 mb-4">
+          {lang === 'fi' ? 'Miksi valita SOC 2 -palvelumme?' : 'Why Choose Our SOC 2 Services?'}
+        </h2>
+        <p class="text-lg text-slate-600 max-w-3xl mx-auto">
+          {lang === 'fi'
+            ? "Tuomme vuosien kokemuksen SOC 2 -yhteensopivuudesta ja todistetun metodologian, joka on auttanut lukuisia organisaatioita saavuttamaan sertifikaatin."
+            : "We bring years of experience in SOC 2 compliance and a proven methodology that has helped numerous organizations achieve certification."
+          }
+        </p>
+      </div>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="bg-white p-6 rounded-lg shadow-sm border border-slate-200">
+          <h3 class="text-xl font-semibold text-slate-900 mb-3">
+            {lang === 'fi' ? 'Todistettu metodologia' : 'Proven Methodology'}
+          </h3>
+          <p class="text-slate-600">
+            {lang === 'fi'
+              ? "Strukturoitu lähestymistapamme on auttanut organisaatioita saavuttamaan SOC 2 -yhteensopivuuden vain 12 viikossa."
+              : "Our structured approach has helped organizations achieve SOC 2 compliance in as little as 12 weeks."
+            }
+          </p>
+        </div>
+        
+        <div class="bg-white p-6 rounded-lg shadow-sm border border-slate-200">
+          <h3 class="text-xl font-semibold text-slate-900 mb-3">
+            {lang === 'fi' ? 'Asiantuntevat konsultit' : 'Expert Consultants'}
+          </h3>
+          <p class="text-slate-600">
+            {lang === 'fi'
+              ? "Sertifioidut ammattilaiset, joilla on syvää asiantuntemusta SOC 2 -vaatimuksista ja toteutuksesta."
+              : "Certified professionals with deep expertise in SOC 2 requirements and implementation."
+            }
+          </p>
+        </div>
+        
+        <div class="bg-white p-6 rounded-lg shadow-sm border border-slate-200">
+          <h3 class="text-xl font-semibold text-slate-900 mb-3">
+            {lang === 'fi' ? 'Kattava tuki' : 'Comprehensive Support'}
+          </h3>
+          <p class="text-slate-600">
+            {lang === 'fi'
+              ? "Koko prosessin tuki alustavasta arvioinnista auditin valmisteluun ja jatkuvaan ylläpitoon."
+              : "End-to-end support from initial assessment through audit completion and ongoing maintenance."
+            }
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOC 2 Trust Service Criteria -->
+  <section class="py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-slate-900 mb-4">
+          {lang === 'fi' ? 'SOC 2 Trust Service Criteria' : 'SOC 2 Trust Service Criteria'}
+        </h2>
+        <p class="text-lg text-slate-600 max-w-3xl mx-auto">
+          {lang === 'fi'
+            ? "SOC 2 -raportit arvioivat organisaation kontrollit viiden Trust Service Criteria -perusteen mukaan."
+            : "SOC 2 reports evaluate an organization's controls based on five Trust Service Criteria."
+          }
+        </p>
+      </div>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="text-center p-6">
+          <div class="w-16 h-16 bg-teal-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <span class="text-2xl font-bold text-teal-600">S</span>
+          </div>
+          <h3 class="text-lg font-semibold text-slate-900 mb-2">
+            {lang === 'fi' ? 'Tietoturva' : 'Security'}
+          </h3>
+          <p class="text-slate-600 text-sm">
+            {lang === 'fi' ? 'Suojaa luvattomalta käytöltä ja paljastukselta' : 'Protection against unauthorized access and disclosure'}
+          </p>
+        </div>
+        
+        <div class="text-center p-6">
+          <div class="w-16 h-16 bg-teal-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <span class="text-2xl font-bold text-teal-600">A</span>
+          </div>
+          <h3 class="text-lg font-semibold text-slate-900 mb-2">
+            {lang === 'fi' ? 'Käytettävyys' : 'Availability'}
+          </h3>
+          <p class="text-slate-600 text-sm">
+            {lang === 'fi' ? 'Järjestelmän käytettävyys toimintaa ja käyttöä varten' : 'System availability for operation and use'}
+          </p>
+        </div>
+        
+        <div class="text-center p-6">
+          <div class="w-16 h-16 bg-teal-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <span class="text-2xl font-bold text-teal-600">P</span>
+          </div>
+          <h3 class="text-lg font-semibold text-slate-900 mb-2">
+            {lang === 'fi' ? 'Käsittelyn eheys' : 'Processing Integrity'}
+          </h3>
+          <p class="text-slate-600 text-sm">
+            {lang === 'fi' ? 'Järjestelmän käsittely on täydellinen, tarkka ja ajallinen' : 'System processing is complete, accurate, and timely'}
+          </p>
+        </div>
+        
+        <div class="text-center p-6">
+          <div class="w-16 h-16 bg-teal-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <span class="text-2xl font-bold text-teal-600">C</span>
+          </div>
+          <h3 class="text-lg font-semibold text-slate-900 mb-2">
+            {lang === 'fi' ? 'Luottamuksellisuus' : 'Confidentiality'}
+          </h3>
+          <p class="text-slate-600 text-sm">
+            {lang === 'fi' ? 'Luottamukselliseksi määritelty tieto on suojattu' : 'Information designated as confidential is protected'}
+          </p>
+        </div>
+        
+        <div class="text-center p-6">
+          <div class="w-16 h-16 bg-teal-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <span class="text-2xl font-bold text-teal-600">P</span>
+          </div>
+          <h3 class="text-lg font-semibold text-slate-900 mb-2">
+            {lang === 'fi' ? 'Yksityisyys' : 'Privacy'}
+          </h3>
+          <p class="text-slate-600 text-sm">
+            {lang === 'fi' ? 'Henkilötietoja kerätään, käytetään ja paljastetaan asianmukaisesti' : 'Personal information is collected, used, and disclosed appropriately'}
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-16 bg-teal-50">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl font-bold text-slate-900 mb-4">
+        {lang === 'fi' ? 'Valmiina aloittamaan SOC 2 -matkasi?' : 'Ready to Start Your SOC 2 Journey?'}
+      </h2>
+      <p class="text-lg text-slate-600 mb-8">
+        {lang === 'fi'
+          ? "Ota yhteyttä tänään ilmaiseen konsultaatioon ja SOC 2 -valmiutesi arviointiin."
+          : "Contact us today for a free consultation and assessment of your SOC 2 readiness."
+        }
+      </p>
+      <Button href="/contact?service=soc2" variant="primary">
+        {lang === 'fi' ? 'Aloita nyt' : 'Get Started'}
+      </Button>
+    </div>
+  </section>
+
+  <!-- Contact Form Section -->
+  <section class="py-16 bg-slate-50">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="bg-white rounded-lg shadow-sm border border-slate-200 p-8">
+        <div class="text-center mb-8">
+          <h2 class="text-2xl font-bold text-slate-900 mb-2">
+            {lang === 'fi' ? 'Pyydä SOC 2 -konsultaatio' : 'Request SOC 2 Consultation'}
+          </h2>
+          <p class="text-slate-600">
+            {lang === 'fi'
+              ? 'Ota yhteyttä keskustellaksesi SOC 2 -yhteensopivuustarpeistasi'
+              : 'Get in touch to discuss your SOC 2 compliance needs'
+            }
+          </p>
+        </div>
+        
+        <form class="space-y-6">
+          <div class="grid md:grid-cols-2 gap-6">
+            <div>
+              <label for="firstName" class="block text-sm font-medium text-slate-700 mb-2">
+                {lang === 'fi' ? 'Etunimi' : 'First Name'}
+              </label>
+              <input type="text" id="firstName" name="firstName" required
+                class="w-full px-3 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent">
+            </div>
+            <div>
+              <label for="lastName" class="block text-sm font-medium text-slate-700 mb-2">
+                {lang === 'fi' ? 'Sukunimi' : 'Last Name'}
+              </label>
+              <input type="text" id="lastName" name="lastName" required
+                class="w-full px-3 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent">
+            </div>
+          </div>
+          
+          <div>
+            <label for="email" class="block text-sm font-medium text-slate-700 mb-2">
+              {lang === 'fi' ? 'Sähköposti' : 'Email'}
+            </label>
+            <input type="email" id="email" name="email" required
+              class="w-full px-3 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent">
+          </div>
+          
+          <div>
+            <label for="company" class="block text-sm font-medium text-slate-700 mb-2">
+              {lang === 'fi' ? 'Yritys' : 'Company'}
+            </label>
+            <input type="text" id="company" name="company" required
+              class="w-full px-3 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent">
+          </div>
+          
+          <div>
+            <label for="message" class="block text-sm font-medium text-slate-700 mb-2">
+              {lang === 'fi' ? 'Viesti' : 'Message'}
+            </label>
+            <textarea id="message" name="message" rows="4" required
+              class="w-full px-3 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent"
+              placeholder={lang === 'fi' ? 'Kuvaile SOC 2 -yhteensopivuustarpeesi...' : 'Describe your SOC 2 compliance needs...'}></textarea>
+          </div>
+          
+          <input type="hidden" name="service" value="soc2">
+          
+          <div class="text-center">
+            <Button type="submit" variant="primary">
+              {lang === 'fi' ? 'Lähetä viesti' : 'Send Message'}
+            </Button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+</Layout>

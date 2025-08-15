@@ -1,0 +1,381 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Icon from '@/components/ui/icons/Icon.astro';
+import Button from '@/components/ui/Button.astro';
+
+const currentPath = Astro.url.pathname;
+const lang = currentPath.startsWith('/fi') ? 'fi' : 'en';
+
+const title = lang === 'fi' ? "Kolmannen Osapuolen Riskit (TPRM)" : "Third-Party Risk (TPRM)";
+const description = lang === 'fi' 
+  ? "Ammattimaiset kolmannen osapuolen riskien hallintapalvelut. Autamme organisaatioita hallitsemaan toimittajien ja kumppaneiden kyberturvariskejä."
+  : "Professional third-party risk management services. We help organizations manage cybersecurity risks from vendors and partners.";
+
+const tprmCategories = [
+  {
+    title: lang === 'fi' ? "Toimittajien Riskit" : "Vendor Risks",
+    description: lang === 'fi' 
+      ? "Toimittajien ja palveluntarjoajien kyberturvariskit"
+      : "Cybersecurity risks from vendors and service providers",
+    icon: "building",
+    risks: [
+      lang === 'fi' ? "Toimittajien haavoittuvuudet" : "Vendor vulnerabilities",
+      lang === 'fi' ? "Tietojen paljastuminen" : "Data exposure",
+      lang === 'fi' ? "Palvelun keskeytys" : "Service disruption"
+    ]
+  },
+  {
+    title: lang === 'fi' ? "Kumppaneiden Riskit" : "Partner Risks",
+    description: lang === 'fi' 
+      ? "Liikekumppaneiden ja yhteistyökumppaneiden riskit"
+      : "Risks from business partners and collaboration partners",
+    icon: "network",
+    risks: [
+      lang === 'fi' ? "Yhteistyön riskit" : "Collaboration risks",
+      lang === 'fi' ? "Tietojen jakaminen" : "Data sharing",
+      lang === 'fi' ? "Integraatiot" : "Integrations"
+    ]
+  },
+  {
+    title: lang === 'fi' ? "Supply Chain Riskit" : "Supply Chain Risks",
+    description: lang === 'fi' 
+      ? "Toimitusketjun ja alihankkijoiden riskit"
+      : "Supply chain and subcontractor risks",
+    icon: "truck",
+    risks: [
+      lang === 'fi' ? "Alihankkijoiden riskit" : "Subcontractor risks",
+      lang === 'fi' ? "Toimitusketjun haavoittuvuudet" : "Supply chain vulnerabilities",
+      lang === 'fi' ? "Riippuvuudet" : "Dependencies"
+    ]
+  },
+  {
+    title: lang === 'fi' ? "Cloud Palveluntarjoajat" : "Cloud Service Providers",
+    description: lang === 'fi' 
+      ? "Pilvipalveluntarjoajien ja SaaS-yritysten riskit"
+      : "Risks from cloud service providers and SaaS companies",
+    icon: "cloud",
+    risks: [
+      lang === 'fi' ? "Pilvipalveluiden riskit" : "Cloud service risks",
+      lang === 'fi' ? "Tietojen sijainti" : "Data location",
+      lang === 'fi' ? "Palvelun saatavuus" : "Service availability"
+    ]
+  }
+];
+
+const tprmProcess = [
+  {
+    title: lang === 'fi' ? "Riskien Tunnistus" : "Risk Identification",
+    description: lang === 'fi' 
+      ? "Tunnistetaan kolmannen osapuolen kyberturvariskit"
+      : "Identify third-party cybersecurity risks",
+    icon: "search",
+    steps: [
+      lang === 'fi' ? "Toimittajien kartoitus" : "Vendor mapping",
+      lang === 'fi' ? "Riskien tunnistus" : "Risk identification",
+      lang === 'fi' ? "Uhkien analyysi" : "Threat analysis"
+    ]
+  },
+  {
+    title: lang === 'fi' ? "Riskien Arviointi" : "Risk Assessment",
+    description: lang === 'fi' 
+      ? "Arvioidaan riskien todennäköisyys ja vaikutus"
+      : "Assess risk probability and impact",
+    icon: "chart",
+    steps: [
+      lang === 'fi' ? "Riskien arviointi" : "Risk assessment",
+      lang === 'fi' ? "Priorisointi" : "Prioritization",
+      lang === 'fi' ? "Riskien matriisi" : "Risk matrix"
+    ]
+  },
+  {
+    title: lang === 'fi' ? "Riskien Käsittely" : "Risk Treatment",
+    description: lang === 'fi' 
+      ? "Suunnitellaan ja toteutetaan riskien käsittely"
+      : "Plan and implement risk treatment",
+    icon: "shield",
+    steps: [
+      lang === 'fi' ? "Toimenpidesuunnitelma" : "Action plan",
+      lang === 'fi' ? "Riskien vähentäminen" : "Risk mitigation",
+      lang === 'fi' ? "Riskien siirto" : "Risk transfer"
+    ]
+  },
+  {
+    title: lang === 'fi' ? "Riskien Seuranta" : "Risk Monitoring",
+    description: lang === 'fi' 
+      ? "Seurataan riskien kehitystä ja tehokkuutta"
+      : "Monitor risk development and effectiveness",
+    icon: "eye",
+    steps: [
+      lang === 'fi' ? "Jatkuva seuranta" : "Continuous monitoring",
+      lang === 'fi' ? "Raportointi" : "Reporting",
+      lang === 'fi' ? "Arviointi" : "Evaluation"
+    ]
+  }
+];
+
+const assessmentSteps = [
+  {
+    step: "1",
+    title: lang === 'fi' ? "TPRM Arviointi" : "TPRM Assessment",
+    description: lang === 'fi' 
+      ? "Arvioidaan nykyinen TPRM prosessi ja tunnistetaan puutteet"
+      : "Assess current TPRM process and identify gaps"
+  },
+  {
+    step: "2",
+    title: lang === 'fi' ? "Gap Analysis" : "Gap Analysis",
+    description: lang === 'fi' 
+      ? "Tunnistetaan puutteet ja suunnitellaan korjauskeinot"
+      : "Identify gaps and plan remediation measures"
+  },
+  {
+    step: "3",
+    title: lang === 'fi' ? "Suunnittelu" : "Planning",
+    description: lang === 'fi' 
+      ? "Suunnitellaan TPRM ohjelma ja prosessit"
+      : "Plan TPRM program and processes"
+  },
+  {
+    step: "4",
+    title: lang === 'fi' ? "Toteutus" : "Implementation",
+    description: lang === 'fi' 
+      ? "Toteutetaan TPRM prosessit ja työkalut"
+      : "Implement TPRM processes and tools"
+  },
+  {
+    step: "5",
+    title: lang === 'fi' ? "Valvonta" : "Monitoring",
+    description: lang === 'fi' 
+      ? "Jatkuva TPRM prosessien valvonta ja parantaminen"
+      : "Continuous TPRM process monitoring and improvement"
+  }
+];
+
+const deliverables = [
+  lang === 'fi' ? "TPRM arviointiraportti" : "TPRM assessment report",
+  lang === 'fi' ? "Riskienhallintasuunnitelma" : "Risk management plan",
+  lang === 'fi' ? "Toimittajien riskien matriisi" : "Vendor risk matrix",
+  lang === 'fi' ? "TPRM prosessit" : "TPRM processes",
+  lang === 'fi' ? "Seurantatyökalut" : "Monitoring tools"
+];
+
+const benefits = [
+  lang === 'fi' ? "Tunnista kolmannen osapuolen riskit" : "Identify third-party risks",
+  lang === 'fi' ? "Vähennä tietoturvariskejä" : "Reduce security risks",
+  lang === 'fi' ? "Paranna toimittajien hallintaa" : "Improve vendor management",
+  lang === 'fi' ? "Täytä sääntelyvaatimukset" : "Meet regulatory requirements",
+  lang === 'fi' ? "Vahvista kyberturvan kestävyys" : "Strengthen cybersecurity resilience"
+];
+---
+
+<Layout title={title} description={description}>
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-br from-yellow-50 via-white to-orange-50 py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-4xl">
+        <h1 class="text-4xl lg:text-5xl font-bold text-slate-900 mb-6">
+          {title}
+        </h1>
+        <p class="text-xl text-slate-600 mb-8">
+          {lang === 'fi' 
+            ? "Hallitse kolmannen osapuolen kyberturvariskit systemaattisesti. Autamme organisaatioita rakentamaan vahvan TPRM prosessin ja vähentämään toimittajien ja kumppaneiden riskejä."
+            : "Manage third-party cybersecurity risks systematically. We help organizations build a strong TPRM process and reduce risks from vendors and partners."
+          }
+        </p>
+        <div class="bg-white rounded-xl p-6 shadow-sm border border-slate-200">
+          <h2 class="text-lg font-semibold text-slate-900 mb-4">
+            {lang === 'fi' ? 'Mikä on TPRM?' : 'What is TPRM?'}
+          </h2>
+          <p class="text-slate-600 mb-4">
+            {lang === 'fi'
+              ? "TPRM (Third-Party Risk Management) on prosessi, jolla hallitaan kolmannen osapuolen organisaatioiden aiheuttamia riskejä, erityisesti kyberturvariskejä."
+              : "TPRM (Third-Party Risk Management) is a process for managing risks posed by third-party organizations, especially cybersecurity risks."
+            }
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TPRM Categories -->
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-slate-900 mb-4">
+          {lang === 'fi' ? 'TPRM Kategoriat' : 'TPRM Categories'}
+        </h2>
+        <p class="text-xl text-slate-600 max-w-3xl mx-auto">
+          {lang === 'fi'
+            ? "Kolmannen osapuolen riskit voidaan luokitella neljään pääkategoriaan."
+            : "Third-party risks can be classified into four main categories."
+          }
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {tprmCategories.map((category) => (
+          <div class="bg-gradient-to-br from-slate-50 to-white p-8 rounded-xl border border-slate-200 hover:shadow-xl transition-all duration-300">
+            <div class="w-16 h-16 bg-yellow-100 rounded-xl flex items-center justify-center mb-6">
+              <Icon name={category.icon} className="w-8 h-8 text-yellow-600" />
+            </div>
+            <h3 class="text-xl font-bold text-slate-900 mb-4">{category.title}</h3>
+            <p class="text-slate-600 mb-6">{category.description}</p>
+            <ul class="space-y-2">
+              {category.risks.map((risk) => (
+                <li class="flex items-center text-sm text-slate-600">
+                  <Icon name="alert" className="w-4 h-4 text-orange-500 mr-2" />
+                  {risk}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- TPRM Process -->
+  <section class="py-20 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-slate-900 mb-4">
+          {lang === 'fi' ? 'TPRM Prosessi' : 'TPRM Process'}
+        </h2>
+        <p class="text-xl text-slate-600 max-w-3xl mx-auto">
+          {lang === 'fi'
+            ? "TPRM perustuu neljään pääprosessiin, jotka muodostavat kattavan riskienhallintajärjestelmän."
+            : "TPRM is based on four main processes that form a comprehensive risk management system."
+          }
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {tprmProcess.map((process) => (
+          <div class="bg-white p-8 rounded-xl border border-slate-200 hover:shadow-xl transition-all duration-300">
+            <div class="w-16 h-16 bg-orange-100 rounded-xl flex items-center justify-center mb-6">
+              <Icon name={process.icon} className="w-8 h-8 text-orange-600" />
+            </div>
+            <h3 class="text-xl font-bold text-slate-900 mb-4">{process.title}</h3>
+            <p class="text-slate-600 mb-6">{process.description}</p>
+            <ul class="space-y-2">
+              {process.steps.map((step) => (
+                <li class="flex items-center text-sm text-slate-600">
+                  <Icon name="check" className="w-4 h-4 text-green-500 mr-2" />
+                  {step}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Assessment Steps -->
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-slate-900 mb-4">
+          {lang === 'fi' ? 'Arviointivaiheet' : 'Assessment Steps'}
+        </h2>
+        <p class="text-xl text-slate-600 max-w-3xl mx-auto">
+          {lang === 'fi'
+            ? "Selkeä ja strukturoitu prosessi TPRM arviointiin ja toteutukseen."
+            : "Clear and structured process for TPRM assessment and implementation."
+          }
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
+        {assessmentSteps.map((step) => (
+          <div class="text-center">
+            <div class="w-16 h-16 bg-yellow-600 rounded-full flex items-center justify-center mx-auto mb-4 text-white text-xl font-bold">
+              {step.step}
+            </div>
+            <h3 class="text-lg font-semibold text-slate-900 mb-2">{step.title}</h3>
+            <p class="text-slate-600 text-sm">{step.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Deliverables -->
+  <section class="py-20 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-slate-900 mb-4">
+          {lang === 'fi' ? 'Toimitettavat Asiat' : 'Deliverables'}
+        </h2>
+        <p class="text-xl text-slate-600 max-w-3xl mx-auto">
+          {lang === 'fi'
+            ? "TPRM työn tulokset ja toimitettavat asiat."
+            : "Results and deliverables of the TPRM work."
+          }
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {deliverables.map((deliverable) => (
+          <div class="text-center">
+            <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+              <Icon name="document" className="w-8 h-8 text-green-600" />
+            </div>
+            <p class="text-slate-700 font-medium">{deliverable}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits Section -->
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-slate-900 mb-4">
+          {lang === 'fi' ? 'TPRM:n Edut' : 'TPRM Benefits'}
+        </h2>
+        <p class="text-xl text-slate-600 max-w-3xl mx-auto">
+          {lang === 'fi'
+            ? "Saavuta konkreettisia hyötyjä systemaattisen TPRM:n avulla."
+            : "Achieve concrete benefits with systematic TPRM."
+          }
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {benefits.map((benefit) => (
+          <div class="text-center">
+            <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+              <Icon name="check" className="w-8 h-8 text-green-600" />
+            </div>
+            <p class="text-slate-700 font-medium">{benefit}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-20 bg-slate-900 text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl font-bold mb-6">
+        {lang === 'fi' ? 'Valmiit aloittamaan TPRM:n?' : 'Ready to start your TPRM?'}
+      </h2>
+      <p class="text-xl text-slate-300 mb-8 max-w-3xl mx-auto">
+        {lang === 'fi'
+          ? "Ota yhteyttä meihin ja aloitetaan kolmannen osapuolen riskien hallinta."
+          : "Contact us and let's start your third-party risk management."
+        }
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <Button href="/contact" variant="primary" className="text-lg px-8 py-3">
+          {lang === 'fi' ? 'Ota yhteyttä' : 'Get in Touch'}
+        </Button>
+        <Button href="/contact?consultation=true" variant="secondary" className="text-lg px-8 py-3">
+          {lang === 'fi' ? 'Varaa konsultaatio' : 'Book Consultation'}
+        </Button>
+      </div>
+    </div>
+  </section>
+</Layout>

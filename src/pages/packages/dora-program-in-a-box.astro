@@ -1,0 +1,520 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import HeroSection from '@/components/sections/HeroSection.astro';
+import CTA from '@/components/sections/CTA.astro';
+
+const title = "DORA Program-in-a-Box";
+const currentPath = Astro.url.pathname;
+const lang = currentPath.startsWith('/fi') ? 'fi' : 'en';
+
+const heroContent = {
+  title: "DORA Program-in-a-Box",
+  subtitle: "Complete Digital Operational Resilience Act (DORA) compliance solution for financial institutions.",
+  description: "Comprehensive DORA compliance program including risk assessment, governance framework, incident management, and third-party risk management to meet EU regulatory requirements by January 2025.",
+  primaryCTA: { text: "Start DORA Compliance", href: "/contact?package=dora-program" },
+  secondaryCTA: { text: "Download DORA Guide", href: "/downloads/dora-compliance-guide.pdf" }
+};
+
+const doraRequirements = [
+  {
+    pillar: "ICT Risk Management",
+    description: "Establish comprehensive ICT risk management framework",
+    requirements: [
+      "ICT risk management policy and procedures",
+      "Risk assessment and treatment processes",
+      "ICT asset inventory and classification",
+      "Risk monitoring and reporting mechanisms",
+      "Regular risk assessment updates"
+    ],
+    timeline: "Month 1-2"
+  },
+  {
+    pillar: "ICT-related Incident Management",
+    description: "Implement robust incident detection, management, and reporting",
+    requirements: [
+      "Incident classification and severity levels",
+      "Incident response procedures and playbooks",
+      "Reporting mechanisms to authorities",
+      "Root cause analysis processes",
+      "Business continuity and recovery plans"
+    ],
+    timeline: "Month 2-3"
+  },
+  {
+    pillar: "Digital Operational Resilience Testing",
+    description: "Establish comprehensive testing framework for ICT systems",
+    requirements: [
+      "Testing strategy and methodology",
+      "Vulnerability assessments and penetration testing",
+      "Threat-led penetration testing (TLPT) for significant entities",
+      "Testing documentation and reporting",
+      "Remediation tracking and validation"
+    ],
+    timeline: "Month 3-4"
+  },
+  {
+    pillar: "Third-party ICT Service Provider Management",
+    description: "Manage risks from ICT third-party dependencies",
+    requirements: [
+      "Third-party risk assessment framework",
+      "Contractual arrangements and SLAs",
+      "Monitoring and oversight processes",
+      "Exit strategies and contingency plans",
+      "Critical service provider registration"
+    ],
+    timeline: "Month 4-5"
+  },
+  {
+    pillar: "Information Sharing",
+    description: "Establish mechanisms for sharing cyber threat information",
+    requirements: [
+      "Information sharing arrangements",
+      "Threat intelligence processes",
+      "Collaboration with authorities and peers",
+      "Data protection and confidentiality measures",
+      "Reporting and disclosure protocols"
+    ],
+    timeline: "Month 5-6"
+  }
+];
+
+const implementationPhases = [
+  {
+    phase: "Phase 1: Gap Assessment & Planning",
+    duration: "Month 1",
+    activities: [
+      "Current state assessment against DORA requirements",
+      "Gap analysis and risk identification",
+      "Implementation roadmap development",
+      "Resource allocation and team setup",
+      "Regulatory timeline alignment"
+    ],
+    deliverables: [
+      "DORA gap assessment report",
+      "Implementation roadmap",
+      "Project charter and governance",
+      "Resource allocation plan"
+    ]
+  },
+  {
+    phase: "Phase 2: Framework Development",
+    duration: "Month 2-3",
+    activities: [
+      "ICT risk management framework design",
+      "Incident management procedures",
+      "Policy and procedure development",
+      "Governance structure establishment",
+      "Training program design"
+    ],
+    deliverables: [
+      "ICT risk management framework",
+      "Incident management procedures",
+      "DORA compliance policies",
+      "Training materials"
+    ]
+  },
+  {
+    phase: "Phase 3: Technical Implementation",
+    duration: "Month 3-4",
+    activities: [
+      "Testing framework implementation",
+      "Monitoring and alerting setup",
+      "Third-party assessment processes",
+      "Reporting mechanism development",
+      "Tool integration and automation"
+    ],
+    deliverables: [
+      "Testing methodology and tools",
+      "Monitoring and alerting systems",
+      "Third-party risk registers",
+      "Automated reporting dashboards"
+    ]
+  },
+  {
+    phase: "Phase 4: Validation & Certification",
+    duration: "Month 5-6",
+    activities: [
+      "Internal compliance testing",
+      "Regulatory readiness assessment",
+      "Documentation review and validation",
+      "Staff training and awareness",
+      "Continuous improvement planning"
+    ],
+    deliverables: [
+      "Compliance validation report",
+      "Regulatory submission materials",
+      "Training completion certificates",
+      "Continuous improvement plan"
+    ]
+  }
+];
+
+const targetAudience = [
+  {
+    category: "Credit Institutions",
+    description: "Banks and credit institutions subject to DORA requirements",
+    specific: ["Commercial banks", "Investment banks", "Building societies", "Credit unions"]
+  },
+  {
+    category: "Investment Firms",
+    description: "Investment services and activities providers",
+    specific: ["Asset management companies", "Investment advisors", "Portfolio managers", "Trading firms"]
+  },
+  {
+    category: "Insurance Companies",
+    description: "Insurance and reinsurance undertakings",
+    specific: ["Life insurance companies", "Non-life insurance", "Reinsurance companies", "Insurance intermediaries"]
+  },
+  {
+    category: "Payment Institutions",
+    description: "Payment and electronic money services",
+    specific: ["Payment service providers", "E-money institutions", "Account information providers", "Payment initiation providers"]
+  },
+  {
+    category: "Critical ICT Providers",
+    description: "Third-party ICT service providers to financial entities",
+    specific: ["Cloud service providers", "Software vendors", "Data processing services", "ICT service providers"]
+  }
+];
+
+const pricing = {
+  basePrice: "€85,000",
+  note: "Pricing varies based on organization size, complexity, and regulatory requirements",
+  includes: [
+    "Complete DORA compliance framework",
+    "All required policies and procedures",
+    "ICT risk management system",
+    "Incident management platform",
+    "Testing methodology and tools",
+    "Third-party risk assessment framework",
+    "Regulatory reporting templates",
+    "Staff training programs",
+    "6 months post-implementation support",
+    "Annual compliance review"
+  ]
+};
+---
+
+<Layout title={title}>
+  <HeroSection content={heroContent} />
+  
+  <!-- DORA Overview -->
+  <section class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-slate-900 mb-4">DORA Compliance Deadline: January 17, 2025</h2>
+        <p class="text-lg text-slate-600 max-w-4xl mx-auto">
+          The Digital Operational Resilience Act (DORA) establishes uniform requirements for the security 
+          of network and information systems supporting the business processes of financial entities and 
+          critical ICT third-party service providers in the EU.
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="bg-red-50 border-l-4 border-red-400 p-6">
+          <div class="flex items-center mb-2">
+            <svg class="w-6 h-6 text-red-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+            <h3 class="text-lg font-semibold text-red-900">Mandatory</h3>
+          </div>
+          <p class="text-red-700">DORA compliance is mandatory for all in-scope financial entities in the EU</p>
+        </div>
+        
+        <div class="bg-orange-50 border-l-4 border-orange-400 p-6">
+          <div class="flex items-center mb-2">
+            <svg class="w-6 h-6 text-orange-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+            <h3 class="text-lg font-semibold text-orange-900">Time-Critical</h3>
+          </div>
+          <p class="text-orange-700">Organizations must be compliant by January 17, 2025</p>
+        </div>
+        
+        <div class="bg-yellow-50 border-l-4 border-yellow-400 p-6">
+          <div class="flex items-center mb-2">
+            <svg class="w-6 h-6 text-yellow-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.414-4.414a2 2 0 010 2.828L9.828 17.657a2 2 0 01-2.828 0L3.172 13.828a2 2 0 010-2.828L9.757 4.414a2 2 0 012.828 0z"></path>
+            </svg>
+            <h3 class="text-lg font-semibold text-yellow-900">Penalties</h3>
+          </div>
+          <p class="text-yellow-700">Significant fines and sanctions for non-compliance</p>
+        </div>
+        
+        <div class="bg-teal-50 border-l-4 border-teal-400 p-6">
+          <div class="flex items-center mb-2">
+            <svg class="w-6 h-6 text-teal-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+            </svg>
+            <h3 class="text-lg font-semibold text-teal-900">Opportunity</h3>
+          </div>
+          <p class="text-teal-700">Improve operational resilience and competitive advantage</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DORA Five Pillars -->
+  <section class="py-16 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-slate-900 mb-4">DORA's Five Pillars of Digital Resilience</h2>
+        <p class="text-lg text-slate-600 max-w-3xl mx-auto">
+          Our comprehensive program addresses all five pillars of DORA with detailed implementation guidance and tools.
+        </p>
+      </div>
+      
+      <div class="space-y-8">
+        {doraRequirements.map((pillar, index) => (
+          <div class="bg-white rounded-lg shadow-lg border border-slate-200 p-8">
+            <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between mb-6">
+              <div class="lg:flex-1">
+                <div class="flex items-center mb-3">
+                  <span class="bg-teal-600 text-white text-sm font-bold px-3 py-1 rounded-full mr-3">
+                    Pillar {index + 1}
+                  </span>
+                  <span class="text-sm text-slate-500">{pillar.timeline}</span>
+                </div>
+                <h3 class="text-xl font-semibold text-slate-900 mb-2">{pillar.pillar}</h3>
+                <p class="text-slate-600 mb-4">{pillar.description}</p>
+              </div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              {pillar.requirements.map(requirement => (
+                <div class="flex items-start">
+                  <svg class="w-4 h-4 text-teal-600 mr-2 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                  </svg>
+                  <span class="text-sm text-slate-700">{requirement}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Target Audience -->
+  <section class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-slate-900 mb-4">Who Must Comply with DORA?</h2>
+        <p class="text-lg text-slate-600 max-w-3xl mx-auto">
+          DORA applies to a wide range of financial entities and their critical ICT service providers across the EU.
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {targetAudience.map(category => (
+          <div class="bg-slate-50 rounded-lg p-6">
+            <h3 class="text-lg font-semibold text-slate-900 mb-3">{category.category}</h3>
+            <p class="text-slate-600 mb-4">{category.description}</p>
+            <ul class="space-y-2">
+              {category.specific.map(item => (
+                <li class="flex items-start">
+                  <svg class="w-4 h-4 text-teal-600 mr-2 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                  </svg>
+                  <span class="text-sm text-slate-700">{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Implementation Timeline -->
+  <section class="py-16 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-slate-900 mb-4">6-Month Implementation Program</h2>
+        <p class="text-lg text-slate-600 max-w-3xl mx-auto">
+          Structured approach to achieve DORA compliance with clear phases, milestones, and deliverables.
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {implementationPhases.map((phase, index) => (
+          <div class="bg-white rounded-lg shadow-lg p-6">
+            <div class="flex items-center mb-4">
+              <span class="bg-teal-600 text-white text-sm font-bold px-3 py-1 rounded-full mr-3">
+                {phase.phase.split(':')[0]}
+              </span>
+              <div>
+                <h3 class="text-lg font-semibold text-slate-900">{phase.phase.split(':')[1]}</h3>
+                <span class="text-sm text-slate-500">{phase.duration}</span>
+              </div>
+            </div>
+            
+            <div class="mb-6">
+              <h4 class="text-sm font-semibold text-slate-900 mb-3">Key Activities:</h4>
+              <ul class="space-y-2">
+                {phase.activities.map(activity => (
+                  <li class="flex items-start">
+                    <svg class="w-4 h-4 text-teal-600 mr-2 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                    </svg>
+                    <span class="text-sm text-slate-700">{activity}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            
+            <div>
+              <h4 class="text-sm font-semibold text-slate-900 mb-3">Deliverables:</h4>
+              <ul class="space-y-2">
+                {phase.deliverables.map(deliverable => (
+                  <li class="flex items-start">
+                    <svg class="w-4 h-4 text-orange-500 mr-2 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z" clip-rule="evenodd"></path>
+                    </svg>
+                    <span class="text-sm text-slate-700">{deliverable}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section class="py-16 bg-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl font-bold text-slate-900 mb-4">Complete DORA Compliance Solution</h2>
+      <p class="text-lg text-slate-600 mb-8">
+        Everything you need to achieve and maintain DORA compliance with ongoing support and updates.
+      </p>
+      
+      <div class="bg-slate-50 rounded-lg p-8">
+        <div class="mb-6">
+          <span class="text-4xl font-bold text-teal-600">{pricing.basePrice}</span>
+          <span class="text-slate-600 ml-2">complete program</span>
+        </div>
+        <p class="text-sm text-slate-500 mb-6">{pricing.note}</p>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-left">
+          {pricing.includes.map(item => (
+            <div class="flex items-start">
+              <svg class="w-5 h-5 text-teal-600 mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+              </svg>
+              <span class="text-slate-700">{item}</span>
+            </div>
+          ))}
+        </div>
+        
+        <div class="mt-8">
+          <a href="/contact?package=dora-program" 
+             class="bg-teal-600 text-white py-3 px-8 rounded-md font-medium hover:bg-teal-700 transition-colors inline-block">
+            Start DORA Implementation
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Regulatory Context -->
+  <section class="py-16 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-slate-900 mb-4">Regulatory Context & Enforcement</h2>
+        <p class="text-lg text-slate-600 max-w-3xl mx-auto">
+          Understanding the regulatory landscape and enforcement mechanisms for DORA compliance.
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="bg-white rounded-lg shadow-lg p-6">
+          <h3 class="text-lg font-semibold text-slate-900 mb-4">Regulatory Timeline</h3>
+          <ul class="space-y-3 text-sm">
+            <li class="flex items-start">
+              <span class="bg-green-100 text-green-800 px-2 py-1 rounded text-xs mr-2 mt-0.5">DONE</span>
+              <span class="text-slate-700">January 2023: DORA entered into force</span>
+            </li>
+            <li class="flex items-start">
+              <span class="bg-yellow-100 text-yellow-800 px-2 py-1 rounded text-xs mr-2 mt-0.5">ACTIVE</span>
+              <span class="text-slate-700">2024: Regulatory technical standards development</span>
+            </li>
+            <li class="flex items-start">
+              <span class="bg-red-100 text-red-800 px-2 py-1 rounded text-xs mr-2 mt-0.5">DEADLINE</span>
+              <span class="text-slate-700">January 17, 2025: DORA application date</span>
+            </li>
+          </ul>
+        </div>
+        
+        <div class="bg-white rounded-lg shadow-lg p-6">
+          <h3 class="text-lg font-semibold text-slate-900 mb-4">Enforcement Powers</h3>
+          <ul class="space-y-3 text-sm">
+            <li class="flex items-start">
+              <svg class="w-4 h-4 text-red-600 mr-2 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd"></path>
+              </svg>
+              <span class="text-slate-700">Administrative fines and penalties</span>
+            </li>
+            <li class="flex items-start">
+              <svg class="w-4 h-4 text-red-600 mr-2 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd"></path>
+              </svg>
+              <span class="text-slate-700">Operational restrictions</span>
+            </li>
+            <li class="flex items-start">
+              <svg class="w-4 h-4 text-red-600 mr-2 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd"></path>
+              </svg>
+              <span class="text-slate-700">Reputational damage</span>
+            </li>
+            <li class="flex items-start">
+              <svg class="w-4 h-4 text-red-600 mr-2 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd"></path>
+              </svg>
+              <span class="text-slate-700">Business disruption</span>
+            </li>
+          </ul>
+        </div>
+        
+        <div class="bg-white rounded-lg shadow-lg p-6">
+          <h3 class="text-lg font-semibold text-slate-900 mb-4">Compliance Benefits</h3>
+          <ul class="space-y-3 text-sm">
+            <li class="flex items-start">
+              <svg class="w-4 h-4 text-teal-600 mr-2 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+              </svg>
+              <span class="text-slate-700">Enhanced operational resilience</span>
+            </li>
+            <li class="flex items-start">
+              <svg class="w-4 h-4 text-teal-600 mr-2 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+              </svg>
+              <span class="text-slate-700">Improved risk management</span>
+            </li>
+            <li class="flex items-start">
+              <svg class="w-4 h-4 text-teal-600 mr-2 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+              </svg>
+              <span class="text-slate-700">Competitive advantage</span>
+            </li>
+            <li class="flex items-start">
+              <svg class="w-4 h-4 text-teal-600 mr-2 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+              </svg>
+              <span class="text-slate-700">Customer confidence</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CTA 
+    title="Don't Wait - DORA Deadline is January 17, 2025"
+    description="Start your DORA compliance journey today with our comprehensive Program-in-a-Box solution."
+    primaryCTA={{ text: "Begin DORA Compliance", href: "/contact?package=dora-program" }}
+    secondaryCTA={{ text: "Download DORA Checklist", href: "/downloads/dora-compliance-checklist.pdf" }}
+  />
+</Layout>

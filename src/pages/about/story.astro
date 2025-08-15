@@ -1,0 +1,219 @@
+---
+import Layout from '@/layouts/Layout.astro';
+
+const title = "Our Story";
+const currentPath = Astro.url.pathname;
+const lang = currentPath.startsWith('/fi') ? 'fi' : 'en';
+
+const content = {
+  en: {
+    title: "Our Story",
+    subtitle: "Building a Secure Digital Future Since 2018",
+    heroDescription: "Discover the journey that led us to become Finland's leading cybersecurity consultancy, dedicated to protecting organizations and building resilient security programs.",
+    story: {
+      title: "The Beginning",
+      content: "Founded in 2018, CyberSecurity.fi emerged from a simple yet powerful vision: to make enterprise-grade cybersecurity accessible to organizations of all sizes. Our founders, seasoned cybersecurity professionals with decades of combined experience, recognized the growing gap between complex regulatory requirements and practical implementation capabilities.",
+      vision: "We envisioned a world where organizations could navigate the complex cybersecurity landscape with confidence, supported by experts who understood both the technical and business aspects of security.",
+      growth: "Based in Helsinki, Finland, we've grown from a small consultancy to a recognized leader in cybersecurity compliance and risk management. Our expertise spans across multiple frameworks including ISO 27001, NIS2, DORA, GDPR, and SOC 2, serving clients across Europe and beyond."
+    },
+    milestones: {
+      title: "Key Milestones",
+      items: [
+        {
+          year: "2018",
+          title: "Foundation",
+          description: "Company founded with focus on ISO 27001 implementation"
+        },
+        {
+          year: "2020",
+          title: "Expansion",
+          description: "Added NIS2 and GDPR services, expanded team to 15 professionals"
+        },
+        {
+          year: "2022",
+          title: "Growth",
+          description: "Launched DORA compliance services, opened office in Stockholm"
+        },
+        {
+          year: "2024",
+          title: "Leadership",
+          description: "Recognized as Finland's top cybersecurity consultancy"
+        }
+      ]
+    },
+    values: {
+      title: "Our Core Values",
+      items: [
+        {
+          title: "Excellence",
+          description: "We strive for excellence in every engagement, delivering high-quality solutions that exceed expectations."
+        },
+        {
+          title: "Integrity",
+          description: "We operate with the highest ethical standards and maintain complete transparency in all our interactions."
+        },
+        {
+          title: "Innovation",
+          description: "We continuously innovate our approaches to stay ahead of evolving cybersecurity challenges."
+        },
+        {
+          title: "Partnership",
+          description: "We build long-term partnerships with our clients, supporting their cybersecurity journey every step of the way."
+        }
+      ]
+    },
+    cta: {
+      title: "Join Us on Our Journey",
+      subtitle: "Ready to build a more secure future together?",
+      primaryButton: "Get Started",
+      secondaryButton: "Learn More About Our Team"
+    }
+  },
+  fi: {
+    title: "Tarinaamme",
+    subtitle: "Rakennamme Turvallista Digitaalista Tulevaisuutta Vuodesta 2018",
+    heroDescription: "Tutustu matkaan, joka johti meidät Suomen johtavaksi kyberturvallisuuskonsultiksi, joka on omistautunut organisaatioiden suojaamiseen ja kestävien turvallisuusohjelmien rakentamiseen.",
+    story: {
+      title: "Alku",
+      content: "CyberSecurity.fi perustettiin vuonna 2018 yksinkertaisesta mutta voimakkaasta visiosta: tehdä yritystason kyberturvallisuudesta saavutettavissa kaikille organisaatioille. Perustajamme, kokeneet kyberturvallisuusasiantuntijat, joilla on yhteensä vuosikymmeniä kokemusta, tunnistivat kasvavan kuilun monimutkaisten sääntelyvaatimusten ja käytännön toteutuskapasiteetin välillä.",
+      vision: "Kuvittelimme maailman, jossa organisaatiot voisivat navigoida monimutkaisessa kyberturvallisuusmaisemassa luottavaisesti, asiantuntijoiden tuella, jotka ymmärtävät sekä tekniset että liiketoiminnan turvallisuusnäkökohdat.",
+      growth: "Helsingissä, Suomessa, olemme kasvaneet pienestä konsultista Suomen johtavaksi kyberturvallisuuden noudattamisen ja riskien hallinnan konsultiksi. Asiantuntemuksemme kattaa useita kehystöjä, mukaan lukien ISO 27001, NIS2, DORA, GDPR ja SOC 2, palvelemme asiakkaita ympäri Eurooppaa ja sen ulkopuolella."
+    },
+    milestones: {
+      title: "Keskeiset Virstanpylväät",
+      items: [
+        {
+          year: "2018",
+          title: "Perustaminen",
+          description: "Yritys perustettu ISO 27001 -toteutuksen fokuksella"
+        },
+        {
+          year: "2020",
+          title: "Laajentuminen",
+          description: "Lisätty NIS2- ja GDPR-palvelut, tiimi laajennettu 15 ammattilaiseen"
+        },
+        {
+          year: "2022",
+          title: "Kasvu",
+          description: "Käynnistetty DORA-noudattamispalvelut, avattu toimisto Tukholmaan"
+        },
+        {
+          year: "2024",
+          title: "Johtajuus",
+          description: "Tunnustettu Suomen parhaaksi kyberturvallisuuskonsultiksi"
+        }
+      ]
+    },
+    values: {
+      title: "Keskeiset Arvomme",
+      items: [
+        {
+          title: "Erinomaisuus",
+          description: "Pyrimme erinomaisuuteen jokaisessa työsuhteessa, tarjoamalla korkealaatuisia ratkaisuja, jotka ylittävät odotukset."
+        },
+        {
+          title: "Rehellisyys",
+          description: "Toimimme korkeimmilla eettisillä standardeilla ja ylläpidämme täydellistä läpinäkyvyyttä kaikissa vuorovaikutuksissamme."
+        },
+        {
+          title: "Innovaatio",
+          description: "Jatkuvasti innovoimme lähestymistapojamme pysyäksemme kehittyvien kyberturvallisuushaasteiden edellä."
+        },
+        {
+          title: "Kumppanuus",
+          description: "Rakennamme pitkäaikaisia kumppanuuksia asiakkaidemme kanssa, tukien heidän kyberturvallisuusmatkaansa jokaisessa vaiheessa."
+        }
+      ]
+    },
+    cta: {
+      title: "Liity Matkaamme",
+      subtitle: "Valmiina rakentamaan yhdessä turvallisemman tulevaisuuden?",
+      primaryButton: "Aloita",
+      secondaryButton: "Lue Lisää Tiimistämme"
+    }
+  }
+};
+
+const currentContent = content[lang];
+---
+
+<Layout title={title}>
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h1 class="text-5xl font-bold mb-6">{currentContent.title}</h1>
+      <p class="text-2xl font-light mb-8">{currentContent.subtitle}</p>
+      <p class="text-xl text-slate-300 max-w-3xl mx-auto">{currentContent.heroDescription}</p>
+    </div>
+  </section>
+
+  <!-- Story Section -->
+  <section class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold text-slate-900 mb-4">{currentContent.story.title}</h2>
+        </div>
+        
+        <div class="prose prose-lg mx-auto">
+          <p class="text-lg text-slate-600 mb-6">{currentContent.story.content}</p>
+          <p class="text-lg text-slate-600 mb-6">{currentContent.story.vision}</p>
+          <p class="text-lg text-slate-600 mb-6">{currentContent.story.growth}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Milestones Section -->
+  <section class="py-16 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-slate-900 mb-4">{currentContent.milestones.title}</h2>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {currentContent.milestones.items.map((milestone) => (
+          <div class="text-center p-6 bg-white rounded-lg shadow-md">
+            <div class="text-4xl font-bold text-blue-600 mb-2">{milestone.year}</div>
+            <h3 class="text-xl font-semibold text-slate-900 mb-2">{milestone.title}</h3>
+            <p class="text-slate-600">{milestone.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Values Section -->
+  <section class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-slate-900 mb-4">{currentContent.values.title}</h2>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {currentContent.values.items.map((value) => (
+          <div class="p-6 border border-slate-200 rounded-lg">
+            <h3 class="text-xl font-semibold text-slate-900 mb-3">{value.title}</h3>
+            <p class="text-slate-600">{value.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-16 bg-blue-600 text-white">
+    <div class="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-bold mb-4">{currentContent.cta.title}</h2>
+      <p class="text-xl mb-8">{currentContent.cta.subtitle}</p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="/contact" class="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-slate-100 transition-colors">
+          {currentContent.cta.primaryButton}
+        </a>
+        <a href="/about/team" class="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition-colors">
+          {currentContent.cta.secondaryButton}
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

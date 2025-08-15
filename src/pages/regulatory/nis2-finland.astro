@@ -1,0 +1,479 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Icon from "@ui/icons/Icon.astro";
+import Button from "@ui/Button.astro";
+
+const title = "NIS2 in Finland";
+const currentPath = Astro.url.pathname;
+const lang = currentPath.startsWith('/fi') ? 'fi' : 'en';
+
+const content = {
+  en: {
+    title: "NIS2 in Finland",
+    subtitle: "Network and Information Security Directive Implementation",
+    description: "Navigate NIS2 compliance requirements in Finland with expert guidance and proven implementation strategies.",
+    whoFor: "For Finnish organizations in critical sectors that need to comply with NIS2 requirements by October 2024.",
+    whatYouAchieve: "Full NIS2 compliance with Finnish regulatory requirements and enhanced cybersecurity posture.",
+    
+    // What is NIS2 Section
+    nis2Title: "What is NIS2?",
+    nis2Description: "The Network and Information Security Directive (NIS2) is a European Union cybersecurity regulation that strengthens security requirements for critical infrastructure and digital service providers across the EU.",
+    
+    // Finland-Specific Requirements Section
+    finlandTitle: "Finland-Specific NIS2 Requirements",
+    finlandSubtitle: "Understanding local implementation and regulatory expectations",
+    finlandRequirements: [
+      {
+        title: "Finnish NIS2 Act",
+        description: "Implementation through the Finnish Information Security Act (Laki tietoturvalain muuttamisesta)"
+      },
+      {
+        title: "Traficom Oversight",
+        description: "Finnish Transport and Communications Agency (Traficom) as the national NIS2 authority"
+      },
+      {
+        title: "Sector Classification",
+        description: "Finnish-specific categorization of essential and important entities"
+      },
+      {
+        title: "Reporting Obligations",
+        description: "Local incident reporting requirements and timelines"
+      }
+    ],
+    
+    // Compliance Requirements Section
+    complianceTitle: "NIS2 Compliance Requirements",
+    complianceSubtitle: "Key areas that must be addressed for compliance",
+    complianceAreas: [
+      {
+        title: "Risk Management",
+        description: "Implement comprehensive risk assessment and management processes"
+      },
+      {
+        title: "Incident Reporting",
+        description: "Establish incident detection, reporting, and response procedures"
+      },
+      {
+        title: "Business Continuity",
+        description: "Develop resilience and business continuity planning"
+      },
+      {
+        title: "Supply Chain Security",
+        description: "Manage security risks in supply chain relationships"
+      },
+      {
+        title: "Access Control",
+        description: "Implement robust access control and identity management"
+      },
+      {
+        title: "Cryptography",
+        description: "Use appropriate encryption and cryptographic controls"
+      }
+    ],
+    
+    // Why Choose Us Section
+    whyChooseTitle: "Why Choose Our NIS2 Services?",
+    whyChooseSubtitle: "Expert guidance for Finnish NIS2 compliance",
+    whyChoosePoints: [
+      "Deep understanding of Finnish NIS2 implementation",
+      "Experience with Traficom requirements and processes",
+      "Local regulatory expertise and relationships",
+      "Proven compliance methodologies",
+      "Ongoing support and maintenance"
+    ],
+    
+    // Benefits Section
+    benefitsTitle: "Benefits of NIS2 Compliance",
+    benefitsSubtitle: "Strategic advantages of achieving compliance",
+    benefitsList: [
+      "Enhanced cybersecurity posture and resilience",
+      "Improved customer and partner trust",
+      "Competitive advantage in the market",
+      "Reduced regulatory and legal risks",
+      "Better incident response capabilities"
+    ],
+    
+    // Implementation Steps Section
+    implementationTitle: "Implementation Steps",
+    implementationSubtitle: "Systematic approach to NIS2 compliance",
+    steps: [
+      {
+        number: "01",
+        title: "Scope Assessment",
+        description: "Determine if your organization falls under NIS2 requirements"
+      },
+      {
+        number: "02",
+        title: "Gap Analysis",
+        description: "Assess current security posture against NIS2 requirements"
+      },
+      {
+        number: "03",
+        title: "Implementation Planning",
+        description: "Develop detailed implementation roadmap and timeline"
+      },
+      {
+        number: "04",
+        title: "Control Implementation",
+        description: "Implement required security controls and processes"
+      },
+      {
+        number: "05",
+        title: "Testing & Validation",
+        description: "Test controls and validate compliance readiness"
+      }
+    ],
+    
+    // CTA Section
+    ctaTitle: "Ready to Achieve NIS2 Compliance in Finland?",
+    ctaSubtitle: "Get expert guidance for Finnish NIS2 implementation",
+    ctaButton: "Start NIS2 Assessment",
+    ctaDescription: "Our Finnish NIS2 experts will help you navigate the requirements and achieve compliance efficiently."
+  },
+  
+  fi: {
+    title: "NIS2 Suomessa",
+    subtitle: "Verkko- ja tietoturvadirektiivin toteutus",
+    description: "Navigoi NIS2 yhteensopivuusvaatimukset Suomessa asiantuntevan ohjauksen ja todistettujen toteutusstrategioiden avulla.",
+    whoFor: "Suomalaisille organisaatioille kriittisillä sektoreilla, jotka tarvitsevat NIS2 yhteensopivuuden lokakuuhun 2024 mennessä.",
+    whatYouAchieve: "Täysi NIS2 yhteensopivuus suomalaisilla sääntelyvaatimuksilla ja parannettu kyberturvallisuustaso.",
+    
+    // What is NIS2 Section
+    nis2Title: "Mikä on NIS2?",
+    nis2Description: "Verkko- ja tietoturvadirektiivi (NIS2) on Euroopan unionin kyberturvallisuusasetus, joka vahvistaa kriittisen infrastruktuurin ja digitaalisten palveluntarjoajien turvallisuusvaatimuksia koko EU:ssa.",
+    
+    // Finland-Specific Requirements Section
+    finlandTitle: "Suomessa NIS2-spesifiset vaatimukset",
+    finlandSubtitle: "Ymmärrä paikallinen toteutus ja sääntelyodotukset",
+    finlandRequirements: [
+      {
+        title: "Suomen NIS2-laki",
+        description: "Toteutus suomalaisen tietoturvalain kautta (Laki tietoturvalain muuttamisesta)"
+      },
+      {
+        title: "Traficomin valvonta",
+        description: "Liikenne- ja viestintävirasto (Traficom) kansallisena NIS2-viranomaisena"
+      },
+      {
+        title: "Sektorin luokittelu",
+        description: "Suomessa olennaisten ja tärkeiden yhteisöjen kategorisointi"
+      },
+      {
+        title: "Raportointivelvollisuudet",
+        description: "Paikalliset tapahtumaraportointivaatimukset ja aikataulut"
+      }
+    ],
+    
+    // Compliance Requirements Section
+    complianceTitle: "NIS2 yhteensopivuusvaatimukset",
+    complianceSubtitle: "Keskeiset alueet, jotka on käsiteltävä yhteensopivuutta varten",
+    complianceAreas: [
+      {
+        title: "Riskinjohtaminen",
+        description: "Toteuta kattavat riskinarviointi- ja -johtamisprosessit"
+      },
+      {
+        title: "Tapahtumaraportointi",
+        description: "Perusta tapahtumien tunnistus-, raportointi- ja vastausproseduurit"
+      },
+      {
+        title: "Liiketoiminnan jatkuvuus",
+        description: "Kehitä kestävyys- ja liiketoiminnan jatkuvuussuunnittelu"
+      },
+      {
+        title: "Toimitusketjun turvallisuus",
+        description: "Hallitse turvallisuusriskejä toimitusketjusuhteissa"
+      },
+      {
+        title: "Käyttöoikeuksien hallinta",
+        description: "Toteuta vahvat käyttöoikeuksien hallinta- ja identiteettijohtaminen"
+      },
+      {
+        title: "Kryptografia",
+        description: "Käytä sopivia salaus- ja kryptografisia kontrollia"
+      }
+    ],
+    
+    // Why Choose Us Section
+    whyChooseTitle: "Miksi valita NIS2-palvelumme?",
+    whyChooseSubtitle: "Asiantuntevaa ohjausta suomalaiselle NIS2 yhteensopivuudelle",
+    whyChoosePoints: [
+      "Syvä ymmärrys suomalaisesta NIS2 toteutuksesta",
+      "Kokemus Traficomin vaatimuksista ja prosesseista",
+      "Paikallinen sääntelyasiantuntemus ja suhteet",
+      "Todistetut yhteensopivuusmetodologiat",
+      "Jatkuva tuki ja ylläpito"
+    ],
+    
+    // Benefits Section
+    benefitsTitle: "NIS2 yhteensopivuuden edut",
+    benefitsSubtitle: "Yhteensopivuuden saavuttamisen strategiset edut",
+    benefitsList: [
+      "Parannettu kyberturvallisuustaso ja kestävyys",
+      "Parannettu asiakkaiden ja kumppaneiden luottamus",
+      "Kilpailuetu markkinoilla",
+      "Alennettu sääntely- ja oikeusriski",
+      "Paremmat tapahtumien vastauskyvyt"
+    ],
+    
+    // Implementation Steps Section
+    implementationTitle: "Toteutusvaiheet",
+    implementationSubtitle: "Systemaattinen lähestymistapa NIS2 yhteensopivuuteen",
+    steps: [
+      {
+        number: "01",
+        title: "Laajuuden arviointi",
+        description: "Määritä kuuluuko organisaatiosi NIS2 vaatimusten piiriin"
+      },
+      {
+        number: "02",
+        title: "Aukkoanalyysi",
+        description: "Arvioi nykyinen turvallisuustaso NIS2 vaatimuksia vastaan"
+      },
+      {
+        number: "03",
+        title: "Toteutussuunnittelu",
+        description: "Kehitä yksityiskohtainen toteutustiekartta ja aikataulu"
+      },
+      {
+        number: "04",
+        title: "Kontrollin toteutus",
+        description: "Toteuta vaaditut turvallisuuskontrollit ja prosessit"
+      },
+      {
+        number: "05",
+        title: "Testaus ja validointi",
+        description: "Testaa kontrollia ja validoi yhteensopivuusvalmius"
+      }
+    ],
+    
+    // CTA Section
+    ctaTitle: "Valmiina saavuttamaan NIS2 yhteensopivuuden Suomessa?",
+    ctaSubtitle: "Saa asiantuntevaa ohjausta suomalaiselle NIS2 toteutukselle",
+    ctaButton: "Aloita NIS2 arviointi",
+    ctaDescription: "Suomalaiset NIS2 asiantuntijamme auttavat sinua navigoimaan vaatimukset ja saavuttamaan yhteensopivuuden tehokkaasti."
+  }
+};
+
+const currentContent = content[lang];
+---
+
+<Layout title={title}>
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-br from-teal-50 via-white to-blue-50 py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-4xl">
+        <h1 class="text-4xl lg:text-5xl font-bold text-slate-900 mb-6">
+          {currentContent.title}
+        </h1>
+        <p class="text-xl text-slate-600 mb-8">
+          {currentContent.description}
+        </p>
+        <div class="bg-white rounded-xl p-6 shadow-sm border border-slate-200">
+          <h2 class="text-lg font-semibold text-slate-900 mb-4">
+            {lang === 'fi' ? 'Kelle tämä on tarkoitettu?' : 'Who is this for?'}
+          </h2>
+          <p class="text-slate-600 mb-4">{currentContent.whoFor}</p>
+          <h3 class="text-lg font-semibold text-slate-900 mb-2">
+            {lang === 'fi' ? 'Mitä saavutat?' : 'What will you achieve?'}
+          </h3>
+          <p class="text-slate-600">{currentContent.whatYouAchieve}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- What is NIS2 Section -->
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-slate-900 mb-4">{currentContent.nis2Title}</h2>
+        <p class="text-xl text-slate-600 max-w-4xl mx-auto">{currentContent.nis2Description}</p>
+      </div>
+      
+      <div class="bg-slate-50 rounded-xl p-8">
+        <div class="grid md:grid-cols-2 gap-8">
+          <div>
+            <h3 class="text-xl font-semibold text-slate-900 mb-4">EU Directive</h3>
+            <ul class="space-y-3 text-slate-700">
+              <li class="flex items-start">
+                <Icon name="check" class="w-5 h-5 text-teal-600 mr-3 flex-shrink-0 mt-1" />
+                Strengthens cybersecurity requirements
+              </li>
+              <li class="flex items-start">
+                <Icon name="check" class="w-5 h-5 text-teal-600 mr-3 flex-shrink-0 mt-1" />
+                Covers critical infrastructure
+              </li>
+              <li class="flex items-start">
+                <Icon name="check" class="w-5 h-5 text-teal-600 mr-3 flex-shrink-0 mt-1" />
+                Mandatory compliance by 2024
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="text-xl font-semibold text-slate-900 mb-4">Finnish Implementation</h3>
+            <ul class="space-y-3 text-slate-700">
+              <li class="flex items-start">
+                <Icon name="check" class="w-5 h-5 text-teal-600 mr-3 flex-shrink-0 mt-1" />
+                Traficom as national authority
+              </li>
+              <li class="flex items-start">
+                <Icon name="check" class="w-5 h-5 text-teal-600 mr-3 flex-shrink-0 mt-1" />
+                Local sector classification
+              </li>
+              <li class="flex items-start">
+                <Icon name="check" class="w-5 h-5 text-teal-600 mr-3 flex-shrink-0 mt-1" />
+                Finnish-specific requirements
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Finland-Specific Requirements Section -->
+  <section class="py-20 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-slate-900 mb-4">{currentContent.finlandTitle}</h2>
+        <p class="text-xl text-slate-600">{currentContent.finlandSubtitle}</p>
+        </div>
+
+      <div class="grid md:grid-cols-2 gap-6">
+        {currentContent.finlandRequirements.map((requirement) => (
+          <div class="bg-white p-6 rounded-xl shadow-sm">
+            <h3 class="text-lg font-semibold text-slate-900 mb-3">{requirement.title}</h3>
+            <p class="text-slate-600">{requirement.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Compliance Requirements Section -->
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-slate-900 mb-4">{currentContent.complianceTitle}</h2>
+        <p class="text-xl text-slate-600">{currentContent.complianceSubtitle}</p>
+        </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {currentContent.complianceAreas.map((area) => (
+          <div class="flex items-start gap-4 p-6 bg-slate-50 rounded-xl">
+            <Icon name="check" class="w-6 h-6 text-teal-600 flex-shrink-0 mt-1" />
+            <div>
+              <h3 class="text-lg font-semibold text-slate-900 mb-2">{area.title}</h3>
+              <p class="text-slate-600 text-sm">{area.description}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+        </div>
+  </section>
+
+  <!-- Implementation Steps Section -->
+  <section class="py-20 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-slate-900 mb-4">{currentContent.implementationTitle}</h2>
+        <p class="text-xl text-slate-600">{currentContent.implementationSubtitle}</p>
+        </div>
+
+      <div class="space-y-8">
+        {currentContent.steps.map((step, index) => (
+          <div class="flex gap-8 items-start">
+            <div class="flex-shrink-0 w-12 h-12 bg-teal-600 text-white rounded-full flex items-center justify-center font-bold">
+              {index + 1}
+            </div>
+            <div class="flex-1">
+              <h3 class="text-xl font-semibold text-slate-900 mb-4">{step.title}</h3>
+              <p class="text-slate-600">{step.description}</p>
+        </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Choose Us Section -->
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-slate-900 mb-4">{currentContent.whyChooseTitle}</h2>
+        <p class="text-xl text-slate-600">{currentContent.whyChooseSubtitle}</p>
+        </div>
+
+      <div class="grid md:grid-cols-2 gap-12">
+        <div>
+          <div class="space-y-6">
+            {currentContent.whyChoosePoints.map((point) => (
+              <div class="flex items-start">
+                <Icon name="check" class="w-6 h-6 text-teal-600 mr-4 mt-1" />
+                <p class="text-lg text-slate-700">{point}</p>
+          </div>
+            ))}
+          </div>
+        </div>
+        <div class="bg-teal-50 p-8 rounded-xl">
+          <h3 class="text-2xl font-bold text-teal-900 mb-6">Our Finnish Expertise</h3>
+          <div class="space-y-4">
+            <div class="flex items-center">
+              <div class="w-3 h-3 bg-teal-600 rounded-full mr-3"></div>
+              <span class="text-teal-800">Local regulatory knowledge</span>
+          </div>
+            <div class="flex items-center">
+              <div class="w-3 h-3 bg-teal-600 rounded-full mr-3"></div>
+              <span class="text-teal-800">Traficom experience</span>
+          </div>
+            <div class="flex items-center">
+              <div class="w-3 h-3 bg-teal-600 rounded-full mr-3"></div>
+              <span class="text-teal-800">Finnish market understanding</span>
+        </div>
+            <div class="flex items-center">
+              <div class="w-3 h-3 bg-teal-600 rounded-full mr-3"></div>
+              <span class="text-teal-800">Local language support</span>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits Section -->
+  <section class="py-20 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-slate-900 mb-4">{currentContent.benefitsTitle}</h2>
+        <p class="text-xl text-slate-600">{currentContent.benefitsSubtitle}</p>
+        </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {currentContent.benefitsList.map((benefit) => (
+          <div class="flex items-start gap-4 p-6 bg-white rounded-xl shadow-sm">
+            <Icon name="check" class="w-6 h-6 text-teal-600 flex-shrink-0 mt-1" />
+            <p class="text-slate-700">{benefit}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-20 bg-slate-900 text-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl font-bold mb-4">{currentContent.ctaTitle}</h2>
+      <p class="text-xl text-slate-300 mb-8">{currentContent.ctaSubtitle}</p>
+      <p class="text-lg text-slate-300 mb-8 max-w-2xl mx-auto">{currentContent.ctaDescription}</p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <Button href={lang === 'fi' ? '/fi/contact?consultation=true' : '/contact?consultation=true'} variant="primary" className="text-lg px-8 py-4">
+          {lang === 'fi' ? 'Varaa konsultaatio' : 'Book consultation'}
+        </Button>
+        <Button href={lang === 'fi' ? '/fi/contact?proposal=true' : '/contact?proposal=true'} variant="secondary" className="text-lg px-8 py-4">
+          {lang === 'fi' ? 'Pyydä tarjous' : 'Request proposal'}
+        </Button>
+      </div>
+    </div>
+  </section>
+</Layout>

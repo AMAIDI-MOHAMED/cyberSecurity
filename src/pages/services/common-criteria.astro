@@ -1,0 +1,389 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Icon from '@/components/ui/icons/Icon.astro';
+import Button from '@/components/ui/Button.astro';
+
+const currentPath = Astro.url.pathname;
+const lang = currentPath.startsWith('/fi') ? 'fi' : 'en';
+
+const title = lang === 'fi' ? "Common Criteria" : "Common Criteria";
+const description = lang === 'fi' 
+  ? "Ammattimaiset Common Criteria sertifiointi- ja arviointipalvelut. Autamme organisaatioita saavuttamaan kansainvälisen tietoturvastandardin."
+  : "Professional Common Criteria certification and evaluation services. We help organizations achieve international cybersecurity standards.";
+
+const ccComponents = [
+  {
+    title: lang === 'fi' ? "Tietoturva Tavoitteet" : "Security Objectives",
+    description: lang === 'fi' 
+      ? "Määritellään tietoturvatavoitteet ja -vaatimukset"
+      : "Define security objectives and requirements",
+    icon: "target",
+    features: [
+      lang === 'fi' ? "Tietoturvatavoitteet" : "Security objectives",
+      lang === 'fi' ? "Tietoturvavaatimukset" : "Security requirements",
+      lang === 'fi' ? "Uhkien mallit" : "Threat models"
+    ]
+  },
+  {
+    title: lang === 'fi' ? "Tietoturva Toimenpiteet" : "Security Measures",
+    description: lang === 'fi' 
+      ? "Toteutetaan tietoturvatoimenpiteet ja -mekanismit"
+      : "Implement security measures and mechanisms",
+    icon: "shield",
+    features: [
+      lang === 'fi' ? "Tietoturvamekanismit" : "Security mechanisms",
+      lang === 'fi' ? "Tietoturvapolitiikat" : "Security policies",
+      lang === 'fi' ? "Tietoturvaprotokollat" : "Security protocols"
+    ]
+  },
+  {
+    title: lang === 'fi' ? "Tietoturva Testaus" : "Security Testing",
+    description: lang === 'fi' 
+      ? "Suoritetaan kattavat tietoturvatestit"
+      : "Conduct comprehensive security testing",
+    icon: "check",
+    features: [
+      lang === 'fi' ? "Penetraatiotestit" : "Penetration testing",
+      lang === 'fi' ? "Haavoittuvuustestit" : "Vulnerability testing",
+      lang === 'fi' ? "Tietoturva-analyysi" : "Security analysis"
+    ]
+  },
+  {
+    title: lang === 'fi' ? "Tietoturva Dokumentaatio" : "Security Documentation",
+    description: lang === 'fi' 
+      ? "Luodaan kattava tietoturvadokumentaatio"
+      : "Create comprehensive security documentation",
+    icon: "document",
+    features: [
+      lang === 'fi' ? "Tietoturvaohjeet" : "Security guides",
+      lang === 'fi' ? "Tietoturvapolitiikat" : "Security policies",
+      lang === 'fi' ? "Tietoturvaprosessit" : "Security processes"
+    ]
+  }
+];
+
+const evaluationLevels = [
+  {
+    level: "EAL1",
+    title: lang === 'fi' ? "Perustason Testaus" : "Basic Testing",
+    description: lang === 'fi' 
+      ? "Perustason tietoturvatestaus ja dokumentaatio"
+      : "Basic security testing and documentation",
+    icon: "minus",
+    requirements: [
+      lang === 'fi' ? "Perustason testaus" : "Basic testing",
+      lang === 'fi' ? "Dokumentaatio" : "Documentation",
+      lang === 'fi' ? "Yleiskatsaus" : "Overview"
+    ]
+  },
+  {
+    level: "EAL2",
+    title: lang === 'fi' ? "Merkittävä Testaus" : "Substantial Testing",
+    description: lang === 'fi' 
+      ? "Merkittävä tietoturvatestaus ja analyysi"
+      : "Substantial security testing and analysis",
+    icon: "check",
+    requirements: [
+      lang === 'fi' ? "Merkittävä testaus" : "Substantial testing",
+      lang === 'fi' ? "Tietoturva-analyysi" : "Security analysis",
+      lang === 'fi' ? "Dokumentaatio" : "Documentation"
+    ]
+  },
+  {
+    level: "EAL3",
+    title: lang === 'fi' ? "Korkeatason Testaus" : "High Testing",
+    description: lang === 'fi' 
+      ? "Korkeatason tietoturvatestaus ja analyysi"
+      : "High level security testing and analysis",
+    icon: "shield",
+    requirements: [
+      lang === 'fi' ? "Korkeatason testaus" : "High level testing",
+      lang === 'fi' ? "Tietoturva-analyysi" : "Security analysis",
+      lang === 'fi' ? "Dokumentaatio" : "Documentation"
+    ]
+  },
+  {
+    level: "EAL4",
+    title: lang === 'fi' ? "Merkittävä Suunnittelu" : "Substantial Design",
+    description: lang === 'fi' 
+      ? "Merkittävä suunnittelu ja testaus"
+      : "Substantial design and testing",
+    icon: "target",
+    requirements: [
+      lang === 'fi' ? "Merkittävä suunnittelu" : "Substantial design",
+      lang === 'fi' ? "Korkeatason testaus" : "High level testing",
+      lang === 'fi' ? "Dokumentaatio" : "Documentation"
+    ]
+  },
+  {
+    level: "EAL5",
+    title: lang === 'fi' ? "Korkeatason Suunnittelu" : "High Design",
+    description: lang === 'fi' 
+      ? "Korkeatason suunnittelu ja testaus"
+      : "High level design and testing",
+    icon: "shield",
+    requirements: [
+      lang === 'fi' ? "Korkeatason suunnittelu" : "High level design",
+      lang === 'fi' ? "Korkeatason testaus" : "High level testing",
+      lang === 'fi' ? "Dokumentaatio" : "Documentation"
+    ]
+  },
+  {
+    level: "EAL6",
+    title: lang === 'fi' ? "Merkittävä Varmistus" : "Substantial Assurance",
+    description: lang === 'fi' 
+      ? "Merkittävä varmistus ja testaus"
+      : "Substantial assurance and testing",
+    icon: "check",
+    requirements: [
+      lang === 'fi' ? "Merkittävä varmistus" : "Substantial assurance",
+      lang === 'fi' ? "Korkeatason testaus" : "High level testing",
+      lang === 'fi' ? "Dokumentaatio" : "Documentation"
+    ]
+  },
+  {
+    level: "EAL7",
+    title: lang === 'fi' ? "Korkeatason Varmistus" : "High Assurance",
+    description: lang === 'fi' 
+      ? "Korkeatason varmistus ja testaus"
+      : "High level assurance and testing",
+    icon: "shield",
+    requirements: [
+      lang === 'fi' ? "Korkeatason varmistus" : "High level assurance",
+      lang === 'fi' ? "Korkeatason testaus" : "High level testing",
+      lang === 'fi' ? "Dokumentaatio" : "Documentation"
+    ]
+  }
+];
+
+const implementationSteps = [
+  {
+    step: "1",
+    title: lang === 'fi' ? "Common Criteria Arviointi" : "Common Criteria Assessment",
+    description: lang === 'fi' 
+      ? "Arvioidaan nykyinen tietoturvataso Common Criteria vaatimusten suhteen"
+      : "Assess current security posture against Common Criteria requirements"
+  },
+  {
+    step: "2",
+    title: lang === 'fi' ? "Gap Analysis" : "Gap Analysis",
+    description: lang === 'fi' 
+      ? "Tunnistetaan puutteet ja suunnitellaan korjauskeinot"
+      : "Identify gaps and plan remediation measures"
+  },
+  {
+    step: "3",
+    title: lang === 'fi' ? "Suunnittelu" : "Planning",
+    description: lang === 'fi' 
+      ? "Suunnitellaan Common Criteria sertifiointiohjelma"
+      : "Plan Common Criteria certification program"
+  },
+  {
+    step: "4",
+    title: lang === 'fi' ? "Toteutus" : "Implementation",
+    description: lang === 'fi' 
+      ? "Toteutetaan tarvittavat tietoturvatoimenpiteet"
+      : "Implement required security measures"
+  },
+  {
+    step: "5",
+    title: lang === 'fi' ? "Sertifiointi" : "Certification",
+    description: lang === 'fi' 
+      ? "Läpäistään Common Criteria sertifiointi"
+      : "Pass Common Criteria certification"
+  }
+];
+
+const benefits = [
+  lang === 'fi' ? "Täytä kansainväliset tietoturvastandardit" : "Meet international cybersecurity standards",
+  lang === 'fi' ? "Vahvista tietoturvan luotettavuus" : "Strengthen security reliability",
+  lang === 'fi' ? "Paranna asiakkaiden luottamusta" : "Improve customer trust",
+  lang === 'fi' ? "Kilpailuetu markkinoilla" : "Competitive advantage in markets",
+  lang === 'fi' ? "Globaali tunnustus" : "Global recognition"
+];
+---
+
+<Layout title={title} description={description}>
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-br from-orange-50 via-white to-red-50 py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-4xl">
+        <h1 class="text-4xl lg:text-5xl font-bold text-slate-900 mb-6">
+          {title}
+        </h1>
+        <p class="text-xl text-slate-600 mb-8">
+          {lang === 'fi' 
+            ? "Saavuta Common Criteria sertifiointi ja vahvista organisaatiosi tietoturvan luotettavuus. Autamme organisaatioita saavuttamaan kansainvälisen tietoturvastandardin."
+            : "Achieve Common Criteria certification and strengthen your organization's security reliability. We help organizations achieve international cybersecurity standards."
+          }
+        </p>
+        <div class="bg-white rounded-xl p-6 shadow-sm border border-slate-200">
+          <h2 class="text-lg font-semibold text-slate-900 mb-4">
+            {lang === 'fi' ? 'Mikä on Common Criteria?' : 'What is Common Criteria?'}
+          </h2>
+          <p class="text-slate-600 mb-4">
+            {lang === 'fi'
+              ? "Common Criteria on kansainvälinen standardi tietoturvatuotteiden ja -järjestelmien arviointiin. Se tarjoaa yhteisen kehyksen tietoturvan arviointiin ja sertifiointiin."
+              : "Common Criteria is an international standard for evaluating security products and systems. It provides a common framework for security evaluation and certification."
+            }
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Common Criteria Components -->
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-slate-900 mb-4">
+          {lang === 'fi' ? 'Common Criteria Komponentit' : 'Common Criteria Components'}
+        </h2>
+        <p class="text-xl text-slate-600 max-w-3xl mx-auto">
+          {lang === 'fi'
+            ? "Common Criteria perustuu neljään pääkomponenttiin, jotka määrittelevät tietoturvan arviointin."
+            : "Common Criteria is based on four main components that define security evaluation."
+          }
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {ccComponents.map((component) => (
+          <div class="bg-gradient-to-br from-slate-50 to-white p-8 rounded-xl border border-slate-200 hover:shadow-xl transition-all duration-300">
+            <div class="w-16 h-16 bg-orange-100 rounded-xl flex items-center justify-center mb-6">
+              <Icon name={component.icon} className="w-8 h-8 text-orange-600" />
+            </div>
+            <h3 class="text-xl font-bold text-slate-900 mb-4">{component.title}</h3>
+            <p class="text-slate-600 mb-6">{component.description}</p>
+            <ul class="space-y-2">
+              {component.features.map((feature) => (
+                <li class="flex items-center text-sm text-slate-600">
+                  <Icon name="check" className="w-4 h-4 text-green-500 mr-2" />
+                  {feature}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Evaluation Levels -->
+  <section class="py-20 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-slate-900 mb-4">
+          {lang === 'fi' ? 'Arviointitasot' : 'Evaluation Levels'}
+        </h2>
+        <p class="text-xl text-slate-600 max-w-3xl mx-auto">
+          {lang === 'fi'
+            ? "Common Criteria määrittelee seitsemän arviointitasoa (EAL1-EAL7) tietoturvan luotettavuuden määrittämiseksi."
+            : "Common Criteria defines seven evaluation levels (EAL1-EAL7) to determine security assurance."
+          }
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {evaluationLevels.map((level) => (
+          <div class="bg-white p-6 rounded-xl border border-slate-200 hover:shadow-lg transition-all duration-300">
+            <div class="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
+              <Icon name={level.icon} className="w-6 h-6 text-red-600" />
+            </div>
+            <h3 class="text-lg font-semibold text-slate-900 mb-2">{level.level}</h3>
+            <h4 class="text-md font-medium text-slate-700 mb-2">{level.title}</h4>
+            <p class="text-slate-600 text-sm mb-4">{level.description}</p>
+            <ul class="space-y-1">
+              {level.requirements.map((requirement) => (
+                <li class="flex items-center text-xs text-slate-600">
+                  <Icon name="check" className="w-3 h-3 text-green-500 mr-1" />
+                  {requirement}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Implementation Process -->
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-slate-900 mb-4">
+          {lang === 'fi' ? 'Toteutusprosessi' : 'Implementation Process'}
+        </h2>
+        <p class="text-xl text-slate-600 max-w-3xl mx-auto">
+          {lang === 'fi'
+            ? "Selkeä ja strukturoitu prosessi Common Criteria sertifiointiin."
+            : "Clear and structured process for Common Criteria certification."
+          }
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
+        {implementationSteps.map((step) => (
+          <div class="text-center">
+            <div class="w-16 h-16 bg-orange-600 rounded-full flex items-center justify-center mx-auto mb-4 text-white text-xl font-bold">
+              {step.step}
+            </div>
+            <h3 class="text-lg font-semibold text-slate-900 mb-2">{step.title}</h3>
+            <p class="text-slate-600 text-sm">{step.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits Section -->
+  <section class="py-20 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-slate-900 mb-4">
+          {lang === 'fi' ? 'Common Criteria Sertifioinnin Edut' : 'Common Criteria Certification Benefits'}
+        </h2>
+        <p class="text-xl text-slate-600 max-w-3xl mx-auto">
+          {lang === 'fi'
+            ? "Saavuta konkreettisia hyötyjä Common Criteria sertifioinnin avulla."
+            : "Achieve concrete benefits with Common Criteria certification."
+          }
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {benefits.map((benefit) => (
+          <div class="text-center">
+            <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+              <Icon name="check" className="w-8 h-8 text-green-600" />
+            </div>
+            <p class="text-slate-700 font-medium">{benefit}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-20 bg-slate-900 text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl font-bold mb-6">
+        {lang === 'fi' ? 'Valmiit aloittamaan Common Criteria sertifioinnin?' : 'Ready to start your Common Criteria certification?'}
+      </h2>
+      <p class="text-xl text-slate-300 mb-8 max-w-3xl mx-auto">
+        {lang === 'fi'
+          ? "Ota yhteyttä meihin ja aloitetaan Common Criteria sertifiointiprosessi."
+          : "Contact us and let's start your Common Criteria certification process."
+        }
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <Button href="/contact" variant="primary" className="text-lg px-8 py-3">
+          {lang === 'fi' ? 'Ota yhteyttä' : 'Get in Touch'}
+        </Button>
+        <Button href="/contact?consultation=true" variant="secondary" className="text-lg px-8 py-3">
+          {lang === 'fi' ? 'Varaa konsultaatio' : 'Book Consultation'}
+        </Button>
+      </div>
+    </div>
+  </section>
+</Layout>

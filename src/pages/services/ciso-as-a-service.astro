@@ -1,0 +1,145 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Icon from '@/components/ui/icons/Icon.astro';
+import Button from '@/components/ui/Button.astro';
+
+const currentPath = Astro.url.pathname;
+const lang = currentPath.startsWith('/fi') ? 'fi' : 'en';
+
+const title = lang === 'fi' ? 'CISO‑as‑a‑Service' : 'CISO‑as‑a‑Service';
+const description = lang === 'fi'
+  ? 'Joustava ja kokenut CISO-palvelu (osa‑aikainen), joka rakentaa kyberturvan strategian, hallintamallin ja käytännön toteutuksen.'
+  : 'Flexible, senior Fractional CISO to build strategy, governance, and execution for your cybersecurity program.';
+
+const offerings = [
+  {
+    icon: 'shield',
+    titleFi: 'Kyberturvastrategia',
+    titleEn: 'Security Strategy',
+    descFi: 'Riskiperusteinen kyberturvan tiekartta ja priorisointi',
+    descEn: 'Risk‑based security roadmap and prioritization'
+  },
+  {
+    icon: 'document',
+    titleFi: 'Politiikat ja hallintamalli',
+    titleEn: 'Policies and Governance',
+    descFi: 'Politiikkakirjasto, omistajuudet ja hyväksymisprosessit',
+    descEn: 'Policy library, ownership and approval processes'
+  },
+  {
+    icon: 'chart',
+    titleFi: 'Riskienhallinta',
+    titleEn: 'Risk Management',
+    descFi: 'ISO 27005/NIST‑pohjainen riskien tunnistus ja käsittely',
+    descEn: 'ISO 27005/NIST based risk identification and treatment'
+  },
+  {
+    icon: 'eye',
+    titleFi: 'Valvonta ja mittarit',
+    titleEn: 'Monitoring and Metrics',
+    descFi: 'KPI/KRI‑mittarit, johdon raportointi ja jatkuva parantaminen',
+    descEn: 'KPI/KRI, executive reporting and continuous improvement'
+  },
+  {
+    icon: 'building',
+    titleFi: 'Sääntely ja auditit',
+    titleEn: 'Regulatory and Audits',
+    descFi: 'NIS2, DORA, GDPR, SOC 2 ja ISO 27001 ‑yhteensopivuus',
+    descEn: 'NIS2, DORA, GDPR, SOC 2 and ISO 27001 compliance'
+  }
+];
+
+const process = [
+  { step: '1', fi: 'Alkukartoitus', en: 'Discovery', fiDesc: 'Nykytilan arviointi ja tavoitteet', enDesc: 'Assess current state and objectives' },
+  { step: '2', fi: 'Tiekartta', en: 'Roadmap', fiDesc: '12–18 kk ohjelma ja prioriteetit', enDesc: '12–18 month program and priorities' },
+  { step: '3', fi: 'Toteutus', en: 'Execution', fiDesc: 'Politiikat, kontrollit ja prosessit', enDesc: 'Policies, controls and processes' },
+  { step: '4', fi: 'Mittarit', en: 'Metrics', fiDesc: 'KPI/KRI ja johtoryhmäraportointi', enDesc: 'KPIs/KRIs and executive reporting' },
+  { step: '5', fi: 'Jatkuva kehitys', en: 'Continuous Improvement', fiDesc: 'Kausittaiset katselmoinnit', enDesc: 'Quarterly reviews and tuning' }
+];
+
+const benefits = [
+  lang==='fi' ? 'Nopea pääsy kokeneeseen CISO‑osaamiseen' : 'Fast access to senior CISO expertise',
+  lang==='fi' ? 'Kustannustehokas osa‑aikainen malli' : 'Cost‑effective fractional model',
+  lang==='fi' ? 'Nopea kypsyystason nosto' : 'Rapid maturity uplift',
+  lang==='fi' ? 'Johdon läpinäkyvyys ja vastuullisuus' : 'Executive visibility and accountability',
+  lang==='fi' ? 'Yhteensopivuusvaatimusten täyttäminen' : 'Meet compliance requirements'
+];
+---
+
+<Layout title={title} description={description}>
+  <section class="bg-gradient-to-br from-teal-50 via-white to-blue-50 py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-4xl">
+        <h1 class="text-4xl lg:text-5xl font-bold text-slate-900 mb-6">{title}</h1>
+        <p class="text-xl text-slate-600 mb-8">{description}</p>
+        <div class="bg-white rounded-xl p-6 shadow-sm border border-slate-200">
+          <h2 class="text-lg font-semibold text-slate-900 mb-4">{lang==='fi' ? 'Mitä saat?' : 'What you get'}</h2>
+          <p class="text-slate-600">{lang==='fi' ? 'Kokopäiväisen CISO:n vaikutus osa‑aikaisella ja joustavalla mallilla – strategia, hallintamalli ja käytännön toteutus yhden kumppanin kautta.' : 'The impact of a full‑time CISO delivered in a flexible, fractional model – strategy, governance and hands‑on execution from a single partner.'}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {offerings.map(o => (
+          <div class="bg-gradient-to-br from-slate-50 to-white p-8 rounded-xl border border-slate-200 hover:shadow-xl transition-all duration-300">
+            <div class="w-16 h-16 bg-teal-100 rounded-xl flex items-center justify-center mb-6">
+              <Icon name={o.icon} className="w-8 h-8 text-teal-600" />
+            </div>
+            <h3 class="text-xl font-bold text-slate-900 mb-2">{lang==='fi' ? o.titleFi : o.titleEn}</h3>
+            <p class="text-slate-600">{lang==='fi' ? o.descFi : o.descEn}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-slate-900 mb-4">{lang==='fi' ? 'Toimintamalli' : 'Engagement Process'}</h2>
+        <p class="text-xl text-slate-600 max-w-3xl mx-auto">{lang==='fi' ? 'Selkeä, iteratiivinen malli, joka tuottaa tuloksia ensimmäisestä kuukaudesta alkaen.' : 'A clear, iterative model that delivers outcomes from month one.'}</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-5 gap-6">
+        {process.map(p => (
+          <div class="text-center">
+            <div class="w-16 h-16 bg-teal-600 rounded-full flex items-center justify-center mx-auto mb-4 text-white text-xl font-bold">{p.step}</div>
+            <h3 class="text-lg font-semibold text-slate-900 mb-1">{lang==='fi' ? p.fi : p.en}</h3>
+            <p class="text-slate-600 text-sm">{lang==='fi' ? p.fiDesc : p.enDesc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-slate-900 mb-4">{lang==='fi' ? 'Hyödyt' : 'Benefits'}</h2>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {benefits.map(b => (
+          <div class="text-center">
+            <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4"><Icon name="check" className="w-8 h-8 text-green-600" /></div>
+            <p class="text-slate-700 font-medium">{b}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 bg-slate-900 text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl font-bold mb-6">{lang==='fi' ? 'Aloitetaanko CISO‑palvelu?' : 'Ready to start CISO‑as‑a‑Service?'}</h2>
+      <p class="text-xl text-slate-300 mb-8 max-w-3xl mx-auto">{lang==='fi' ? 'Varaa keskustelu – esitämme ehdotuksen ja nopean etenemissuunnitelman.' : 'Book a conversation – we will propose a tailored, fast start plan.'}</p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <Button href="/contact" variant="primary" className="text-lg px-8 py-3">{lang==='fi' ? 'Ota yhteyttä' : 'Get in Touch'}</Button>
+        <Button href="/contact?consultation=true" variant="secondary" className="text-lg px-8 py-3">{lang==='fi' ? 'Varaa konsultaatio' : 'Book Consultation'}</Button>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+

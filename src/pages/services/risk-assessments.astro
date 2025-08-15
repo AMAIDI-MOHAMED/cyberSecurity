@@ -1,0 +1,369 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Icon from '@/components/ui/icons/Icon.astro';
+import Button from '@/components/ui/Button.astro';
+
+const currentPath = Astro.url.pathname;
+const lang = currentPath.startsWith('/fi') ? 'fi' : 'en';
+
+const title = lang === 'fi' ? "Riskien Arviointi" : "Risk Assessments";
+const description = lang === 'fi' 
+  ? "Ammattimaiset kyberturvariskien arviointi- ja hallintapalvelut. Autamme organisaatioita tunnistamaan, arvioimaan ja hallitsemaan kyberturvariskejä."
+  : "Professional cybersecurity risk assessment and management services. We help organizations identify, assess, and manage cybersecurity risks.";
+
+const riskTypes = [
+  {
+    title: lang === 'fi' ? "Tekniset Riskit" : "Technical Risks",
+    description: lang === 'fi' 
+      ? "Järjestelmien, verkkojen ja sovellusten kyberturvariskit"
+      : "Cybersecurity risks in systems, networks, and applications",
+    icon: "computer",
+    examples: [
+      lang === 'fi' ? "Haavoittuvuudet" : "Vulnerabilities",
+      lang === 'fi' ? "Malware" : "Malware",
+      lang === 'fi' ? "DDoS hyökkäykset" : "DDoS attacks"
+    ]
+  },
+  {
+    title: lang === 'fi' ? "Operaatiolliset Riskit" : "Operational Risks",
+    description: lang === 'fi' 
+      ? "Prosessien, henkilöstön ja toimintojen kyberturvariskit"
+      : "Cybersecurity risks in processes, personnel, and operations",
+    icon: "user",
+    examples: [
+      lang === 'fi' ? "Henkilöstön virheet" : "Human errors",
+      lang === 'fi' ? "Prosessien puutteet" : "Process gaps",
+      lang === 'fi' ? "Koulutuksen puute" : "Lack of training"
+    ]
+  },
+  {
+    title: lang === 'fi' ? "Sääntelyriskit" : "Regulatory Risks",
+    description: lang === 'fi' 
+      ? "Sääntelyvaatimusten noudattamiseen liittyvät riskit"
+      : "Risks related to regulatory compliance",
+    icon: "document",
+    examples: [
+      lang === 'fi' ? "GDPR yhteensopivuus" : "GDPR compliance",
+      lang === 'fi' ? "NIS2 vaatimukset" : "NIS2 requirements",
+      lang === 'fi' ? "ISO 27001 standardit" : "ISO 27001 standards"
+    ]
+  },
+  {
+    title: lang === 'fi' ? "Kolmannen Osapuolen Riskit" : "Third-Party Risks",
+    description: lang === 'fi' 
+      ? "Toimittajien ja kumppaneiden kyberturvariskit"
+      : "Cybersecurity risks from vendors and partners",
+    icon: "network",
+    examples: [
+      lang === 'fi' ? "Toimittajien haavoittuvuudet" : "Vendor vulnerabilities",
+      lang === 'fi' ? "Kumppaneiden riskit" : "Partner risks",
+      lang === 'fi' ? "Supply chain uhkat" : "Supply chain threats"
+    ]
+  }
+];
+
+const assessmentMethodologies = [
+  {
+    title: lang === 'fi' ? "ISO 27005" : "ISO 27005",
+    description: lang === 'fi' 
+      ? "Kansainvälinen standardi tietoturvariskien hallintaan"
+      : "International standard for information security risk management",
+    icon: "shield",
+    features: [
+      lang === 'fi' ? "Riskien tunnistus" : "Risk identification",
+      lang === 'fi' ? "Riskien arviointi" : "Risk assessment",
+      lang === 'fi' ? "Riskien käsittely" : "Risk treatment"
+    ]
+  },
+  {
+    title: lang === 'fi' ? "NIST CSF" : "NIST CSF",
+    description: lang === 'fi' 
+      ? "NIST:n kyberturvaohjelmisto-kehys"
+      : "NIST Cybersecurity Framework",
+    icon: "target",
+    features: [
+      lang === 'fi' ? "Tunnista" : "Identify",
+      lang === 'fi' ? "Suojaa" : "Protect",
+      lang === 'fi' ? "Havaitse" : "Detect"
+    ]
+  },
+  {
+    title: lang === 'fi' ? "OCTAVE" : "OCTAVE",
+    description: lang === 'fi' 
+      ? "Operaattorikeskeinen riskien arviointimenetelmä"
+      : "Operationally Critical Threat, Asset, and Vulnerability Evaluation",
+    icon: "chart",
+    features: [
+      lang === 'fi' ? "Omaisuuden arviointi" : "Asset evaluation",
+      lang === 'fi' ? "Uhkien tunnistus" : "Threat identification",
+      lang === 'fi' ? "Riskien analyysi" : "Risk analysis"
+    ]
+  }
+];
+
+const assessmentProcess = [
+  {
+    step: "1",
+    title: lang === 'fi' ? "Riskien Tunnistus" : "Risk Identification",
+    description: lang === 'fi' 
+      ? "Tunnistetaan kaikki mahdolliset kyberturvariskit"
+      : "Identify all possible cybersecurity risks"
+  },
+  {
+    step: "2",
+    title: lang === 'fi' ? "Riskien Arviointi" : "Risk Assessment",
+    description: lang === 'fi' 
+      ? "Arvioidaan riskien todennäköisyys ja vaikutus"
+      : "Assess risk probability and impact"
+  },
+  {
+    step: "3",
+    title: lang === 'fi' ? "Riskien Käsittely" : "Risk Treatment",
+    description: lang === 'fi' 
+      ? "Suunnitellaan ja toteutetaan riskien käsittely"
+      : "Plan and implement risk treatment"
+  },
+  {
+    step: "4",
+    title: lang === 'fi' ? "Riskien Seuranta" : "Risk Monitoring",
+    description: lang === 'fi' 
+      ? "Seurataan riskien kehitystä ja tehokkuutta"
+      : "Monitor risk development and effectiveness"
+  },
+  {
+    step: "5",
+    title: lang === 'fi' ? "Riskien Arviointi" : "Risk Review",
+    description: lang === 'fi' 
+      ? "Arvioidaan ja päivitetään riskienhallintaa"
+      : "Review and update risk management"
+  }
+];
+
+const deliverables = [
+  lang === 'fi' ? "Riskien arviointiraportti" : "Risk assessment report",
+  lang === 'fi' ? "Riskienhallintasuunnitelma" : "Risk management plan",
+  lang === 'fi' ? "Riskien matriisi" : "Risk matrix",
+  lang === 'fi' ? "Toimenpidesuunnitelma" : "Action plan",
+  lang === 'fi' ? "Seurantaprosessit" : "Monitoring processes"
+];
+
+const benefits = [
+  lang === 'fi' ? "Tunnista kyberturvariskit" : "Identify cybersecurity risks",
+  lang === 'fi' ? "Priorisoi tietoturvatoimenpiteet" : "Prioritize security measures",
+  lang === 'fi' ? "Vähennä tietoturvariskejä" : "Reduce security risks",
+  lang === 'fi' ? "Paranna tietoturvaa" : "Improve security posture",
+  lang === 'fi' ? "Täytä sääntelyvaatimukset" : "Meet regulatory requirements"
+];
+---
+
+<Layout title={title} description={description}>
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-br from-red-50 via-white to-orange-50 py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-4xl">
+        <h1 class="text-4xl lg:text-5xl font-bold text-slate-900 mb-6">
+          {title}
+        </h1>
+        <p class="text-xl text-slate-600 mb-8">
+          {lang === 'fi' 
+            ? "Tunnista, arvioi ja hallitse kyberturvariskejä systemaattisesti. Autamme organisaatioita rakentamaan vahvan riskienhallintajärjestelmän ja parantamaan kyberturvan kestävyyttä."
+            : "Identify, assess, and manage cybersecurity risks systematically. We help organizations build a strong risk management system and improve cybersecurity resilience."
+          }
+        </p>
+        <div class="bg-white rounded-xl p-6 shadow-sm border border-slate-200">
+          <h2 class="text-lg font-semibold text-slate-900 mb-4">
+            {lang === 'fi' ? 'Miksi Riskien Arviointi?' : 'Why Risk Assessment?'}
+          </h2>
+          <p class="text-slate-600 mb-4">
+            {lang === 'fi'
+              ? "Riskien arviointi on perusta tehokkaalle kyberturvalle. Se auttaa organisaatioita ymmärtämään uhkia, priorisoimaan toimenpiteet ja rakentamaan kestävän tietoturvan."
+              : "Risk assessment is the foundation of effective cybersecurity. It helps organizations understand threats, prioritize measures, and build resilient security."
+            }
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Risk Types -->
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-slate-900 mb-4">
+          {lang === 'fi' ? 'Kyberturvariskien Tyypit' : 'Types of Cybersecurity Risks'}
+        </h2>
+        <p class="text-xl text-slate-600 max-w-3xl mx-auto">
+          {lang === 'fi'
+            ? "Kyberturvariskit voidaan luokitella neljään pääkategoriaan."
+            : "Cybersecurity risks can be classified into four main categories."
+          }
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {riskTypes.map((risk) => (
+          <div class="bg-gradient-to-br from-slate-50 to-white p-8 rounded-xl border border-slate-200 hover:shadow-xl transition-all duration-300">
+            <div class="w-16 h-16 bg-red-100 rounded-xl flex items-center justify-center mb-6">
+              <Icon name={risk.icon} className="w-8 h-8 text-red-600" />
+            </div>
+            <h3 class="text-xl font-bold text-slate-900 mb-4">{risk.title}</h3>
+            <p class="text-slate-600 mb-6">{risk.description}</p>
+            <ul class="space-y-2">
+              {risk.examples.map((example) => (
+                <li class="flex items-center text-sm text-slate-600">
+                  <Icon name="alert" className="w-4 h-4 text-orange-500 mr-2" />
+                  {example}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Assessment Methodologies -->
+  <section class="py-20 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-slate-900 mb-4">
+          {lang === 'fi' ? 'Arviointimenetelmät' : 'Assessment Methodologies'}
+        </h2>
+        <p class="text-xl text-slate-600 max-w-3xl mx-auto">
+          {lang === 'fi'
+            ? "Käytämme tunnettuja ja hyväksyttyjä riskien arviointimenetelmiä."
+            : "We use well-known and accepted risk assessment methodologies."
+          }
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {assessmentMethodologies.map((methodology) => (
+          <div class="bg-white p-8 rounded-xl border border-slate-200 hover:shadow-xl transition-all duration-300">
+            <div class="w-16 h-16 bg-orange-100 rounded-xl flex items-center justify-center mb-6">
+              <Icon name={methodology.icon} className="w-8 h-8 text-orange-600" />
+            </div>
+            <h3 class="text-xl font-bold text-slate-900 mb-4">{methodology.title}</h3>
+            <p class="text-slate-600 mb-6">{methodology.description}</p>
+            <ul class="space-y-2">
+              {methodology.features.map((feature) => (
+                <li class="flex items-center text-sm text-slate-600">
+                  <Icon name="check" className="w-4 h-4 text-green-500 mr-2" />
+                  {feature}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Assessment Process -->
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-slate-900 mb-4">
+          {lang === 'fi' ? 'Arviointiprosessi' : 'Assessment Process'}
+        </h2>
+        <p class="text-xl text-slate-600 max-w-3xl mx-auto">
+          {lang === 'fi'
+            ? "Selkeä ja strukturoitu prosessi riskien arviointiin."
+            : "Clear and structured process for risk assessment."
+          }
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
+        {assessmentProcess.map((step) => (
+          <div class="text-center">
+            <div class="w-16 h-16 bg-red-600 rounded-full flex items-center justify-center mx-auto mb-4 text-white text-xl font-bold">
+              {step.step}
+            </div>
+            <h3 class="text-lg font-semibold text-slate-900 mb-2">{step.title}</h3>
+            <p class="text-slate-600 text-sm">{step.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Deliverables -->
+  <section class="py-20 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-slate-900 mb-4">
+          {lang === 'fi' ? 'Toimitettavat Asiat' : 'Deliverables'}
+        </h2>
+        <p class="text-xl text-slate-600 max-w-3xl mx-auto">
+          {lang === 'fi'
+            ? "Riskien arviointityön tulokset ja toimitettavat asiat."
+            : "Results and deliverables of the risk assessment work."
+          }
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {deliverables.map((deliverable) => (
+          <div class="text-center">
+            <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+              <Icon name="document" className="w-8 h-8 text-green-600" />
+            </div>
+            <p class="text-slate-700 font-medium">{deliverable}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits Section -->
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-slate-900 mb-4">
+          {lang === 'fi' ? 'Riskien Arvioinnin Edut' : 'Benefits of Risk Assessment'}
+        </h2>
+        <p class="text-xl text-slate-600 max-w-3xl mx-auto">
+          {lang === 'fi'
+            ? "Saavuta konkreettisia hyötyjä systemaattisen riskien arvioinnin avulla."
+            : "Achieve concrete benefits with systematic risk assessment."
+          }
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {benefits.map((benefit) => (
+          <div class="text-center">
+            <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+              <Icon name="check" className="w-8 h-8 text-green-600" />
+            </div>
+            <p class="text-slate-700 font-medium">{benefit}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-20 bg-slate-900 text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl font-bold mb-6">
+        {lang === 'fi' ? 'Valmiit aloittamaan riskien arvioinnin?' : 'Ready to start your risk assessment?'}
+      </h2>
+      <p class="text-xl text-slate-300 mb-8 max-w-3xl mx-auto">
+        {lang === 'fi'
+          ? "Ota yhteyttä meihin ja aloitetaan kyberturvariskien arviointi."
+          : "Contact us and let's start your cybersecurity risk assessment."
+        }
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <Button href="/contact" variant="primary" className="text-lg px-8 py-3">
+          {lang === 'fi' ? 'Ota yhteyttä' : 'Get in Touch'}
+        </Button>
+        <Button href="/contact?consultation=true" variant="secondary" className="text-lg px-8 py-3">
+          {lang === 'fi' ? 'Varaa konsultaatio' : 'Book Consultation'}
+        </Button>
+      </div>
+    </div>
+  </section>
+</Layout>

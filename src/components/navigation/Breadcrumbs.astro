@@ -1,0 +1,30 @@
+---
+/**
+ * Breadcrumbs component
+ * Usage: <Breadcrumbs segments={[{ href: '/', label: 'Home' }, ...]} />
+ * If segments not passed, builds from current path.
+ */
+interface Crumb { href: string; label: string }
+interface Props { segments?: Crumb[] }
+const { segments } = Astro.props as Props;
+const path = Astro.url.pathname.replace(/\/$/, '');
+const isFi = path.startsWith('/fi');
+const parts = segments ?? path.split('/').filter(Boolean).reduce((acc: Crumb[], part, idx, arr) => {
+  const href = '/' + arr.slice(0, idx + 1).join('/');
+  acc.push({ href, label: decodeURIComponent(part.replace(/-/g,' ')) });
+  return acc;
+}, []);
+const homeHref = isFi ? '/fi' : '/';
+const homeLabel = isFi ? 'Koti' : 'Home';
+---
+<nav aria-label="Breadcrumb" class="mb-4 text-sm">
+  <ol class="flex flex-wrap items-center gap-1 text-slate-500">
+    <li><a href={homeHref} class="hover:text-teal-700">{homeLabel}</a></li>
+    {parts.map(p => (
+      <li class="flex items-center">
+        <span class="mx-1 text-slate-400">/</span>
+        <a href={p.href} class="capitalize hover:text-teal-700 aria-[current=page]:text-slate-700" aria-current={p.href === path ? 'page' : undefined}>{p.label}</a>
+      </li>
+    ))}
+  </ol>
+</nav>

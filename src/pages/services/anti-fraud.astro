@@ -1,0 +1,55 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Icon from '@/components/ui/icons/Icon.astro';
+import Button from '@/components/ui/Button.astro';
+
+const currentPath = Astro.url.pathname;
+const lang = currentPath.startsWith('/fi') ? 'fi' : 'en';
+
+const title = lang === 'fi' ? 'Petosriskien arviointi' : 'Fraud Risk Assessment';
+const description = lang === 'fi' ? 'TPRM, maksuprosessit ja käyttäjäprosessit läpi käyvää petosriskiarviointia – BEC, laskupetos, tilin kaappaus.' : 'Comprehensive fraud risk assessment across TPRM, payment and user processes – BEC, invoice fraud, account takeover.';
+
+const lenses = [
+  { icon:'user', fi:'Sosiaalinen manipulointi', en:'Social engineering' },
+  { icon:'mail', fi:'BEC ja laskupetos', en:'BEC and invoice fraud' },
+  { icon:'document', fi:'Prosessi- ja maksukontrollit', en:'Process and payment controls' },
+  { icon:'network', fi:'Kolmannen osapuolen riskit', en:'Third‑party risks' }
+];
+---
+
+<Layout title={title} description={description}>
+  <section class="bg-gradient-to-br from-amber-50 via-white to-orange-50 py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-4xl">
+        <h1 class="text-4xl lg:text-5xl font-bold text-slate-900 mb-6">{title}</h1>
+        <p class="text-xl text-slate-600">{description}</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {lenses.map(l => (
+          <div class="bg-gradient-to-br from-slate-50 to-white p-8 rounded-xl border border-slate-200 hover:shadow-xl transition-all duration-300">
+            <div class="w-16 h-16 bg-amber-100 rounded-xl flex items-center justify-center mb-6"><Icon name={l.icon} className="w-8 h-8 text-amber-600" /></div>
+            <h3 class="text-lg font-bold text-slate-900">{lang==='fi'?l.fi:l.en}</h3>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 bg-slate-900 text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl font-bold mb-6">{lang==='fi' ? 'Pyydä petosriskikartoitus' : 'Request a fraud risk review'}</h2>
+      <p class="text-xl text-slate-300 mb-8 max-w-3xl mx-auto">{lang==='fi' ? 'Käydään kriittiset prosessit läpi ja vahvistetaan kontrollit.' : 'We’ll review critical processes and strengthen controls.'}</p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <Button href="/contact" variant="primary" className="text-lg px-8 py-3">{lang==='fi' ? 'Ota yhteyttä' : 'Get in Touch'}</Button>
+        <Button href="/contact?consultation=true" variant="secondary" className="text-lg px-8 py-3">{lang==='fi' ? 'Varaa konsultaatio' : 'Book Consultation'}</Button>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+

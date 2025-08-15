@@ -1,0 +1,29 @@
+---
+import { Image } from "astro:assets";
+import toolbar from "@images/toolbar.webp";
+import dashboard from "@images/dashboard.webp";
+---
+
+{/* Hero Visual */}
+<div class="relative m-auto w-full pt-16 sm:w-[90%]">
+  <div
+    class="via-off-white to-off-white pointer-events-none absolute inset-x-0 -bottom-2 z-10 hidden h-20 w-full bg-linear-to-b/oklch from-transparent sm:block"
+  >
+  </div>
+
+  <Image
+    src={toolbar}
+    alt="Security Dashboard"
+    loading={"eager"}
+    class="absolute inset-[25%_auto_auto_-8%] z-20 hidden w-[25%] sm:block"
+  />
+
+  <div class="aspect-video">
+    <Image
+      src={dashboard}
+      alt="CyberSecurity Finland Dashboard"
+      loading={"eager"}
+      class="aspect-auto rounded-xl w-full h-full object-cover"
+    />
+  </div>
+</div>

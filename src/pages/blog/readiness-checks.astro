@@ -1,0 +1,613 @@
+---
+import Layout from '@/layouts/Layout.astro';
+
+const title = "Readiness Checks";
+const currentPath = Astro.url.pathname;
+const lang = currentPath.startsWith('/fi') ? 'fi' : 'en';
+
+const content = {
+  en: {
+    title: "Readiness Checks",
+    subtitle: "Assess Your Cybersecurity Posture",
+    heroDescription: "Take our comprehensive readiness assessments to evaluate your organization's cybersecurity maturity and identify areas for improvement.",
+    assessments: {
+      title: "Available Assessments",
+      description: "Choose from our range of specialized readiness checks designed for different compliance frameworks and security domains.",
+      types: [
+        {
+          title: "ISO 27001 Readiness",
+          description: "Evaluate your organization's preparedness for ISO 27001 certification",
+          duration: "45-60 minutes",
+          questions: "120 questions",
+          coverage: "Information Security Management System",
+          difficulty: "Intermediate",
+          icon: "🔒"
+        },
+        {
+          title: "GDPR Compliance Check",
+          description: "Assess your current GDPR compliance status and identify gaps",
+          duration: "30-45 minutes",
+          questions: "85 questions",
+          coverage: "Data Protection & Privacy",
+          difficulty: "Beginner",
+          icon: "🛡️"
+        },
+        {
+          title: "SOC 2 Readiness",
+          description: "Determine your readiness for SOC 2 Type II audit",
+          duration: "60-75 minutes",
+          questions: "150 questions",
+          coverage: "Trust Services Criteria",
+          difficulty: "Advanced",
+          icon: "📊"
+        },
+        {
+          title: "DORA Compliance",
+          description: "Assess your Digital Operational Resilience Act readiness",
+          duration: "40-55 minutes",
+          questions: "95 questions",
+          coverage: "Financial Services Security",
+          difficulty: "Intermediate",
+          icon: "🏦"
+        },
+        {
+          title: "NIS2 Directive",
+          description: "Evaluate your NIS2 directive compliance status",
+          duration: "35-50 minutes",
+          questions: "80 questions",
+          coverage: "Network & Information Security",
+          difficulty: "Intermediate",
+          icon: "🌐"
+        },
+        {
+          title: "General Security Posture",
+          description: "Comprehensive assessment of overall cybersecurity maturity",
+          duration: "50-65 minutes",
+          questions: "110 questions",
+          coverage: "All Security Domains",
+          difficulty: "All Levels",
+          icon: "🎯"
+        }
+      ]
+    },
+    process: {
+      title: "Assessment Process",
+      description: "How our readiness checks work and what you can expect.",
+      steps: [
+        {
+          step: "1",
+          title: "Select Assessment",
+          description: "Choose the assessment that best fits your needs and compliance requirements",
+          duration: "5 minutes"
+        },
+        {
+          step: "2",
+          title: "Complete Questions",
+          description: "Answer comprehensive questions about your current security practices and controls",
+          duration: "30-75 minutes"
+        },
+        {
+          step: "3",
+          title: "Receive Analysis",
+          description: "Get detailed results with scores, recommendations, and action plans",
+          duration: "Immediate"
+        },
+        {
+          step: "4",
+          title: "Implementation Support",
+          description: "Access resources and guidance to address identified gaps",
+          duration: "Ongoing"
+        }
+      ]
+    },
+    benefits: {
+      title: "Benefits of Readiness Checks",
+      description: "Why organizations choose our assessment tools.",
+      advantages: [
+        {
+          title: "Identify Gaps",
+          description: "Pinpoint specific areas where your security posture needs improvement",
+          icon: "🔍"
+        },
+        {
+          title: "Save Time",
+          description: "Avoid costly mistakes by understanding requirements upfront",
+          icon: "⏰"
+        },
+        {
+          title: "Prioritize Actions",
+          description: "Focus resources on the most critical security improvements",
+          icon: "📋"
+        },
+        {
+          title: "Track Progress",
+          description: "Monitor your security maturity improvements over time",
+          icon: "📈"
+        },
+        {
+          title: "Compliance Confidence",
+          description: "Build confidence in your ability to meet regulatory requirements",
+          icon: "✅"
+        },
+        {
+          title: "Expert Guidance",
+          description: "Access to cybersecurity experts for implementation support",
+          icon: "👨‍💼"
+        }
+      ]
+    },
+    sample: {
+      title: "Sample Questions",
+      description: "Get a preview of the types of questions you'll encounter in our assessments.",
+      questions: [
+        {
+          category: "Access Control",
+          question: "Do you have a formal process for provisioning and deprovisioning user accounts?",
+          options: ["Yes, fully documented", "Yes, partially documented", "No formal process", "Not applicable"]
+        },
+        {
+          category: "Data Protection",
+          question: "Are all sensitive data assets classified and labeled according to their sensitivity level?",
+          options: ["Yes, comprehensive classification", "Yes, basic classification", "Partial classification", "No classification"]
+        },
+        {
+          category: "Incident Response",
+          question: "Do you have a documented incident response plan that is tested annually?",
+          options: ["Yes, tested annually", "Yes, tested occasionally", "Yes, but not tested", "No plan"]
+        },
+        {
+          category: "Risk Management",
+          question: "How often do you conduct comprehensive security risk assessments?",
+          options: ["Quarterly", "Annually", "Every 2-3 years", "Never or ad-hoc"]
+        }
+      ]
+    },
+    results: {
+      title: "Understanding Your Results",
+      description: "What you'll receive after completing an assessment.",
+      deliverables: [
+        {
+          title: "Comprehensive Score",
+          description: "Overall readiness score with detailed breakdown by domain",
+          format: "Percentage & Category"
+        },
+        {
+          title: "Gap Analysis",
+          description: "Specific areas requiring attention and improvement",
+          format: "Detailed Report"
+        },
+        {
+          title: "Action Plan",
+          description: "Prioritized recommendations with implementation timeline",
+          format: "Step-by-step Guide"
+        },
+        {
+          title: "Resource Library",
+          description: "Access to templates, tools, and best practices",
+          format: "Downloadable Resources"
+        },
+        {
+          title: "Progress Tracking",
+          description: "Tools to monitor improvements over time",
+          format: "Dashboard Access"
+        }
+      ]
+    },
+    start: {
+      title: "Ready to Get Started?",
+      description: "Begin your cybersecurity readiness journey today.",
+      features: [
+        "Free initial assessment",
+        "No registration required",
+        "Immediate results",
+        "Expert consultation available"
+      ]
+    },
+    cta: {
+      title: "Start Your Assessment",
+      subtitle: "Take the first step towards improving your cybersecurity posture.",
+      button: "Begin Assessment",
+      link: "/assessments"
+    }
+  },
+  fi: {
+    title: "Valmiuskartoitukset",
+    subtitle: "Arvioi kyberturvallisuustilasi",
+    heroDescription: "Ota kattavat valmiuskartoituksemme arvioidaksesi organisaatiosi kyberturvallisuuden kypsyystasoa ja tunnistaa parannusalueet.",
+    assessments: {
+      title: "Saatavissa olevat kartoitukset",
+      description: "Valitse erikoistuneiden valmiuskartoituksemme joukosta, jotka on suunniteltu erilaisille yhteensopivuuskehyksille ja turvallisuusalueille.",
+      types: [
+        {
+          title: "ISO 27001 -valmius",
+          description: "Arvioi organisaatiosi valmius ISO 27001 -sertifiointiin",
+          duration: "45-60 minuuttia",
+          questions: "120 kysymystä",
+          coverage: "Tietoturvajohtamisjärjestelmä",
+          difficulty: "Keskitaso",
+          icon: "🔒"
+        },
+        {
+          title: "GDPR-yhteensopivuustarkistus",
+          description: "Arvioi nykyinen GDPR-yhteensopivuustilasi ja tunnista kuilut",
+          duration: "30-45 minuuttia",
+          questions: "85 kysymystä",
+          coverage: "Tietosuoja ja yksityisyys",
+          difficulty: "Aloittelija",
+          icon: "🛡️"
+        },
+        {
+          title: "SOC 2 -valmius",
+          description: "Määritä valmius SOC 2 Type II -tarkistukseen",
+          duration: "60-75 minuuttia",
+          questions: "150 kysymystä",
+          coverage: "Luottamuspalvelukriteerit",
+          difficulty: "Edistynyt",
+          icon: "📊"
+        },
+        {
+          title: "DORA-yhteensopivuus",
+          description: "Arvioi Digital Operational Resilience Act -valmius",
+          duration: "40-55 minuuttia",
+          questions: "95 kysymystä",
+          coverage: "Rahoituspalvelujen turvallisuus",
+          difficulty: "Keskitaso",
+          icon: "🏦"
+        },
+        {
+          title: "NIS2-direktiivi",
+          description: "Arvioi NIS2-direktiivin yhteensopivuustilasi",
+          duration: "35-50 minuuttia",
+          questions: "80 kysymystä",
+          coverage: "Verkko- ja tietoturva",
+          difficulty: "Keskitaso",
+          icon: "🌐"
+        },
+        {
+          title: "Yleinen turvallisuustila",
+          description: "Kattava arviointi kyberturvallisuuden kypsyystasosta",
+          duration: "50-65 minuuttia",
+          questions: "110 kysymystä",
+          coverage: "Kaikki turvallisuusalueet",
+          difficulty: "Kaikki tasot",
+          icon: "🎯"
+        }
+      ]
+    },
+    process: {
+      title: "Kartoitusprosessi",
+      description: "Miten valmiuskartoituksemme toimivat ja mitä voit odottaa.",
+      steps: [
+        {
+          step: "1",
+          title: "Valitse kartoitus",
+          description: "Valitse kartoitus, joka parhaiten vastaa tarpeitasi ja yhteensopivuusvaatimuksia",
+          duration: "5 minuuttia"
+        },
+        {
+          step: "2",
+          title: "Vastaa kysymyksiin",
+          description: "Vastaa kattaviin kysymyksiin nykyisistä turvallisuuskäytännöistäsi ja valvontatoimista",
+          duration: "30-75 minuuttia"
+        },
+        {
+          step: "3",
+          title: "Saa analyysi",
+          description: "Saa yksityiskohtaiset tulokset pisteillä, suosituksilla ja toimintasuunnitelmalla",
+          duration: "Välittömästi"
+        },
+        {
+          step: "4",
+          title: "Toteutustuki",
+          description: "Käytä resursseja ja ohjausta tunnistettujen kuilujen korjaamiseen",
+          duration: "Jatkuva"
+        }
+      ]
+    },
+    benefits: {
+      title: "Valmiuskartoituksen hyödyt",
+      description: "Miksi organisaatiot valitsevat arviointityökalumme.",
+      advantages: [
+        {
+          title: "Tunnista kuilut",
+          description: "Tunnista tarkat alueet, joissa turvallisuustilasi tarvitsee parannusta",
+          icon: "🔍"
+        },
+        {
+          title: "Säästä aikaa",
+          description: "Vältä kalliita virheitä ymmärtämällä vaatimukset etukäteen",
+          icon: "⏰"
+        },
+        {
+          title: "Priorisoi toimenpiteet",
+          description: "Keskitä resursseja kriittisimpiin turvallisuusparannuksiin",
+          icon: "📋"
+        },
+        {
+          title: "Seuraa edistymistä",
+          description: "Seuraa turvallisuuden kypsyystason parannuksia ajan myötä",
+          icon: "📈"
+        },
+        {
+          title: "Yhteensopivuusluottamus",
+          description: "Rakenna luottamusta kykyysi täyttää sääntelyvaatimukset",
+          icon: "✅"
+        },
+        {
+          title: "Asiantunteva ohjaus",
+          description: "Pääsy kyberturvallisuusasiantuntijoihin toteutustukea varten",
+          icon: "👨‍💼"
+        }
+      ]
+    },
+    sample: {
+      title: "Esimerkkikysymykset",
+      description: "Saa esikatselu kysymystyypeistä, joita kohtaat arvioinneissamme.",
+      questions: [
+        {
+          category: "Käyttöoikeuksien hallinta",
+          question: "Onko sinulla muodollinen prosessi käyttäjätilien luomiseen ja poistamiseen?",
+          options: ["Kyllä, täysin dokumentoitu", "Kyllä, osittain dokumentoitu", "Ei muodollista prosessia", "Ei sovellu"]
+        },
+        {
+          category: "Tietojen suojaus",
+          question: "Onko kaikki arkaluontoiset tietoaineistot luokiteltu ja merkitty arkaluonteisuustasonsa mukaan?",
+          options: ["Kyllä, kattava luokittelu", "Kyllä, perusluokittelu", "Osittainen luokittelu", "Ei luokittelua"]
+        },
+        {
+          category: "Tapahtumavastaus",
+          question: "Onko sinulla dokumentoitu tapahtumavastaussuunnitelma, jota testataan vuosittain?",
+          options: ["Kyllä, testataan vuosittain", "Kyllä, testataan satunnaisesti", "Kyllä, mutta ei testata", "Ei suunnitelmaa"]
+        },
+        {
+          category: "Riskien hallinta",
+          question: "Kuinka usein suoritatte kattavia turvallisuusriskien arviointeja?",
+          options: ["Neljännesvuosittain", "Vuosittain", "2-3 vuoden välein", "Ei koskaan tai satunnaisesti"]
+        }
+      ]
+    },
+    results: {
+      title: "Tulosten ymmärtäminen",
+      description: "Mitä saat kartoituksen valmistumisen jälkeen.",
+      deliverables: [
+        {
+          title: "Kattava pistemäärä",
+          description: "Kokonaisvalmiuspistemäärä yksityiskohtaisella alueittaisella jakautumalla",
+          format: "Prosentti ja kategoria"
+        },
+        {
+          title: "Kuiluanalyysi",
+          description: "Tarkat huomiota vaativat alueet ja parannukset",
+          format: "Yksityiskohtainen raportti"
+        },
+        {
+          title: "Toimintasuunnitelma",
+          description: "Priorisoidut suositukset toteutusajastimella",
+          format: "Vaiheittainen opas"
+        },
+        {
+          title: "Resurssikirjasto",
+          description: "Pääsy malleihin, työkaluihin ja parhaisiin käytäntöihin",
+          format: "Ladattavat resurssit"
+        },
+        {
+          title: "Edistymisen seuranta",
+          description: "Työkalut edistymisen seurantaan ajan myötä",
+          format: "Ohjauspaneelin pääsy"
+        }
+      ]
+    },
+    start: {
+      title: "Valmiit aloittamaan?",
+      description: "Aloita kyberturvallisuuden valmiusmatkasi tänään.",
+      features: [
+        "Ilmainen alustava kartoitus",
+        "Ei rekisteröitymistä vaadita",
+        "Välittömät tulokset",
+        "Asiantunteva konsultaatio saatavilla"
+      ]
+    },
+    cta: {
+      title: "Aloita kartoituksesi",
+      subtitle: "Ota ensimmäinen askel parantaaksesi kyberturvallisuustilasi.",
+      button: "Aloita kartoitus",
+      link: "/assessments"
+    }
+  }
+};
+
+const currentContent = content[lang];
+---
+
+<Layout title={title}>
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h1 class="text-5xl font-bold mb-6">{currentContent.title}</h1>
+      <p class="text-2xl font-light mb-8">{currentContent.subtitle}</p>
+      <p class="text-xl text-slate-300 max-w-3xl mx-auto">{currentContent.heroDescription}</p>
+    </div>
+  </section>
+
+  <!-- Assessments Section -->
+  <section class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-bold text-gray-900 mb-4">{currentContent.assessments.title}</h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">{currentContent.assessments.description}</p>
+      </div>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {currentContent.assessments.types.map((assessment) => (
+          <div class="bg-gradient-to-br from-blue-50 to-blue-100 p-6 rounded-lg border border-blue-200 hover:shadow-lg transition duration-300">
+            <div class="text-4xl mb-4">{assessment.icon}</div>
+            <h3 class="text-xl font-bold text-blue-900 mb-3">{assessment.title}</h3>
+            <p class="text-blue-800 text-sm mb-4">{assessment.description}</p>
+            
+            <div class="space-y-2 text-sm text-blue-700">
+              <div class="flex justify-between">
+                <span>Duration:</span>
+                <span class="font-medium">{assessment.duration}</span>
+              </div>
+              <div class="flex justify-between">
+                <span>Questions:</span>
+                <span class="font-medium">{assessment.questions}</span>
+              </div>
+              <div class="flex justify-between">
+                <span>Coverage:</span>
+                <span class="font-medium">{assessment.coverage}</span>
+              </div>
+              <div class="flex justify-between">
+                <span>Difficulty:</span>
+                <span class="font-medium">{assessment.difficulty}</span>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Process Section -->
+  <section class="py-16 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-bold text-gray-900 mb-4">{currentContent.process.title}</h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">{currentContent.process.description}</p>
+      </div>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {currentContent.process.steps.map((step) => (
+          <div class="bg-white p-6 rounded-lg shadow-lg text-center">
+            <div class="bg-blue-600 text-white w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">
+              {step.step}
+            </div>
+            <h3 class="text-lg font-semibold text-gray-900 mb-3">{step.title}</h3>
+            <p class="text-gray-600 text-sm mb-4">{step.description}</p>
+            <div class="text-blue-600 font-medium text-sm">{step.duration}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits Section -->
+  <section class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-bold text-gray-900 mb-4">{currentContent.benefits.title}</h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">{currentContent.benefits.description}</p>
+      </div>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {currentContent.benefits.advantages.map((benefit) => (
+          <div class="bg-gradient-to-br from-green-50 to-green-100 p-6 rounded-lg border border-green-200">
+            <div class="text-3xl mb-4">{benefit.icon}</div>
+            <h3 class="text-lg font-semibold text-green-900 mb-3">{benefit.title}</h3>
+            <p class="text-green-800 text-sm">{benefit.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Sample Questions Section -->
+  <section class="py-16 bg-slate-50">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-bold text-gray-900 mb-4">{currentContent.sample.title}</h2>
+        <p class="text-xl text-gray-600">{currentContent.sample.description}</p>
+      </div>
+      
+      <div class="space-y-6">
+        {currentContent.sample.questions.map((question) => (
+          <div class="bg-white p-6 rounded-lg shadow-lg">
+            <div class="mb-4">
+              <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs font-medium">{question.category}</span>
+            </div>
+            <h3 class="text-lg font-semibold text-gray-900 mb-4">{question.question}</h3>
+            <div class="space-y-2">
+              {question.options.map((option) => (
+                <div class="flex items-center">
+                  <input type="radio" name={`question-${question.category}`} class="mr-3">
+                  <label class="text-gray-700">{option}</label>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Results Section -->
+  <section class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-bold text-gray-900 mb-4">{currentContent.results.title}</h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">{currentContent.results.description}</p>
+      </div>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {currentContent.results.deliverables.map((deliverable) => (
+          <div class="bg-gradient-to-br from-purple-50 to-purple-100 p-6 rounded-lg border border-purple-200">
+            <h3 class="text-lg font-semibold text-purple-900 mb-3">{deliverable.title}</h3>
+            <p class="text-purple-800 text-sm mb-4">{deliverable.description}</p>
+            <div class="text-purple-600 font-medium text-sm">{deliverable.format}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Start Section -->
+  <section class="py-16 bg-slate-50">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-4xl font-bold text-gray-900 mb-4">{currentContent.start.title}</h2>
+        <p class="text-xl text-gray-600">{currentContent.start.description}</p>
+      </div>
+      
+      <div class="bg-white p-8 rounded-lg shadow-lg">
+        <div class="grid md:grid-cols-2 gap-8">
+          <div>
+            <h3 class="text-xl font-semibold text-gray-900 mb-4">Key Features</h3>
+            <ul class="space-y-3">
+              {currentContent.start.features.map((feature) => (
+                <li class="flex items-center text-gray-700">
+                  <svg class="w-5 h-5 text-green-600 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  {feature}
+                </li>
+              ))}
+            </ul>
+          </div>
+          
+          <div class="text-center">
+            <div class="bg-blue-100 w-24 h-24 rounded-full flex items-center justify-center mx-auto mb-6">
+              <svg class="w-12 h-12 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+            </div>
+            <p class="text-gray-600 mb-6">Ready to assess your cybersecurity readiness?</p>
+            <a href={currentContent.cta.link} class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition duration-300">
+              {currentContent.cta.button}
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-16 bg-blue-600 text-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-4xl font-bold mb-4">{currentContent.cta.title}</h2>
+      <p class="text-xl mb-8">{currentContent.cta.subtitle}</p>
+      <a href={currentContent.cta.link} class="inline-block bg-white text-blue-600 font-semibold py-3 px-8 rounded-lg hover:bg-gray-100 transition duration-300">
+        {currentContent.cta.button}
+      </a>
+    </div>
+  </section>
+</Layout>

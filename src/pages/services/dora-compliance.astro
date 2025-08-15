@@ -1,0 +1,347 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Icon from '@/components/ui/icons/Icon.astro';
+import Button from '@/components/ui/Button.astro';
+
+const currentPath = Astro.url.pathname;
+const lang = currentPath.startsWith('/fi') ? 'fi' : 'en';
+
+const title = lang === 'fi' ? "DORA Yhteensopivuus" : "DORA Compliance";
+const description = lang === 'fi' 
+  ? "Ammattimaiset DORA yhteensopivuuspalvelut. Autamme rahoituspalveluorganisaatioita täyttämään EU:n digitaalisen operatiivisen resilienssin lain vaatimukset."
+  : "Professional DORA compliance services. We help financial service organizations meet EU Digital Operational Resilience Act requirements.";
+
+const doraPillars = [
+  {
+    title: lang === 'fi' ? "ICT Riskienhallinta" : "ICT Risk Management",
+    description: lang === 'fi' 
+      ? "Kattava ICT riskienhallintajärjestelmä rahoituspalveluille"
+      : "Comprehensive ICT risk management system for financial services",
+    icon: "chart",
+    requirements: [
+      lang === 'fi' ? "ICT riskien tunnistus ja arviointi" : "ICT risk identification and assessment",
+      lang === 'fi' ? "Riskien hallintastrategiat" : "Risk management strategies",
+      lang === 'fi' ? "Jatkuva seuranta ja raportointi" : "Continuous monitoring and reporting"
+    ]
+  },
+  {
+    title: lang === 'fi' ? "ICT Vikatilanteiden Vastaus" : "ICT Incident Reporting",
+    description: lang === 'fi' 
+      ? "Nopea ja tehokas vikatilanteiden vastaus ja raportointi"
+      : "Rapid and effective incident response and reporting",
+    icon: "alert",
+    requirements: [
+      lang === 'fi' ? "Vikatilanteiden tunnistus" : "Incident detection",
+      lang === 'fi' ? "Vastausprosessit" : "Response processes",
+      lang === 'fi' ? "Sääntelyraportointi" : "Regulatory reporting"
+    ]
+  },
+  {
+    title: lang === 'fi' ? "Digitaalinen Resilienssi" : "Digital Resilience",
+    description: lang === 'fi' 
+      ? "Vahvista digitaalisten palvelujen kestävyys ja jatkuvuus"
+      : "Strengthen digital service resilience and continuity",
+    icon: "shield",
+    requirements: [
+      lang === 'fi' ? "Palvelujen jatkuvuus" : "Service continuity",
+      lang === 'fi' ? "Varmuuskopiointi ja palautus" : "Backup and recovery",
+      lang === 'fi' ? "Suunnitelmallinen testaus" : "Planned testing"
+    ]
+  },
+  {
+    title: lang === 'fi' ? "Kolmannen Osapuolen Riskit" : "Third-Party Risks",
+    description: lang === 'fi' 
+      ? "Hallitse toimittajien ja kumppaneiden kyberturvariskit"
+      : "Manage cybersecurity risks from vendors and partners",
+    icon: "network",
+    requirements: [
+      lang === 'fi' ? "Toimittajien arviointi" : "Vendor assessment",
+      lang === 'fi' ? "Sopimusten hallinta" : "Contract management",
+      lang === 'fi' ? "Jatkuva valvonta" : "Continuous monitoring"
+    ]
+  }
+];
+
+const complianceTimeline = [
+  {
+    year: "2025",
+    title: lang === 'fi' ? "DORA Tulee Voimaan" : "DORA Takes Effect",
+    description: lang === 'fi' 
+      ? "DORA vaatimukset tulevat voimaan kaikille rahoituspalveluorganisaatioille"
+      : "DORA requirements take effect for all financial service organizations"
+  },
+  {
+    year: "2024",
+    title: lang === 'fi' ? "Valmistelu" : "Preparation",
+    description: lang === 'fi' 
+      ? "Organisaatioiden tulee valmistautua DORA vaatimusten täyttämiseen"
+      : "Organizations must prepare to meet DORA requirements"
+  },
+  {
+    year: "2023",
+    title: lang === 'fi' ? "Sääntely" : "Regulation",
+    description: lang === 'fi' 
+      ? "DORA hyväksyttiin ja julkaistiin EU:ssa"
+      : "DORA was approved and published in the EU"
+  }
+];
+
+const financialEntities = [
+  lang === 'fi' ? "Pankit" : "Banks",
+  lang === 'fi' ? "Vakuutusyhtiöt" : "Insurance Companies",
+  lang === 'fi' ? "Sijoituspalvelut" : "Investment Services",
+  lang === 'fi' ? "Maksupalvelut" : "Payment Services",
+  lang === 'fi' ? "Kryptovaluuttapalvelut" : "Crypto Asset Services",
+  lang === 'fi' ? "Rahoitusmarkkinoiden infrastruktuuri" : "Financial Market Infrastructure"
+];
+
+const benefits = [
+  lang === 'fi' ? "Täytä EU sääntelyvaatimukset" : "Meet EU regulatory requirements",
+  lang === 'fi' ? "Vahvista kyberturvan kestävyyttä" : "Strengthen cybersecurity resilience",
+  lang === 'fi' ? "Paranna asiakkaiden luottamusta" : "Improve customer trust",
+  lang === 'fi' ? "Vähennä sääntelyriskejä" : "Reduce regulatory risks",
+  lang === 'fi' ? "Kilpailuetu markkinoilla" : "Competitive advantage in markets"
+];
+
+const implementationSteps = [
+  {
+    step: "1",
+    title: lang === 'fi' ? "DORA Arviointi" : "DORA Assessment",
+    description: lang === 'fi' 
+      ? "Arvioidaan nykyinen tietoturvataso DORA vaatimusten suhteen"
+      : "Assess current security posture against DORA requirements"
+  },
+  {
+    step: "2",
+    title: lang === 'fi' ? "Gap Analysis" : "Gap Analysis",
+    description: lang === 'fi' 
+      ? "Tunnistetaan puutteet ja suunnitellaan korjauskeinot"
+      : "Identify gaps and plan remediation measures"
+  },
+  {
+    step: "3",
+    title: lang === 'fi' ? "Suunnittelu" : "Planning",
+    description: lang === 'fi' 
+      ? "Suunnitellaan DORA yhteensopivuusohjelma"
+      : "Plan DORA compliance program"
+  },
+  {
+    step: "4",
+    title: lang === 'fi' ? "Toteutus" : "Implementation",
+    description: lang === 'fi' 
+      ? "Toteutetaan tarvittavat tietoturvatoimenpiteet"
+      : "Implement required security measures"
+  },
+  {
+    step: "5",
+    title: lang === 'fi' ? "Valvonta" : "Monitoring",
+    description: lang === 'fi' 
+      ? "Jatkuva yhteensopivuuden valvonta ja raportointi"
+      : "Continuous compliance monitoring and reporting"
+  }
+];
+---
+
+<Layout title={title} description={description}>
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-br from-green-50 via-white to-blue-50 py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-4xl">
+        <h1 class="text-4xl lg:text-5xl font-bold text-slate-900 mb-6">
+          {title}
+        </h1>
+        <p class="text-xl text-slate-600 mb-8">
+          {lang === 'fi' 
+            ? "Täytä DORA vaatimukset ja vahvista rahoituspalveluorganisaatiosi kyberturvan kestävyys. Autamme rahoituspalveluja saavuttamaan EU:n sääntelyvaatimukset."
+            : "Meet DORA requirements and strengthen your financial service organization's cybersecurity resilience. We help financial services achieve EU regulatory requirements."
+          }
+        </p>
+        <div class="bg-white rounded-xl p-6 shadow-sm border border-slate-200">
+          <h2 class="text-lg font-semibold text-slate-900 mb-4">
+            {lang === 'fi' ? 'Mikä on DORA?' : 'What is DORA?'}
+          </h2>
+          <p class="text-slate-600 mb-4">
+            {lang === 'fi'
+              ? "DORA on EU:n digitaalisen operatiivisen resilienssin laki, joka koskee rahoituspalveluorganisaatioita. Se vaatii vahvan ICT riskienhallinnan ja kyberturvan."
+              : "DORA is the EU Digital Operational Resilience Act that applies to financial service organizations. It requires strong ICT risk management and cybersecurity."
+            }
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DORA Pillars -->
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-slate-900 mb-4">
+          {lang === 'fi' ? 'DORA Pilarit' : 'DORA Pillars'}
+        </h2>
+        <p class="text-xl text-slate-600 max-w-3xl mx-auto">
+          {lang === 'fi'
+            ? "DORA perustuu neljään pilarin, jotka määrittelevät rahoituspalveluorganisaatioiden vaatimukset."
+            : "DORA is based on four pillars that define requirements for financial service organizations."
+          }
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {doraPillars.map((pillar) => (
+          <div class="bg-gradient-to-br from-slate-50 to-white p-8 rounded-xl border border-slate-200 hover:shadow-xl transition-all duration-300">
+            <div class="w-16 h-16 bg-green-100 rounded-xl flex items-center justify-center mb-6">
+              <Icon name={pillar.icon} className="w-8 h-8 text-green-600" />
+            </div>
+            <h3 class="text-xl font-bold text-slate-900 mb-4">{pillar.title}</h3>
+            <p class="text-slate-600 mb-6">{pillar.description}</p>
+            <ul class="space-y-2">
+              {pillar.requirements.map((requirement) => (
+                <li class="flex items-center text-sm text-slate-600">
+                  <Icon name="check" className="w-4 h-4 text-green-500 mr-2" />
+                  {requirement}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Timeline Section -->
+  <section class="py-20 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-slate-900 mb-4">
+          {lang === 'fi' ? 'DORA Aikajana' : 'DORA Timeline'}
+        </h2>
+        <p class="text-xl text-slate-600 max-w-3xl mx-auto">
+          {lang === 'fi'
+            ? "DORA vaatimukset tulevat voimaan vuonna 2025. Aloita valmistelu nyt."
+            : "DORA requirements take effect in 2025. Start preparing now."
+          }
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {complianceTimeline.map((timeline) => (
+          <div class="text-center">
+            <div class="w-20 h-20 bg-green-600 rounded-full flex items-center justify-center mx-auto mb-6 text-white text-2xl font-bold">
+              {timeline.year}
+            </div>
+            <h3 class="text-xl font-semibold text-slate-900 mb-4">{timeline.title}</h3>
+            <p class="text-slate-600">{timeline.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Affected Entities -->
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-slate-900 mb-4">
+          {lang === 'fi' ? 'Koskevat Organisaatiot' : 'Affected Organizations'}
+        </h2>
+        <p class="text-xl text-slate-600 max-w-3xl mx-auto">
+          {lang === 'fi'
+            ? "DORA koskee kaikkia rahoituspalveluorganisaatioita EU:ssa."
+            : "DORA applies to all financial service organizations in the EU."
+          }
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {financialEntities.map((entity) => (
+          <div class="bg-slate-50 p-6 rounded-xl border border-slate-200 text-center hover:shadow-lg transition-all duration-300">
+            <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+              <Icon name="building" className="w-6 h-6 text-blue-600" />
+            </div>
+            <h3 class="text-lg font-semibold text-slate-900">{entity}</h3>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Implementation Process -->
+  <section class="py-20 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-slate-900 mb-4">
+          {lang === 'fi' ? 'Toteutusprosessi' : 'Implementation Process'}
+        </h2>
+        <p class="text-xl text-slate-600 max-w-3xl mx-auto">
+          {lang === 'fi'
+            ? "Selkeä ja strukturoitu prosessi DORA yhteensopivuuteen."
+            : "Clear and structured process for DORA compliance."
+          }
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
+        {implementationSteps.map((step) => (
+          <div class="text-center">
+            <div class="w-16 h-16 bg-green-600 rounded-full flex items-center justify-center mx-auto mb-4 text-white text-xl font-bold">
+              {step.step}
+            </div>
+            <h3 class="text-lg font-semibold text-slate-900 mb-2">{step.title}</h3>
+            <p class="text-slate-600 text-sm">{step.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits Section -->
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-slate-900 mb-4">
+          {lang === 'fi' ? 'DORA Yhteensopivuuden Edut' : 'DORA Compliance Benefits'}
+        </h2>
+        <p class="text-xl text-slate-600 max-w-3xl mx-auto">
+          {lang === 'fi'
+            ? "Saavuta konkreettisia hyötyjä DORA yhteensopivuuden avulla."
+            : "Achieve concrete benefits with DORA compliance."
+          }
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {benefits.map((benefit) => (
+          <div class="text-center">
+            <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+              <Icon name="check" className="w-8 h-8 text-green-600" />
+            </div>
+            <p class="text-slate-700 font-medium">{benefit}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-20 bg-slate-900 text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl font-bold mb-6">
+        {lang === 'fi' ? 'Valmiit aloittamaan DORA yhteensopivuuden?' : 'Ready to start your DORA compliance?'}
+      </h2>
+      <p class="text-xl text-slate-300 mb-8 max-w-3xl mx-auto">
+        {lang === 'fi'
+          ? "Ota yhteyttä meihin ja aloitetaan DORA yhteensopivuusprosessi."
+          : "Contact us and let's start your DORA compliance process."
+        }
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <Button href="/contact" variant="primary" className="text-lg px-8 py-3">
+          {lang === 'fi' ? 'Ota yhteyttä' : 'Get in Touch'}
+        </Button>
+        <Button href="/contact?assessment=true" variant="secondary" className="text-lg px-8 py-3">
+          {lang === 'fi' ? 'DORA Valmistelutarkistus' : 'DORA Readiness Check'}
+        </Button>
+      </div>
+    </div>
+  </section>
+</Layout>

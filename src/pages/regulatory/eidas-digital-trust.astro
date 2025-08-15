@@ -1,0 +1,474 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Icon from "@ui/icons/Icon.astro";
+import Button from "@ui/Button.astro";
+
+const title = "eIDAS and Digital Trust";
+const currentPath = Astro.url.pathname;
+const lang = currentPath.startsWith('/fi') ? 'fi' : 'en';
+
+const content = {
+  en: {
+    title: "eIDAS and Digital Trust",
+    subtitle: "Electronic Identification and Trust Services",
+    description: "Navigate eIDAS compliance requirements with expert guidance and proven implementation strategies for digital identity and trust services.",
+    whoFor: "For organizations providing digital identity services, trust services, or needing to integrate with eIDAS-compliant systems in the EU.",
+    whatYouAchieve: "Full eIDAS compliance with enhanced digital identity and trust service capabilities.",
+    
+    // What is eIDAS Section
+    eidasTitle: "What is eIDAS?",
+    eidasDescription: "The Electronic Identification, Authentication and Trust Services (eIDAS) regulation is an EU framework that ensures secure and seamless electronic interactions between businesses, citizens, and public authorities across the European Union.",
+    
+    // Key Components Section
+    componentsTitle: "eIDAS Key Components",
+    componentsSubtitle: "Three main pillars of digital trust",
+    components: [
+      {
+        title: "Electronic Identification",
+        description: "Secure digital identity verification and authentication"
+      },
+      {
+        title: "Electronic Signatures",
+        description: "Legally recognized digital signature services"
+      },
+      {
+        title: "Trust Services",
+        description: "Certified digital trust and security services"
+      }
+    ],
+    
+    // Compliance Requirements Section
+    complianceTitle: "eIDAS Compliance Requirements",
+    complianceSubtitle: "Essential areas for achieving compliance",
+    complianceAreas: [
+      {
+        title: "Identity Verification",
+        description: "Implement secure electronic identification processes"
+      },
+      {
+        title: "Signature Services",
+        description: "Provide qualified electronic signature services"
+      },
+      {
+        title: "Trust Infrastructure",
+        description: "Establish secure trust service infrastructure"
+      },
+      {
+        title: "Cross-Border Recognition",
+        description: "Ensure cross-border service recognition"
+      },
+      {
+        title: "Security Standards",
+        description: "Meet EU security and privacy standards"
+      },
+      {
+        title: "Audit & Certification",
+        description: "Obtain necessary certifications and audits"
+      }
+    ],
+    
+    // Why Choose Us Section
+    whyChooseTitle: "Why Choose Our eIDAS Services?",
+    whyChooseSubtitle: "Expert guidance for digital trust compliance",
+    whyChoosePoints: [
+      "Deep understanding of eIDAS requirements",
+      "Experience with digital identity implementation",
+      "Proven compliance methodologies and frameworks",
+      "Ongoing support and maintenance services",
+      "Industry best practices and standards"
+    ],
+    
+    // Benefits Section
+    benefitsTitle: "Benefits of eIDAS Compliance",
+    benefitsSubtitle: "Strategic advantages of achieving compliance",
+    benefitsList: [
+      "Enhanced digital identity security",
+      "Improved cross-border service recognition",
+      "Reduced regulatory and legal risks",
+      "Better customer trust and confidence",
+      "Competitive advantage in EU market"
+    ],
+    
+    // Implementation Steps Section
+    implementationTitle: "Implementation Steps",
+    implementationSubtitle: "Systematic approach to eIDAS compliance",
+    steps: [
+      {
+        number: "01",
+        title: "Assessment",
+        description: "Assess current digital identity and trust services"
+      },
+      {
+        number: "02",
+        title: "Gap Analysis",
+        description: "Identify gaps against eIDAS requirements"
+      },
+      {
+        number: "03",
+        title: "Architecture Design",
+        description: "Design eIDAS-compliant service architecture"
+      },
+      {
+        number: "04",
+        title: "Implementation",
+        description: "Implement required services and controls"
+      },
+      {
+        number: "05",
+        title: "Certification",
+        description: "Obtain necessary certifications and validations"
+      }
+    ],
+    
+    // CTA Section
+    ctaTitle: "Ready to Achieve eIDAS Compliance?",
+    ctaSubtitle: "Get expert guidance for digital identity and trust services",
+    ctaButton: "Start eIDAS Assessment",
+    ctaDescription: "Our eIDAS experts will help you navigate the requirements and achieve compliance efficiently."
+  },
+  
+  fi: {
+    title: "eIDAS ja digitaalinen luottamus",
+    subtitle: "Sähköinen tunnistaminen ja luottamuspalvelut",
+    description: "Navigoi eIDAS yhteensopivuusvaatimukset asiantuntevan ohjauksen ja todistettujen toteutusstrategioiden avulla digitaaliseen identiteettiin ja luottamuspalveluihin.",
+    whoFor: "Organisaatioille, jotka tarjoavat digitaalisia identiteettipalveluita, luottamuspalveluita tai tarvitsevat integraatiota eIDAS-yhteensopiviin järjestelmiin EU:ssa.",
+    whatYouAchieve: "Täysi eIDAS yhteensopivuus parannetulla digitaalisen identiteetin ja luottamuspalvelun kyvyillä.",
+    
+    // What is eIDAS Section
+    eidasTitle: "Mikä on eIDAS?",
+    eidasDescription: "Sähköinen tunnistaminen, autentikointi ja luottamuspalvelut (eIDAS) -asetus on EU:n kehys, joka varmistaa turvalliset ja saumattomat sähköiset vuorovaikutukset yritysten, kansalaisten ja julkisten viranomaisten välillä koko Euroopan unionissa.",
+    
+    // Key Components Section
+    componentsTitle: "eIDAS:n keskeiset komponentit",
+    componentsSubtitle: "Digitaalisen luottamuksen kolme pilaria",
+    components: [
+      {
+        title: "Sähköinen tunnistaminen",
+        description: "Turvallinen digitaalinen identiteetin vahvistus ja autentikointi"
+      },
+      {
+        title: "Sähköiset allekirjoitukset",
+        description: "Oikeudellisesti tunnustetut digitaaliset allekirjoituspalvelut"
+      },
+      {
+        title: "Luottamuspalvelut",
+        description: "Sertifioidut digitaaliset luottamus- ja turvallisuuspalvelut"
+      }
+    ],
+    
+    // Compliance Requirements Section
+    complianceTitle: "eIDAS yhteensopivuusvaatimukset",
+    complianceSubtitle: "Yhteensopivuuden saavuttamisen keskeiset alueet",
+    complianceAreas: [
+      {
+        title: "Identiteetin vahvistus",
+        description: "Toteuta turvalliset sähköiset tunnistamisprosessit"
+      },
+      {
+        title: "Allekirjoituspalvelut",
+        description: "Tarjoa päteviä sähköisiä allekirjoituspalveluita"
+      },
+      {
+        title: "Luottamusinfrastruktuuri",
+        description: "Perusta turvallinen luottamuspalvelun infrastruktuuri"
+      },
+      {
+        title: "Rajat ylittävä tunnustus",
+        description: "Varmista rajat ylittävän palvelun tunnustus"
+      },
+      {
+        title: "Turvallisuusstandardit",
+        description: "Täytä EU:n turvallisuus- ja yksityisyysstandardit"
+      },
+      {
+        title: "Auditointi ja sertifiointi",
+        description: "Hanki tarvittavat sertifikaatit ja auditit"
+      }
+    ],
+    
+    // Why Choose Us Section
+    whyChooseTitle: "Miksi valita eIDAS-palvelumme?",
+    whyChooseSubtitle: "Asiantuntevaa ohjausta digitaaliseen luottamukseen",
+    whyChoosePoints: [
+      "Syvä ymmärrys eIDAS vaatimuksista",
+      "Kokemus digitaalisen identiteetin toteutuksesta",
+      "Todistetut yhteensopivuusmetodologiat ja kehykset",
+      "Jatkuva tuki ja ylläpito",
+      "Toimialan parhaat käytännöt ja standardit"
+    ],
+    
+    // Benefits Section
+    benefitsTitle: "eIDAS yhteensopivuuden edut",
+    benefitsSubtitle: "Yhteensopivuuden saavuttamisen strategiset edut",
+    benefitsList: [
+      "Parannettu digitaalisen identiteetin turvallisuus",
+      "Parannettu rajat ylittävän palvelun tunnustus",
+      "Alennettu sääntely- ja oikeusriski",
+      "Parempi asiakkaiden luottamus ja varmuus",
+      "Kilpailuetu EU-markkinoilla"
+    ],
+    
+    // Implementation Steps Section
+    implementationTitle: "Toteutusvaiheet",
+    implementationSubtitle: "Systemaattinen lähestymistapa eIDAS yhteensopivuuteen",
+    steps: [
+      {
+        number: "01",
+        title: "Arviointi",
+        description: "Arvioi nykyiset digitaaliset identiteetti- ja luottamuspalvelut"
+      },
+      {
+        number: "02",
+        title: "Aukkoanalyysi",
+        description: "Tunnista aukot eIDAS vaatimuksia vastaan"
+      },
+      {
+        number: "03",
+        title: "Arkkitehtuurin suunnittelu",
+        description: "Suunnittele eIDAS-yhteensopiva palveluarkkitehtuuri"
+      },
+      {
+        number: "04",
+        title: "Toteutus",
+        description: "Toteuta vaaditut palvelut ja kontrollit"
+      },
+      {
+        number: "05",
+        title: "Sertifiointi",
+        description: "Hanki tarvittavat sertifikaatit ja validointit"
+      }
+    ],
+    
+    // CTA Section
+    ctaTitle: "Valmiina saavuttamaan eIDAS yhteensopivuuden?",
+    ctaSubtitle: "Saa asiantuntevaa ohjausta digitaaliseen identiteettiin ja luottamuspalveluihin",
+    ctaButton: "Aloita eIDAS arviointi",
+    ctaDescription: "eIDAS asiantuntijamme auttavat sinua navigoimaan vaatimukset ja saavuttamaan yhteensopivuuden tehokkaasti."
+  }
+};
+
+const currentContent = content[lang];
+---
+
+<Layout title={title}>
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-br from-teal-50 via-white to-blue-50 py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-4xl">
+        <h1 class="text-4xl lg:text-5xl font-bold text-slate-900 mb-6">
+          {currentContent.title}
+        </h1>
+        <p class="text-xl text-slate-600 mb-8">
+          {currentContent.description}
+        </p>
+        <div class="bg-white rounded-xl p-6 shadow-sm border border-slate-200">
+          <h2 class="text-lg font-semibold text-slate-900 mb-4">
+            {lang === 'fi' ? 'Kelle tämä on tarkoitettu?' : 'Who is this for?'}
+          </h2>
+          <p class="text-slate-600 mb-4">{currentContent.whoFor}</p>
+          <h3 class="text-lg font-semibold text-slate-900 mb-2">
+            {lang === 'fi' ? 'Mitä saavutat?' : 'What will you achieve?'}
+          </h3>
+          <p class="text-slate-600">{currentContent.whatYouAchieve}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- What is eIDAS Section -->
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-slate-900 mb-4">{currentContent.eidasTitle}</h2>
+        <p class="text-xl text-slate-600 max-w-4xl mx-auto">{currentContent.eidasDescription}</p>
+      </div>
+      
+      <div class="bg-slate-50 rounded-xl p-8">
+        <div class="grid md:grid-cols-2 gap-8">
+          <div>
+            <h3 class="text-xl font-semibold text-slate-900 mb-4">EU Regulation</h3>
+            <ul class="space-y-3 text-slate-700">
+              <li class="flex items-start">
+                <Icon name="check" class="w-5 h-5 text-teal-600 mr-3 flex-shrink-0 mt-1" />
+                Digital identity framework
+              </li>
+              <li class="flex items-start">
+                <Icon name="check" class="w-5 h-5 text-teal-600 mr-3 flex-shrink-0 mt-1" />
+                Cross-border recognition
+              </li>
+              <li class="flex items-start">
+                <Icon name="check" class="w-5 h-5 text-teal-600 mr-3 flex-shrink-0 mt-1" />
+                Trust service standards
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="text-xl font-semibold text-slate-900 mb-4">Key Benefits</h3>
+            <ul class="space-y-3 text-slate-700">
+              <li class="flex items-start">
+                <Icon name="check" class="w-5 h-5 text-teal-600 mr-3 flex-shrink-0 mt-1" />
+                Secure digital interactions
+              </li>
+              <li class="flex items-start">
+                <Icon name="check" class="w-5 h-5 text-teal-600 mr-3 flex-shrink-0 mt-1" />
+                Legal recognition
+              </li>
+              <li class="flex items-start">
+                <Icon name="check" class="w-5 h-5 text-teal-600 mr-3 flex-shrink-0 mt-1" />
+                EU-wide acceptance
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Key Components Section -->
+  <section class="py-20 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-slate-900 mb-4">{currentContent.componentsTitle}</h2>
+        <p class="text-xl text-slate-600">{currentContent.componentsSubtitle}</p>
+        </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {currentContent.components.map((component) => (
+          <div class="flex items-start gap-4 p-6 bg-white rounded-xl shadow-sm">
+            <Icon name="check" class="w-6 h-6 text-teal-600 flex-shrink-0 mt-1" />
+            <div>
+              <h3 class="text-lg font-semibold text-slate-900 mb-2">{component.title}</h3>
+              <p class="text-slate-600 text-sm">{component.description}</p>
+          </div>
+        </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Compliance Requirements Section -->
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-slate-900 mb-4">{currentContent.complianceTitle}</h2>
+        <p class="text-xl text-slate-600">{currentContent.complianceSubtitle}</p>
+        </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {currentContent.complianceAreas.map((area) => (
+          <div class="flex items-start gap-4 p-6 bg-slate-50 rounded-xl">
+            <Icon name="check" class="w-6 h-6 text-teal-600 flex-shrink-0 mt-1" />
+            <div>
+              <h3 class="text-lg font-semibold text-slate-900 mb-2">{area.title}</h3>
+              <p class="text-slate-600 text-sm">{area.description}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+        </div>
+  </section>
+
+  <!-- Implementation Steps Section -->
+  <section class="py-20 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-slate-900 mb-4">{currentContent.implementationTitle}</h2>
+        <p class="text-xl text-slate-600">{currentContent.implementationSubtitle}</p>
+        </div>
+
+      <div class="space-y-8">
+        {currentContent.steps.map((step, index) => (
+          <div class="flex gap-8 items-start">
+            <div class="flex-shrink-0 w-12 h-12 bg-teal-600 text-white rounded-full flex items-center justify-center font-bold">
+              {index + 1}
+            </div>
+            <div class="flex-1">
+              <h3 class="text-xl font-semibold text-slate-900 mb-4">{step.title}</h3>
+              <p class="text-slate-600">{step.description}</p>
+        </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Choose Us Section -->
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-slate-900 mb-4">{currentContent.whyChooseTitle}</h2>
+        <p class="text-xl text-slate-600">{currentContent.whyChooseSubtitle}</p>
+        </div>
+
+      <div class="grid md:grid-cols-2 gap-12">
+        <div>
+          <div class="space-y-6">
+            {currentContent.whyChoosePoints.map((point) => (
+              <div class="flex items-start">
+                <Icon name="check" class="w-6 h-6 text-teal-600 mr-4 mt-1" />
+                <p class="text-lg text-slate-700">{point}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div class="bg-teal-50 p-8 rounded-xl">
+          <h3 class="text-2xl font-bold text-teal-900 mb-6">Our Digital Trust Expertise</h3>
+          <div class="space-y-4">
+            <div class="flex items-center">
+              <div class="w-3 h-3 bg-teal-600 rounded-full mr-3"></div>
+              <span class="text-teal-800">Identity specialists</span>
+          </div>
+            <div class="flex items-center">
+              <div class="w-3 h-3 bg-teal-600 rounded-full mr-3"></div>
+              <span class="text-teal-800">Trust service experience</span>
+        </div>
+            <div class="flex items-center">
+              <div class="w-3 h-3 bg-teal-600 rounded-full mr-3"></div>
+              <span class="text-teal-800">EU compliance knowledge</span>
+          </div>
+            <div class="flex items-center">
+              <div class="w-3 h-3 bg-teal-600 rounded-full mr-3"></div>
+              <span class="text-teal-800">Ongoing support</span>
+        </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits Section -->
+  <section class="py-20 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-slate-900 mb-4">{currentContent.benefitsTitle}</h2>
+        <p class="text-xl text-slate-600">{currentContent.benefitsSubtitle}</p>
+        </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {currentContent.benefitsList.map((benefit) => (
+          <div class="flex items-start gap-4 p-6 bg-white rounded-xl shadow-sm">
+            <Icon name="check" class="w-6 h-6 text-teal-600 flex-shrink-0 mt-1" />
+            <p class="text-slate-700">{benefit}</p>
+        </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-20 bg-slate-900 text-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl font-bold mb-4">{currentContent.ctaTitle}</h2>
+      <p class="text-xl text-slate-300 mb-8">{currentContent.ctaSubtitle}</p>
+      <p class="text-lg text-slate-300 mb-8 max-w-2xl mx-auto">{currentContent.ctaDescription}</p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <Button href={lang === 'fi' ? '/fi/contact?consultation=true' : '/contact?consultation=true'} variant="primary" className="text-lg px-8 py-4">
+          {lang === 'fi' ? 'Varaa konsultaatio' : 'Book consultation'}
+        </Button>
+        <Button href={lang === 'fi' ? '/fi/contact?proposal=true' : '/contact?proposal=true'} variant="secondary" className="text-lg px-8 py-4">
+          {lang === 'fi' ? 'Pyydä tarjous' : 'Request proposal'}
+        </Button>
+      </div>
+    </div>
+  </section>
+</Layout>

@@ -1,0 +1,40 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const seo = {
+  title: "Page Not Found - CyberSecurity Finland",
+  description:
+    "Sorry, we couldn't find the page you're looking for. Explore our cybersecurity resources or go back to the homepage.",
+};
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  inLanguage: "en-US",
+  "@id": Astro.url.href,
+  url: Astro.url.href,
+  name: "Page Not Found",
+  description:
+    "Sorry, we couldn't find the page you're looking for. Explore our cybersecurity resources or go back to the homepage.",
+  isPartOf: {
+    "@type": "WebSite",
+    url: `${Astro.site}`,
+    name: "CyberSecurity Finland",
+    description:
+      "CyberSecurity Finland provides comprehensive cybersecurity compliance services including ISO 27001, NIS2, GDPR, and DORA implementation for Finnish organizations.",
+  },
+};
+---
+<Layout title="Not Found" seo={seo} schema={schema}>
+  <section class="py-24">
+    <div class="mx-auto max-w-xl px-4 text-center">
+      <h1 class="text-5xl font-bold tracking-tight text-slate-900 mb-6">404</h1>
+      <p class="text-lg text-slate-600 mb-8">Page not found.</p>
+      <a
+        href="/"
+        class="inline-flex items-center gap-2 rounded bg-teal-600 text-white px-5 py-3 text-sm font-medium shadow hover:bg-teal-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-600"
+        >Go Home</a
+      >
+    </div>
+  </section>
+</Layout>

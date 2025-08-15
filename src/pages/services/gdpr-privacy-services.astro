@@ -1,0 +1,369 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Icon from '@/components/ui/icons/Icon.astro';
+import Button from '@/components/ui/Button.astro';
+
+const currentPath = Astro.url.pathname;
+const lang = currentPath.startsWith('/fi') ? 'fi' : 'en';
+
+const title = lang === 'fi' ? "GDPR ja Tietosuoja" : "GDPR and Privacy Services";
+const description = lang === 'fi' 
+  ? "Ammattimaiset GDPR yhteensopivuus- ja tietosuoja- palvelut. Autamme organisaatioita suojaamaan henkilötietoja ja täyttämään EU:n tietosuoja-asetuksen vaatimukset."
+  : "Professional GDPR compliance and privacy services. We help organizations protect personal data and meet EU General Data Protection Regulation requirements.";
+
+const gdprPrinciples = [
+  {
+    title: lang === 'fi' ? "Lainmukaisuus" : "Lawfulness",
+    description: lang === 'fi' 
+      ? "Henkilötietojen käsittely on oltava laillista ja oikeutettua"
+      : "Personal data processing must be lawful and justified",
+    icon: "check",
+    requirements: [
+      lang === 'fi' ? "Suostumus" : "Consent",
+      lang === 'fi' ? "Sopimus" : "Contract",
+      lang === 'fi' ? "Lainmukainen etu" : "Legitimate interest"
+    ]
+  },
+  {
+    title: lang === 'fi' ? "Tarkoituksenmukaisuus" : "Purpose Limitation",
+    description: lang === 'fi' 
+      ? "Henkilötietoja käsitellään vain määriteltyihin tarkoituksiin"
+      : "Personal data is processed only for specified purposes",
+    icon: "target",
+    requirements: [
+      lang === 'fi' ? "Selkeät tarkoitukset" : "Clear purposes",
+      lang === 'fi' ? "Ei yhteensopimattomia käyttötarkoituksia" : "No incompatible uses",
+      lang === 'fi' ? "Tarkoituksen dokumentointi" : "Purpose documentation"
+    ]
+  },
+  {
+    title: lang === 'fi' ? "Tietojen Minimointi" : "Data Minimization",
+    description: lang === 'fi' 
+      ? "Käsitellään vain tarvittavat henkilötiedot"
+      : "Only necessary personal data is processed",
+    icon: "minus",
+    requirements: [
+      lang === 'fi' ? "Vähimmäistieto" : "Minimum data",
+      lang === 'fi' ? "Tarkoituksenmukaiset tiedot" : "Adequate data",
+      lang === 'fi' ? "Ei ylimääräisiä tietoja" : "No excessive data"
+    ]
+  },
+  {
+    title: lang === 'fi' ? "Tarkkuus" : "Accuracy",
+    description: lang === 'fi' 
+      ? "Henkilötiedot ovat ajan tasalla ja tarkkoja"
+      : "Personal data is up-to-date and accurate",
+    icon: "check",
+    requirements: [
+      lang === 'fi' ? "Tietojen päivitys" : "Data updates",
+      lang === 'fi' ? "Virheiden korjaus" : "Error correction",
+      lang === 'fi' ? "Tarkistusprosessit" : "Verification processes"
+    ]
+  },
+  {
+    title: lang === 'fi' ? "Tallennusrajoitukset" : "Storage Limitation",
+    description: lang === 'fi' 
+      ? "Henkilötiedot säilytetään vain tarvittavan ajan"
+      : "Personal data is stored only for necessary time",
+    icon: "clock",
+    requirements: [
+      lang === 'fi' ? "Säilytysajat" : "Retention periods",
+      lang === 'fi' ? "Poistoprosessit" : "Deletion processes",
+      lang === 'fi' ? "Arkkivointi" : "Archiving"
+    ]
+  },
+  {
+    title: lang === 'fi' ? "Tietoturva ja Luottamuksellisuus" : "Security and Confidentiality",
+    description: lang === 'fi' 
+      ? "Henkilötiedot suojataan asianmukaisilla teknisillä ja organisatorisilla toimenpiteillä"
+      : "Personal data is protected with appropriate technical and organizational measures",
+    icon: "shield",
+    requirements: [
+      lang === 'fi' ? "Salaus" : "Encryption",
+      lang === 'fi' ? "Käyttöoikeudet" : "Access controls",
+      lang === 'fi' ? "Tietoturvapolitiikat" : "Security policies"
+    ]
+  }
+];
+
+const privacyServices = [
+  {
+    title: lang === 'fi' ? "GDPR Arviointi" : "GDPR Assessment",
+    description: lang === 'fi' 
+      ? "Arvioidaan nykyinen GDPR yhteensopivuus ja tunnistetaan puutteet"
+      : "Assess current GDPR compliance and identify gaps",
+    icon: "chart",
+    features: [
+      lang === 'fi' ? "Yhteensopivuusauditointi" : "Compliance audit",
+      lang === 'fi' ? "Riskien arviointi" : "Risk assessment",
+      lang === 'fi' ? "Suositukset" : "Recommendations"
+    ]
+  },
+  {
+    title: lang === 'fi' ? "Tietosuoja Suunnittelu" : "Privacy by Design",
+    description: lang === 'fi' 
+      ? "Integroidaan tietosuoja jo järjestelmien suunnitteluvaiheessa"
+      : "Integrate privacy into system design from the start",
+    icon: "shield",
+    features: [
+      lang === 'fi' ? "Tietosuoja-analyysi" : "Privacy impact assessment",
+      lang === 'fi' ? "Suunnitteluohjeet" : "Design guidelines",
+      lang === 'fi' ? "Testaus" : "Testing"
+    ]
+  },
+  {
+    title: lang === 'fi' ? "Tietosuoja Dokumentaatio" : "Privacy Documentation",
+    description: lang === 'fi' 
+      ? "Luodaan tarvittavat tietosuoja-asiakirjat ja prosessit"
+      : "Create required privacy documents and processes",
+    icon: "document",
+    features: [
+      lang === 'fi' ? "Tietosuojaselosteet" : "Privacy notices",
+      lang === 'fi' ? "Käytäntöjen dokumentointi" : "Policy documentation",
+      lang === 'fi' ? "Prosessikuvaukset" : "Process descriptions"
+    ]
+  },
+  {
+    title: lang === 'fi' ? "Henkilötietojen Hallinta" : "Personal Data Management",
+    description: lang === 'fi' 
+      ? "Hallitaan henkilötietojen koko elinkaari"
+      : "Manage personal data throughout its lifecycle",
+    icon: "user",
+    features: [
+      lang === 'fi' ? "Tietojen kartoitus" : "Data mapping",
+      lang === 'fi' ? "Käsittelyrekisteri" : "Processing register",
+      lang === 'fi' ? "Poistoprosessit" : "Deletion processes"
+    ]
+  }
+];
+
+const implementationSteps = [
+  {
+    step: "1",
+    title: lang === 'fi' ? "GDPR Arviointi" : "GDPR Assessment",
+    description: lang === 'fi' 
+      ? "Arvioidaan nykyinen tietosuoja ja GDPR yhteensopivuus"
+      : "Assess current privacy and GDPR compliance"
+  },
+  {
+    step: "2",
+    title: lang === 'fi' ? "Gap Analysis" : "Gap Analysis",
+    description: lang === 'fi' 
+      ? "Tunnistetaan puutteet ja suunnitellaan korjauskeinot"
+      : "Identify gaps and plan remediation measures"
+  },
+  {
+    step: "3",
+    title: lang === 'fi' ? "Suunnittelu" : "Planning",
+    description: lang === 'fi' 
+      ? "Suunnitellaan GDPR yhteensopivuusohjelma"
+      : "Plan GDPR compliance program"
+  },
+  {
+    step: "4",
+    title: lang === 'fi' ? "Toteutus" : "Implementation",
+    description: lang === 'fi' 
+      ? "Toteutetaan tarvittavat tietosuoja-toimenpiteet"
+      : "Implement required privacy measures"
+  },
+  {
+    step: "5",
+    title: lang === 'fi' ? "Valvonta" : "Monitoring",
+    description: lang === 'fi' 
+      ? "Jatkuva yhteensopivuuden valvonta ja päivitys"
+      : "Continuous compliance monitoring and updates"
+  }
+];
+
+const benefits = [
+  lang === 'fi' ? "Täytä EU tietosuoja-asetuksen vaatimukset" : "Meet EU GDPR requirements",
+  lang === 'fi' ? "Suojaa henkilötietoja" : "Protect personal data",
+  lang === 'fi' ? "Vähennä tietosuoja-riskejä" : "Reduce privacy risks",
+  lang === 'fi' ? "Paranna asiakkaiden luottamusta" : "Improve customer trust",
+  lang === 'fi' ? "Vältä sakot ja sanktiot" : "Avoid fines and sanctions"
+];
+---
+
+<Layout title={title} description={description}>
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-br from-indigo-50 via-white to-purple-50 py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-4xl">
+        <h1 class="text-4xl lg:text-5xl font-bold text-slate-900 mb-6">
+          {title}
+        </h1>
+        <p class="text-xl text-slate-600 mb-8">
+          {lang === 'fi' 
+            ? "Suojaa henkilötietoja ja täytä GDPR vaatimukset. Autamme organisaatioita rakentamaan vahvan tietosuoja-perustan ja saavuttamaan EU:n tietosuoja-asetuksen yhteensopivuuden."
+            : "Protect personal data and meet GDPR requirements. We help organizations build a strong privacy foundation and achieve EU General Data Protection Regulation compliance."
+          }
+        </p>
+        <div class="bg-white rounded-xl p-6 shadow-sm border border-slate-200">
+          <h2 class="text-lg font-semibold text-slate-900 mb-4">
+            {lang === 'fi' ? 'Mikä on GDPR?' : 'What is GDPR?'}
+          </h2>
+          <p class="text-slate-600 mb-4">
+            {lang === 'fi'
+              ? "GDPR on EU:n yleinen tietosuoja-asetus, joka koskee kaikkia organisaatioita, jotka käsittelevät EU:n kansalaisten henkilötietoja. Se asettaa kattavat vaatimukset henkilötietojen suojalle."
+              : "GDPR is the EU General Data Protection Regulation that applies to all organizations processing EU citizens' personal data. It sets comprehensive requirements for personal data protection."
+            }
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GDPR Principles -->
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-slate-900 mb-4">
+          {lang === 'fi' ? 'GDPR Periaatteet' : 'GDPR Principles'}
+        </h2>
+        <p class="text-xl text-slate-600 max-w-3xl mx-auto">
+          {lang === 'fi'
+            ? "GDPR perustuu kuuteen periaatteeseen, jotka määrittelevät henkilötietojen käsittelyn säännöt."
+            : "GDPR is based on six principles that define the rules for personal data processing."
+          }
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {gdprPrinciples.map((principle) => (
+          <div class="bg-gradient-to-br from-slate-50 to-white p-8 rounded-xl border border-slate-200 hover:shadow-xl transition-all duration-300">
+            <div class="w-16 h-16 bg-indigo-100 rounded-xl flex items-center justify-center mb-6">
+              <Icon name={principle.icon} className="w-8 h-8 text-indigo-600" />
+            </div>
+            <h3 class="text-xl font-bold text-slate-900 mb-4">{principle.title}</h3>
+            <p class="text-slate-600 mb-6">{principle.description}</p>
+            <ul class="space-y-2">
+              {principle.requirements.map((requirement) => (
+                <li class="flex items-center text-sm text-slate-600">
+                  <Icon name="check" className="w-4 h-4 text-green-500 mr-2" />
+                  {requirement}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Privacy Services -->
+  <section class="py-20 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-slate-900 mb-4">
+          {lang === 'fi' ? 'Tietosuoja Palvelumme' : 'Our Privacy Services'}
+        </h2>
+        <p class="text-xl text-slate-600 max-w-3xl mx-auto">
+          {lang === 'fi'
+            ? "Kattavat palvelut GDPR yhteensopivuuteen ja tietosuojaan."
+            : "Comprehensive services for GDPR compliance and privacy."
+          }
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {privacyServices.map((service) => (
+          <div class="bg-white p-8 rounded-xl border border-slate-200 hover:shadow-xl transition-all duration-300">
+            <div class="w-16 h-16 bg-purple-100 rounded-xl flex items-center justify-center mb-6">
+              <Icon name={service.icon} className="w-8 h-8 text-purple-600" />
+            </div>
+            <h3 class="text-xl font-bold text-slate-900 mb-4">{service.title}</h3>
+            <p class="text-slate-600 mb-6">{service.description}</p>
+            <ul class="space-y-2">
+              {service.features.map((feature) => (
+                <li class="flex items-center text-sm text-slate-600">
+                  <Icon name="check" className="w-4 h-4 text-green-500 mr-2" />
+                  {feature}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Implementation Process -->
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-slate-900 mb-4">
+          {lang === 'fi' ? 'Toteutusprosessi' : 'Implementation Process'}
+        </h2>
+        <p class="text-xl text-slate-600 max-w-3xl mx-auto">
+          {lang === 'fi'
+            ? "Selkeä ja strukturoitu prosessi GDPR yhteensopivuuteen."
+            : "Clear and structured process for GDPR compliance."
+          }
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
+        {implementationSteps.map((step) => (
+          <div class="text-center">
+            <div class="w-16 h-16 bg-indigo-600 rounded-full flex items-center justify-center mx-auto mb-4 text-white text-xl font-bold">
+              {step.step}
+            </div>
+            <h3 class="text-lg font-semibold text-slate-900 mb-2">{step.title}</h3>
+            <p class="text-slate-600 text-sm">{step.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits Section -->
+  <section class="py-20 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-slate-900 mb-4">
+          {lang === 'fi' ? 'GDPR Yhteensopivuuden Edut' : 'GDPR Compliance Benefits'}
+        </h2>
+        <p class="text-xl text-slate-600 max-w-3xl mx-auto">
+          {lang === 'fi'
+            ? "Saavuta konkreettisia hyötyjä GDPR yhteensopivuuden avulla."
+            : "Achieve concrete benefits with GDPR compliance."
+          }
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {benefits.map((benefit) => (
+          <div class="text-center">
+            <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+              <Icon name="check" className="w-8 h-8 text-green-600" />
+            </div>
+            <p class="text-slate-700 font-medium">{benefit}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-20 bg-slate-900 text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl font-bold mb-6">
+        {lang === 'fi' ? 'Valmiit aloittamaan GDPR yhteensopivuuden?' : 'Ready to start your GDPR compliance?'}
+      </h2>
+      <p class="text-xl text-slate-300 mb-8 max-w-3xl mx-auto">
+        {lang === 'fi'
+          ? "Ota yhteyttä meihin ja aloitetaan GDPR yhteensopivuusprosessi."
+          : "Contact us and let's start your GDPR compliance process."
+        }
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <Button href="/contact" variant="primary" className="text-lg px-8 py-3">
+          {lang === 'fi' ? 'Ota yhteyttä' : 'Get in Touch'}
+        </Button>
+        <Button href="/contact?consultation=true" variant="secondary" className="text-lg px-8 py-3">
+          {lang === 'fi' ? 'Varaa konsultaatio' : 'Book Consultation'}
+        </Button>
+      </div>
+    </div>
+  </section>
+</Layout>

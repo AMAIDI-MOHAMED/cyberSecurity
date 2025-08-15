@@ -1,0 +1,84 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Icon from '@/components/ui/icons/Icon.astro';
+import Button from '@/components/ui/Button.astro';
+
+const currentPath = Astro.url.pathname;
+const lang = currentPath.startsWith('/fi') ? 'fi' : 'en';
+
+const title = lang === 'fi' ? 'Policy Development and Governance' : 'Policy Development and Governance';
+const description = lang === 'fi'
+  ? 'Yhtenäinen politiikkakirjasto, omistajuudet ja hallintamalli, joka täyttää standardit (ISO 27001, NIS2, SOC 2, GDPR).'
+  : 'Unified policy library, ownership, and governance that meets ISO 27001, NIS2, SOC 2, and GDPR.';
+
+const policies = [
+  { icon:'document', fi:'Tietoturvapolitiikka', en:'Information Security Policy' },
+  { icon:'user', fi:'Käyttöoikeuspolitiikka', en:'Access Control Policy' },
+  { icon:'lock', fi:'Salauspolitiikka', en:'Cryptography Policy' },
+  { icon:'cloud', fi:'Pilvipolitiikka', en:'Cloud Security Policy' },
+  { icon:'building', fi:'Toimittajahallinnan politiikka', en:'Supplier Management Policy' },
+  { icon:'alert', fi:'Vikatilanteiden hallinta', en:'Incident Response Policy' }
+];
+
+const process = [
+  { step:'1', fi:'Kehys', en:'Framework', fiDesc:'Valitaan viitekehys ja laajuus', enDesc:'Select framework and scope' },
+  { step:'2', fi:'Luonnokset', en:'Drafts', fiDesc:'Luodaan politiikat ja omistajuudet', enDesc:'Draft policies and ownership' },
+  { step:'3', fi:'Hyväksyntä', en:'Approval', fiDesc:'Johdon hyväksyntä ja julkaisu', enDesc:'Management approval and publishing' },
+  { step:'4', fi:'Käyttöönotto', en:'Rollout', fiDesc:'Koulutus ja jalkautus', enDesc:'Training and rollout' },
+  { step:'5', fi:'Ylläpito', en:'Maintenance', fiDesc:'Säännölliset päivitykset', enDesc:'Periodic updates' }
+];
+---
+
+<Layout title={title} description={description}>
+  <section class="bg-gradient-to-br from-slate-50 via-white to-teal-50 py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-4xl">
+        <h1 class="text-4xl lg:text-5xl font-bold text-slate-900 mb-6">{title}</h1>
+        <p class="text-xl text-slate-600 mb-8">{description}</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {policies.map(p => (
+          <div class="bg-gradient-to-br from-slate-50 to-white p-8 rounded-xl border border-slate-200 hover:shadow-xl transition-all duration-300">
+            <div class="w-16 h-16 bg-teal-100 rounded-xl flex items-center justify-center mb-6"><Icon name={p.icon} className="w-8 h-8 text-teal-600" /></div>
+            <h3 class="text-xl font-bold text-slate-900">{lang==='fi'?p.fi:p.en}</h3>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-slate-900 mb-4">{lang==='fi'?'Prosessi':'Process'}</h2>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-5 gap-6">
+        {process.map(p => (
+          <div class="text-center">
+            <div class="w-16 h-16 bg-teal-600 rounded-full flex items-center justify-center mx-auto mb-4 text-white text-xl font-bold">{p.step}</div>
+            <h3 class="text-lg font-semibold text-slate-900 mb-1">{lang==='fi'?p.fi:p.en}</h3>
+            <p class="text-slate-600 text-sm">{lang==='fi'?p.fiDesc:p.enDesc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 bg-slate-900 text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl font-bold mb-6">{lang==='fi' ? 'Tarvitsetko politiikkakirjaston?' : 'Need a policy library?'}</h2>
+      <p class="text-xl text-slate-300 mb-8 max-w-3xl mx-auto">{lang==='fi' ? 'Saat valmiit mallit ja jalkautuksen – pyydä demo.' : 'Get ready‑made templates and rollout – request a demo.'}</p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <Button href="/contact" variant="primary" className="text-lg px-8 py-3">{lang==='fi' ? 'Ota yhteyttä' : 'Get in Touch'}</Button>
+        <Button href="/contact?consultation=true" variant="secondary" className="text-lg px-8 py-3">{lang==='fi' ? 'Varaa konsultaatio' : 'Book Consultation'}</Button>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+

@@ -1,0 +1,321 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import HeroSection from '@/components/sections/HeroSection.astro';
+import CTA from '@/components/sections/CTA.astro';
+import Button from '@/components/ui/Button.astro';
+
+const title = "eIDAS/Digital Trust";
+const currentPath = Astro.url.pathname;
+const lang = currentPath.startsWith('/fi') ? 'fi' : 'en';
+
+const heroContent = {
+  title: "eIDAS Digital Identity and Trust Services",
+  subtitle: "Achieve EU digital identity compliance with our specialized eIDAS implementation methodology for Finnish organizations.",
+  description: "We help Finnish organizations implement eIDAS requirements, building robust digital identity and trust service frameworks that enable secure cross-border digital transactions.",
+  primaryCTA: { text: "Start eIDAS Implementation", href: "/contact" },
+  secondaryCTA: { text: "Download eIDAS Guide", href: "/resources/guides/eidas-compliance-guide" }
+};
+
+const keyBenefits = [
+  {
+    title: "Cross-Border Compliance",
+    description: "Meet EU eIDAS requirements for seamless digital identity across European markets.",
+    icon: "globe"
+  },
+  {
+    title: "Finnish Market Expertise",
+    description: "Deep understanding of Finnish digital identity requirements and EU eIDAS integration.",
+    icon: "flag"
+  },
+  {
+    title: "Trust Service Provider",
+    description: "Implement qualified trust services for electronic signatures, seals, and certificates.",
+    icon: "shield-check"
+  },
+  {
+    title: "Digital Transformation",
+    description: "Enable secure digital business processes and cross-border transactions.",
+    icon: "arrow-path"
+  }
+];
+
+const eidasRequirements = [
+  {
+    requirement: "Digital Identity Management",
+    description: "Implement secure digital identity systems compliant with eIDAS standards",
+    controls: ["Identity Verification", "Authentication Methods", "Identity Federation", "Privacy Protection"],
+    icon: "user"
+  },
+  {
+    requirement: "Trust Services",
+    description: "Provide qualified trust services for electronic transactions",
+    controls: ["Electronic Signatures", "Electronic Seals", "Time Stamps", "Certificate Services"],
+    icon: "shield-check"
+  },
+  {
+    requirement: "Cross-Border Recognition",
+    description: "Ensure digital identities and trust services are recognized across EU member states",
+    controls: ["Standards Compliance", "Interoperability", "Mutual Recognition", "Compliance Monitoring"],
+    icon: "globe"
+  },
+  {
+    requirement: "Security and Privacy",
+    description: "Implement robust security measures and privacy protection for digital identity systems",
+    controls: ["Encryption", "Access Controls", "Audit Logging", "Data Protection"],
+    icon: "lock-closed"
+  },
+  {
+    requirement: "Compliance Monitoring",
+    description: "Establish ongoing monitoring and compliance verification for eIDAS requirements",
+    controls: ["Regular Audits", "Compliance Reporting", "Risk Assessment", "Continuous Improvement"],
+    icon: "chart-line"
+  }
+];
+
+const implementationPhases = [
+  {
+    phase: "Phase 1: Assessment & Planning",
+    duration: "Weeks 1-6",
+    activities: ["Gap Analysis", "Scope Definition", "Stakeholder Engagement", "Resource Planning"],
+    deliverables: ["Gap Analysis Report", "Project Charter", "Stakeholder Map", "Resource Plan"]
+  },
+  {
+    phase: "Phase 2: Architecture Design",
+    duration: "Weeks 7-12",
+    activities: ["System Architecture", "Security Design", "Integration Planning", "Compliance Framework"],
+    deliverables: ["Architecture Document", "Security Framework", "Integration Plan", "Compliance Matrix"]
+  },
+  {
+    phase: "Phase 3: Implementation",
+    duration: "Weeks 13-24",
+    activities: ["System Development", "Security Implementation", "Testing", "Documentation"],
+    deliverables: ["Digital Identity System", "Trust Services", "Test Results", "Compliance Documentation"]
+  },
+  {
+    phase: "Phase 4: Validation & Certification",
+    duration: "Weeks 25-30",
+    activities: ["Compliance Testing", "Security Validation", "Certification Preparation", "Go-Live"],
+    deliverables: ["Compliance Certificate", "Security Validation Report", "Production System", "Operational Procedures"]
+  }
+];
+
+const industryExamples = [
+  {
+    industry: "Financial Services",
+    challenge: "Implementing eIDAS for secure cross-border financial transactions",
+    solution: "Integrated digital identity framework with qualified trust services",
+    outcome: "eIDAS compliance with enhanced cross-border transaction security"
+  },
+  {
+    industry: "Public Sector",
+    challenge: "Providing secure digital services to citizens across EU member states",
+    solution: "Federated identity system with eIDAS-compliant trust services",
+    outcome: "Seamless cross-border digital service delivery"
+  },
+  {
+    industry: "E-commerce",
+    challenge: "Enabling secure customer authentication for EU market expansion",
+    solution: "eIDAS-compliant customer identity and access management",
+    outcome: "Secure customer authentication across European markets"
+  }
+];
+
+const relatedServices = [
+  { title: "ISO 27001 Implementation", href: "/frameworks/iso-27001", description: "Information security management" },
+  { title: "GDPR Compliance", href: "/frameworks/gdpr", description: "Data protection compliance" },
+  { title: "Digital Identity Management", href: "/frameworks/digital-identity", description: "Identity and access management" },
+  { title: "Trust Service Provider", href: "/frameworks/trust-services", description: "Qualified trust services" }
+];
+---
+
+<Layout title={title}>
+  <HeroSection content={heroContent} />
+  
+  <!-- Key Benefits Section -->
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-bold text-slate-900 mb-6">Why Choose Our eIDAS Services</h2>
+        <p class="text-xl text-slate-600 max-w-3xl mx-auto">
+          We deliver eIDAS compliance with digital identity expertise, ensuring your organization can provide secure cross-border digital services.
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {keyBenefits.map((benefit) => (
+          <div class="bg-gradient-to-br from-slate-50 to-white p-8 rounded-xl border border-slate-200 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+            <div class="w-16 h-16 bg-blue-100 rounded-xl flex items-center justify-center mb-6">
+              <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold text-slate-900 mb-4">{benefit.title}</h3>
+            <p class="text-slate-600 leading-relaxed">{benefit.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- eIDAS Requirements Section -->
+  <section class="py-20 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-bold text-slate-900 mb-6">eIDAS Compliance Requirements</h2>
+        <p class="text-xl text-slate-600 max-w-3xl mx-auto">
+          Our eIDAS implementation covers all key requirements, ensuring comprehensive compliance with EU digital identity standards.
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {eidasRequirements.map((requirement) => (
+          <div class="bg-white p-8 rounded-xl border border-slate-200 hover:shadow-lg transition-shadow">
+            <div class="w-16 h-16 bg-blue-100 rounded-xl flex items-center justify-center mb-6">
+              <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+            </div>
+            <h3 class="text-2xl font-bold text-slate-900 mb-4">{requirement.requirement}</h3>
+            <p class="text-slate-600 mb-6">{requirement.description}</p>
+            <h4 class="font-semibold text-slate-900 mb-3">Key Controls:</h4>
+            <ul class="space-y-2">
+              {requirement.controls.map((control) => (
+                <li class="flex items-center text-slate-600">
+                  <svg class="w-4 h-4 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  {control}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Implementation Phases Section -->
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-bold text-slate-900 mb-6">30-Week Implementation Roadmap</h2>
+        <p class="text-xl text-slate-600 max-w-3xl mx-auto">
+          Structured approach ensuring successful eIDAS compliance within 30 weeks while maintaining business operations.
+        </p>
+      </div>
+      
+      <div class="space-y-8">
+        {implementationPhases.map((phase, index) => (
+          <div class="bg-slate-50 p-8 rounded-xl border border-slate-200 shadow-lg">
+            <div class="flex items-start gap-6">
+              <div class="flex-shrink-0">
+                <div class="w-12 h-12 bg-blue-600 text-white rounded-full flex items-center justify-center text-xl font-bold">
+                  {index + 1}
+                </div>
+              </div>
+              <div class="flex-1">
+                <div class="flex items-center gap-4 mb-4">
+                  <h3 class="text-2xl font-bold text-slate-900">{phase.phase}</h3>
+                  <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">
+                    {phase.duration}
+                  </span>
+                </div>
+                <div class="grid md:grid-cols-2 gap-6">
+                  <div>
+                    <h4 class="font-semibold text-slate-900 mb-3">Key Activities</h4>
+                    <ul class="space-y-2">
+                      {phase.activities.map((activity) => (
+                        <li class="flex items-center text-slate-600">
+                          <svg class="w-4 h-4 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                          </svg>
+                          {activity}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  <div>
+                    <h4 class="font-semibold text-slate-900 mb-3">Deliverables</h4>
+                    <ul class="space-y-2">
+                      {phase.deliverables.map((deliverable) => (
+                        <li class="flex items-center text-slate-600">
+                          <svg class="w-4 h-4 text-blue-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                          </svg>
+                          {deliverable}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Industry Examples Section -->
+  <section class="py-20 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-bold text-slate-900 mb-6">Industry-Specific Success Stories</h2>
+        <p class="text-xl text-slate-600 max-w-3xl mx-auto">
+          See how we've helped organizations across different industries achieve eIDAS compliance.
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        {industryExamples.map((example) => (
+          <div class="bg-white p-8 rounded-xl border border-slate-200">
+            <div class="mb-4">
+              <span class="inline-block bg-blue-100 text-blue-800 text-sm font-medium px-3 py-1 rounded-full">
+                {example.industry}
+              </span>
+            </div>
+            <h3 class="text-xl font-bold text-slate-900 mb-4">Challenge</h3>
+            <p class="text-slate-600 mb-6">{example.challenge}</p>
+            <h4 class="text-lg font-semibold text-slate-900 mb-3">Our Solution</h4>
+            <p class="text-slate-600 mb-6">{example.solution}</p>
+            <h4 class="text-lg font-semibold text-slate-900 mb-3">Outcome</h4>
+            <p class="text-slate-600">{example.outcome}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Related Services Section -->
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-bold text-slate-900 mb-6">Related Services</h2>
+        <p class="text-xl text-slate-600 max-w-3xl mx-auto">
+          Enhance your digital identity posture with our complementary services and frameworks.
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {relatedServices.map((service) => (
+          <a href={service.href} class="group">
+            <div class="bg-slate-50 p-6 rounded-xl border border-slate-200 hover:shadow-lg transition-shadow group-hover:border-blue-300">
+              <h3 class="text-lg font-semibold text-slate-900 mb-2 group-hover:text-blue-600 transition-colors">
+                {service.title}
+              </h3>
+              <p class="text-slate-600 text-sm">{service.description}</p>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <CTA 
+    title="Ready to Achieve eIDAS Compliance?"
+    description="Join Finnish organizations that have successfully implemented eIDAS with our expert guidance. Let's discuss how we can help you provide secure cross-border digital services."
+    primaryCTA={{ text: "Start Your eIDAS Journey", href: "/contact" }}
+    secondaryCTA={{ text: "Download eIDAS Guide", href: "/resources/guides/eidas-compliance-guide" }}
+  />
+</Layout>

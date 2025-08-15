@@ -1,0 +1,382 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Icon from '@/components/ui/icons/Icon.astro';
+import Button from '@/components/ui/Button.astro';
+
+const currentPath = Astro.url.pathname;
+const lang = currentPath.startsWith('/fi') ? 'fi' : 'en';
+
+const title = lang === 'fi' ? "DORA -yhteensopivuuspalvelut" : "DORA Compliance Services";
+const description = lang === 'fi' 
+  ? "Saavuta DORA -yhteensopivuus rahoituspalvelualalla asiantuntevalla ohjauksellamme. Autamme rahoituslaitoksia toteuttamaan tarvittavat digitaalisen toimintakestävyyden toimenpiteet."
+  : "Achieve DORA compliance in the financial services sector with our expert guidance. We help financial institutions implement the necessary digital operational resilience measures.";
+
+const features = [
+  {
+    title: lang === 'fi' ? "DORA Valmiusarviointi" : "DORA Readiness Assessment",
+    description: lang === 'fi' 
+      ? "Kattava arviointi nykyisestä digitaalisesta toimintakestävyydestä DORA -vaatimusten mukaan"
+      : "Comprehensive assessment of current digital operational resilience against DORA requirements",
+    icon: "chart"
+  },
+  {
+    title: lang === 'fi' ? "ICT Riskienhallinta" : "ICT Risk Management",
+    description: lang === 'fi' 
+      ? "Kehitä ja toteuta ICT riskienhallintaprosessit DORA -vaatimusten mukaisesti"
+      : "Develop and implement ICT risk management processes aligned with DORA requirements",
+    icon: "shield"
+  },
+  {
+    title: lang === 'fi' ? "Tapahtumien raportointi" : "Incident Reporting",
+    description: lang === 'fi' 
+      ? "Luo vahvat tapahtumien raportointi- ja seurantaprosessit DORA -yhteensopivuutta varten"
+      : "Create robust incident reporting and monitoring processes for DORA compliance",
+    icon: "alert"
+  },
+  {
+    title: lang === 'fi' ? "Kolmannen osapuolen riskienhallinta" : "Third-Party Risk Management",
+    description: lang === 'fi' 
+      ? "Toteuta kattavat kolmannen osapuolen riskienhallintaprosessit DORA -vaatimusten mukaisesti"
+      : "Implement comprehensive third-party risk management processes aligned with DORA requirements",
+    icon: "network"
+  },
+  {
+    title: lang === 'fi' ? "Digitaalinen toimintakestävyys" : "Digital Operational Resilience",
+    description: lang === 'fi' 
+      ? "Kehitä digitaalisen toimintakestävyyden strategiat ja toteutukset"
+      : "Develop digital operational resilience strategies and implementations",
+    icon: "monitor"
+  },
+  {
+    title: lang === 'fi' ? "Yhteensopivuusdokumentaatio" : "Compliance Documentation",
+    description: lang === 'fi' 
+      ? "Kehitä tarvittavat politiikat, prosessit ja dokumentaatio DORA -yhteensopivuutta varten"
+      : "Develop required policies, procedures, and documentation for DORA compliance",
+    icon: "document"
+  }
+];
+
+const benefits = [
+  lang === 'fi' ? "Täytä EU rahoitussääntelyvaatimukset" : "Meet EU financial regulatory requirements",
+  lang === 'fi' ? "Paranna digitaalista toimintakestävyyttä" : "Enhance digital operational resilience",
+  lang === 'fi' ? "Vahvista ICT riskienhallintaa" : "Strengthen ICT risk management",
+  lang === 'fi' ? "Paranna tapahtumien vastauskykyjä" : "Improve incident response capabilities",
+  lang === 'fi' ? "Suojaa rahoituspalvelutoimintaa" : "Protect financial services operations"
+];
+---
+
+<Layout title={title} description={description}>
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-br from-teal-50 via-white to-blue-50 py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-4xl">
+        <h1 class="text-4xl lg:text-5xl font-bold text-slate-900 mb-6">
+          {title}
+        </h1>
+        <p class="text-xl text-slate-600 mb-8">
+          {lang === 'fi' 
+            ? "Asiantuntevat DORA -yhteensopivuuspalvelut auttavat rahoituslaitoksia täyttämään EU digitaalisen toimintakestävyyden vaatimukset"
+            : "Expert DORA compliance services to help financial institutions meet EU digital operational resilience requirements"
+          }
+        </p>
+        <p class="text-lg text-slate-500 mb-10">
+          {lang === 'fi'
+            ? "DORA -direktiivi vahvistaa rahoituspalvelualan kyberturvaa ja digitaalista toimintakestävyyttä. Palvelumme auttavat rahoituslaitoksia toteuttamaan tarvittavat toimenpiteet yhteensopivuuden saavuttamiseksi."
+            : "The DORA directive strengthens cybersecurity and digital operational resilience in the financial services sector. Our services help financial institutions implement the necessary measures to achieve compliance."
+          }
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4">
+          <Button href="/contact?service=dora" variant="primary">
+            {lang === 'fi' ? 'Hanki DORA -arviointi' : 'Get DORA Assessment'}
+          </Button>
+          <Button href="/contact?consultation=true" variant="secondary">
+            {lang === 'fi' ? 'Varaa konsultaatio' : 'Book Consultation'}
+          </Button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Grid -->
+  <section class="py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-slate-900 mb-4">
+          {lang === 'fi' ? 'DORA -palvelumme' : 'Our DORA Services'}
+        </h2>
+        <p class="text-lg text-slate-600 max-w-3xl mx-auto">
+          {lang === 'fi'
+            ? "Kattava palvelupaketti DORA -yhteensopivuuden saavuttamiseksi rahoituspalvelualalla"
+            : "Comprehensive service package for achieving DORA compliance in the financial services sector"
+          }
+        </p>
+      </div>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {features.map(feature => (
+          <div class="bg-white p-6 rounded-lg shadow-sm border border-slate-200 hover:shadow-md transition-shadow">
+            <div class="w-12 h-12 bg-teal-100 rounded-lg flex items-center justify-center mb-4">
+              <Icon name={feature.icon} class="w-6 h-6 text-teal-600" />
+            </div>
+            <h3 class="text-xl font-semibold text-slate-900 mb-3">{feature.title}</h3>
+            <p class="text-slate-600">{feature.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- What is DORA -->
+  <section class="py-16 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-slate-900 mb-4">
+          {lang === 'fi' ? 'Mikä on DORA?' : 'What is DORA?'}
+        </h2>
+        <p class="text-lg text-slate-600 max-w-3xl mx-auto">
+          {lang === 'fi'
+            ? "Digital Operational Resilience Act (DORA) on EU:n sääntely, joka koskee rahoituspalvelualan digitaalista toimintakestävyyttä ja kyberturvaa."
+            : "The Digital Operational Resilience Act (DORA) is EU regulation that addresses digital operational resilience and cybersecurity in the financial services sector."
+          }
+        </p>
+      </div>
+      
+      <div class="grid md:grid-cols-2 gap-8">
+        <div class="bg-white p-6 rounded-lg shadow-sm border border-slate-200">
+          <h3 class="text-xl font-semibold text-slate-900 mb-3">
+            {lang === 'fi' ? 'Soveltamisala' : 'Scope of Application'}
+          </h3>
+          <p class="text-slate-600">
+            {lang === 'fi'
+              ? "DORA koskee kaikkia EU:ssa toimivia rahoituslaitoksia, mukaan lukien pankit, vakuutusyhtiöt, sijoitustoimijat ja muut rahoituspalveluntarjoajat."
+              : "DORA applies to all financial institutions operating in the EU, including banks, insurance companies, investment firms, and other financial service providers."
+            }
+          </p>
+        </div>
+        
+        <div class="bg-white p-6 rounded-lg shadow-sm border border-slate-200">
+          <h3 class="text-xl font-semibold text-slate-900 mb-3">
+            {lang === 'fi' ? 'Keskeiset vaatimukset' : 'Key Requirements'}
+          </h3>
+          <p class="text-slate-600">
+            {lang === 'fi'
+              ? "ICT riskienhallinta, tapahtumien raportointi, kolmannen osapuolen riskienhallinta ja digitaalinen toimintakestävyys ovat keskeisiä DORA -vaatimuksia."
+              : "ICT risk management, incident reporting, third-party risk management, and digital operational resilience are key DORA requirements."
+            }
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Our DORA Compliance Approach -->
+  <section class="py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-slate-900 mb-4">
+          {lang === 'fi' ? 'DORA -yhteensopivuuslähestymistapamme' : 'Our DORA Compliance Approach'}
+        </h2>
+        <p class="text-lg text-slate-600 max-w-3xl mx-auto">
+          {lang === 'fi'
+            ? "Seuraamme strukturoitua metodologiaa auttaaksemme rahoituslaitoksia saavuttamaan DORA -yhteensopivuuden tehokkaasti."
+            : "We follow a structured methodology to help financial institutions achieve DORA compliance efficiently."
+          }
+        </p>
+      </div>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="text-center">
+          <div class="w-16 h-16 bg-teal-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <span class="text-2xl font-bold text-teal-600">1</span>
+          </div>
+          <h3 class="text-lg font-semibold text-slate-900 mb-2">
+            {lang === 'fi' ? 'Arviointi' : 'Assessment'}
+          </h3>
+          <p class="text-slate-600 text-sm">
+            {lang === 'fi' ? 'Arvioi nykyinen digitaalinen toimintakestävyys DORA -vaatimusten mukaan' : 'Assess current digital operational resilience against DORA requirements'}
+          </p>
+        </div>
+        
+        <div class="text-center">
+          <div class="w-16 h-16 bg-teal-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <span class="text-2xl font-bold text-teal-600">2</span>
+          </div>
+          <h3 class="text-lg font-semibold text-slate-900 mb-2">
+            {lang === 'fi' ? 'Suunnittelu' : 'Planning'}
+          </h3>
+          <p class="text-slate-600 text-sm">
+            {lang === 'fi' ? 'Kehitä roadmap ja toteutussuunnitelma DORA -yhteensopivuutta varten' : 'Develop roadmap and implementation plan for DORA compliance'}
+          </p>
+        </div>
+        
+        <div class="text-center">
+          <div class="w-16 h-16 bg-teal-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <span class="text-2xl font-bold text-teal-600">3</span>
+          </div>
+          <h3 class="text-lg font-semibold text-slate-900 mb-2">
+            {lang === 'fi' ? 'Toteutus' : 'Implementation'}
+          </h3>
+          <p class="text-slate-600 text-sm">
+            {lang === 'fi' ? 'Suorita tarvittavat digitaalisen toimintakestävyyden toimenpiteet' : 'Execute required digital operational resilience measures'}
+          </p>
+        </div>
+        
+        <div class="text-center">
+          <div class="w-16 h-16 bg-teal-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <span class="text-2xl font-bold text-teal-600">4</span>
+          </div>
+          <h3 class="text-lg font-semibold text-slate-900 mb-2">
+            {lang === 'fi' ? 'Ylläpito' : 'Maintenance'}
+          </h3>
+          <p class="text-slate-600 text-sm">
+            {lang === 'fi' ? 'Jatkuva seuranta ja parantaminen' : 'Ongoing monitoring and continuous improvement'}
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Choose Our DORA Services -->
+  <section class="py-16 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-slate-900 mb-4">
+          {lang === 'fi' ? 'Miksi valita DORA -palvelumme?' : 'Why Choose Our DORA Services?'}
+        </h2>
+        <p class="text-lg text-slate-600 max-w-3xl mx-auto">
+          {lang === 'fi'
+            ? "Tuomme syvän asiantuntemuksen EU rahoitussääntelystä ja todistetun menestystarinan rahoituslaitosten auttamisessa yhteensopivuuden saavuttamisessa."
+            : "We bring deep expertise in EU financial regulations and a proven track record of helping financial institutions achieve compliance."
+          }
+        </p>
+      </div>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="bg-white p-6 rounded-lg shadow-sm border border-slate-200">
+          <h3 class="text-xl font-semibold text-slate-900 mb-3">
+            {lang === 'fi' ? 'Rahoitusalan asiantuntemus' : 'Financial Sector Expertise'}
+          </h3>
+          <p class="text-slate-600">
+            {lang === 'fi'
+              ? "Syvä ymmärrys rahoitussääntelystä ja DORA -vaatimuksista."
+              : "Deep understanding of financial regulations and DORA requirements."
+            }
+          </p>
+        </div>
+        
+        <div class="bg-white p-6 rounded-lg shadow-sm border border-slate-200">
+          <h3 class="text-xl font-semibold text-slate-900 mb-3">
+            {lang === 'fi' ? 'Todistettu metodologia' : 'Proven Methodology'}
+          </h3>
+          <p class="text-slate-600">
+            {lang === 'fi'
+              ? "Strukturoitu lähestymistapa, joka on auttanut lukuisia rahoituslaitoksia saavuttamaan DORA -yhteensopivuuden."
+              : "Structured approach that has helped numerous financial institutions achieve DORA compliance."
+            }
+          </p>
+        </div>
+        
+        <div class="bg-white p-6 rounded-lg shadow-sm border border-slate-200">
+          <h3 class="text-xl font-semibold text-slate-900 mb-3">
+            {lang === 'fi' ? 'Jatkuva tuki' : 'Ongoing Support'}
+          </h3>
+          <p class="text-slate-600">
+            {lang === 'fi'
+              ? "Jatkuva ohjaus ja tuki yhteensopivuuden ylläpitämiseksi vaatimusten kehittyessä."
+              : "Continuous guidance and support to maintain compliance as requirements evolve."
+            }
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-16 bg-teal-50">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl font-bold text-slate-900 mb-4">
+        {lang === 'fi' ? 'Valmiina saavuttamaan DORA -yhteensopivuuden?' : 'Ready to Achieve DORA Compliance?'}
+      </h2>
+      <p class="text-lg text-slate-600 mb-8">
+        {lang === 'fi'
+          ? "Ota yhteyttä tänään kattavaan DORA -valmiutesi ja yhteensopivuustarpeidesi arviointiin."
+          : "Contact us today for a comprehensive assessment of your DORA readiness and compliance needs."
+        }
+      </p>
+      <Button href="/contact?service=dora" variant="primary">
+        {lang === 'fi' ? 'Aloita nyt' : 'Get Started'}
+      </Button>
+    </div>
+  </section>
+
+  <!-- Contact Form Section -->
+  <section class="py-16 bg-slate-50">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="bg-white rounded-lg shadow-sm border border-slate-200 p-8">
+        <div class="text-center mb-8">
+          <h2 class="text-2xl font-bold text-slate-900 mb-2">
+            {lang === 'fi' ? 'Pyydä DORA -konsultaatio' : 'Request DORA Consultation'}
+          </h2>
+          <p class="text-slate-600">
+            {lang === 'fi'
+              ? 'Ota yhteyttä keskustellaksesi DORA -yhteensopivuusvaatimuksistasi'
+              : 'Get in touch to discuss your DORA compliance requirements'
+            }
+          </p>
+        </div>
+        
+        <form class="space-y-6">
+          <div class="grid md:grid-cols-2 gap-6">
+            <div>
+              <label for="firstName" class="block text-sm font-medium text-slate-700 mb-2">
+                {lang === 'fi' ? 'Etunimi' : 'First Name'}
+              </label>
+              <input type="text" id="firstName" name="firstName" required
+                class="w-full px-3 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent">
+            </div>
+            <div>
+              <label for="lastName" class="block text-sm font-medium text-slate-700 mb-2">
+                {lang === 'fi' ? 'Sukunimi' : 'Last Name'}
+              </label>
+              <input type="text" id="lastName" name="lastName" required
+                class="w-full px-3 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent">
+            </div>
+          </div>
+          
+          <div>
+            <label for="email" class="block text-sm font-medium text-slate-700 mb-2">
+              {lang === 'fi' ? 'Sähköposti' : 'Email'}
+            </label>
+            <input type="email" id="email" name="email" required
+              class="w-full px-3 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent">
+          </div>
+          
+          <div>
+            <label for="company" class="block text-sm font-medium text-slate-700 mb-2">
+              {lang === 'fi' ? 'Yritys' : 'Company'}
+            </label>
+            <input type="text" id="company" name="company" required
+              class="w-full px-3 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent">
+          </div>
+          
+          <div>
+            <label for="message" class="block text-sm font-medium text-slate-700 mb-2">
+              {lang === 'fi' ? 'Viesti' : 'Message'}
+            </label>
+            <textarea id="message" name="message" rows="4" required
+              class="w-full px-3 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent"
+              placeholder={lang === 'fi' ? 'Kuvaile DORA -yhteensopivuusvaatimuksesi...' : 'Describe your DORA compliance requirements...'}></textarea>
+          </div>
+          
+          <input type="hidden" name="service" value="dora">
+          
+          <div class="text-center">
+            <Button type="submit" variant="primary">
+              {lang === 'fi' ? 'Lähetä viesti' : 'Send Message'}
+            </Button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+</Layout>

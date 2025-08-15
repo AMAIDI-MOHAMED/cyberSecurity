@@ -1,0 +1,245 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Icon from '@/components/ui/icons/Icon.astro';
+import Button from '@/components/ui/Button.astro';
+
+const currentPath = Astro.url.pathname;
+const lang = currentPath.startsWith('/fi') ? 'fi' : 'en';
+
+const title = lang === 'fi' ? "ISO 27001 Palvelut" : "ISO 27001 Services";
+const description = lang === 'fi' 
+  ? "Ammattimaiset ISO 27001 tietoturvajärjestelmän sertifiointi- ja konsultointipalvelut. Autamme organisaatioita rakentamaan vahvan tietoturvan perustan."
+  : "Professional ISO 27001 Information Security Management System certification and consulting services. We help organizations build a strong cybersecurity foundation.";
+
+const services = [
+  {
+    title: lang === 'fi' ? "Gap Analysis" : "Gap Analysis",
+    description: lang === 'fi' 
+      ? "Arvioi nykyisen tietoturvatason ja ISO 27001 vaatimusten väliset erot"
+      : "Assess current security posture and identify gaps against ISO 27001 requirements",
+    icon: "chart",
+    features: [
+      lang === 'fi' ? "Tietoturvariskien arviointi" : "Security risk assessment",
+      lang === 'fi' ? "Vaatimusten vastaavuus" : "Requirements compliance check",
+      lang === 'fi' ? "Suositukset parannuksista" : "Improvement recommendations"
+    ]
+  },
+  {
+    title: lang === 'fi' ? "ISMS Suunnittelu" : "ISMS Design",
+    description: lang === 'fi' 
+      ? "Suunnittele ja toteuta tietoturvajärjestelmä ISO 27001 standardin mukaisesti"
+      : "Design and implement information security management system according to ISO 27001 standard",
+    icon: "shield",
+    features: [
+      lang === 'fi' ? "Tietoturvapolitiikat" : "Security policies",
+      lang === 'fi' ? "Prosessien määrittely" : "Process definitions",
+      lang === 'fi' ? "Roolien ja vastuiden selvennys" : "Role and responsibility clarification"
+    ]
+  },
+  {
+    title: lang === 'fi' ? "Sertifiointi" : "Certification",
+    description: lang === 'fi' 
+      ? "Valmistaudu ja läpäise ISO 27001 sertifiointi auditti"
+      : "Prepare for and pass ISO 27001 certification audit",
+    icon: "certificate",
+    features: [
+      lang === 'fi' ? "Sisäinen auditointi" : "Internal auditing",
+      lang === 'fi' ? "Sertifiointiauditoinnin valmistelu" : "Certification audit preparation",
+      lang === 'fi' ? "Jatkuva ylläpito" : "Continuous maintenance"
+    ]
+  }
+];
+
+const benefits = [
+  lang === 'fi' ? "Vahvista asiakkaiden luottamusta" : "Strengthen customer trust",
+  lang === 'fi' ? "Suojaa liikesalaisuudet" : "Protect business secrets",
+  lang === 'fi' ? "Täytä sääntelyvaatimukset" : "Meet regulatory requirements",
+  lang === 'fi' ? "Paranna riskienhallintaa" : "Improve risk management",
+  lang === 'fi' ? "Vähennä tietoturvariskejä" : "Reduce security risks"
+];
+
+const process = [
+  {
+    step: "1",
+    title: lang === 'fi' ? "Alustava arviointi" : "Initial Assessment",
+    description: lang === 'fi' 
+      ? "Arvioidaan nykyinen tietoturvataso ja määritellään tavoitteet"
+      : "Assess current security posture and define objectives"
+  },
+  {
+    step: "2",
+    title: lang === 'fi' ? "ISMS Suunnittelu" : "ISMS Design",
+    description: lang === 'fi' 
+      ? "Suunnitellaan tietoturvajärjestelmä ja määritellään prosessit"
+      : "Design security management system and define processes"
+  },
+  {
+    step: "3",
+    title: lang === 'fi' ? "Toteutus" : "Implementation",
+    description: lang === 'fi' 
+      ? "Toteutetaan suunnitellut tietoturvatoimenpiteet"
+      : "Implement planned security measures"
+  },
+  {
+    step: "4",
+    title: lang === 'fi' ? "Sisäinen auditointi" : "Internal Audit",
+    description: lang === 'fi' 
+      ? "Suoritetaan sisäinen auditointi ja korjataan puutteet"
+      : "Conduct internal audit and fix gaps"
+  },
+  {
+    step: "5",
+    title: lang === 'fi' ? "Sertifiointi" : "Certification",
+    description: lang === 'fi' 
+      ? "Läpäistään sertifiointiauditointi ja saavutetaan ISO 27001"
+      : "Pass certification audit and achieve ISO 27001"
+  }
+];
+---
+
+<Layout title={title} description={description}>
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-br from-blue-50 via-white to-teal-50 py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-4xl">
+        <h1 class="text-4xl lg:text-5xl font-bold text-slate-900 mb-6">
+          {title}
+        </h1>
+        <p class="text-xl text-slate-600 mb-8">
+          {lang === 'fi' 
+            ? "Rakenna vahva tietoturvan perusta ISO 27001 standardin mukaisesti. Autamme organisaatioita saavuttamaan kansainvälisen tietoturvastandardin."
+            : "Build a strong cybersecurity foundation according to ISO 27001 standard. We help organizations achieve international information security standard."
+          }
+        </p>
+        <div class="bg-white rounded-xl p-6 shadow-sm border border-slate-200">
+          <h2 class="text-lg font-semibold text-slate-900 mb-4">
+            {lang === 'fi' ? 'Miksi ISO 27001?' : 'Why ISO 27001?'}
+          </h2>
+          <p class="text-slate-600 mb-4">
+            {lang === 'fi'
+              ? "ISO 27001 on maailmanlaajuinen standardi tietoturvajärjestelmien hallintaan. Se auttaa organisaatioita suojaamaan tietoja, hallitsemaan riskejä ja rakentamaan asiakkaiden luottamusta."
+              : "ISO 27001 is a global standard for information security management systems. It helps organizations protect data, manage risks, and build customer trust."
+            }
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Overview -->
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-slate-900 mb-4">
+          {lang === 'fi' ? 'ISO 27001 Palvelumme' : 'Our ISO 27001 Services'}
+        </h2>
+        <p class="text-xl text-slate-600 max-w-3xl mx-auto">
+          {lang === 'fi'
+            ? "Kattavat palvelut ISO 27001 sertifiointiin, joka tukee organisaatiosi tietoturvan kehitystä."
+            : "Comprehensive services for ISO 27001 certification that support your organization's cybersecurity development."
+          }
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        {services.map((service) => (
+          <div class="bg-gradient-to-br from-slate-50 to-white p-8 rounded-xl border border-slate-200 hover:shadow-xl transition-all duration-300">
+            <div class="w-16 h-16 bg-blue-100 rounded-xl flex items-center justify-center mb-6">
+              <Icon name={service.icon} className="w-8 h-8 text-blue-600" />
+            </div>
+            <h3 class="text-xl font-bold text-slate-900 mb-4">{service.title}</h3>
+            <p class="text-slate-600 mb-6">{service.description}</p>
+            <ul class="space-y-2">
+              {service.features.map((feature) => (
+                <li class="flex items-center text-sm text-slate-600">
+                  <Icon name="check" className="w-4 h-4 text-green-500 mr-2" />
+                  {feature}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits Section -->
+  <section class="py-20 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-slate-900 mb-4">
+          {lang === 'fi' ? 'ISO 27001 Edut' : 'ISO 27001 Benefits'}
+        </h2>
+        <p class="text-xl text-slate-600 max-w-3xl mx-auto">
+          {lang === 'fi'
+            ? "Saavuta konkreettisia hyötyjä ISO 27001 sertifioinnin avulla."
+            : "Achieve concrete benefits with ISO 27001 certification."
+          }
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {benefits.map((benefit) => (
+          <div class="text-center">
+            <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+              <Icon name="check" className="w-8 h-8 text-green-600" />
+            </div>
+            <p class="text-slate-700 font-medium">{benefit}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Process Section -->
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-slate-900 mb-4">
+          {lang === 'fi' ? 'Sertifiointiprosessi' : 'Certification Process'}
+        </h2>
+        <p class="text-xl text-slate-600 max-w-3xl mx-auto">
+          {lang === 'fi'
+            ? "Selkeä ja strukturoitu prosessi ISO 27001 sertifiointiin."
+            : "Clear and structured process for ISO 27001 certification."
+          }
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
+        {process.map((step) => (
+          <div class="text-center">
+            <div class="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-4 text-white text-xl font-bold">
+              {step.step}
+            </div>
+            <h3 class="text-lg font-semibold text-slate-900 mb-2">{step.title}</h3>
+            <p class="text-slate-600 text-sm">{step.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-20 bg-slate-900 text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl font-bold mb-6">
+        {lang === 'fi' ? 'Valmiit aloittamaan ISO 27001 matkanne?' : 'Ready to start your ISO 27001 journey?'}
+      </h2>
+      <p class="text-xl text-slate-300 mb-8 max-w-3xl mx-auto">
+        {lang === 'fi'
+          ? "Ota yhteyttä meihin ja aloitetaan ISO 27001 sertifiointiprosessi."
+          : "Contact us and let's start your ISO 27001 certification process."
+        }
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <Button href="/contact" variant="primary" className="text-lg px-8 py-3">
+          {lang === 'fi' ? 'Ota yhteyttä' : 'Get in Touch'}
+        </Button>
+        <Button href="/contact?consultation=true" variant="secondary" className="text-lg px-8 py-3">
+          {lang === 'fi' ? 'Varaa konsultaatio' : 'Book Consultation'}
+        </Button>
+      </div>
+    </div>
+  </section>
+</Layout>

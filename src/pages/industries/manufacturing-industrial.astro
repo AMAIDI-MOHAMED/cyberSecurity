@@ -1,0 +1,346 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Icon from '@/components/ui/icons/Icon.astro';
+import Button from '@/components/ui/Button.astro';
+
+const currentPath = Astro.url.pathname;
+const lang = currentPath.startsWith('/fi') ? 'fi' : 'en';
+
+const title = lang === 'fi' ? "Teollisuus ja valmistus" : "Manufacturing and Industrial";
+const description = lang === 'fi' 
+  ? "Kattavat kyberturva- ja yhteensopivuuspalvelut teollisuus- ja valmistusalalle. Autamme organisaatioita suojaamaan tuotantojärjestelmiä ja IoT-laitteita."
+  : "Comprehensive cybersecurity and compliance services for the manufacturing and industrial sector. We help organizations protect production systems and IoT devices.";
+
+const challenges = [
+  {
+    title: lang === 'fi' ? "OT-järjestelmien kyberturva" : "OT System Cybersecurity",
+    description: lang === 'fi' 
+      ? "Operaatioteknologia (OT) järjestelmien, kuten SCADA, PLC ja DCS järjestelmien kyberturvan vahvistaminen"
+      : "Strengthening cybersecurity for Operational Technology (OT) systems such as SCADA, PLC, and DCS systems",
+    icon: "monitor"
+  },
+  {
+    title: lang === 'fi' ? "IoT-laitteiden turvallisuus" : "IoT Device Security",
+    description: lang === 'fi' 
+      ? "Tuotantolaitteiden, antureiden ja muiden IoT-laitteiden kyberturvan vahvistaminen"
+      : "Strengthening cybersecurity for production equipment, sensors, and other IoT devices",
+    icon: "network"
+  },
+  {
+    title: lang === 'fi' ? "Toimitusketjun riskit" : "Supply Chain Risks",
+    description: lang === 'fi' 
+      ? "Toimittajien, kumppaneiden ja alihankkijoiden kyberturvariskien hallinta"
+      : "Managing cybersecurity risks from suppliers, partners, and subcontractors",
+    icon: "shield"
+  },
+  {
+    title: lang === 'fi' ? "Tuotantokatkon estäminen" : "Preventing Production Disruption",
+    description: lang === 'fi' 
+      ? "Kyberturvatapahtumien aiheuttamien tuotantokatkojen estäminen"
+      : "Preventing production disruptions caused by cybersecurity incidents",
+    icon: "alert"
+  }
+];
+
+const solutions = [
+  {
+    title: lang === 'fi' ? "ISO 27001 Sertifiointi" : "ISO 27001 Certification",
+    description: lang === 'fi' 
+      ? "Tietoturvajärjestelmän sertifiointi teollisuus- ja valmistusalalle"
+      : "Information security management system certification for manufacturing and industrial sector",
+    icon: "certificate"
+  },
+  {
+    title: lang === 'fi' ? "NIS2 Yhteensopivuus" : "NIS2 Compliance",
+    description: lang === 'fi' 
+      ? "EU NIS2 -direktiivin vaatimusten täyttäminen kriittisille teollisuuskokonaisuuksille"
+      : "Meeting EU NIS2 directive requirements for critical industrial entities",
+    icon: "shield"
+  },
+  {
+    title: lang === 'fi' ? "OT Kyberturva" : "OT Cybersecurity",
+    description: lang === 'fi' 
+      ? "Operaatioteknologia järjestelmien kyberturvan vahvistaminen"
+      : "Strengthening cybersecurity for operational technology systems",
+    icon: "monitor"
+  },
+  {
+    title: lang === 'fi' ? "Riskienhallinta" : "Risk Management",
+    description: lang === 'fi' 
+      ? "Kattava riskienhallintajärjestelmä teollisuus- ja valmistusalalle"
+      : "Comprehensive risk management system for manufacturing and industrial sector",
+    icon: "chart"
+  }
+];
+
+const benefits = [
+  lang === 'fi' ? "Suojaa tuotantojärjestelmiä ja IoT-laitteita" : "Protect production systems and IoT devices",
+  lang === 'fi' ? "Täytä sääntelyvaatimukset ja vältä sakot" : "Meet regulatory requirements and avoid penalties",
+  lang === 'fi' ? "Paranna toimitusketjun turvallisuutta" : "Enhance supply chain security",
+  lang === 'fi' ? "Vahvista kyberturvan kestävyyttä" : "Strengthen cybersecurity resilience",
+  lang === 'fi' ? "Suojaa kriittisiä teollisuusprosesseja" : "Protect critical industrial processes"
+];
+---
+
+<Layout title={title} description={description}>
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-br from-teal-50 via-white to-blue-50 py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-4xl">
+        <h1 class="text-4xl lg:text-5xl font-bold text-slate-900 mb-6">
+          {title}
+        </h1>
+        <p class="text-xl text-slate-600 mb-8">
+          {lang === 'fi' 
+            ? "Kattavat kyberturva- ja yhteensopivuuspalvelut teollisuus- ja valmistusalalle"
+            : "Comprehensive cybersecurity and compliance services for the manufacturing and industrial sector"
+          }
+        </p>
+        <p class="text-lg text-slate-500 mb-10">
+          {lang === 'fi'
+            ? "Teollisuus- ja valmistusalalla kyberturva on kriittistä tuotantojärjestelmien ja IoT-laitteiden suojaamisen kannalta. Autamme organisaatioita toteuttamaan vahvat tietoturvakontrollit ja saavuttamaan sääntelyyhteensopivuuden."
+            : "In manufacturing and industrial sectors, cybersecurity is critical for protecting production systems and IoT devices. We help organizations implement strong security controls and achieve regulatory compliance."
+          }
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4">
+          <Button href="/contact?industry=manufacturing" variant="primary">
+            {lang === 'fi' ? 'Pyydä arviointi' : 'Request Assessment'}
+          </Button>
+          <Button href="/contact?consultation=true" variant="secondary">
+            {lang === 'fi' ? 'Varaa konsultaatio' : 'Book Consultation'}
+          </Button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Industry Challenges -->
+  <section class="py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-slate-900 mb-4">
+          {lang === 'fi' ? 'Teollisuus- ja valmistusalalla kohtaamat haasteet' : 'Challenges in Manufacturing'}
+        </h2>
+        <p class="text-lg text-slate-600 max-w-3xl mx-auto">
+          {lang === 'fi'
+            ? "Teollisuus- ja valmistusalalla on ainutlaatuisia kyberturvahaasteita, jotka vaativat erikoistuneita ratkaisuja"
+            : "The manufacturing and industrial sector faces unique cybersecurity challenges that require specialized solutions"
+          }
+        </p>
+      </div>
+      
+      <div class="grid md:grid-cols-2 gap-8">
+        {challenges.map(challenge => (
+          <div class="bg-white p-6 rounded-lg shadow-sm border border-slate-200 hover:shadow-md transition-shadow">
+            <div class="w-12 h-12 bg-teal-100 rounded-lg flex items-center justify-center mb-4">
+              <Icon name={challenge.icon} class="w-6 h-6 text-teal-600" />
+            </div>
+            <h3 class="text-xl font-semibold text-slate-900 mb-3">{challenge.title}</h3>
+            <p class="text-slate-600">{challenge.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Our Solutions -->
+  <section class="py-16 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-slate-900 mb-4">
+          {lang === 'fi' ? 'Ratkaisumme teollisuus- ja valmistusalalle' : 'Our Solutions for Manufacturing'}
+        </h2>
+        <p class="text-lg text-slate-600 max-w-3xl mx-auto">
+          {lang === 'fi'
+            ? "Kattavat palvelut teollisuus- ja valmistusalalla toimivien organisaatioiden kyberturvan ja yhteensopivuuden vahvistamiseksi"
+            : "Comprehensive services to strengthen cybersecurity and compliance for organizations operating in manufacturing and industrial sectors"
+          }
+        </p>
+      </div>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-2 gap-8">
+        {solutions.map(solution => (
+          <div class="bg-white p-6 rounded-lg shadow-sm border border-slate-200 hover:shadow-md transition-shadow">
+            <div class="w-12 h-12 bg-teal-100 rounded-lg flex items-center justify-center mb-4">
+              <Icon name={solution.icon} class="w-6 h-6 text-teal-600" />
+            </div>
+            <h3 class="text-xl font-semibold text-slate-900 mb-3">{solution.title}</h3>
+            <p class="text-slate-600">{solution.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Choose Us -->
+  <section class="py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-slate-900 mb-4">
+          {lang === 'fi' ? 'Miksi valita meidät?' : 'Why Choose Us?'}
+        </h2>
+        <p class="text-lg text-slate-600 max-w-3xl mx-auto">
+          {lang === 'fi'
+            ? "Tuomme syvän asiantuntemuksen teollisuus- ja valmistusalalla ja todistetun menestystarinan kyberturvan vahvistamisessa"
+            : "We bring deep expertise in manufacturing and industrial sectors and a proven track record of strengthening cybersecurity"
+          }
+        </p>
+      </div>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="bg-white p-6 rounded-lg shadow-sm border border-slate-200">
+          <h3 class="text-xl font-semibold text-slate-900 mb-3">
+            {lang === 'fi' ? 'Teollisuusalan asiantuntemus' : 'Industrial Expertise'}
+          </h3>
+          <p class="text-slate-600">
+            {lang === 'fi'
+              ? "Syvä ymmärrys teollisuus- ja valmistusalalla toimivien organisaatioiden ainutlaatuisista haasteista ja vaatimuksista."
+              : "Deep understanding of unique challenges and requirements for organizations operating in manufacturing and industrial sectors."
+            }
+          </p>
+        </div>
+        
+        <div class="bg-white p-6 rounded-lg shadow-sm border border-slate-200">
+          <h3 class="text-xl font-semibold text-slate-900 mb-3">
+            {lang === 'fi' ? 'OT Kyberturva' : 'OT Cybersecurity'}
+          </h3>
+          <p class="text-slate-600">
+            {lang === 'fi'
+              ? "Erikoistunut asiantuntemus operaatioteknologia järjestelmien kyberturvan vahvistamisessa."
+              : "Specialized expertise in strengthening cybersecurity for operational technology systems."
+            }
+          </p>
+        </div>
+        
+        <div class="bg-white p-6 rounded-lg shadow-sm border border-slate-200">
+          <h3 class="text-xl font-semibold text-slate-900 mb-3">
+            {lang === 'fi' ? 'Todistettu menestys' : 'Proven Success'}
+          </h3>
+          <p class="text-slate-600">
+            {lang === 'fi'
+              ? "Todistettu menestystarina auttaa teollisuus- ja valmistusorganisaatioita saavuttamaan kyberturvayhteensopivuuden."
+              : "Proven track record of helping manufacturing and industrial organizations achieve cybersecurity compliance."
+            }
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits -->
+  <section class="py-16 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-slate-900 mb-4">
+          {lang === 'fi' ? 'Hyödyt' : 'Benefits'}
+        </h2>
+        <p class="text-lg text-slate-600 max-w-3xl mx-auto">
+          {lang === 'fi'
+            ? "Vahvista kyberturvaasi ja saavuta yhteensopivuus teollisuus- ja valmistusalalla"
+            : "Strengthen your cybersecurity and achieve compliance in manufacturing and industrial sectors"
+          }
+        </p>
+      </div>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {benefits.map(benefit => (
+          <div class="bg-white p-6 rounded-lg shadow-sm border border-slate-200">
+            <div class="w-8 h-8 bg-teal-100 rounded-full flex items-center justify-center mb-4">
+              <Icon name="check" class="w-4 h-4 text-teal-600" />
+            </div>
+            <p class="text-slate-700 font-medium">{benefit}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-16 bg-teal-50">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl font-bold text-slate-900 mb-4">
+        {lang === 'fi' ? 'Valmiina vahvistamaan kyberturvaasi?' : 'Ready to Strengthen Your Cybersecurity?'}
+      </h2>
+      <p class="text-lg text-slate-600 mb-8">
+        {lang === 'fi'
+          ? "Ota yhteyttä tänään kattavaan arviointiin teollisuus- ja valmistusalalla toimivan organisaatiosi kyberturvasta ja yhteensopivuudesta."
+          : "Contact us today for a comprehensive assessment of your manufacturing and industrial organization's cybersecurity and compliance."
+        }
+      </p>
+      <Button href="/contact?industry=manufacturing" variant="primary">
+        {lang === 'fi' ? 'Aloita nyt' : 'Get Started'}
+      </Button>
+    </div>
+  </section>
+
+  <!-- Contact Form Section -->
+  <section class="py-16 bg-slate-50">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="bg-white rounded-lg shadow-sm border border-slate-200 p-8">
+        <div class="text-center mb-8">
+          <h2 class="text-2xl font-bold text-slate-900 mb-2">
+            {lang === 'fi' ? 'Pyydä teollisuusalan konsultaatio' : 'Request Manufacturing Consultation'}
+          </h2>
+          <p class="text-slate-600">
+            {lang === 'fi'
+              ? 'Ota yhteyttä keskustellaksesi teollisuus- ja valmistusalalla toimivan organisaatiosi kyberturvatarpeista'
+              : 'Get in touch to discuss your manufacturing and industrial organization\'s cybersecurity needs'
+            }
+          </p>
+        </div>
+        
+        <form class="space-y-6">
+          <div class="grid md:grid-cols-2 gap-6">
+            <div>
+              <label for="firstName" class="block text-sm font-medium text-slate-700 mb-2">
+                {lang === 'fi' ? 'Etunimi' : 'First Name'}
+              </label>
+              <input type="text" id="firstName" name="firstName" required
+                class="w-full px-3 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent">
+            </div>
+            <div>
+              <label for="lastName" class="block text-sm font-medium text-slate-700 mb-2">
+                {lang === 'fi' ? 'Sukunimi' : 'Last Name'}
+              </label>
+              <input type="text" id="lastName" name="lastName" required
+                class="w-full px-3 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent">
+            </div>
+          </div>
+          
+          <div>
+            <label for="email" class="block text-sm font-medium text-slate-700 mb-2">
+              {lang === 'fi' ? 'Sähköposti' : 'Email'}
+            </label>
+            <input type="email" id="email" name="email" required
+              class="w-full px-3 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent">
+          </div>
+          
+          <div>
+            <label for="company" class="block text-sm font-medium text-slate-700 mb-2">
+              {lang === 'fi' ? 'Yritys' : 'Company'}
+            </label>
+            <input type="text" id="company" name="company" required
+              class="w-full px-3 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent">
+          </div>
+          
+          <div>
+            <label for="message" class="block text-sm font-medium text-slate-700 mb-2">
+              {lang === 'fi' ? 'Viesti' : 'Message'}
+            </label>
+            <textarea id="message" name="message" rows="4" required
+              class="w-full px-3 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent"
+              placeholder={lang === 'fi' ? 'Kuvaile teollisuus- ja valmistusalalla toimivan organisaatiosi kyberturvatarpeet...' : 'Describe your manufacturing and industrial organization\'s cybersecurity needs...'}></textarea>
+          </div>
+          
+          <input type="hidden" name="industry" value="manufacturing">
+          
+          <div class="text-center">
+            <Button type="submit" variant="primary">
+              {lang === 'fi' ? 'Lähetä viesti' : 'Send Message'}
+            </Button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+</Layout>

@@ -1,0 +1,39 @@
+---
+import Button from '@ui/Button.astro';
+import Icon from '@ui/icons/Icon.astro';
+---
+
+<section class="relative bg-gradient-to-br from-teal-50 via-white to-slate-50 min-h-screen flex items-center overflow-hidden">
+  <!-- Background Pattern -->
+  <div class="absolute inset-0 opacity-40">
+    <div class="absolute inset-0" style="background-image: radial-gradient(circle at 1px 1px, rgba(15, 118, 110, 0.15) 1px, transparent 0); background-size: 20px 20px;"></div>
+  </div>
+  
+  <!-- Background Shapes -->
+  <div class="absolute top-10 right-10 w-72 h-72 bg-teal-500/10 rounded-full blur-3xl animate-pulse"></div>
+  <div class="absolute bottom-20 left-20 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl"></div>
+
+  <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+    <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+      <!-- Content -->
+      <div class="space-y-8">
+        <!-- Announcement Banner -->
+        <div class="inline-flex items-center px-4 py-2 rounded-full bg-teal-50 border border-teal-200 text-teal-700 text-sm font-medium">
+          <Icon name="shield" class="w-4 h-4 mr-2" />
+          <span>Finland's Leading Cybersecurity Partner</span>
+          <Icon name="arrowRight" class="w-4 h-4 ml-2" />
+        </div>
+        
+        <!-- Hero Content -->
+        <div class="space-y-6">
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-slate-900 leading-tight">
+            Secure Your Digital
+            <span class="bg-gradient-to-r from-teal-600 to-blue-600 bg-clip-text text-transparent">
+              Future
+            </span>
+          </h1>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

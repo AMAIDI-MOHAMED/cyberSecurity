@@ -1,0 +1,321 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import HeroSection from '@/components/sections/HeroSection.astro';
+import CTA from '@/components/sections/CTA.astro';
+import Button from '@/components/ui/Button.astro';
+
+const title = "SOC 2 Readiness";
+const currentPath = Astro.url.pathname;
+const lang = currentPath.startsWith('/fi') ? 'fi' : 'en';
+
+const heroContent = {
+  title: "SOC 2 Type II Compliance Preparation",
+  subtitle: "Achieve SOC 2 certification with our proven methodology designed for SaaS and technology companies operating in Nordic markets.",
+  description: "We help Finnish and Nordic technology organizations prepare for SOC 2 Type II audits, implementing robust controls that demonstrate security, availability, processing integrity, confidentiality, and privacy to your customers and stakeholders.",
+  primaryCTA: { text: "Start SOC 2 Preparation", href: "/contact" },
+  secondaryCTA: { text: "Download SOC 2 Guide", href: "/resources/guides/soc-2-readiness-guide" }
+};
+
+const keyBenefits = [
+  {
+    title: "12-Week Preparation",
+    description: "Complete SOC 2 Type II readiness in just 12 weeks with our accelerated methodology and expert guidance.",
+    icon: "clock"
+  },
+  {
+    title: "Nordic Market Expertise",
+    description: "Deep understanding of Nordic business practices and regulatory requirements for seamless SOC 2 implementation.",
+    icon: "globe"
+  },
+  {
+    title: "Control Framework Design",
+    description: "Customized control framework aligned with your business processes and risk profile.",
+    icon: "shield-check"
+  },
+  {
+    title: "Auditor Partnership",
+    description: "Direct collaboration with accredited SOC 2 auditors to ensure smooth certification process.",
+    icon: "handshake"
+  }
+];
+
+const trustServiceCriteria = [
+  {
+    criterion: "Security",
+    description: "Protection against unauthorized access to systems and information",
+    controls: ["Access Management", "Network Security", "Vulnerability Management", "Security Monitoring"],
+    icon: "lock-closed"
+  },
+  {
+    criterion: "Availability",
+    description: "Systems and services are available for operation and use as committed",
+    controls: ["Business Continuity", "Disaster Recovery", "Capacity Management", "Performance Monitoring"],
+    icon: "clock"
+  },
+  {
+    criterion: "Processing Integrity",
+    description: "System processing is complete, accurate, timely, and authorized",
+    controls: ["Data Validation", "Error Handling", "Processing Controls", "Quality Assurance"],
+    icon: "check-circle"
+  },
+  {
+    criterion: "Confidentiality",
+    description: "Information designated as confidential is protected as committed",
+    controls: ["Data Classification", "Encryption", "Access Controls", "Data Handling"],
+    icon: "eye-slash"
+  },
+  {
+    criterion: "Privacy",
+    description: "Personal information is collected, used, retained, and disclosed in accordance with commitments",
+    controls: ["Privacy Policy", "Data Minimization", "Consent Management", "Data Subject Rights"],
+    icon: "user"
+  }
+];
+
+const implementationRoadmap = [
+  {
+    phase: "Phase 1: Assessment & Planning",
+    duration: "Weeks 1-3",
+    activities: ["Gap Analysis", "Scope Definition", "Risk Assessment", "Control Selection"],
+    deliverables: ["Gap Analysis Report", "Project Plan", "Risk Assessment", "Control Matrix"]
+  },
+  {
+    phase: "Phase 2: Control Design",
+    duration: "Weeks 4-6",
+    activities: ["Control Documentation", "Policy Development", "Process Design", "Training Materials"],
+    deliverables: ["Control Documentation", "Policy Suite", "Process Maps", "Training Program"]
+  },
+  {
+    phase: "Phase 3: Implementation",
+    duration: "Weeks 7-9",
+    activities: ["Control Implementation", "Training Delivery", "Testing Procedures", "Evidence Collection"],
+    deliverables: ["Implemented Controls", "Training Records", "Test Results", "Evidence Repository"]
+  },
+  {
+    phase: "Phase 4: Pre-Audit & Certification",
+    duration: "Weeks 10-12",
+    activities: ["Internal Testing", "Remediation", "Auditor Preparation", "SOC 2 Report"],
+    deliverables: ["SOC 2 Type II Report", "Control Effectiveness", "Audit Readiness", "Certification"]
+  }
+];
+
+const industryExamples = [
+  {
+    industry: "SaaS Platform",
+    challenge: "Demonstrating security controls for multi-tenant cloud platform serving EU customers",
+    solution: "Comprehensive security framework with privacy-by-design controls and GDPR alignment",
+    outcome: "SOC 2 Type II achieved in 10 weeks with enhanced customer trust"
+  },
+  {
+    industry: "Fintech Solution",
+    challenge: "Meeting financial services security requirements while preparing for SOC 2",
+    solution: "Integrated approach combining FIN-FSA requirements with SOC 2 controls",
+    outcome: "SOC 2 certification with regulatory compliance maintained"
+  },
+  {
+    industry: "Healthcare Technology",
+    challenge: "Protecting patient data under GDPR while implementing SOC 2 controls",
+    solution: "Privacy-focused control framework with healthcare-specific security measures",
+    outcome: "SOC 2 Type II with comprehensive data protection compliance"
+  }
+];
+
+const relatedServices = [
+  { title: "ISO 27001 Implementation", href: "/frameworks/iso-27001", description: "Information security management system" },
+  { title: "GDPR Compliance", href: "/frameworks/gdpr", description: "Data protection and privacy compliance" },
+  { title: "Risk Assessment", href: "/frameworks/risk-assessments", description: "Comprehensive risk evaluation" },
+  { title: "Policy Development", href: "/frameworks/policy-development", description: "Governance framework creation" }
+];
+---
+
+<Layout title={title}>
+  <HeroSection content={heroContent} />
+  
+  <!-- Key Benefits Section -->
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-bold text-slate-900 mb-6">Why Choose Our SOC 2 Services</h2>
+        <p class="text-xl text-slate-600 max-w-3xl mx-auto">
+          We deliver SOC 2 Type II certification with Nordic market expertise, ensuring your service organization controls meet both international standards and local business requirements.
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {keyBenefits.map((benefit) => (
+          <div class="bg-gradient-to-br from-slate-50 to-white p-8 rounded-xl border border-slate-200 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+            <div class="w-16 h-16 bg-blue-100 rounded-xl flex items-center justify-center mb-6">
+              <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold text-slate-900 mb-4">{benefit.title}</h3>
+            <p class="text-slate-600 leading-relaxed">{benefit.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Trust Service Criteria Section -->
+  <section class="py-20 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-bold text-slate-900 mb-6">SOC 2 Trust Service Criteria</h2>
+        <p class="text-xl text-slate-600 max-w-3xl mx-auto">
+          Our SOC 2 preparation covers all five trust service criteria, ensuring comprehensive compliance and customer confidence.
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {trustServiceCriteria.map((criterion) => (
+          <div class="bg-white p-8 rounded-xl border border-slate-200 hover:shadow-lg transition-shadow">
+            <div class="w-16 h-16 bg-blue-100 rounded-xl flex items-center justify-center mb-6">
+              <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+            </div>
+            <h3 class="text-2xl font-bold text-slate-900 mb-4">{criterion.criterion}</h3>
+            <p class="text-slate-600 mb-6">{criterion.description}</p>
+            <h4 class="font-semibold text-slate-900 mb-3">Key Controls:</h4>
+            <ul class="space-y-2">
+              {criterion.controls.map((control) => (
+                <li class="flex items-center text-slate-600">
+                  <svg class="w-4 h-4 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  {control}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Implementation Roadmap Section -->
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-bold text-slate-900 mb-6">12-Week Implementation Roadmap</h2>
+        <p class="text-xl text-slate-600 max-w-3xl mx-auto">
+          Structured approach ensuring successful SOC 2 Type II preparation within 12 weeks while maintaining business operations.
+        </p>
+      </div>
+      
+      <div class="space-y-8">
+        {implementationRoadmap.map((phase, index) => (
+          <div class="bg-slate-50 p-8 rounded-xl border border-slate-200 shadow-lg">
+            <div class="flex items-start gap-6">
+              <div class="flex-shrink-0">
+                <div class="w-12 h-12 bg-blue-600 text-white rounded-full flex items-center justify-center text-xl font-bold">
+                  {index + 1}
+                </div>
+              </div>
+              <div class="flex-1">
+                <div class="flex items-center gap-4 mb-4">
+                  <h3 class="text-2xl font-bold text-slate-900">{phase.phase}</h3>
+                  <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">
+                    {phase.duration}
+                  </span>
+                </div>
+                <div class="grid md:grid-cols-2 gap-6">
+                  <div>
+                    <h4 class="font-semibold text-slate-900 mb-3">Key Activities</h4>
+                    <ul class="space-y-2">
+                      {phase.activities.map((activity) => (
+                        <li class="flex items-center text-slate-600">
+                          <svg class="w-4 h-4 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                          </svg>
+                          {activity}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  <div>
+                    <h4 class="font-semibold text-slate-900 mb-3">Deliverables</h4>
+                    <ul class="space-y-2">
+                      {phase.deliverables.map((deliverable) => (
+                        <li class="flex items-center text-slate-600">
+                          <svg class="w-4 h-4 text-blue-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                          </svg>
+                          {deliverable}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Industry Examples Section -->
+  <section class="py-20 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-bold text-slate-900 mb-6">Industry-Specific Success Stories</h2>
+        <p class="text-xl text-slate-600 max-w-3xl mx-auto">
+          See how we've helped technology organizations across different industries achieve SOC 2 Type II certification.
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        {industryExamples.map((example) => (
+          <div class="bg-white p-8 rounded-xl border border-slate-200">
+            <div class="mb-4">
+              <span class="inline-block bg-blue-100 text-blue-800 text-sm font-medium px-3 py-1 rounded-full">
+                {example.industry}
+              </span>
+            </div>
+            <h3 class="text-xl font-bold text-slate-900 mb-4">Challenge</h3>
+            <p class="text-slate-600 mb-6">{example.challenge}</p>
+            <h4 class="text-lg font-semibold text-slate-900 mb-3">Our Solution</h4>
+            <p class="text-slate-600 mb-6">{example.solution}</p>
+            <h4 class="text-lg font-semibold text-slate-900 mb-3">Outcome</h4>
+            <p class="text-slate-600">{example.outcome}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Related Services Section -->
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-bold text-slate-900 mb-6">Related Services</h2>
+        <p class="text-xl text-slate-600 max-w-3xl mx-auto">
+          Enhance your cybersecurity posture with our complementary services and frameworks.
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {relatedServices.map((service) => (
+          <a href={service.href} class="group">
+            <div class="bg-slate-50 p-6 rounded-xl border border-slate-200 hover:shadow-lg transition-shadow group-hover:border-blue-300">
+              <h3 class="text-lg font-semibold text-slate-900 mb-2 group-hover:text-blue-600 transition-colors">
+                {service.title}
+              </h3>
+              <p class="text-slate-600 text-sm">{service.description}</p>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <CTA 
+    title="Ready to Achieve SOC 2 Type II Certification?"
+    description="Join Finnish and Nordic technology organizations that have successfully achieved SOC 2 certification with our expert guidance. Let's discuss how we can help you build trust with your customers."
+    primaryCTA={{ text: "Start Your SOC 2 Journey", href: "/contact" }}
+    secondaryCTA={{ text: "Download SOC 2 Guide", href: "/resources/guides/soc-2-readiness-guide" }}
+  />
+</Layout>

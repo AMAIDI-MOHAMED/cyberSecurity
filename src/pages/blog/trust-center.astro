@@ -1,0 +1,588 @@
+---
+import Layout from '@/layouts/Layout.astro';
+
+const title = "Trust Center";
+const currentPath = Astro.url.pathname;
+const lang = currentPath.startsWith('/fi') ? 'fi' : 'en';
+
+const content = {
+  en: {
+    title: "Trust Center",
+    subtitle: "Transparency, Security, and Compliance",
+    heroDescription: "Your trust is our priority. Explore our security practices, compliance certifications, and commitment to protecting your data and privacy.",
+    security: {
+      title: "Security Practices",
+      description: "Comprehensive security measures to protect your data and systems.",
+      practices: [
+        {
+          title: "Data Encryption",
+          description: "All data is encrypted in transit and at rest using industry-standard AES-256 encryption",
+          icon: "🔐",
+          status: "Active"
+        },
+        {
+          title: "Access Controls",
+          description: "Multi-factor authentication and role-based access controls for all systems",
+          icon: "🚪",
+          status: "Active"
+        },
+        {
+          title: "Network Security",
+          description: "Advanced firewall protection and intrusion detection systems",
+          icon: "🛡️",
+          status: "Active"
+        },
+        {
+          title: "Vulnerability Management",
+          description: "Regular security assessments and automated vulnerability scanning",
+          icon: "🔍",
+          status: "Active"
+        },
+        {
+          title: "Incident Response",
+          description: "24/7 security monitoring and rapid incident response capabilities",
+          icon: "🚨",
+          status: "Active"
+        },
+        {
+          title: "Business Continuity",
+          description: "Comprehensive disaster recovery and business continuity planning",
+          icon: "🔄",
+          status: "Active"
+        }
+      ]
+    },
+    compliance: {
+      title: "Compliance & Certifications",
+      description: "Our commitment to meeting and exceeding industry standards and regulatory requirements.",
+      certifications: [
+        {
+          name: "ISO 27001:2022",
+          description: "Information Security Management System certification",
+          status: "Certified",
+          validUntil: "2025-12-31",
+          scope: "Information security management and consulting services"
+        },
+        {
+          name: "SOC 2 Type II",
+          description: "Service Organization Control 2 Type II attestation",
+          status: "Certified",
+          validUntil: "2024-12-31",
+          scope: "Security, availability, and confidentiality controls"
+        },
+        {
+          name: "GDPR Compliance",
+          description: "General Data Protection Regulation compliance",
+          status: "Compliant",
+          validUntil: "Ongoing",
+          scope: "Data processing and privacy protection"
+        },
+        {
+          name: "NIS2 Directive",
+          description: "Network and Information Security Directive compliance",
+          status: "Compliant",
+          validUntil: "Ongoing",
+          scope: "Network and information security services"
+        }
+      ]
+    },
+    privacy: {
+      title: "Privacy & Data Protection",
+      description: "How we protect your privacy and handle your data responsibly.",
+      policies: [
+        {
+          title: "Data Minimization",
+          description: "We only collect and process data that is necessary for our services",
+          compliance: "GDPR Article 5(1)(c)"
+        },
+        {
+          title: "Purpose Limitation",
+          description: "Data is used only for specified, legitimate purposes",
+          compliance: "GDPR Article 5(1)(b)"
+        },
+        {
+          title: "Data Retention",
+          description: "Clear policies on how long we retain your data",
+          compliance: "GDPR Article 5(1)(e)"
+        },
+        {
+          title: "Data Subject Rights",
+          description: "Full support for your data protection rights",
+          compliance: "GDPR Articles 12-22"
+        },
+        {
+          title: "Data Processing Agreements",
+          description: "Comprehensive DPAs for all data processing activities",
+          compliance: "GDPR Article 28"
+        },
+        {
+          title: "Privacy by Design",
+          description: "Privacy considerations integrated into all our processes",
+          compliance: "GDPR Article 25"
+        }
+      ]
+    },
+    transparency: {
+      title: "Transparency & Reporting",
+      description: "Regular updates on our security posture and compliance status.",
+      reports: [
+        {
+          title: "Security Status Report",
+          description: "Monthly overview of security metrics and incident statistics",
+          frequency: "Monthly",
+          lastUpdated: "March 2024"
+        },
+        {
+          title: "Compliance Dashboard",
+          description: "Real-time view of compliance status across all frameworks",
+          frequency: "Real-time",
+          lastUpdated: "Live"
+        },
+        {
+          title: "Privacy Impact Assessment",
+          description: "Comprehensive assessment of privacy risks and mitigation measures",
+          frequency: "Annually",
+          lastUpdated: "January 2024"
+        },
+        {
+          title: "Third-Party Risk Assessment",
+          description: "Evaluation of security posture of our vendors and partners",
+          frequency: "Quarterly",
+          lastUpdated: "Q1 2024"
+        }
+      ]
+    },
+    governance: {
+      title: "Governance & Risk Management",
+      description: "Our approach to managing risks and ensuring accountability.",
+      framework: [
+        {
+          title: "Risk Assessment",
+          description: "Comprehensive risk identification and assessment processes",
+          frequency: "Quarterly",
+          owner: "Risk Management Team"
+        },
+        {
+          title: "Security Policies",
+          description: "Regular review and updates of security policies and procedures",
+          frequency: "Annually",
+          owner: "Security Team"
+        },
+        {
+          title: "Training & Awareness",
+          description: "Ongoing security training for all employees",
+          frequency: "Quarterly",
+          owner: "Human Resources"
+        },
+        {
+          title: "Audit & Monitoring",
+          description: "Continuous monitoring and regular internal audits",
+          frequency: "Continuous",
+          owner: "Internal Audit"
+        }
+      ]
+    },
+    contact: {
+      title: "Security & Privacy Inquiries",
+      description: "Have questions about our security practices or privacy policies?",
+      channels: [
+        {
+          title: "Security Team",
+          email: "security@cybersecurity.fi",
+          phone: "+358 9 123 4569",
+          response: "Within 24 hours"
+        },
+        {
+          title: "Privacy Officer",
+          email: "privacy@cybersecurity.fi",
+          phone: "+358 9 123 4570",
+          response: "Within 48 hours"
+        },
+        {
+          title: "Compliance Team",
+          email: "compliance@cybersecurity.fi",
+          phone: "+358 9 123 4571",
+          response: "Within 24 hours"
+        }
+      ]
+    },
+    cta: {
+      title: "Building Trust Together",
+      subtitle: "We're committed to maintaining the highest standards of security and privacy.",
+      button: "Contact Security Team",
+      link: "/contact"
+    }
+  },
+  fi: {
+    title: "Luottamuskeskus",
+    subtitle: "Läpinäkyvyys, turvallisuus ja yhteensopivuus",
+    heroDescription: "Luottamuksesi on prioriteettimme. Tutustu turvallisuuskäytäntöihimme, yhteensopivuussertifikaatteihin ja sitoutumiseemme suojata tietojasi ja yksityisyyttäsi.",
+    security: {
+      title: "Turvallisuuskäytännöt",
+      description: "Kattavat turvallisuustoimenpiteet tietojesi ja järjestelmiesi suojaamiseen.",
+      practices: [
+        {
+          title: "Tietojen salaus",
+          description: "Kaikki tiedot salataan siirron ja tallennuksen aikana käyttäen alan standardin AES-256-salausmenetelmää",
+          icon: "🔐",
+          status: "Aktiivinen"
+        },
+        {
+          title: "Käyttöoikeuksien hallinta",
+          description: "Monitekijäinen tunnistus ja roolipohjaiset käyttöoikeudet kaikille järjestelmille",
+          icon: "🚪",
+          status: "Aktiivinen"
+        },
+        {
+          title: "Verkkoturvallisuus",
+          description: "Edistyneet palomuurisuojat ja tunkeutumisen tunnistusjärjestelmät",
+          icon: "🛡️",
+          status: "Aktiivinen"
+        },
+        {
+          title: "Haavoittuvuuksien hallinta",
+          description: "Säännölliset turvallisuusarvioinnit ja automatisoitu haavoittuvuuksien skannaus",
+          icon: "🔍",
+          status: "Aktiivinen"
+        },
+        {
+          title: "Tapahtumavastaus",
+          description: "24/7-turvallisuusseuranta ja nopeat tapahtumavastauskyvyt",
+          icon: "🚨",
+          status: "Aktiivinen"
+        },
+        {
+          title: "Liiketoiminnan jatkuvuus",
+          description: "Kattava katastrofipalautus ja liiketoiminnan jatkuvuussuunnittelu",
+          icon: "🔄",
+          status: "Aktiivinen"
+        }
+      ]
+    },
+    compliance: {
+      title: "Yhteensopivuus ja sertifikaatit",
+      description: "Sitoutumisemme täyttää ja ylittää alan standardit ja sääntelyvaatimukset.",
+      certifications: [
+        {
+          name: "ISO 27001:2022",
+          description: "Tietoturvajohtamisjärjestelmän sertifiointi",
+          status: "Sertifioitu",
+          validUntil: "31.12.2025",
+          scope: "Tietoturvajohtaminen ja konsultointipalvelut"
+        },
+        {
+          name: "SOC 2 Type II",
+          description: "Palvelujärjestön valvonta 2 Type II -vakuutus",
+          status: "Sertifioitu",
+          validUntil: "31.12.2024",
+          scope: "Turvallisuus-, saatavuus- ja luottamuksellisuusvalvontat"
+        },
+        {
+          name: "GDPR-yhteensopivuus",
+          description: "Yleisen tietosuoja-asetuksen yhteensopivuus",
+          status: "Yhteensopiva",
+          validUntil: "Jatkuva",
+          scope: "Tietojen käsittely ja yksityisyyden suojaus"
+        },
+        {
+          name: "NIS2-direktiivi",
+          description: "Verkko- ja tietoturvadirektiivin yhteensopivuus",
+          status: "Yhteensopiva",
+          validUntil: "Jatkuva",
+          scope: "Verkko- ja tietoturvapalvelut"
+        }
+      ]
+    },
+    privacy: {
+      title: "Yksityisyys ja tietojen suojaus",
+      description: "Miten suojaamme yksityisyyttäsi ja käsittelemme tietojasi vastuullisesti.",
+      policies: [
+        {
+          title: "Tietojen minimointi",
+          description: "Keräämme ja käsittelemme vain palveluidemme kannalta välttämättömiä tietoja",
+          compliance: "GDPR 5 artikla(1)(c)"
+        },
+        {
+          title: "Tarkoituksen rajoittaminen",
+          description: "Tietoja käytetään vain määriteltyihin, oikeutetuihin tarkoituksiin",
+          compliance: "GDPR 5 artikla(1)(b)"
+        },
+        {
+          title: "Tietojen säilytys",
+          description: "Selkeät käytännöt siitä, kuinka kauan säilytämme tietojasi",
+          compliance: "GDPR 5 artikla(1)(e)"
+        },
+        {
+          title: "Tietosubjektin oikeudet",
+          description: "Täydellinen tuki tietosuojaoikeuksillesi",
+          compliance: "GDPR 12-22 artiklat"
+        },
+        {
+          title: "Tietojen käsittelysopimukset",
+          description: "Kattavat DPA:t kaikille tietojen käsittelytoiminnoille",
+          compliance: "GDPR 28 artikla"
+        },
+        {
+          title: "Yksityisyys suunnittelussa",
+          description: "Yksityisyysnäkökohdat integroitu kaikkiin prosesseihimme",
+          compliance: "GDPR 25 artikla"
+        }
+      ]
+    },
+    transparency: {
+      title: "Läpinäkyvyys ja raportointi",
+      description: "Säännölliset päivitykset turvallisuustilastamme ja yhteensopivuustilasta.",
+      reports: [
+        {
+          title: "Turvallisuustilaraportti",
+          description: "Kuukausittainen yleiskatsaus turvallisuusmittareista ja tapahtumatilastoista",
+          frequency: "Kuukausittain",
+          lastUpdated: "Maaliskuu 2024"
+        },
+        {
+          title: "Yhteensopivuusohjauspaneeli",
+          description: "Reaaliaikainen näkymä yhteensopivuustilasta kaikissa kehyksissä",
+          frequency: "Reaaliaikainen",
+          lastUpdated: "Live"
+        },
+        {
+          title: "Yksityisyyden vaikutusarviointi",
+          description: "Kattava arviointi yksityisyysriskeistä ja lieventävistä toimenpiteistä",
+          frequency: "Vuosittain",
+          lastUpdated: "Tammikuu 2024"
+        },
+        {
+          title: "Kolmannen osapuolen riskien arviointi",
+          description: "Toimittajiemme ja kumppaneidemme turvallisuustilan arviointi",
+          frequency: "Neljännesvuosittain",
+          lastUpdated: "Q1 2024"
+        }
+      ]
+    },
+    governance: {
+      title: "Hallinto ja riskien hallinta",
+      description: "Lähestymistapamme riskien hallintaan ja vastuullisuuden varmistamiseen.",
+      framework: [
+        {
+          title: "Riskien arviointi",
+          description: "Kattavat riskien tunnistus- ja arviointiprosessit",
+          frequency: "Neljännesvuosittain",
+          owner: "Riskien hallintatiimi"
+        },
+        {
+          title: "Turvallisuuspolitiikat",
+          description: "Säännöllinen turvallisuuspolitiikkojen ja -menettelyjen tarkistus ja päivitys",
+          frequency: "Vuosittain",
+          owner: "Turvallisuustiimi"
+        },
+        {
+          title: "Koulutus ja tietoisuus",
+          description: "Jatkuva turvallisuuskoulutus kaikille työntekijöille",
+          frequency: "Neljännesvuosittain",
+          owner: "Henkilöstöhallinto"
+        },
+        {
+          title: "Tarkistus ja seuranta",
+          description: "Jatkuva seuranta ja säännölliset sisäiset tarkistukset",
+          frequency: "Jatkuva",
+          owner: "Sisäinen tarkistus"
+        }
+      ]
+    },
+    contact: {
+      title: "Turvallisuus- ja yksityisyyskyselyt",
+      description: "Onko kysymyksiä turvallisuuskäytännöistämme tai yksityisyyspolitiikoistamme?",
+      channels: [
+        {
+          title: "Turvallisuustiimi",
+          email: "security@cybersecurity.fi",
+          phone: "+358 9 123 4569",
+          response: "24 tunnin sisällä"
+        },
+        {
+          title: "Yksityisyysvastaava",
+          email: "privacy@cybersecurity.fi",
+          phone: "+358 9 123 4570",
+          response: "48 tunnin sisällä"
+        },
+        {
+          title: "Yhteensopivuustiimi",
+          email: "compliance@cybersecurity.fi",
+          phone: "+358 9 123 4571",
+          response: "24 tunnin sisällä"
+        }
+      ]
+    },
+    cta: {
+      title: "Rakennetaan luottamusta yhdessä",
+      subtitle: "Olemme sitoutuneet ylläpitämään korkeimpia turvallisuus- ja yksityisyysstandardeja.",
+      button: "Ota yhteyttä turvallisuustiimiin",
+      link: "/contact"
+    }
+  }
+};
+
+const currentContent = content[lang];
+---
+
+<Layout title={title}>
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h1 class="text-5xl font-bold mb-6">{currentContent.title}</h1>
+      <p class="text-2xl font-light mb-8">{currentContent.subtitle}</p>
+      <p class="text-xl text-slate-300 max-w-3xl mx-auto">{currentContent.heroDescription}</p>
+    </div>
+  </section>
+
+  <!-- Security Practices Section -->
+  <section class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-bold text-gray-900 mb-4">{currentContent.security.title}</h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">{currentContent.security.description}</p>
+      </div>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {currentContent.security.practices.map((practice) => (
+          <div class="bg-gradient-to-br from-blue-50 to-blue-100 p-6 rounded-lg border border-blue-200">
+            <div class="flex items-center justify-between mb-4">
+              <div class="text-3xl">{practice.icon}</div>
+              <span class="bg-green-100 text-green-800 px-2 py-1 rounded text-xs font-medium">{practice.status}</span>
+            </div>
+            <h3 class="text-lg font-semibold text-blue-900 mb-3">{practice.title}</h3>
+            <p class="text-blue-800 text-sm">{practice.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Compliance Section -->
+  <section class="py-16 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-bold text-gray-900 mb-4">{currentContent.compliance.title}</h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">{currentContent.compliance.description}</p>
+      </div>
+      
+      <div class="grid md:grid-cols-2 gap-8">
+        {currentContent.compliance.certifications.map((cert) => (
+          <div class="bg-white p-6 rounded-lg shadow-lg border border-gray-200">
+            <div class="flex items-center justify-between mb-4">
+              <h3 class="text-xl font-bold text-gray-900">{cert.name}</h3>
+              <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">{cert.status}</span>
+            </div>
+            <p class="text-gray-600 mb-4">{cert.description}</p>
+            <div class="space-y-2 text-sm text-gray-700">
+              <div><strong>Valid until:</strong> {cert.validUntil}</div>
+              <div><strong>Scope:</strong> {cert.scope}</div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Privacy Section -->
+  <section class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-bold text-gray-900 mb-4">{currentContent.privacy.title}</h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">{currentContent.privacy.description}</p>
+      </div>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {currentContent.privacy.policies.map((policy) => (
+          <div class="bg-gradient-to-br from-green-50 to-green-100 p-6 rounded-lg border border-green-200">
+            <h3 class="text-lg font-semibold text-green-900 mb-3">{policy.title}</h3>
+            <p class="text-green-800 text-sm mb-4">{policy.description}</p>
+            <div class="text-xs text-green-600 bg-green-200 px-2 py-1 rounded">
+              {policy.compliance}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Transparency Section -->
+  <section class="py-16 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-bold text-gray-900 mb-4">{currentContent.transparency.title}</h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">{currentContent.transparency.description}</p>
+      </div>
+      
+      <div class="grid md:grid-cols-2 gap-8">
+        {currentContent.transparency.reports.map((report) => (
+          <div class="bg-white p-6 rounded-lg shadow-lg">
+            <h3 class="text-lg font-semibold text-gray-900 mb-3">{report.title}</h3>
+            <p class="text-gray-600 mb-4">{report.description}</p>
+            <div class="flex items-center justify-between text-sm text-gray-500">
+              <span><strong>Frequency:</strong> {report.frequency}</span>
+              <span><strong>Updated:</strong> {report.lastUpdated}</span>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Governance Section -->
+  <section class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-bold text-gray-900 mb-4">{currentContent.governance.title}</h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">{currentContent.governance.description}</p>
+      </div>
+      
+      <div class="grid md:grid-cols-2 gap-8">
+        {currentContent.governance.framework.map((item) => (
+          <div class="bg-gradient-to-br from-purple-50 to-purple-100 p-6 rounded-lg border border-purple-200">
+            <h3 class="text-lg font-semibold text-purple-900 mb-3">{item.title}</h3>
+            <p class="text-purple-800 text-sm mb-4">{item.description}</p>
+            <div class="space-y-2 text-sm text-purple-700">
+              <div><strong>Frequency:</strong> {item.frequency}</div>
+              <div><strong>Owner:</strong> {item.owner}</div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="py-16 bg-slate-50">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-4xl font-bold text-gray-900 mb-4">{currentContent.contact.title}</h2>
+        <p class="text-xl text-gray-600">{currentContent.contact.description}</p>
+      </div>
+      
+      <div class="grid md:grid-cols-3 gap-6">
+        {currentContent.contact.channels.map((channel) => (
+          <div class="bg-white p-6 rounded-lg shadow-lg text-center">
+            <h3 class="text-lg font-semibold text-gray-900 mb-3">{channel.title}</h3>
+            <div class="space-y-2 text-sm text-gray-600">
+              <div>{channel.email}</div>
+              <div>{channel.phone}</div>
+              <div class="text-blue-600"><strong>Response:</strong> {channel.response}</div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-16 bg-blue-600 text-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-4xl font-bold mb-4">{currentContent.cta.title}</h2>
+      <p class="text-xl mb-8">{currentContent.cta.subtitle}</p>
+      <a href={currentContent.cta.link} class="inline-block bg-white text-blue-600 font-semibold py-3 px-8 rounded-lg hover:bg-gray-100 transition duration-300">
+        {currentContent.cta.button}
+      </a>
+    </div>
+  </section>
+</Layout>

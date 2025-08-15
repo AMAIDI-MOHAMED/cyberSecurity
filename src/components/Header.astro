@@ -1,0 +1,496 @@
+---
+// filepath: c:\Users\Administrator\Desktop\New folder (3)\src\components\Header.astro
+import { menu } from '@data/menu.js';
+import Icon from '@ui/icons/Icon.astro';
+import Button from '@ui/Button.astro';
+import SearchBar from './navigation/SearchBar.astro';
+
+const currentPath = Astro.url.pathname;
+const lang = 'en'; // Simplified - always use English, Google Translate handles translations
+const primaryCTA = { text: 'Get Started', href: '/contact?assessment=true'};
+const secondaryCTA = { text: 'Book a consultation', href: '/contact?consultation=true'};
+---
+
+<header class="bg-white shadow-sm border-b border-slate-200 sticky top-0 z-[70]">
+  <!-- Header utility bar -->
+  <div class="bg-slate-900 text-white text-xs sm:text-sm py-1.5">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+      <div class="hidden sm:flex space-x-5">
+        <span class="flex items-center">
+          <Icon name="phone" class="w-4 h-4 mr-1" /> 
+          +358 XX XXX XXXX
+        </span>
+        <span class="flex items-center">
+          <Icon name="email" class="w-4 h-4 mr-1" /> 
+          info@cybersecurity.fi
+        </span>
+        <span class="flex items-center">
+          <Icon name="mapPin" class="w-4 h-4 mr-1" /> 
+          Helsinki, Finland
+        </span>
+      </div>
+      <div class="sm:hidden flex items-center text-[11px] gap-3">
+        <a href="tel:+358XXXXXXXXX" class="flex items-center">
+          <Icon name="phone" class="w-4 h-4 mr-1" /> 
+          +358 XX XXX XXXX
+        </a>
+      </div>
+      
+      <!-- Google Translate widget -->
+      <div id="langToggle" class="flex bg-slate-800 rounded-md p-1"></div>
+    </div>
+  </div>
+
+  <!-- Main navigation -->
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <nav class="h-14 flex items-center justify-between" aria-label="Main navigation">
+      <a href="/" class="flex items-center px-2.5 py-1.5 rounded-md transition-colors hover:bg-slate-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-500">
+        <img src="/logo.png" alt="Cybersecurity Finland" class="block h-7 sm:h-8 lg:h-9 w-auto object-contain" decoding="async" loading="eager" style="filter: drop-shadow(0 0 1px rgba(0,0,0,0.25)) contrast(1.1) brightness(0.9);" />
+      </a>
+
+      <!-- Desktop Navigation -->
+      <div class="hidden lg:flex items-center gap-1 flex-1 justify-center min-w-0">
+        {menu && menu.map(item => {
+          const href = item.href;
+          const isActive = currentPath === href || currentPath.startsWith(href + '/') || (href !== '/' && currentPath.startsWith(href));
+          const hasChildren = item.children && item.children.length > 0;
+          const label = item.label_en; // Always use English labels
+          
+          return <div class="relative group">
+            {hasChildren ? (
+              <>
+                <button class={`flex items-center px-2.5 py-1 text-[12px] font-medium rounded-md transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 ${isActive ? 'text-teal-700 bg-teal-50' : 'text-slate-700 hover:text-teal-700 hover:bg-slate-50'}`} aria-haspopup="true" aria-expanded="false">
+                  {label}
+                  <Icon name="chevronDown" class="w-3 h-3 ml-1" />
+                </button>
+                
+                {/* Services Mega Menu */}
+                {item.label_en === 'SERVICES' ? (
+                  <div class="absolute left-0 top-full w-[800px] bg-white shadow-lg rounded-lg border border-slate-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150 z-50">
+                    <div class="p-6 grid grid-cols-2 gap-8">
+                      {item.children && item.children.map(sub => {
+                        const subHref = sub.href;
+                        const subLabel = sub.label_en;
+                        const hasSubChildren = sub.children && sub.children.length > 0;
+                        
+                        return (
+                          <div>
+                            <h3 class="font-semibold text-slate-900 text-sm mb-3 border-b border-slate-100 pb-2">
+                              <a href={subHref} class="hover:text-teal-700 transition-colors">
+                                {subLabel}
+                              </a>
+                            </h3>
+                            {hasSubChildren ? (
+                              <div class="space-y-1">
+                                {sub.children.map(nested => {
+                                  const nestedHref = nested.href;
+                                  const nestedLabel = nested.label_en;
+                                  return (
+                                    <a 
+                                      href={nestedHref}
+                                      class="block text-xs text-slate-600 hover:text-teal-700 hover:bg-slate-50 p-2 rounded-md transition-colors"
+                                    >
+                                      {nestedLabel}
+                                    </a>
+                                  );
+                                })}
+                              </div>
+                            ) : (
+                              <a 
+                                href={subHref}
+                                class="block text-xs text-slate-600 hover:text-teal-700 hover:bg-slate-50 p-2 rounded-md transition-colors"
+                              >
+                                View all {subLabel}
+                              </a>
+                            )}
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </div>
+                ) : (
+                  /* Regular dropdown for other items */
+                  <div class="absolute left-0 top-full min-w-48 bg-white shadow-lg rounded-lg border border-slate-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150 z-50">
+                    <div class="py-2">
+                      {item.children && item.children.map(sub => {
+                        const subHref = sub.href;
+                        const subLabel = sub.label_en;
+                        return <a href={subHref} class="block px-4 py-1.5 text-[12px] text-slate-700 hover:text-teal-700 hover:bg-slate-50" aria-label={subLabel}>{subLabel}</a>;
+                      })}
+                    </div>
+                  </div>
+                )}
+              </>
+            ) : (
+              <a href={href} class={`flex items-center px-2.5 py-1 text-[12px] font-medium rounded-md transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 ${isActive ? 'text-teal-700 bg-teal-50' : 'text-slate-700 hover:text-teal-700 hover:bg-slate-50'}`}>
+                {label}
+              </a>
+            )}
+          </div>;
+        })}
+      </div>
+
+      <!-- Desktop Header Utility -->
+      <div class="hidden lg:flex items-center space-x-3 shrink-0">
+        <div class="w-44 lg:w-48 xl:w-56">
+          <SearchBar placeholder="Search..." />
+        </div>
+        <Button href={secondaryCTA.href} variant="secondary" className="px-2.5 py-0.5 text-[11px] !rounded-md whitespace-nowrap">{secondaryCTA.text}</Button>
+        <Button href={primaryCTA.href} variant="primary" className="px-2.5 py-0.5 text-[11px] !rounded-md whitespace-nowrap">{primaryCTA.text}</Button>
+      </div>
+
+      <!-- Mobile Menu Trigger -->
+      <div class="lg:hidden flex items-center space-x-2">
+        <button id="mobile-trigger" class="p-2 rounded-md text-slate-700 hover:bg-slate-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-500" aria-controls="mobile-menu" aria-expanded="false">
+          <Icon name="menu" class="w-6 h-6" />
+        </button>
+      </div>
+    </nav>
+
+    <div id="mobile-search" class="lg:hidden hidden pb-4">
+      <SearchBar placeholder="Search site..." />
+    </div>
+  </div>
+</header>
+
+<!-- Mobile Menu Overlay -->
+<div id="mobile-menu-overlay" class="lg:hidden fixed inset-0 bg-black bg-opacity-25 z-[75] hidden"></div>
+
+<!-- Mobile Menu -->
+<div id="mobile-menu" class="lg:hidden fixed top-0 right-0 w-full max-w-sm h-full bg-white shadow-xl z-[80] transform translate-x-full transition-transform duration-300 ease-in-out hidden" aria-hidden="true">
+  <div class="flex items-center justify-between p-4 border-b border-slate-200">
+    <span class="text-lg font-semibold text-slate-900">Menu</span>
+    <button data-close class="p-2 rounded-md text-slate-700 hover:bg-slate-50">
+      <Icon name="close" class="w-5 h-5" />
+    </button>
+  </div>
+  
+  <div class="overflow-y-auto h-full pb-20">
+    <nav class="p-4 space-y-1">
+      {menu && menu.map(item => {
+        const href = item.href;
+        const isActive = currentPath === href || currentPath.startsWith(href + '/') || (href !== '/' && currentPath.startsWith(href));
+        const hasChildren = item.children && item.children.length > 0;
+        const label = item.label_en; // Always use English labels
+        
+        if (hasChildren) {
+          return (
+            <details class="group">
+              <summary class={`flex items-center justify-between p-3 rounded-lg cursor-pointer transition-colors ${
+                isActive ? 'text-teal-700 bg-teal-50' : 'text-slate-700 hover:text-teal-700 hover:bg-slate-50'
+              }`}>
+                <span class="font-medium">{label}</span>
+                <Icon name="chevronDown" class="w-4 h-4 transition-transform group-open:rotate-180" />
+              </summary>
+              <div class="mt-2 ml-4 space-y-1">
+                {item.children && item.children.map(sub => {
+                  const subHref = sub.href;
+                  const subLabel = sub.label_en;
+                  const subIsActive = currentPath.startsWith(subHref);
+                  
+                  // Check if this sub-item has children (nested menu)
+                  const hasSubChildren = sub.children && sub.children.length > 0;
+                  
+                  if (hasSubChildren) {
+                    return (
+                      <details class="group ml-2">
+                        <summary class={`flex items-center justify-between p-2 rounded-md cursor-pointer text-sm transition-colors ${
+                          subIsActive ? 'text-teal-700 bg-teal-50' : 'text-slate-600 hover:text-teal-700 hover:bg-slate-50'
+                        }`}>
+                          <span>{subLabel}</span>
+                          <Icon name="chevronDown" class="w-3 h-3 transition-transform group-open:rotate-180" />
+                        </summary>
+                        <div class="mt-1 ml-4 space-y-1">
+                          {sub.children && sub.children.map(nested => {
+                            const nestedHref = nested.href;
+                            const nestedLabel = nested.label_en;
+                            const nestedIsActive = currentPath.startsWith(nestedHref);
+                            return (
+                              <a 
+                                href={nestedHref}
+                                class={`block p-2 rounded-md text-xs transition-colors ${
+                                  nestedIsActive ? 'text-teal-700 bg-teal-50' : 'text-slate-500 hover:text-teal-700 hover:bg-slate-50'
+                                }`}
+                              >
+                                {nestedLabel}
+                              </a>
+                            );
+                          })}
+                        </div>
+                      </details>
+                    );
+                  } else {
+                    return (
+                      <a 
+                        href={subHref}
+                        class={`block p-2 rounded-md text-sm transition-colors ${
+                          subIsActive ? 'text-teal-700 bg-teal-50' : 'text-slate-600 hover:text-teal-700 hover:bg-slate-50'
+                        }`}
+                      >
+                        {subLabel}
+                      </a>
+                    );
+                  }
+                })}
+              </div>
+            </details>
+          );
+        } else {
+          return (
+            <a 
+              href={href}
+              class={`block p-3 rounded-lg font-medium transition-colors ${
+                isActive ? 'text-teal-700 bg-teal-50' : 'text-slate-700 hover:text-teal-700 hover:bg-slate-50'
+              }`}
+            >
+              {label}
+            </a>
+          );
+        }
+      })}
+    </nav>
+    
+    <!-- Mobile CTAs -->
+    <div class="p-4 space-y-3 border-t border-slate-200">
+      <Button href={secondaryCTA.href} variant="secondary" className="w-full justify-center">
+        {secondaryCTA.text}
+      </Button>
+      <Button href={primaryCTA.href} variant="primary" className="w-full justify-center">
+        {primaryCTA.text}
+      </Button>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const trigger = document.getElementById('mobile-trigger');
+    const menuRoot = document.getElementById('mobile-menu');
+    const mobileSearch = document.getElementById('mobile-search');
+    const mobileOverlay = document.getElementById('mobile-menu-overlay');
+    
+    if (!trigger || !menuRoot) return;
+    let lastFocus: HTMLElement | null = null;
+
+    const focusableSelector = 'a[href], button:not([disabled]), [role="button"], summary, input, select, textarea';
+
+    function trapFocus(e: KeyboardEvent) {
+      if (!(menuRoot instanceof HTMLElement)) return;
+      if (!menuRoot.classList.contains('hidden')) {
+        const focusables = Array.from(menuRoot.querySelectorAll(focusableSelector)).filter(el => el instanceof HTMLElement && el.offsetParent !== null);
+        if (focusables.length === 0) return;
+        const first = focusables[0];
+        const last = focusables[focusables.length - 1];
+        if (e.key === 'Tab') {
+          if (e.shiftKey && document.activeElement === first) {
+            e.preventDefault();
+            (last as HTMLElement).focus();
+          } else if (!e.shiftKey && document.activeElement === last) {
+            e.preventDefault();
+            (first as HTMLElement).focus();
+          }
+        }
+        if (e.key === 'Escape') closeMenu();
+      }
+    }
+
+    function openMenu() {
+      if (!(menuRoot instanceof HTMLElement) || !(trigger instanceof HTMLElement)) return;
+      lastFocus = document.activeElement as HTMLElement;
+      menuRoot.classList.remove('hidden');
+      menuRoot.classList.remove('translate-x-full');
+      if (mobileOverlay) mobileOverlay.classList.remove('hidden');
+      trigger.setAttribute('aria-expanded','true');
+      menuRoot.removeAttribute('aria-hidden');
+      document.body.classList.add('overflow-hidden','touch-none');
+      const firstLink = menuRoot.querySelector('a, button, summary');
+      if (firstLink && 'focus' in firstLink) setTimeout(() => (firstLink as HTMLElement).focus(), 10);
+      document.addEventListener('keydown', trapFocus);
+    }
+
+    function closeMenu() {
+      if (!(menuRoot instanceof HTMLElement) || !(trigger instanceof HTMLElement)) return;
+      menuRoot.classList.add('translate-x-full');
+      if (mobileOverlay) mobileOverlay.classList.add('hidden');
+      trigger.setAttribute('aria-expanded','false');
+      menuRoot.setAttribute('aria-hidden','true');
+      document.body.classList.remove('overflow-hidden','touch-none');
+      document.removeEventListener('keydown', trapFocus);
+      if (lastFocus && 'focus' in lastFocus && typeof lastFocus.focus === 'function') setTimeout(() => (lastFocus as HTMLElement).focus(), 10);
+      setTimeout(() => {
+        if (menuRoot.classList.contains('translate-x-full')) {
+          menuRoot.classList.add('hidden');
+        }
+      }, 300);
+    }
+
+    trigger.addEventListener('click', () => {
+      const open = trigger.getAttribute('aria-expanded') === 'true';
+      open ? closeMenu() : openMenu();
+    });
+
+    if (mobileOverlay) {
+      mobileOverlay.addEventListener('click', closeMenu);
+    }
+
+    menuRoot.addEventListener('click', (e) => {
+      const t = e.target;
+      if (t instanceof HTMLElement) {
+        if (t.matches('[data-close]') || t.closest('[data-close]')) {
+          closeMenu();
+          return;
+        }
+        if (t.closest('a') && !t.closest('details')) closeMenu();
+      }
+    });
+
+    window.addEventListener('resize', () => {
+      if (window.innerWidth >= 1024) {
+        if (trigger.getAttribute('aria-expanded') === 'true') closeMenu();
+        if (mobileSearch && !mobileSearch.classList.contains('hidden')) mobileSearch.classList.add('hidden');
+      }
+    });
+
+    document.addEventListener('click', (e) => {
+      if (mobileSearch && !mobileSearch.classList.contains('hidden') && !mobileSearch.contains(e.target as Node)) mobileSearch.classList.add('hidden');
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && mobileSearch && !mobileSearch.classList.contains('hidden')) mobileSearch.classList.add('hidden');
+    });
+  });
+</script>
+
+<!-- Google Translate Widget -->
+<script type="text/javascript">
+  function googleTranslateElementInit() {
+    new google.translate.TranslateElement({
+      pageLanguage: 'en',
+      includedLanguages: 'fi,en',
+      layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+      autoDisplay: false
+    }, 'langToggle');
+  }
+</script>
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+<style>
+  /* Hide Google Translate branding and style the widget */
+  #langToggle {
+    position: relative;
+  }
+
+  /* Hide the default Google Translate UI */
+  #langToggle .goog-te-gadget {
+    font-family: inherit !important;
+    font-size: inherit !important;
+    color: inherit !important;
+  }
+
+  #langToggle .goog-te-gadget-simple {
+    background-color: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    font-size: 11px !important;
+    color: white !important;
+    outline: none !important;
+  }
+
+  #langToggle .goog-te-gadget-simple .goog-te-menu-value {
+    color: #cbd5e1 !important; /* slate-300 */
+    font-size: 11px !important;
+    padding: 4px 8px !important;
+    border-radius: 4px !important;
+    background: transparent !important;
+    border: none !important;
+    text-decoration: none !important;
+    font-weight: 400 !important;
+    transition: all 0.2s ease !important;
+  }
+
+  #langToggle .goog-te-gadget-simple .goog-te-menu-value:hover {
+    color: white !important;
+    background-color: rgba(255, 255, 255, 0.1) !important;
+  }
+
+  #langToggle .goog-te-gadget-simple .goog-te-menu-value span {
+    color: inherit !important;
+    font-size: inherit !important;
+  }
+
+  #langToggle .goog-te-gadget-simple .goog-te-menu-value span:first-child {
+    display: none !important; /* Hide the language name, keep only the code */
+  }
+
+  /* Hide the dropdown arrow */
+  #langToggle .goog-te-gadget-simple .goog-te-menu-value img {
+    display: none !important;
+  }
+
+  /* Style for active/translated state */
+  html[lang="fi"] #langToggle .goog-te-gadget-simple .goog-te-menu-value,
+  .goog-te-combo option[value="fi"]:checked ~ .goog-te-gadget-simple .goog-te-menu-value {
+    background-color: #0f766e !important; /* teal-600 */
+    color: white !important;
+  }
+
+  /* Hide Google Translate banner */
+  .goog-te-banner-frame {
+    display: none !important;
+  }
+
+  .goog-te-menu-frame {
+    z-index: 9999 !important;
+  }
+
+  /* Custom styling to make it look like button toggle */
+  #langToggle .goog-te-gadget-simple {
+    display: flex !important;
+    align-items: center !important;
+  }
+
+  #langToggle .goog-te-gadget-simple .goog-te-menu-value {
+    min-width: 32px !important;
+    text-align: center !important;
+    cursor: pointer !important;
+    position: relative !important;
+  }
+
+  /* Add EN/FI text overlay */
+  #langToggle .goog-te-gadget-simple .goog-te-menu-value:after {
+    content: "EN" !important;
+    position: absolute !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    pointer-events: none !important;
+    font-size: 11px !important;
+    font-weight: 400 !important;
+  }
+
+  /* Show FI when Finnish is selected */
+  body.translated-ltr #langToggle .goog-te-gadget-simple .goog-te-menu-value:after,
+  html[lang="fi"] #langToggle .goog-te-gadget-simple .goog-te-menu-value:after {
+    content: "FI" !important;
+  }
+
+  /* Hide original text */
+  #langToggle .goog-te-gadget-simple .goog-te-menu-value span {
+    opacity: 0 !important;
+    font-size: 0 !important;
+  }
+
+  /* Remove outline and focus styles that don't match */
+  #langToggle * {
+    outline: none !important;
+    box-shadow: none !important;
+  }
+
+  /* Ensure proper positioning */
+  #langToggle {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+</style>

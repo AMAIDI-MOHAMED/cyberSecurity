@@ -1,0 +1,83 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Icon from '@/components/ui/icons/Icon.astro';
+import Button from '@/components/ui/Button.astro';
+
+const currentPath = Astro.url.pathname;
+const lang = currentPath.startsWith('/fi') ? 'fi' : 'en';
+
+const title = lang === 'fi' ? 'NIS2‑toteutusopas suomalaisille organisaatioille' : 'NIS2 Implementation Guide for Finnish Organizations';
+const description = lang === 'fi'
+  ? 'Täydellinen tiekartta NIS2‑yhteensopivuuden saavuttamiseksi Suomen sääntely‑ympäristössä.'
+  : 'Complete roadmap for achieving NIS2 compliance in the Finnish regulatory context.';
+
+const steps = [
+  { n: '01', fi: 'Soveltuvuuden arviointi ja luokittelu', en: 'Applicability and classification',
+    fiD: 'Tunnista olennaiset ja tärkeät toimijat (essential / important) Traficomin ja toimialasääntelyn perusteella.',
+    enD: 'Determine essential/important entity status per Traficom guidance and sector rules.' },
+  { n: '02', fi: 'Riskienhallintakehys', en: 'Risk management framework',
+    fiD: 'Ota käyttöön ISO 27005/NIST‑pohjainen riskienhallinta ja määritä riskinkäsittely.',
+    enD: 'Adopt ISO 27005/NIST risk management and define risk treatment.' },
+  { n: '03', fi: 'Hallintamalli ja politiikat', en: 'Governance and policies',
+    fiD: 'Perusta tietoturvapolitiikat, omistajuudet ja hyväksymiset (hallitus/johto).',
+    enD: 'Establish policy library, ownership, and approvals (board/executive).' },
+  { n: '04', fi: 'Turvatoimet ja operatiivinen kypsyys', en: 'Controls and operational maturity',
+    fiD: 'Rakennetaan tekniset ja prosessikontrollit: identiteetti, verkko, varautuminen, koulutus.',
+    enD: 'Build technical/process controls: identity, network, resilience, training.' },
+  { n: '05', fi: 'Toimittajahallinta (TPRM)', en: 'Third‑party risk (TPRM)',
+    fiD: 'Arvioi kriittiset toimittajat, lisää sopimusvaatimukset ja jatkuva seuranta.',
+    enD: 'Assess critical suppliers, add contractual clauses and continuous monitoring.' },
+  { n: '06', fi: 'Vikatilanteiden hallinta ja ilmoitus', en: 'Incident handling and reporting',
+    fiD: 'Määritä CSIRT‑prosessit ja 24/72h‑ilmoituspolut Traficomille ja valvojille.',
+    enD: 'Define CSIRT processes and 24/72h notification paths to Traficom and regulators.' },
+  { n: '07', fi: 'Jatkuvuus ja toipuminen', en: 'Continuity and recovery',
+    fiD: 'ISO 22301 mukainen jatkuvuussuunnittelu, testaus ja varautuminen.',
+    enD: 'ISO 22301 aligned BCP/DR, testing and preparedness.' },
+  { n: '08', fi: 'Mittarit ja raportointi', en: 'Metrics and reporting',
+    fiD: 'KPI/KRI, johdon raportointi ja jatkuva parantaminen.',
+    enD: 'KPIs/KRIs, executive reporting, continuous improvement.' }
+];
+---
+
+<Layout title={title} description={description}>
+  <section class="bg-gradient-to-br from-teal-50 via-white to-blue-50 py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-4xl">
+        <h1 class="text-4xl lg:text-5xl font-bold text-slate-900 mb-6">{title}</h1>
+        <p class="text-xl text-slate-600">{description}</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {steps.map(s => (
+          <div class="bg-gradient-to-br from-slate-50 to-white p-8 rounded-xl border border-slate-200 hover:shadow-xl transition-all duration-300">
+            <div class="w-12 h-12 bg-teal-600 text-white rounded-full flex items-center justify-center font-bold mb-4">{s.n}</div>
+            <h3 class="text-lg font-bold text-slate-900 mb-2">{lang==='fi'?s.fi:s.en}</h3>
+            <p class="text-slate-600 text-sm">{lang==='fi'?s.fiD:s.enD}</p>
+          </div>
+        ))}
+      </div>
+      <div class="mt-12 flex flex-wrap gap-3">
+        <a href="/services/nis2" class="px-4 py-2 rounded-md bg-teal-600 text-white text-sm">{lang==='fi'?'NIS2‑palvelut':'NIS2 Services'}</a>
+        <a href="/services/risk-management" class="px-4 py-2 rounded-md bg-slate-100 text-slate-800 text-sm">{lang==='fi'?'Riskienhallinta':'Risk Management'}</a>
+        <a href="/services/business-continuity-iso-22301" class="px-4 py-2 rounded-md bg-slate-100 text-slate-800 text-sm">{lang==='fi'?'Jatkuvuus':'Business Continuity'}</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 bg-slate-900 text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl font-bold mb-6">{lang==='fi'?'Valmis aloittamaan NIS2‑toteutuksen?':'Ready to start your NIS2 implementation?'}</h2>
+      <p class="text-xl text-slate-300 mb-8 max-w-3xl mx-auto">{lang==='fi'?'Varaa keskustelu – saat nopean valmiuskartoituksen ja tiekartan.':'Book a call – get a quick readiness check and roadmap.'}</p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <Button href="/contact" variant="primary" className="text-lg px-8 py-3">{lang==='fi'?'Ota yhteyttä':'Get in Touch'}</Button>
+        <Button href="/contact?assessment=true" variant="secondary" className="text-lg px-8 py-3">{lang==='fi'?'NIS2‑valmiuskartoitus':'NIS2 Readiness Check'}</Button>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+

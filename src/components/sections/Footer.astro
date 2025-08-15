@@ -1,0 +1,183 @@
+---
+import FooterForm from "@ui/forms/FooterForm.astro";
+import ContactInfo from "@common/ContactInfo.astro";
+import { footerMenu } from '@data/footerMenu.js';
+
+const companyName = "CyberSecurity.fi";
+const companyDescription = "Comprehensive GRC, compliance, and anti-fraud services for Finland and the EU. ISO 27001, NIS2, SOC 2, DORA—delivered on time.";
+const contactDetails = {
+  address: "Helsinki, Finland",
+  phone: "+358 XX XXX XXXX",
+  email: "info@cybersecurity.fi",
+  website: "www.cybersecurity.fi",
+  businessId: "1234567-8", // Finnish business ID format
+};
+const copyrightYear = new Date().getFullYear();
+const craftedBy = { name: "gulamoff", url: "https://www.gulamoff.dev/" };
+
+// Lang detection
+const path = Astro.url.pathname;
+const isFi = path.startsWith('/fi');
+const lang = isFi ? 'fi' : 'en';
+const menu = footerMenu[lang];
+
+// UI text
+const newsletterTitle = isFi ? 'Pysy ajan tasalla' : 'Stay updated';
+const themeLabel = isFi ? 'Teema' : 'Theme';
+const contrastLabel = isFi ? 'Korkea kontrasti' : 'High contrast';
+const fontSizeLabel = isFi ? 'Tekstin koko' : 'Font size';
+---
+
+<footer class="mt-auto w-full bg-linear-to-t/oklch from-teal-200 via-transparent to-white pt-12 pb-10 border-t border-teal-100">
+  <div class="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="grid gap-10 lg:grid-cols-12">
+      <!-- Brand + Description -->
+      <div class="lg:col-span-4 space-y-6">
+        <a href={isFi ? '/fi' : '/'} class="flex-none text-xl font-semibold text-slate-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-500" aria-label={companyName} data-track="footer-brand">
+          <span class="text-teal-700">Cyber</span>Security.fi
+        </a>
+        <p class="text-pretty text-slate-600 text-sm leading-relaxed">
+          {companyDescription}
+        </p>
+        <div class="text-sm text-slate-500 space-y-1" aria-label={isFi ? 'Yhteystiedot' : 'Contact details'}>
+          <div>{contactDetails.address}</div>
+          <div><a href={`tel:${contactDetails.phone}`} class="hover:text-teal-700" data-track="footer-contact" data-contact-type="phone">{contactDetails.phone}</a></div>
+          <div><a href={`mailto:${contactDetails.email}`} class="hover:text-teal-700" data-track="footer-contact" data-contact-type="email">{contactDetails.email}</a></div>
+          <div>{isFi ? 'Y-tunnus' : 'Business ID'}: {contactDetails.businessId}</div>
+        </div>
+        <!-- Theme & Accessibility Controls -->
+        <div class="pt-4 space-y-3">
+          <div class="flex items-center gap-3">
+            <span class="text-xs font-semibold uppercase tracking-wide text-slate-500">{themeLabel}</span>
+            <button id="contrast-toggle" class="text-xs px-2 py-1 rounded bg-slate-800 text-white hover:bg-teal-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-500" data-state="default" data-track="pref-contrast">{contrastLabel}</button>
+          </div>
+          <div class="flex items-center gap-3">
+            <span class="text-xs font-semibold uppercase tracking-wide text-slate-500">{fontSizeLabel}</span>
+            <div class="flex gap-1">
+              <button data-font="base" class="text-xs px-2 py-1 rounded bg-slate-800 text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 aria-[pressed=true]:bg-teal-700" aria-pressed="true" data-track="pref-font" data-font-size="base">A</button>
+              <button data-font="lg" class="text-xs px-2 py-1 rounded bg-slate-700 text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-500" data-track="pref-font" data-font-size="lg">A+</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Navigation Columns -->
+      <div class="lg:col-span-8 grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-8">
+        {menu.map(section => (
+          <div class="group" data-footer-group>
+            <h3 class="text-sm font-semibold text-slate-900 mb-3 tracking-wide hidden sm:block">{section.title}</h3>
+            <button type="button" class="sm:hidden w-full flex items-center justify-between text-left text-sm font-semibold text-slate-900 py-2 border-b border-slate-200" aria-expanded="false" data-footer-accordion>
+              <span>{section.title}</span>
+              <span class="ml-2 inline-block transition-transform text-slate-500" aria-hidden>▾</span>
+            </button>
+            <ul class="space-y-2 hidden sm:block" data-footer-list>
+              {section.items.map(link => (
+                <li>
+                  <a href={link.href} class="text-sm text-slate-600 hover:text-teal-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 rounded block" data-track="footer-link" data-footer-section={section.title}>{link.label}</a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+        <!-- Newsletter / Form column -->
+        <div class="col-span-full sm:col-span-2 md:col-span-2 lg:col-span-2">
+          <h3 class="font-semibold text-slate-700 mb-3">{newsletterTitle}</h3>
+          <FooterForm />
+        </div>
+      </div>
+    </div>
+
+    <hr class="my-10 border-slate-200" />
+
+    <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between text-sm text-slate-500">
+      <p>&copy; 2024-{copyrightYear} {companyName}. {isFi ? 'Kaikki oikeudet pidätetään.' : 'All rights reserved.'} <span class="block md:inline">{isFi ? 'Toteuttanut' : 'Crafted by'} <a href={craftedBy.url} target="_blank" rel="noopener noreferrer" class="underline decoration-dotted hover:text-teal-700">{craftedBy.name}</a></span></p>
+      <p>{isFi ? 'Suomen ja EU:n tietoturva- ja vaatimustenmukaisuuspalvelut' : 'Cybersecurity and compliance services for Finland and the EU'}</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // @ts-nocheck
+  document.addEventListener('DOMContentLoaded', () => {
+    const toggle = document.getElementById('contrast-toggle');
+    const fontButtons = document.querySelectorAll('[data-font]');
+
+    try {
+      const storedContrast = localStorage.getItem('pref:contrast');
+      if (storedContrast === 'high') {
+        document.documentElement.classList.add('high-contrast');
+        const toggle = document.getElementById('contrast-toggle');
+        toggle?.setAttribute('data-state','high');
+      }
+      const storedFont = localStorage.getItem('pref:font');
+      if (storedFont) {
+        document.documentElement.style.setProperty('--base-font-size', storedFont === 'lg' ? '18px' : '16px');
+        document.querySelectorAll('[data-font]').forEach(b => {
+          b.setAttribute('aria-pressed', b.getAttribute('data-font') === storedFont ? 'true' : 'false');
+        });
+      }
+      document.getElementById('contrast-toggle')?.addEventListener('click', (e) => {
+        const btn = e.currentTarget as HTMLElement;
+        const state = btn.getAttribute('data-state');
+        const next = state === 'default' ? 'high' : 'default';
+        localStorage.setItem('pref:contrast', next);
+      });
+      document.querySelectorAll('[data-font]').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const size = btn.getAttribute('data-font') || 'base';
+          localStorage.setItem('pref:font', size);
+        });
+      });
+    } catch (e) { /* ignore */ }
+
+    // Analytics for footer
+    function emitFooter(type, extra) {
+      window.dispatchEvent(new CustomEvent('footer:interaction', { detail: { type, ...(extra||{}), ts: Date.now() } }));
+    }
+    document.querySelectorAll('[data-track]')?.forEach(el => {
+      el.addEventListener('click', () => {
+        const type = el.getAttribute('data-track');
+        if (type?.startsWith('footer') || type?.startsWith('pref')) {
+          emitFooter(type, {
+            section: el.getAttribute('data-footer-section'),
+            contactType: el.getAttribute('data-contact-type'),
+            fontSize: el.getAttribute('data-font-size'),
+            state: el.getAttribute('data-state')
+          });
+        }
+      });
+    });
+
+    // Footer mobile accordions
+    const accordions = document.querySelectorAll('[data-footer-accordion]');
+    accordions.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const expanded = btn.getAttribute('aria-expanded') === 'true';
+        const list = btn.parentElement?.querySelector('[data-footer-list]');
+        const icon = btn.querySelector('span[aria-hidden]');
+        if (!list) return;
+        if (expanded) {
+          list.classList.add('hidden');
+          btn.setAttribute('aria-expanded','false');
+          icon?.classList.remove('rotate-180');
+        } else {
+          list.classList.remove('hidden');
+          btn.setAttribute('aria-expanded','true');
+          icon?.classList.add('rotate-180');
+        }
+      });
+    });
+  });
+</script>
+
+<style>
+  :root { --base-font-size: 16px; }
+  html { font-size: var(--base-font-size); }
+  .high-contrast body { background:#000; color:#fff; }
+  .high-contrast a { color:#00ffd8 !important; }
+
+  @media (min-width: 640px) {
+    [data-footer-list] { display:block !important; }
+  }
+  [data-footer-accordion] span.rotate-180 { transform: rotate(180deg); }
+</style>

@@ -1,0 +1,191 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import HeroSection from '@/components/sections/HeroSection.astro';
+import CTA from '@/components/sections/CTA.astro';
+
+const title = "ISO 27001 Fast‑Track (90–120 days)";
+const currentPath = Astro.url.pathname;
+const lang = currentPath.startsWith('/fi') ? 'fi' : 'en';
+
+const heroContent = {
+  title: "ISO 27001 Fast‑Track Program",
+  subtitle: "Achieve ISO 27001 certification in just 90-120 days with our accelerated implementation program.",
+  description: "Our proven fast-track methodology combines expert guidance, pre-built templates, and intensive support to get you certified quickly without compromising on quality.",
+  primaryCTA: { text: "Get Started", href: "/contact?package=iso-27001-fast-track" },
+  secondaryCTA: { text: "Download Brochure", href: "/downloads/iso-27001-fast-track.pdf" }
+};
+
+const packageFeatures = [
+  {
+    title: "Rapid Gap Analysis",
+    description: "Comprehensive assessment of your current security posture against ISO 27001 requirements.",
+    duration: "Week 1-2"
+  },
+  {
+    title: "Policy Development",
+    description: "Creation of all required policies, procedures, and documentation using our proven templates.",
+    duration: "Week 3-6"
+  },
+  {
+    title: "Control Implementation",
+    description: "Hands-on support to implement security controls and measures across your organization.",
+    duration: "Week 7-10"
+  },
+  {
+    title: "Internal Audit",
+    description: "Comprehensive internal audit to identify any gaps before the certification audit.",
+    duration: "Week 11-12"
+  },
+  {
+    title: "Certification Support",
+    description: "Full support during the certification audit process with our expert consultants.",
+    duration: "Week 13-16"
+  }
+];
+
+const benefits = [
+  "Achieve certification 3x faster than traditional approaches",
+  "Comprehensive documentation package included",
+  "Dedicated project manager assigned",
+  "Weekly progress reviews and reporting",
+  "Post-certification maintenance support",
+  "Risk register and treatment plan",
+  "Employee training and awareness program",
+  "Incident response procedures"
+];
+
+const pricing = {
+  price: "Starting at €15,000",
+  includes: [
+    "Complete ISO 27001 implementation",
+    "All required documentation",
+    "Staff training (up to 20 employees)",
+    "Internal audit and gap analysis",
+    "Certification audit support",
+    "3 months post-certification support"
+  ]
+};
+---
+
+<Layout title={title}>
+  <HeroSection content={heroContent} />
+  
+  <section class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-slate-900 mb-4">Fast-Track Implementation Process</h2>
+        <p class="text-lg text-slate-600 max-w-3xl mx-auto">
+          Our proven 16-week methodology gets you from start to certification efficiently and effectively.
+        </p>
+      </div>
+      
+      <div class="space-y-8">
+        {packageFeatures.map((feature, index) => (
+          <div class="flex items-start">
+            <div class="flex-shrink-0 w-12 h-12 bg-teal-100 rounded-full flex items-center justify-center mr-6">
+              <span class="text-teal-600 font-semibold">{index + 1}</span>
+            </div>
+            <div class="flex-1">
+              <div class="flex items-center justify-between mb-2">
+                <h3 class="text-xl font-semibold text-slate-900">{feature.title}</h3>
+                <span class="text-sm bg-slate-100 text-slate-700 px-3 py-1 rounded-full">{feature.duration}</span>
+              </div>
+              <p class="text-slate-600">{feature.description}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <div>
+          <h2 class="text-3xl font-bold text-slate-900 mb-6">What's Included</h2>
+          <ul class="space-y-3">
+            {benefits.map(benefit => (
+              <li class="flex items-start">
+                <svg class="w-5 h-5 text-teal-600 mr-3 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                </svg>
+                <span class="text-slate-700">{benefit}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+        
+        <div class="bg-white rounded-lg shadow-lg p-8">
+          <h3 class="text-2xl font-bold text-slate-900 mb-4">Package Investment</h3>
+          <div class="text-3xl font-bold text-teal-600 mb-6">{pricing.price}</div>
+          
+          <h4 class="text-lg font-semibold text-slate-900 mb-4">Package Includes:</h4>
+          <ul class="space-y-2 mb-6">
+            {pricing.includes.map(item => (
+              <li class="flex items-start">
+                <svg class="w-4 h-4 text-teal-600 mr-2 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                </svg>
+                <span class="text-sm text-slate-700">{item}</span>
+              </li>
+            ))}
+          </ul>
+          
+          <a 
+            href="/contact?package=iso-27001-fast-track"
+            class="block w-full text-center bg-teal-600 text-white py-3 px-6 rounded-md hover:bg-teal-700 transition-colors font-semibold"
+          >
+            Get Started Today
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-slate-900 mb-4">Why Choose Fast-Track?</h2>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="text-center">
+          <div class="bg-teal-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg class="w-8 h-8 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold text-slate-900 mb-2">Time to Market</h3>
+          <p class="text-slate-600">Get certified quickly to meet customer requirements and win new business opportunities.</p>
+        </div>
+        
+        <div class="text-center">
+          <div class="bg-teal-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg class="w-8 h-8 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold text-slate-900 mb-2">Proven Success</h3>
+          <p class="text-slate-600">95% first-time certification success rate with our fast-track methodology.</p>
+        </div>
+        
+        <div class="text-center">
+          <div class="bg-teal-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg class="w-8 h-8 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold text-slate-900 mb-2">Cost Effective</h3>
+          <p class="text-slate-600">Fixed-price package with no hidden costs or scope creep concerns.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CTA 
+    title="Ready to Fast-Track Your ISO 27001 Certification?"
+    description="Join over 50 organizations that have achieved ISO 27001 certification with our fast-track program."
+    primaryCTA={{ text: "Schedule Consultation", href: "/contact?package=iso-27001-fast-track" }}
+    secondaryCTA={{ text: "View All Packages", href: "/packages" }}
+  />
+</Layout>

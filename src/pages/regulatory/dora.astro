@@ -1,0 +1,490 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Icon from "@ui/icons/Icon.astro";
+import Button from "@ui/Button.astro";
+
+const title = "DORA for Financial Services";
+const currentPath = Astro.url.pathname;
+const lang = currentPath.startsWith('/fi') ? 'fi' : 'en';
+
+const content = {
+  en: {
+    title: "DORA for Financial Services",
+    subtitle: "Digital Operational Resilience Act Implementation",
+    description: "Navigate DORA compliance requirements for financial institutions with expert guidance and proven implementation strategies.",
+    whoFor: "For financial institutions, investment firms, and financial market infrastructure providers operating in the EU.",
+    whatYouAchieve: "Full DORA compliance with enhanced operational resilience and cybersecurity capabilities.",
+    
+    // What is DORA Section
+    doraTitle: "What is DORA?",
+    doraDescription: "The Digital Operational Resilience Act (DORA) is a comprehensive EU regulation that establishes uniform requirements for the financial sector's digital operational resilience, ensuring financial entities can withstand, respond to, and recover from ICT-related disruptions.",
+    
+    // Key Requirements Section
+    requirementsTitle: "DORA Key Requirements",
+    requirementsSubtitle: "Five pillars of digital operational resilience",
+    requirements: [
+      {
+        title: "ICT Risk Management",
+        description: "Establish comprehensive ICT risk management framework"
+      },
+      {
+        title: "Incident Reporting",
+        description: "Implement incident detection, classification, and reporting"
+      },
+      {
+        title: "Digital Resilience Testing",
+        description: "Conduct regular digital resilience testing programs"
+      },
+      {
+        title: "ICT Third-Party Risk",
+        description: "Manage ICT third-party risk and concentration risk"
+      },
+      {
+        title: "Information Sharing",
+        description: "Participate in information sharing arrangements"
+      }
+    ],
+    
+    // Compliance Areas Section
+    complianceTitle: "DORA Compliance Areas",
+    complianceSubtitle: "Comprehensive coverage of digital operational resilience",
+    complianceAreas: [
+      {
+        title: "Risk Assessment",
+        description: "Identify and assess ICT risks across all business areas"
+      },
+      {
+        title: "Business Continuity",
+        description: "Develop ICT business continuity and disaster recovery plans"
+      },
+      {
+        title: "Access Control",
+        description: "Implement robust identity and access management controls"
+      },
+      {
+        title: "Data Protection",
+        description: "Ensure data security and privacy compliance"
+      },
+      {
+        title: "Monitoring & Detection",
+        description: "Establish continuous monitoring and threat detection"
+      },
+      {
+        title: "Response & Recovery",
+        description: "Develop incident response and recovery procedures"
+      }
+    ],
+    
+    // Why Choose Us Section
+    whyChooseTitle: "Why Choose Our DORA Services?",
+    whyChooseSubtitle: "Expert guidance for financial sector compliance",
+    whyChoosePoints: [
+      "Deep understanding of financial sector regulations",
+      "Experience with DORA implementation requirements",
+      "Proven compliance methodologies and frameworks",
+      "Ongoing support and maintenance services",
+      "Industry best practices and standards"
+    ],
+    
+    // Benefits Section
+    benefitsTitle: "Benefits of DORA Compliance",
+    benefitsSubtitle: "Strategic advantages of achieving compliance",
+    benefitsList: [
+      "Enhanced operational resilience and business continuity",
+      "Improved customer and stakeholder confidence",
+      "Reduced regulatory and reputational risks",
+      "Better incident response and recovery capabilities",
+      "Competitive advantage in the financial market"
+    ],
+    
+    // Implementation Steps Section
+    implementationTitle: "Implementation Steps",
+    implementationSubtitle: "Systematic approach to DORA compliance",
+    steps: [
+      {
+        number: "01",
+        title: "Gap Analysis",
+        description: "Assess current ICT resilience against DORA requirements"
+      },
+      {
+        number: "02",
+        title: "Framework Design",
+        description: "Design comprehensive ICT risk management framework"
+      },
+      {
+        number: "03",
+        title: "Control Implementation",
+        description: "Implement required ICT controls and processes"
+      },
+      {
+        number: "04",
+        title: "Testing & Validation",
+        description: "Conduct digital resilience testing and validation"
+      },
+      {
+        number: "05",
+        title: "Monitoring & Reporting",
+        description: "Establish ongoing monitoring and reporting capabilities"
+      }
+    ],
+    
+    // CTA Section
+    ctaTitle: "Ready to Achieve DORA Compliance?",
+    ctaSubtitle: "Get expert guidance for financial sector digital resilience",
+    ctaButton: "Start DORA Assessment",
+    ctaDescription: "Our DORA experts will help you navigate the requirements and achieve compliance efficiently."
+  },
+  
+  fi: {
+    title: "DORA rahoituspalveluille",
+    subtitle: "Digitaalisen toiminnallisen kestävyyden asetuksen toteutus",
+    description: "Navigoi DORA yhteensopivuusvaatimukset rahoituslaitoksille asiantuntevan ohjauksen ja todistettujen toteutusstrategioiden avulla.",
+    whoFor: "EU:ssa toimiville rahoituslaitoksille, sijoitusyhtiöille ja rahoitusmarkkinoiden infrastruktuurin tarjoajille.",
+    whatYouAchieve: "Täysi DORA yhteensopivuus parannetulla toiminnallisella kestävyydellä ja kyberturvallisuuskyvyillä.",
+    
+    // What is DORA Section
+    doraTitle: "Mikä on DORA?",
+    doraDescription: "Digitaalisen toiminnallisen kestävyyden asetus (DORA) on kattava EU-asetus, joka määrittää yhtenäiset vaatimukset rahoitussektorin digitaaliselle toiminnalliselle kestävyydelle, varmistaen että rahoitusyhteisöt voivat kestää, vastata ja palautua ICT-aiheisista häiriöistä.",
+    
+    // Key Requirements Section
+    requirementsTitle: "DORA:n keskeiset vaatimukset",
+    requirementsSubtitle: "Digitaalisen toiminnallisen kestävyyden viisi pilaria",
+    requirements: [
+      {
+        title: "ICT-riskinjohtaminen",
+        description: "Perusta kattava ICT-riskinjohtamiskehys"
+      },
+      {
+        title: "Tapahtumaraportointi",
+        description: "Toteuta tapahtumien tunnistus, luokittelu ja raportointi"
+      },
+      {
+        title: "Digitaalisen kestävyyden testaus",
+        description: "Suorita säännöllisiä digitaalisen kestävyyden testausohjelmia"
+      },
+      {
+        title: "ICT kolmannen osapuolen riski",
+        description: "Hallitse ICT kolmannen osapuolen riskiä ja keskittymisriskiä"
+      },
+      {
+        title: "Tiedon jakaminen",
+        description: "Osallistu tiedon jakamissopimuksiin"
+      }
+    ],
+    
+    // Compliance Areas Section
+    complianceTitle: "DORA yhteensopivuusalueet",
+    complianceSubtitle: "Kattava digitaalisen toiminnallisen kestävyyden kattavuus",
+    complianceAreas: [
+      {
+        title: "Riskinarviointi",
+        description: "Tunnista ja arvioi ICT-riskejä kaikilla liiketoiminta-alueilla"
+      },
+      {
+        title: "Liiketoiminnan jatkuvuus",
+        description: "Kehitä ICT liiketoiminnan jatkuvuus- ja katastrofipalautumissuunnitelmat"
+      },
+      {
+        title: "Käyttöoikeuksien hallinta",
+        description: "Toteuta vahvat identiteetti- ja käyttöoikeuksien hallintakontrollit"
+      },
+      {
+        title: "Tietojen suojelu",
+        description: "Varmista tietoturva ja yksityisyyden suojelu"
+      },
+      {
+        title: "Seuranta ja tunnistus",
+        description: "Perusta jatkuva seuranta ja uhkien tunnistus"
+      },
+      {
+        title: "Vastaus ja palautuminen",
+        description: "Kehitä tapahtumien vastaus- ja palautumisproseduurit"
+      }
+    ],
+    
+    // Why Choose Us Section
+    whyChooseTitle: "Miksi valita DORA-palvelumme?",
+    whyChooseSubtitle: "Asiantuntevaa ohjausta rahoitussektorin yhteensopivuudelle",
+    whyChoosePoints: [
+      "Syvä ymmärrys rahoitussektorin sääntelystä",
+      "Kokemus DORA toteutusvaatimuksista",
+      "Todistetut yhteensopivuusmetodologiat ja kehykset",
+      "Jatkuva tuki ja ylläpito",
+      "Toimialan parhaat käytännöt ja standardit"
+    ],
+    
+    // Benefits Section
+    benefitsTitle: "DORA yhteensopivuuden edut",
+    benefitsSubtitle: "Yhteensopivuuden saavuttamisen strategiset edut",
+    benefitsList: [
+      "Parannettu toiminnallinen kestävyys ja liiketoiminnan jatkuvuus",
+      "Parannettu asiakkaiden ja sidosryhmien luottamus",
+      "Alennettu sääntely- ja maineriski",
+      "Paremmat tapahtumien vastaus- ja palautumiskyvyt",
+      "Kilpailuetu rahoitusmarkkinoilla"
+    ],
+    
+    // Implementation Steps Section
+    implementationTitle: "Toteutusvaiheet",
+    implementationSubtitle: "Systemaattinen lähestymistapa DORA yhteensopivuuteen",
+    steps: [
+      {
+        number: "01",
+        title: "Aukkoanalyysi",
+        description: "Arvioi nykyinen ICT-kestävyys DORA vaatimuksia vastaan"
+      },
+      {
+        number: "02",
+        title: "Kehyksen suunnittelu",
+        description: "Suunnittele kattava ICT-riskinjohtamiskehys"
+      },
+      {
+        number: "03",
+        title: "Kontrollin toteutus",
+        description: "Toteuta vaaditut ICT-kontrollit ja prosessit"
+      },
+      {
+        number: "04",
+        title: "Testaus ja validointi",
+        description: "Suorita digitaalisen kestävyyden testaus ja validointi"
+      },
+      {
+        number: "05",
+        title: "Seuranta ja raportointi",
+        description: "Perusta jatkuva seuranta ja raportointikyvyt"
+      }
+    ],
+    
+    // CTA Section
+    ctaTitle: "Valmiina saavuttamaan DORA yhteensopivuuden?",
+    ctaSubtitle: "Saa asiantuntevaa ohjausta rahoitussektorin digitaaliseen kestävyyteen",
+    ctaButton: "Aloita DORA arviointi",
+    ctaDescription: "DORA asiantuntijamme auttavat sinua navigoimaan vaatimukset ja saavuttamaan yhteensopivuuden tehokkaasti."
+  }
+};
+
+const currentContent = content[lang];
+---
+
+<Layout title={title}>
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-br from-teal-50 via-white to-blue-50 py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-4xl">
+        <h1 class="text-4xl lg:text-5xl font-bold text-slate-900 mb-6">
+          {currentContent.title}
+        </h1>
+        <p class="text-xl text-slate-600 mb-8">
+          {currentContent.description}
+        </p>
+        <div class="bg-white rounded-xl p-6 shadow-sm border border-slate-200">
+          <h2 class="text-lg font-semibold text-slate-900 mb-4">
+            {lang === 'fi' ? 'Kelle tämä on tarkoitettu?' : 'Who is this for?'}
+          </h2>
+          <p class="text-slate-600 mb-4">{currentContent.whoFor}</p>
+          <h3 class="text-lg font-semibold text-slate-900 mb-2">
+            {lang === 'fi' ? 'Mitä saavutat?' : 'What will you achieve?'}
+          </h3>
+          <p class="text-slate-600">{currentContent.whatYouAchieve}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- What is DORA Section -->
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-slate-900 mb-4">{currentContent.doraTitle}</h2>
+        <p class="text-xl text-slate-600 max-w-4xl mx-auto">{currentContent.doraDescription}</p>
+      </div>
+      
+      <div class="bg-slate-50 rounded-xl p-8">
+      <div class="grid md:grid-cols-2 gap-8">
+          <div>
+            <h3 class="text-xl font-semibold text-slate-900 mb-4">EU Regulation</h3>
+            <ul class="space-y-3 text-slate-700">
+              <li class="flex items-start">
+                <Icon name="check" class="w-5 h-5 text-teal-600 mr-3 flex-shrink-0 mt-1" />
+                Comprehensive ICT resilience requirements
+              </li>
+              <li class="flex items-start">
+                <Icon name="check" class="w-5 h-5 text-teal-600 mr-3 flex-shrink-0 mt-1" />
+                Financial sector specific
+              </li>
+              <li class="flex items-start">
+                <Icon name="check" class="w-5 h-5 text-teal-600 mr-3 flex-shrink-0 mt-1" />
+                Mandatory compliance by 2025
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="text-xl font-semibold text-slate-900 mb-4">Key Objectives</h3>
+            <ul class="space-y-3 text-slate-700">
+              <li class="flex items-start">
+                <Icon name="check" class="w-5 h-5 text-teal-600 mr-3 flex-shrink-0 mt-1" />
+                Enhance operational resilience
+              </li>
+              <li class="flex items-start">
+                <Icon name="check" class="w-5 h-5 text-teal-600 mr-3 flex-shrink-0 mt-1" />
+                Strengthen ICT risk management
+              </li>
+              <li class="flex items-start">
+                <Icon name="check" class="w-5 h-5 text-teal-600 mr-3 flex-shrink-0 mt-1" />
+                Improve incident response
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Key Requirements Section -->
+  <section class="py-20 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-slate-900 mb-4">{currentContent.requirementsTitle}</h2>
+        <p class="text-xl text-slate-600">{currentContent.requirementsSubtitle}</p>
+      </div>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {currentContent.requirements.map((requirement) => (
+          <div class="flex items-start gap-4 p-6 bg-white rounded-xl shadow-sm">
+            <Icon name="check" class="w-6 h-6 text-teal-600 flex-shrink-0 mt-1" />
+            <div>
+              <h3 class="text-lg font-semibold text-slate-900 mb-2">{requirement.title}</h3>
+              <p class="text-slate-600 text-sm">{requirement.description}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Compliance Areas Section -->
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-slate-900 mb-4">{currentContent.complianceTitle}</h2>
+        <p class="text-xl text-slate-600">{currentContent.complianceSubtitle}</p>
+      </div>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {currentContent.complianceAreas.map((area) => (
+          <div class="flex items-start gap-4 p-6 bg-slate-50 rounded-xl">
+            <Icon name="check" class="w-6 h-6 text-teal-600 flex-shrink-0 mt-1" />
+            <div>
+              <h3 class="text-lg font-semibold text-slate-900 mb-2">{area.title}</h3>
+              <p class="text-slate-600 text-sm">{area.description}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Implementation Steps Section -->
+  <section class="py-20 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-slate-900 mb-4">{currentContent.implementationTitle}</h2>
+        <p class="text-xl text-slate-600">{currentContent.implementationSubtitle}</p>
+      </div>
+      
+      <div class="space-y-8">
+        {currentContent.steps.map((step, index) => (
+          <div class="flex gap-8 items-start">
+            <div class="flex-shrink-0 w-12 h-12 bg-teal-600 text-white rounded-full flex items-center justify-center font-bold">
+              {index + 1}
+            </div>
+            <div class="flex-1">
+              <h3 class="text-xl font-semibold text-slate-900 mb-4">{step.title}</h3>
+              <p class="text-slate-600">{step.description}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+        </div>
+  </section>
+
+  <!-- Why Choose Us Section -->
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-slate-900 mb-4">{currentContent.whyChooseTitle}</h2>
+        <p class="text-xl text-slate-600">{currentContent.whyChooseSubtitle}</p>
+        </div>
+        
+      <div class="grid md:grid-cols-2 gap-12">
+        <div>
+          <div class="space-y-6">
+            {currentContent.whyChoosePoints.map((point) => (
+              <div class="flex items-start">
+                <Icon name="check" class="w-6 h-6 text-teal-600 mr-4 mt-1" />
+                <p class="text-lg text-slate-700">{point}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div class="bg-teal-50 p-8 rounded-xl">
+          <h3 class="text-2xl font-bold text-teal-900 mb-6">Our Financial Expertise</h3>
+          <div class="space-y-4">
+            <div class="flex items-center">
+              <div class="w-3 h-3 bg-teal-600 rounded-full mr-3"></div>
+              <span class="text-teal-800">Regulatory compliance specialists</span>
+            </div>
+            <div class="flex items-center">
+              <div class="w-3 h-3 bg-teal-600 rounded-full mr-3"></div>
+              <span class="text-teal-800">Financial sector experience</span>
+            </div>
+            <div class="flex items-center">
+              <div class="w-3 h-3 bg-teal-600 rounded-full mr-3"></div>
+              <span class="text-teal-800">Proven methodologies</span>
+            </div>
+            <div class="flex items-center">
+              <div class="w-3 h-3 bg-teal-600 rounded-full mr-3"></div>
+              <span class="text-teal-800">Ongoing support</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits Section -->
+  <section class="py-20 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-slate-900 mb-4">{currentContent.benefitsTitle}</h2>
+        <p class="text-xl text-slate-600">{currentContent.benefitsSubtitle}</p>
+      </div>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {currentContent.benefitsList.map((benefit) => (
+          <div class="flex items-start gap-4 p-6 bg-white rounded-xl shadow-sm">
+            <Icon name="check" class="w-6 h-6 text-teal-600 flex-shrink-0 mt-1" />
+            <p class="text-slate-700">{benefit}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-20 bg-slate-900 text-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl font-bold mb-4">{currentContent.ctaTitle}</h2>
+      <p class="text-xl text-slate-300 mb-8">{currentContent.ctaSubtitle}</p>
+      <p class="text-lg text-slate-300 mb-8 max-w-2xl mx-auto">{currentContent.ctaDescription}</p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <Button href={lang === 'fi' ? '/fi/contact?consultation=true' : '/contact?consultation=true'} variant="primary" className="text-lg px-8 py-4">
+          {lang === 'fi' ? 'Varaa konsultaatio' : 'Book consultation'}
+      </Button>
+        <Button href={lang === 'fi' ? '/fi/contact?proposal=true' : '/contact?proposal=true'} variant="secondary" className="text-lg px-8 py-4">
+          {lang === 'fi' ? 'Pyydä tarjous' : 'Request proposal'}
+            </Button>
+      </div>
+    </div>
+  </section>
+</Layout>

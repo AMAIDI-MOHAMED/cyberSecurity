@@ -1,0 +1,294 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Icon from '@/components/ui/icons/Icon.astro';
+import Button from '@/components/ui/Button.astro';
+
+const currentPath = Astro.url.pathname;
+const lang = currentPath.startsWith('/fi') ? 'fi' : 'en';
+
+const title = lang === 'fi' ? "NIS2 Yhteensopivuus" : "NIS2 Compliance";
+const description = lang === 'fi' 
+  ? "Ammattimaiset NIS2 yhteensopivuuspalvelut. Autamme organisaatioita täyttämään EU:n digitaalisen operatiivisen resilienssin lain vaatimukset."
+  : "Professional NIS2 compliance services. We help organizations meet EU Digital Operational Resilience Act requirements.";
+
+const nis2Requirements = [
+  {
+    title: lang === 'fi' ? "Riskienhallinta" : "Risk Management",
+    description: lang === 'fi' 
+      ? "Kattava kyberturvariskien hallintajärjestelmä"
+      : "Comprehensive cybersecurity risk management system",
+    icon: "chart",
+    requirements: [
+      lang === 'fi' ? "Riskien tunnistus ja arviointi" : "Risk identification and assessment",
+      lang === 'fi' ? "Riskien hallintastrategiat" : "Risk management strategies",
+      lang === 'fi' ? "Jatkuva seuranta" : "Continuous monitoring"
+    ]
+  },
+  {
+    title: lang === 'fi' ? "Tietoturvavalvonta" : "Security Monitoring",
+    description: lang === 'fi' 
+      ? "24/7 tietoturvavalvonta ja uhkien tunnistus"
+      : "24/7 security monitoring and threat detection",
+    icon: "eye",
+    requirements: [
+      lang === 'fi' ? "SIEM järjestelmät" : "SIEM systems",
+      lang === 'fi' ? "Uhkien tunnistus" : "Threat detection",
+      lang === 'fi' ? "Vikatilanteiden vastaus" : "Incident response"
+    ]
+  },
+  {
+    title: lang === 'fi' ? "Tietoturvakoulutus" : "Security Training",
+    description: lang === 'fi' 
+      ? "Henkilöstön tietoturvaosaamisen kehittäminen"
+      : "Developing staff cybersecurity expertise",
+    icon: "user",
+    requirements: [
+      lang === 'fi' ? "Säännöllinen koulutus" : "Regular training",
+      lang === 'fi' ? "Tietoturvatietoisuus" : "Security awareness",
+      lang === 'fi' ? "Testaus ja simulointi" : "Testing and simulation"
+    ]
+  },
+  {
+    title: lang === 'fi' ? "Toimittajien hallinta" : "Vendor Management",
+    description: lang === 'fi' 
+      ? "Kolmannen osapuolen riskien hallinta"
+      : "Third-party risk management",
+    icon: "network",
+    requirements: [
+      lang === 'fi' ? "Toimittajien arviointi" : "Vendor assessment",
+      lang === 'fi' ? "Sopimusten hallinta" : "Contract management",
+      lang === 'fi' ? "Jatkuva seuranta" : "Continuous monitoring"
+    ]
+  }
+];
+
+const complianceSteps = [
+  {
+    step: "1",
+    title: lang === 'fi' ? "NIS2 Arviointi" : "NIS2 Assessment",
+    description: lang === 'fi' 
+      ? "Arvioidaan nykyinen tietoturvataso NIS2 vaatimusten suhteen"
+      : "Assess current security posture against NIS2 requirements"
+  },
+  {
+    step: "2",
+    title: lang === 'fi' ? "Gap Analysis" : "Gap Analysis",
+    description: lang === 'fi' 
+      ? "Tunnistetaan puutteet ja suunnitellaan korjauskeinot"
+      : "Identify gaps and plan remediation measures"
+  },
+  {
+    step: "3",
+    title: lang === 'fi' ? "Suunnittelu" : "Planning",
+    description: lang === 'fi' 
+      ? "Suunnitellaan NIS2 yhteensopivuusohjelma"
+      : "Plan NIS2 compliance program"
+  },
+  {
+    step: "4",
+    title: lang === 'fi' ? "Toteutus" : "Implementation",
+    description: lang === 'fi' 
+      ? "Toteutetaan tarvittavat tietoturvatoimenpiteet"
+      : "Implement required security measures"
+  },
+  {
+    step: "5",
+    title: lang === 'fi' ? "Valvonta" : "Monitoring",
+    description: lang === 'fi' 
+      ? "Jatkuva yhteensopivuuden valvonta ja raportointi"
+      : "Continuous compliance monitoring and reporting"
+  }
+];
+
+const sectors = [
+  lang === 'fi' ? "Rahoituspalvelut" : "Financial Services",
+  lang === 'fi' ? "Energia" : "Energy",
+  lang === 'fi' ? "Liikenne" : "Transport",
+  lang === 'fi' ? "Terveydenhuolto" : "Healthcare",
+  lang === 'fi' ? "Vesi ja jätevesi" : "Water and Wastewater",
+  lang === 'fi' ? "Digitaalinen infrastruktuuri" : "Digital Infrastructure"
+];
+
+const benefits = [
+  lang === 'fi' ? "Täytä EU sääntelyvaatimukset" : "Meet EU regulatory requirements",
+  lang === 'fi' ? "Vahvista kyberturvan kestävyyttä" : "Strengthen cybersecurity resilience",
+  lang === 'fi' ? "Vähennä sääntelyriskejä" : "Reduce regulatory risks",
+  lang === 'fi' ? "Paranna asiakkaiden luottamusta" : "Improve customer trust",
+  lang === 'fi' ? "Kilpailuetu markkinoilla" : "Competitive advantage in markets"
+];
+---
+
+<Layout title={title} description={description}>
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-br from-teal-50 via-white to-blue-50 py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-4xl">
+        <h1 class="text-4xl lg:text-5xl font-bold text-slate-900 mb-6">
+          {title}
+        </h1>
+        <p class="text-xl text-slate-600 mb-8">
+          {lang === 'fi' 
+            ? "Täytä NIS2 vaatimukset ja vahvista organisaatiosi kyberturvan kestävyys. Autamme kriittisten infrastruktuurien organisaatioita saavuttamaan EU:n sääntelyvaatimukset."
+            : "Meet NIS2 requirements and strengthen your organization's cybersecurity resilience. We help critical infrastructure organizations achieve EU regulatory requirements."
+          }
+        </p>
+        <div class="bg-white rounded-xl p-6 shadow-sm border border-slate-200">
+          <h2 class="text-lg font-semibold text-slate-900 mb-4">
+            {lang === 'fi' ? 'Mikä on NIS2?' : 'What is NIS2?'}
+          </h2>
+          <p class="text-slate-600 mb-4">
+            {lang === 'fi'
+              ? "NIS2 on EU:n digitaalisen operatiivisen resilienssin laki, joka koskee kriittisten infrastruktuurien organisaatioita. Se vaatii vahvan kyberturvan ja riskienhallinnan."
+              : "NIS2 is the EU Digital Operational Resilience Act that applies to critical infrastructure organizations. It requires strong cybersecurity and risk management."
+            }
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NIS2 Requirements -->
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-slate-900 mb-4">
+          {lang === 'fi' ? 'NIS2 Vaatimukset' : 'NIS2 Requirements'}
+        </h2>
+        <p class="text-xl text-slate-600 max-w-3xl mx-auto">
+          {lang === 'fi'
+            ? "NIS2 asettaa kattavat vaatimukset kyberturvalle ja riskienhallinalle."
+            : "NIS2 sets comprehensive requirements for cybersecurity and risk management."
+          }
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {nis2Requirements.map((requirement) => (
+          <div class="bg-gradient-to-br from-slate-50 to-white p-8 rounded-xl border border-slate-200 hover:shadow-xl transition-all duration-300">
+            <div class="w-16 h-16 bg-teal-100 rounded-xl flex items-center justify-center mb-6">
+              <Icon name={requirement.icon} className="w-8 h-8 text-teal-600" />
+            </div>
+            <h3 class="text-xl font-bold text-slate-900 mb-4">{requirement.title}</h3>
+            <p class="text-slate-600 mb-6">{requirement.description}</p>
+            <ul class="space-y-2">
+              {requirement.requirements.map((req) => (
+                <li class="flex items-center text-sm text-slate-600">
+                  <Icon name="check" className="w-4 h-4 text-green-500 mr-2" />
+                  {req}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Affected Sectors -->
+  <section class="py-20 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-slate-900 mb-4">
+          {lang === 'fi' ? 'Koskevat Sektorit' : 'Affected Sectors'}
+        </h2>
+        <p class="text-xl text-slate-600 max-w-3xl mx-auto">
+          {lang === 'fi'
+            ? "NIS2 koskee organisaatioita kriittisissä infrastruktuurisektoreissa."
+            : "NIS2 applies to organizations in critical infrastructure sectors."
+          }
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {sectors.map((sector) => (
+          <div class="bg-white p-6 rounded-xl border border-slate-200 text-center hover:shadow-lg transition-all duration-300">
+            <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+              <Icon name="building" className="w-6 h-6 text-blue-600" />
+            </div>
+            <h3 class="text-lg font-semibold text-slate-900">{sector}</h3>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Compliance Process -->
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-slate-900 mb-4">
+          {lang === 'fi' ? 'Yhteensopivuusprosessi' : 'Compliance Process'}
+        </h2>
+        <p class="text-xl text-slate-600 max-w-3xl mx-auto">
+          {lang === 'fi'
+            ? "Selkeä ja strukturoitu prosessi NIS2 yhteensopivuuteen."
+            : "Clear and structured process for NIS2 compliance."
+          }
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
+        {complianceSteps.map((step) => (
+          <div class="text-center">
+            <div class="w-16 h-16 bg-teal-600 rounded-full flex items-center justify-center mx-auto mb-4 text-white text-xl font-bold">
+              {step.step}
+            </div>
+            <h3 class="text-lg font-semibold text-slate-900 mb-2">{step.title}</h3>
+            <p class="text-slate-600 text-sm">{step.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits Section -->
+  <section class="py-20 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-slate-900 mb-4">
+          {lang === 'fi' ? 'NIS2 Yhteensopivuuden Edut' : 'NIS2 Compliance Benefits'}
+        </h2>
+        <p class="text-xl text-slate-600 max-w-3xl mx-auto">
+          {lang === 'fi'
+            ? "Saavuta konkreettisia hyötyjä NIS2 yhteensopivuuden avulla."
+            : "Achieve concrete benefits with NIS2 compliance."
+          }
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {benefits.map((benefit) => (
+          <div class="text-center">
+            <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+              <Icon name="check" className="w-8 h-8 text-green-600" />
+            </div>
+            <p class="text-slate-700 font-medium">{benefit}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-20 bg-slate-900 text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl font-bold mb-6">
+        {lang === 'fi' ? 'Valmiit aloittamaan NIS2 yhteensopivuuden?' : 'Ready to start your NIS2 compliance?'}
+      </h2>
+      <p class="text-xl text-slate-300 mb-8 max-w-3xl mx-auto">
+        {lang === 'fi'
+          ? "Ota yhteyttä meihin ja aloitetaan NIS2 yhteensopivuusprosessi."
+          : "Contact us and let's start your NIS2 compliance process."
+        }
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <Button href="/contact" variant="primary" className="text-lg px-8 py-3">
+          {lang === 'fi' ? 'Ota yhteyttä' : 'Get in Touch'}
+        </Button>
+        <Button href="/contact?assessment=true" variant="secondary" className="text-lg px-8 py-3">
+          {lang === 'fi' ? 'NIS2 Valmistelutarkistus' : 'NIS2 Readiness Check'}
+        </Button>
+      </div>
+    </div>
+  </section>
+</Layout>

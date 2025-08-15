@@ -1,0 +1,237 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Icon from '@/components/ui/icons/Icon.astro';
+import Button from '@/components/ui/Button.astro';
+
+const currentPath = Astro.url.pathname;
+const lang = currentPath.startsWith('/fi') ? 'fi' : 'en';
+
+const title = lang === 'fi' ? "Rahoituspalvelut ja Fintech" : "Financial Services and Fintech";
+const description = lang === 'fi' 
+  ? "Kattavat kyberturva- ja yhteensopivuuspalvelut rahoituspalveluille ja fintech-yrityksille. Autamme organisaatioita suojaamaan rahoitustietoja ja täyttämään sääntelyvaatimukset."
+  : "Comprehensive cybersecurity and compliance services for financial services and fintech organizations. We help organizations protect financial data and meet regulatory requirements.";
+
+const challenges = [
+  {
+    title: lang === 'fi' ? "DORA Yhteensopivuus" : "DORA Compliance",
+    description: lang === 'fi' 
+      ? "EU:n digitaalisen operatiivisen resilienssin lain vaatimusten täyttäminen"
+      : "Meeting EU Digital Operational Resilience Act requirements",
+    icon: "shield"
+  },
+  {
+    title: lang === 'fi' ? "PCI DSS Yhteensopivuus" : "PCI DSS Compliance",
+    description: lang === 'fi' 
+      ? "Luottokorttitietojen käsittelyn turvallisuusstandardien täyttäminen"
+      : "Meeting Payment Card Industry Data Security Standards",
+    icon: "creditCard"
+  },
+  {
+    title: lang === 'fi' ? "Petosten vastaiset toimenpiteet" : "Anti-Fraud Measures",
+    description: lang === 'fi' 
+      ? "Edistyneet petosten tunnistus- ja estojärjestelmät"
+      : "Advanced fraud detection and prevention systems",
+    icon: "alert"
+  },
+  {
+    title: lang === 'fi' ? "Kolmannen osapuolen riskit" : "Third-Party Risks",
+    description: lang === 'fi' 
+      ? "Toimittajien ja kumppaneiden kyberturvariskien hallinta"
+      : "Managing cybersecurity risks from vendors and partners",
+    icon: "network"
+  }
+];
+
+const solutions = [
+  {
+    title: lang === 'fi' ? "DORA Ohjelma" : "DORA Program",
+    description: lang === 'fi' 
+      ? "Kattava DORA yhteensopivuusohjelma rahoituspalveluille"
+      : "Comprehensive DORA compliance program for financial services",
+    icon: "check"
+  },
+  {
+    title: lang === 'fi' ? "ISO 27001 Sertifiointi" : "ISO 27001 Certification",
+    description: lang === 'fi' 
+      ? "Tietoturvajärjestelmän sertifiointi rahoituspalveluille"
+      : "Information security management system certification for financial services",
+    icon: "certificate"
+  },
+  {
+    title: lang === 'fi' ? "Petosten riskinarviointi" : "Fraud Risk Assessment",
+    description: lang === 'fi' 
+      ? "Kattava petosten riskinarviointi ja hallintajärjestelmä"
+      : "Comprehensive fraud risk assessment and management system",
+    icon: "shield"
+  },
+  {
+    title: lang === 'fi' ? "Riskienhallinta" : "Risk Management",
+    description: lang === 'fi' 
+      ? "Kattava riskienhallintajärjestelmä rahoituspalveluille"
+      : "Comprehensive risk management system for financial services",
+    icon: "chart"
+  }
+];
+
+const benefits = [
+  lang === 'fi' ? "Täytä DORA ja muut sääntelyvaatimukset" : "Meet DORA and other regulatory requirements",
+  lang === 'fi' ? "Suojaa asiakkaiden rahoitustiedot" : "Protect customer financial data",
+  lang === 'fi' ? "Vahvista petosten vastaisia toimenpiteitä" : "Strengthen anti-fraud measures",
+  lang === 'fi' ? "Paranna asiakkaiden luottamusta" : "Enhance customer trust",
+  lang === 'fi' ? "Vahvista kyberturvan kestävyyttä" : "Strengthen cybersecurity resilience"
+];
+---
+
+<Layout title={title} description={description}>
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-br from-teal-50 via-white to-blue-50 py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-4xl">
+        <h1 class="text-4xl lg:text-5xl font-bold text-slate-900 mb-6">
+          {title}
+        </h1>
+        <p class="text-xl text-slate-600 mb-8">
+          {lang === 'fi' 
+            ? "Kattavat kyberturva- ja yhteensopivuuspalvelut rahoituspalveluille ja fintech-yrityksille"
+            : "Comprehensive cybersecurity and compliance services for financial services and fintech organizations"
+          }
+        </p>
+        <p class="text-lg text-slate-500 mb-10">
+          {lang === 'fi'
+            ? "Rahoituspalvelut ja fintech-yritykset kohtaavat ainutlaatuisia kyberturvahaasteita. Autamme organisaatioita suojaamaan arkaluontoista rahoitustietoa, täyttämään sääntelyvaatimukset ja rakentamaan kestävän kyberturvan."
+            : "Financial services and fintech organizations face unique cybersecurity challenges. We help organizations protect sensitive financial data, meet regulatory requirements, and build resilient cybersecurity."
+          }
+        </p>
+        <div class="bg-white rounded-xl p-6 shadow-sm border border-slate-200">
+          <h2 class="text-lg font-semibold text-slate-900 mb-4">
+            {lang === 'fi' ? 'Kelle tämä on tarkoitettu?' : 'Who is this for?'}
+          </h2>
+          <p class="text-slate-600 mb-4">
+            {lang === 'fi'
+              ? "Pankit, vakuutusyhtiöt, sijoituspalvelut, fintech-startupit ja muut rahoituspalveluorganisaatiot, jotka haluavat vahvistaa kyberturvaansa ja täyttää sääntelyvaatimukset."
+              : "Banks, insurance companies, investment services, fintech startups, and other financial service organizations looking to strengthen their cybersecurity and meet regulatory requirements."
+            }
+          </p>
+          <h3 class="text-lg font-semibold text-slate-900 mb-2">
+            {lang === 'fi' ? 'Mitä saavutat?' : 'What will you achieve?'}
+          </h3>
+          <p class="text-slate-600">
+            {lang === 'fi'
+              ? "DORA yhteensopivuus, vahvempi petosten vastainen suojaus, ISO 27001 sertifiointi ja kestävä kyberturva."
+              : "DORA compliance, stronger anti-fraud protection, ISO 27001 certification, and resilient cybersecurity."
+            }
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Challenges Section -->
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-slate-900 mb-4">
+          {lang === 'fi' ? 'Suurimmat haasteet' : 'Key Challenges'}
+        </h2>
+        <p class="text-xl text-slate-600 max-w-3xl mx-auto">
+          {lang === 'fi'
+            ? "Rahoituspalvelut kohtaavat ainutlaatuisia kyberturvahaasteita, jotka vaativat erikoistunutta osaamista."
+            : "Financial services face unique cybersecurity challenges that require specialized expertise."
+          }
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {challenges.map((challenge) => (
+          <div class="bg-slate-50 p-8 rounded-xl">
+            <div class="w-16 h-16 bg-blue-100 rounded-xl flex items-center justify-center mb-6">
+              <Icon name={challenge.icon} className="w-8 h-8 text-blue-600" />
+            </div>
+            <h3 class="text-xl font-bold text-slate-900 mb-4">{challenge.title}</h3>
+            <p class="text-slate-600">{challenge.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Solutions Section -->
+  <section class="py-20 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-slate-900 mb-4">
+          {lang === 'fi' ? 'Ratkaisumme' : 'Our Solutions'}
+        </h2>
+        <p class="text-xl text-slate-600 max-w-3xl mx-auto">
+          {lang === 'fi'
+            ? "Kattavat palvelut, jotka auttavat rahoituspalveluja vahvistamaan kyberturvaansa ja täyttämään sääntelyvaatimukset."
+            : "Comprehensive services that help financial services strengthen their cybersecurity and meet regulatory requirements."
+          }
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {solutions.map((solution) => (
+          <div class="bg-white p-8 rounded-xl shadow-sm">
+            <div class="w-16 h-16 bg-green-100 rounded-xl flex items-center justify-center mb-6">
+              <Icon name={solution.icon} className="w-8 h-8 text-green-600" />
+            </div>
+            <h3 class="text-xl font-bold text-slate-900 mb-4">{solution.title}</h3>
+            <p class="text-slate-600">{solution.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits Section -->
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-slate-900 mb-4">
+          {lang === 'fi' ? 'Edut' : 'Benefits'}
+        </h2>
+        <p class="text-xl text-slate-600 max-w-3xl mx-auto">
+          {lang === 'fi'
+            ? "Miksi rahoituspalveluorganisaatiot valitsevat meidät kyberturvapalveluihinsa."
+            : "Why financial service organizations choose us for their cybersecurity services."
+          }
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {benefits.map((benefit) => (
+          <div class="text-center">
+            <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+              <Icon name="check" className="w-8 h-8 text-blue-600" />
+            </div>
+            <p class="text-slate-700 font-medium">{benefit}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-20 bg-slate-900 text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl font-bold mb-6">
+        {lang === 'fi' ? 'Valmiit vahvistamaan kyberturvaasi?' : 'Ready to strengthen your cybersecurity?'}
+      </h2>
+      <p class="text-xl text-slate-300 mb-8 max-w-3xl mx-auto">
+        {lang === 'fi'
+          ? "Ota yhteyttä meihin ja aloitetaan rahoituspalveluorganisaatiosi kyberturvan vahvistaminen."
+          : "Contact us and let's start strengthening your financial service organization's cybersecurity."
+        }
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <Button href="/contact" variant="primary" className="text-lg px-8 py-3">
+          {lang === 'fi' ? 'Ota yhteyttä' : 'Get in Touch'}
+        </Button>
+        <Button href="/services/dora" variant="secondary" className="text-lg px-8 py-3">
+          {lang === 'fi' ? 'Lue lisää DORA:sta' : 'Learn More About DORA'}
+        </Button>
+      </div>
+    </div>
+  </section>
+</Layout>

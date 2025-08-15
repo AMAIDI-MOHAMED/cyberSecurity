@@ -1,0 +1,44 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Icon from '@/components/ui/icons/Icon.astro';
+
+const currentPath = Astro.url.pathname;
+const lang = currentPath.startsWith('/fi') ? 'fi' : 'en';
+
+const title = lang==='fi' ? 'DORA‑vaatimusten tarkistuslista rahoitusalalle' : 'DORA Compliance Checklist for Financial Services';
+const description = lang==='fi' ? 'Olennaiset vaiheet, joilla finanssiorganisaatiot saavuttavat DORA‑yhteensopivuuden vuoteen 2025 mennessä.' : 'Essential steps for financial institutions to meet DORA requirements by 2025.';
+
+const checklist = [
+  { icon:'chart', fi:'ICT‑riskikehys määritelty ja hyväksytty', en:'ICT risk framework defined and approved' },
+  { icon:'alert', fi:'Vikatilanne‑prosessit ja raportointi (24/72h)', en:'Incident processes and reporting (24/72h)' },
+  { icon:'building', fi:'Kriittisten kumppaneiden TPRM', en:'TPRM for critical third parties' },
+  { icon:'shield', fi:'Testaus ja varautuminen', en:'Testing and resilience' },
+  { icon:'document', fi:'Sopimusvelvoitteet ja tietosuoja', en:'Contractual clauses and data protection' }
+];
+---
+
+<Layout title={title} description={description}>
+  <section class="bg-gradient-to-br from-green-50 via-white to-blue-50 py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-4xl">
+        <h1 class="text-4xl lg:text-5xl font-bold text-slate-900 mb-6">{title}</h1>
+        <p class="text-xl text-slate-600">{description}</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {checklist.map(c => (
+          <div class="p-8 rounded-xl border border-slate-200 bg-slate-50 flex items-start gap-3">
+            <div class="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center"><Icon name="check" className="w-6 h-6 text-green-600" /></div>
+            <div class="text-slate-900 font-medium">{lang==='fi'?c.fi:c.en}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>
+
+

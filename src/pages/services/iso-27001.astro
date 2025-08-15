@@ -1,0 +1,285 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Icon from "@ui/icons/Icon.astro";
+import Button from "@ui/Button.astro";
+
+const currentPath = Astro.url.pathname;
+const lang = currentPath.startsWith('/fi') ? 'fi' : 'en';
+
+const serviceData = {
+  title: lang === 'fi' ? 'ISO 27001 -palvelut' : 'ISO 27001 Services',
+  subtitle: lang === 'fi' ? 'Tietoturvajärjestelmän sertifiointi' : 'Information Security Management System Certification',
+  description: lang === 'fi' 
+    ? 'Hanki ISO 27001 -sertifikaatti ja osoita asiakkaillesi, että tietoturvasi on kansainvälisesti tunnustettu standardin mukainen.'
+    : 'Get ISO 27001 certified and demonstrate to your customers that your security meets internationally recognized standards.',
+  whoFor: lang === 'fi' 
+    ? 'Yrityksille, jotka haluavat osoittaa tietoturvansa asiakkaille, kumppaneille ja sääntelyviranomaisille.'
+    : 'For organizations that want to demonstrate their security to customers, partners, and regulators.',
+  whatYouAchieve: lang === 'fi'
+    ? 'ISO 27001 -sertifikaatti, joka osoittaa tietoturvajärjestelmän tehokkuuden ja jatkuvan parantamisen.'
+    : 'ISO 27001 certification that demonstrates the effectiveness of your information security management system and continuous improvement.',
+  deliverables: [
+    lang === 'fi' ? 'Gap-analyysi ja scope-määrittely' : 'Gap analysis and scope definition',
+    lang === 'fi' ? 'Tietoturvapolitiikkapaketti (20+ politiikkaa)' : 'Information security policy pack (20+ policies)',
+    lang === 'fi' ? 'Riskienhallintajärjestelmä' : 'Risk management system',
+    lang === 'fi' ? 'Sisäinen auditointi' : 'Internal auditing',
+    lang === 'fi' ? 'Sertifiointiauditin valmistelu ja tuki' : 'Certification audit preparation and support',
+    lang === 'fi' ? 'Jatkuvan parantamisen suunnitelma' : 'Continuous improvement plan'
+  ],
+  process: [
+    {
+      phase: lang === 'fi' ? 'Vaihe 1: Gap-analyysi' : 'Phase 1: Gap Analysis',
+      duration: lang === 'fi' ? '2-3 viikkoa' : '2-3 weeks',
+      activities: [
+        lang === 'fi' ? 'Nykyisen tilanteen arviointi' : 'Current state assessment',
+        lang === 'fi' ? 'Scope-määrittely' : 'Scope definition',
+        lang === 'fi' ? 'Riskien tunnistus' : 'Risk identification'
+      ]
+    },
+    {
+      phase: lang === 'fi' ? 'Vaihe 2: Järjestelmän suunnittelu' : 'Phase 2: System Design',
+      duration: lang === 'fi' ? '4-6 viikkoa' : '4-6 weeks',
+      activities: [
+        lang === 'fi' ? 'Politiikkapaketin kehittäminen' : 'Policy pack development',
+        lang === 'fi' ? 'Prosessien dokumentointi' : 'Process documentation',
+        lang === 'fi' ? 'Koulutusmateriaalien valmistelu' : 'Training materials preparation'
+      ]
+    },
+    {
+      phase: lang === 'fi' ? 'Vaihe 3: Toteutus' : 'Phase 3: Implementation',
+      duration: lang === 'fi' ? '6-8 viikkoa' : '6-8 weeks',
+      activities: [
+        lang === 'fi' ? 'Politiikkojen käyttöönotto' : 'Policy implementation',
+        lang === 'fi' ? 'Henkilöstökoulutus' : 'Staff training',
+        lang === 'fi' ? 'Kontrollien testaus' : 'Control testing'
+      ]
+    },
+    {
+      phase: lang === 'fi' ? 'Vaihe 4: Sisäinen audit' : 'Phase 4: Internal Audit',
+      duration: lang === 'fi' ? '2-3 viikkoa' : '2-3 weeks',
+      activities: [
+        lang === 'fi' ? 'Sisäinen auditointi' : 'Internal auditing',
+        lang === 'fi' ? 'Korjavien toimenpiteiden suunnittelu' : 'Corrective action planning',
+        lang === 'fi' ? 'Sertifiointiauditin valmistelu' : 'Certification audit preparation'
+      ]
+    }
+  ],
+  pricing: lang === 'fi' ? 'alkaen 15 000 € tyypilliselle laajuudelle' : 'from €15,000 for typical scope',
+  caseStudy: {
+    title: lang === 'fi' ? 'SaaS-yritys sai ISO 27001 -sertifikaatin 90 päivässä' : 'SaaS company achieved ISO 27001 certification in 90 days',
+    description: lang === 'fi' ? 'Teknologiayritys pystyi osoittamaan tietoturvansa asiakkaille ja kasvattamaan liiketoimintaansa 40%.' : 'Technology company was able to demonstrate their security to customers and grew their business by 40%.',
+    metrics: [
+      lang === 'fi' ? '90 päivää sertifikaattiin' : '90 days to certification',
+      lang === 'fi' ? '40% liiketoiminnan kasvu' : '40% business growth',
+      lang === 'fi' ? '0 major audit findings' : '0 major audit findings'
+    ]
+  },
+  faqs: [
+    {
+      question: lang === 'fi' ? 'Kuinka kauan ISO 27001 -sertifiointi kestää?' : 'How long does ISO 27001 certification take?',
+      answer: lang === 'fi' ? 'Tyypillisesti 90-120 päivää Fast-Track -ohjelmalla. Perinteinen prosessi voi kestää 6-12 kuukautta.' : 'Typically 90-120 days with our Fast-Track program. Traditional process can take 6-12 months.'
+    },
+    {
+      question: lang === 'fi' ? 'Mikä on ISO 27001:n kustannukset?' : 'What are the costs of ISO 27001?',
+      answer: lang === 'fi' ? 'Fast-Track -ohjelma maksaa alkaen 15 000 €. Hinta riippuu organisaation koosta ja monimutkaisuudesta.' : 'Fast-Track program costs from €15,000. Price depends on organization size and complexity.'
+    },
+    {
+      question: lang === 'fi' ? 'Onko ISO 27001 pakollinen?' : 'Is ISO 27001 mandatory?',
+      answer: lang === 'fi' ? 'Ei, mutta se on usein vaadittu asiakkaiden, kumppaneiden tai sääntelyviranomaisten toimesta.' : 'No, but it is often required by customers, partners, or regulators.'
+    }
+  ]
+};
+---
+
+<Layout title={serviceData.title}>
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-br from-teal-50 via-white to-blue-50 py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-4xl">
+        <h1 class="text-4xl lg:text-5xl font-bold text-slate-900 mb-6">
+          {serviceData.title}
+        </h1>
+        <p class="text-xl text-slate-600 mb-8">
+          {serviceData.description}
+        </p>
+        <div class="bg-white rounded-xl p-6 shadow-sm border border-slate-200">
+          <h2 class="text-lg font-semibold text-slate-900 mb-4">
+            {lang === 'fi' ? 'Kelle tämä on tarkoitettu?' : 'Who is this for?'}
+          </h2>
+          <p class="text-slate-600 mb-4">{serviceData.whoFor}</p>
+          <h3 class="text-lg font-semibold text-slate-900 mb-2">
+            {lang === 'fi' ? 'Mitä saavutat?' : 'What will you achieve?'}
+          </h3>
+          <p class="text-slate-600">{serviceData.whatYouAchieve}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- What's Included -->
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-slate-900 mb-4">
+          {lang === 'fi' ? 'Mitä sisältyy' : 'What\'s included'}
+        </h2>
+        <p class="text-xl text-slate-600">
+          {lang === 'fi' ? 'Kattava palvelupaketti ISO 27001 -sertifiointiin' : 'Comprehensive service package for ISO 27001 certification'}
+        </p>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {serviceData.deliverables.map(deliverable => (
+          <div class="flex items-start gap-4 p-6 bg-slate-50 rounded-xl">
+            <Icon name="check" class="w-6 h-6 text-green-500 flex-shrink-0 mt-1" />
+            <div>
+              <p class="text-slate-900 font-medium">{deliverable}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Process and Timeline -->
+  <section class="py-20 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-slate-900 mb-4">
+          {lang === 'fi' ? 'Prosessi ja aikataulu' : 'Process and timeline'}
+        </h2>
+        <p class="text-xl text-slate-600">
+          {lang === 'fi' ? 'Selkeä 4-vaiheinen prosessi ISO 27001 -sertifiointiin' : 'Clear 4-phase process to ISO 27001 certification'}
+        </p>
+      </div>
+      <div class="space-y-8">
+        {serviceData.process.map((phase, index) => (
+          <div class="flex gap-8 items-start">
+            <div class="flex-shrink-0 w-12 h-12 bg-teal-600 text-white rounded-full flex items-center justify-center font-bold">
+              {index + 1}
+            </div>
+            <div class="flex-1">
+              <div class="flex items-center gap-4 mb-4">
+                <h3 class="text-xl font-semibold text-slate-900">{phase.phase}</h3>
+                <span class="bg-teal-100 text-teal-800 px-3 py-1 rounded-full text-sm font-medium">
+                  {phase.duration}
+                </span>
+              </div>
+              <ul class="space-y-2">
+                {phase.activities.map(activity => (
+                  <li class="flex items-center gap-3 text-slate-600">
+                    <Icon name="arrowRight" class="w-4 h-4 text-teal-600" />
+                    {activity}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl font-bold text-slate-900 mb-4">
+        {lang === 'fi' ? 'Hinnoittelu' : 'Pricing'}
+      </h2>
+      <p class="text-xl text-slate-600 mb-8">
+        {serviceData.pricing}
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <Button href={lang === 'fi' ? '/fi/contact?consultation=true' : '/contact?consultation=true'} variant="primary" className="text-lg px-8 py-4">
+          {lang === 'fi' ? 'Varaa konsultaatio' : 'Book consultation'}
+        </Button>
+        <Button href={lang === 'fi' ? '/fi/packages/iso-27001-fast-track' : '/packages/iso-27001-fast-track'} variant="secondary" className="text-lg px-8 py-4">
+          {lang === 'fi' ? 'Katso Fast-Track -paketti' : 'View Fast-Track package'}
+        </Button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Case Study -->
+  <section class="py-20 bg-teal-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="bg-white rounded-xl p-8 shadow-sm">
+        <div class="grid lg:grid-cols-2 gap-8 items-center">
+          <div>
+            <h2 class="text-2xl font-bold text-slate-900 mb-4">
+              {lang === 'fi' ? 'Tapaustutkimus' : 'Case study'}
+            </h2>
+            <h3 class="text-xl font-semibold text-slate-900 mb-4">
+              {serviceData.caseStudy.title}
+            </h3>
+            <p class="text-slate-600 mb-6">
+              {serviceData.caseStudy.description}
+            </p>
+            <div class="grid grid-cols-3 gap-4">
+              {serviceData.caseStudy.metrics.map(metric => (
+                <div class="text-center">
+                  <div class="text-2xl font-bold text-teal-700">{metric}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div class="bg-slate-100 rounded-lg p-6">
+            <div class="text-center">
+              <Icon name="chatBubbleLeftRight" class="w-16 h-16 text-teal-600 mx-auto mb-4" />
+              <blockquote class="text-slate-600 italic">
+                "{lang === 'fi' ? 'CyberSecurity.fi:n Fast-Track -ohjelma auttoi meitä saavuttamaan ISO 27001 -sertifikaatin ennätysajassa. Asiakkaidemme luottamus kasvoi merkittävästi.' : 'CyberSecurity.fi\'s Fast-Track program helped us achieve ISO 27001 certification in record time. Our customers\' trust grew significantly.'}"
+              </blockquote>
+              <div class="mt-4">
+                <div class="font-semibold text-slate-900">CTO, SaaS Company</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQs -->
+  <section class="py-20 bg-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-slate-900 mb-4">
+          {lang === 'fi' ? 'Usein kysytyt kysymykset' : 'Frequently asked questions'}
+        </h2>
+      </div>
+      <div class="space-y-6">
+        {serviceData.faqs.map(faq => (
+          <details class="group bg-slate-50 rounded-lg">
+            <summary class="flex items-center justify-between cursor-pointer p-6 text-lg font-semibold text-slate-900">
+              {faq.question}
+              <Icon name="plus" class="w-6 h-6 text-slate-500 group-open:hidden" />
+              <Icon name="minus" class="w-6 h-6 text-slate-500 hidden group-open:block" />
+            </summary>
+            <div class="px-6 pb-6">
+              <p class="text-slate-600">{faq.answer}</p>
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-20 bg-slate-900 text-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl font-bold mb-4">
+        {lang === 'fi' ? 'Valmis aloittamaan ISO 27001 -sertifiointin?' : 'Ready to start your ISO 27001 certification?'}
+      </h2>
+      <p class="text-xl text-slate-300 mb-8">
+        {lang === 'fi' ? 'Ota yhteyttä ja aloitetaan suunnittelu' : 'Get in touch and let\'s start planning'}
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <Button href={lang === 'fi' ? '/fi/contact?consultation=true' : '/contact?consultation=true'} variant="primary" className="text-lg px-8 py-4">
+          {lang === 'fi' ? 'Varaa konsultaatio' : 'Book consultation'}
+        </Button>
+        <Button href={lang === 'fi' ? '/fi/contact?proposal=true' : '/contact?proposal=true'} variant="secondary" className="text-lg px-8 py-4">
+          {lang === 'fi' ? 'Pyydä tarjous' : 'Request proposal'}
+        </Button>
+      </div>
+    </div>
+  </section>
+</Layout>

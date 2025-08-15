@@ -1,0 +1,32 @@
+---
+import Button from "@ui/Button.astro";
+
+// Content for the section title and subtitle
+const title =
+  'Transform Your Cybersecurity Today. <br /> Get started with <span class="font-medium text-teal-700">Cyber</span><span class="font-light text-slate-400">Security Finland</span>.';
+const subTitle =
+  "Begin your cybersecurity journey and discover how CyberSecurity Finland's powerful security platform can revolutionize your digital protection and compliance.";
+
+// Call-to-action configuration for the primary button
+const primaryCTA = { text: "Get Started", href: "#contact" };
+---
+
+<section
+  class="mx-auto max-w-[85rem] px-4 py-10 sm:px-6 md:py-14 lg:px-8 lg:py-20"
+>
+  <div class="mx-auto mb-10 max-w-3xl text-center lg:mb-14">
+    <h2
+      class="text-balance text-4xl text-slate-800 sm:text-5xl"
+    >
+      <Fragment set:html={title} />
+    </h2>
+    <p class="text-lg\/8 mt-5 text-pretty text-slate-600">
+      {subTitle}
+    </p>
+    <Button
+      href={primaryCTA.href}
+      variant="primary"
+      className="mt-7 inline-flex border-none px-3.5!">{primaryCTA.text}</Button
+    >
+  </div>
+</section>

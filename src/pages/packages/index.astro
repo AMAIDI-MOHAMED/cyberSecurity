@@ -1,0 +1,155 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import HeroSection from '@/components/sections/HeroSection.astro';
+import FeatureGrid from '@/components/sections/FeatureGrid.astro';
+import CTA from '@/components/sections/CTA.astro';
+
+const title = "Cybersecurity Packages";
+const currentPath = Astro.url.pathname;
+const lang = currentPath.startsWith('/fi') ? 'fi' : 'en';
+
+const heroContent = {
+  title: "Ready-to-Deploy Cybersecurity Packages",
+  subtitle: "Fast-track your cybersecurity compliance with our comprehensive pre-built packages.",
+  description: "Choose from our carefully designed packages that combine multiple services to help you achieve compliance quickly and efficiently.",
+  primaryCTA: { text: "View Packages", href: "#packages" },
+  secondaryCTA: { text: "Get Consultation", href: "/contact?consultation=true" }
+};
+
+const packages = [
+  {
+    title: "ISO 27001 Fast‑Track (90–120 days)",
+    description: "Complete ISO 27001 certification in 90-120 days with our accelerated program.",
+    icon: "zap",
+    href: "/packages/iso-27001-fast-track",
+    features: ["Gap analysis", "Policy development", "Implementation support", "Audit preparation"]
+  },
+  {
+    title: "NIS2 Sprint Program",
+    description: "Rapid NIS2 compliance implementation for critical infrastructure organizations.",
+    icon: "shield",
+    href: "/packages/nis2-sprint",
+    features: ["NIS2 assessment", "Implementation plan", "Compliance monitoring", "Reporting tools"]
+  },
+  {
+    title: "SOC 2 Readiness in 12 Weeks",
+    description: "Complete SOC 2 compliance preparation with comprehensive trust service criteria implementation.",
+    icon: "checkCircle",
+    href: "/packages/soc2-readiness-12-weeks",
+    features: ["SOC 2 assessment", "Control implementation", "Evidence collection", "Audit support"]
+  },
+  {
+    title: "DORA Program‑in‑a‑Box",
+    description: "Complete Digital Operational Resilience Act compliance solution for financial institutions.",
+    icon: "building",
+    href: "/packages/dora-program-in-a-box",
+    features: ["ICT risk management", "Incident response", "Testing framework", "Third-party management"]
+  },
+  {
+    title: "GDPR Compliance Accelerator",
+    description: "Comprehensive GDPR privacy compliance program with ongoing support.",
+    icon: "userShield",
+    href: "/packages/gdpr-accelerator",
+    features: ["Privacy audit", "Policy development", "Data mapping", "Training programs"]
+  },
+  {
+    title: "CISO‑as‑a‑Service Plans",
+    description: "Professional cybersecurity leadership without the full-time cost.",
+    icon: "rocket",
+    href: "/packages/ciso-as-a-service",
+    features: ["Strategic guidance", "Risk management", "Compliance oversight", "Team development"]
+  }
+];
+---
+
+<Layout title={title}>
+  <HeroSection content={heroContent} />
+  
+  <section id="packages" class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-slate-900 mb-4">Our Packages</h2>
+        <p class="text-lg text-slate-600 max-w-3xl mx-auto">
+          Pre-built cybersecurity packages designed to accelerate your compliance journey 
+          and provide comprehensive protection for your organization.
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {packages.map(pkg => (
+          <div class="bg-white rounded-lg shadow-lg border border-slate-200 p-6 hover:shadow-xl transition-shadow">
+            <div class="mb-4">
+              <h3 class="text-xl font-semibold text-slate-900 mb-2">{pkg.title}</h3>
+              <p class="text-slate-600 mb-4">{pkg.description}</p>
+            </div>
+            
+            <ul class="space-y-2 mb-6">
+              {pkg.features.map(feature => (
+                <li class="flex items-center text-sm text-slate-700">
+                  <svg class="w-4 h-4 text-teal-600 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                  </svg>
+                  {feature}
+                </li>
+              ))}
+            </ul>
+            
+            <a 
+              href={pkg.href}
+              class="block w-full text-center bg-teal-600 text-white py-2 px-4 rounded-md hover:bg-teal-700 transition-colors"
+            >
+              Learn More
+            </a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-slate-900 mb-4">Why Choose Our Packages?</h2>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="text-center">
+          <div class="bg-teal-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg class="w-8 h-8 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold text-slate-900 mb-2">Faster Implementation</h3>
+          <p class="text-slate-600">Pre-built frameworks and templates accelerate your compliance timeline.</p>
+        </div>
+        
+        <div class="text-center">
+          <div class="bg-teal-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg class="w-8 h-8 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold text-slate-900 mb-2">Proven Methodology</h3>
+          <p class="text-slate-600">Battle-tested approaches based on successful implementations.</p>
+        </div>
+        
+        <div class="text-center">
+          <div class="bg-teal-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg class="w-8 h-8 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold text-slate-900 mb-2">Cost-Effective</h3>
+          <p class="text-slate-600">Bundled services provide better value than individual engagements.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CTA 
+    title="Need a Custom Package?"
+    description="Don't see exactly what you need? We can create a custom package tailored to your specific requirements."
+    primaryCTA={{ text: "Contact Us", href: "/contact" }}
+    secondaryCTA={{ text: "View Services", href: "/services" }}
+  />
+</Layout>

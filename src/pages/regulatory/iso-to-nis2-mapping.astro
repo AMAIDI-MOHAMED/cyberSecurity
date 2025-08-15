@@ -1,0 +1,494 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Icon from "@ui/icons/Icon.astro";
+import Button from "@ui/Button.astro";
+
+const title = "ISO 27001 and NIS2 Alignment";
+const currentPath = Astro.url.pathname;
+const lang = currentPath.startsWith('/fi') ? 'fi' : 'en';
+
+const content = {
+  en: {
+    title: "ISO 27001 and NIS2 Alignment",
+    subtitle: "Bridging International Standards with European Cybersecurity Requirements",
+    description: "Understand how ISO 27001 certification aligns with NIS2 compliance requirements and leverage your existing security framework.",
+    whoFor: "For organizations that already have ISO 27001 certification and need to achieve NIS2 compliance efficiently.",
+    whatYouAchieve: "Seamless alignment between ISO 27001 and NIS2, reducing compliance costs and accelerating implementation.",
+    
+    // What is Alignment Section
+    alignmentTitle: "What is ISO 27001 and NIS2 Alignment?",
+    alignmentDescription: "ISO 27001 and NIS2 alignment refers to the strategic mapping between the international information security management standard and the European Union's Network and Information Security directive. This alignment enables organizations to leverage existing ISO 27001 controls to meet NIS2 requirements efficiently.",
+    
+    // Key Benefits Section
+    benefitsTitle: "Key Benefits of Alignment",
+    benefitsSubtitle: "Maximize your security investments and streamline compliance",
+    benefits: [
+      {
+        title: "Reduced Compliance Costs",
+        description: "Leverage existing ISO 27001 controls to minimize additional NIS2 implementation costs"
+      },
+      {
+        title: "Faster Implementation",
+        description: "Accelerate NIS2 compliance by building upon your established security framework"
+      },
+      {
+        title: "Unified Security Approach",
+        description: "Create a cohesive security strategy that satisfies both international and European requirements"
+      },
+      {
+        title: "Risk Reduction",
+        description: "Address overlapping security requirements through integrated control implementation"
+      }
+    ],
+    
+    // Mapping Framework Section
+    mappingTitle: "ISO 27001 to NIS2 Mapping Framework",
+    mappingSubtitle: "Comprehensive control mapping and gap analysis",
+    mappingAreas: [
+      {
+        title: "Risk Assessment & Management",
+        isoControls: "ISO 27001:2013 Clauses 6.1, 8.2, 8.3",
+        nis2Requirements: "NIS2 Article 8 - Risk Management",
+        description: "Map existing risk assessment processes to NIS2 risk management requirements"
+      },
+      {
+        title: "Incident Management",
+        isoControls: "ISO 27001:2013 Clause 16.1",
+        nis2Requirements: "NIS2 Article 10 - Incident Reporting",
+        description: "Extend incident management to include NIS2 reporting obligations"
+      },
+      {
+        title: "Business Continuity",
+        isoControls: "ISO 27001:2013 Clause 17.1",
+        nis2Requirements: "NIS2 Article 9 - Business Continuity",
+        description: "Align business continuity planning with NIS2 resilience requirements"
+      },
+      {
+        title: "Access Control",
+        isoControls: "ISO 27001:2013 Clause 9.1-9.4",
+        nis2Requirements: "NIS2 Article 8 - Access Control",
+        description: "Ensure access control measures meet NIS2 security requirements"
+      }
+    ],
+    
+    // Implementation Steps Section
+    implementationTitle: "Implementation Steps",
+    implementationSubtitle: "Systematic approach to achieving alignment",
+    steps: [
+      {
+        number: "01",
+        title: "Gap Analysis",
+        description: "Conduct comprehensive mapping between existing ISO 27001 controls and NIS2 requirements"
+      },
+      {
+        number: "02",
+        title: "Control Enhancement",
+        description: "Enhance existing controls to meet NIS2-specific requirements where gaps exist"
+      },
+      {
+        number: "03",
+        title: "Documentation Update",
+        description: "Update policies, procedures, and documentation to reflect NIS2 compliance"
+      },
+      {
+        number: "04",
+        title: "Training & Awareness",
+        description: "Train staff on NIS2 requirements and updated security procedures"
+      },
+      {
+        number: "05",
+        title: "Testing & Validation",
+        description: "Test enhanced controls and validate NIS2 compliance through internal audits"
+      }
+    ],
+    
+    // Why Choose Us Section
+    whyChooseTitle: "Why Choose Our Alignment Services?",
+    whyChooseSubtitle: "Expert guidance for seamless ISO 27001 and NIS2 integration",
+    whyChoosePoints: [
+      "Certified ISO 27001 Lead Auditors with NIS2 expertise",
+      "Proven mapping methodologies and tools",
+      "Comprehensive gap analysis and remediation planning",
+      "Ongoing support for maintenance and continuous improvement",
+      "Cost-effective alignment strategies"
+    ],
+    
+    // Benefits Section
+    benefitsSectionTitle: "Benefits of Professional Alignment",
+    benefitsSectionSubtitle: "Maximize your security framework investment",
+    benefitsList: [
+      "Reduced compliance costs through control reuse",
+      "Faster NIS2 compliance achievement",
+      "Maintained ISO 27001 certification benefits",
+      "Enhanced security posture and risk management",
+      "Streamlined audit and reporting processes"
+    ],
+    
+    // CTA Section
+    ctaTitle: "Ready to Align Your ISO 27001 with NIS2?",
+    ctaSubtitle: "Get expert guidance on maximizing your existing security investments",
+    ctaButton: "Start Alignment Assessment",
+    ctaDescription: "Our certified experts will help you map your ISO 27001 controls to NIS2 requirements and identify the most efficient path to compliance."
+  },
+  
+  fi: {
+    title: "ISO 27001 ja NIS2 Yhteensovittaminen",
+    subtitle: "Kansainvälisten standardien yhdistäminen eurooppalaisiin kyberturvallisuusvaatimukseen",
+    description: "Ymmärrä miten ISO 27001 sertifikaatti yhdistyy NIS2 yhteensopivuusvaatimukseen ja hyödynnä olemassa olevaa turvallisuuskehystesi.",
+    whoFor: "Organisaatioille, joilla on jo ISO 27001 sertifikaatti ja jotka tarvitsevat NIS2 yhteensopivuuden tehokkaasti.",
+    whatYouAchieve: "Saumaton yhteensovittaminen ISO 27001:n ja NIS2:n välillä, alentaen yhteensopivuuskustannuksia ja nopeuttaen toteutusta.",
+    
+    // What is Alignment Section
+    alignmentTitle: "Mikä on ISO 27001 ja NIS2 yhteensovittaminen?",
+    alignmentDescription: "ISO 27001 ja NIS2 yhteensovittaminen viittaa strategiseen kartoittamiseen kansainvälisen tietoturvajohtamisen standardin ja Euroopan unionin verkko- ja tietoturvadirektiivin välillä. Tämä yhteensovittaminen mahdollistaa organisaatioiden hyödyntää olemassa olevia ISO 27001 kontrollia NIS2 vaatimusten tehokkaaseen täyttämiseen.",
+    
+    // Key Benefits Section
+    benefitsTitle: "Yhteensovittamisen tärkeimmät edut",
+    benefitsSubtitle: "Maksimoi turvallisuusinvestointisi ja tehosta yhteensopivuutta",
+    benefits: [
+      {
+        title: "Alennettu yhteensopivuuskustannukset",
+        description: "Hyödynnä olemassa olevia ISO 27001 kontrollia NIS2 toteutuskustannusten minimoimiseen"
+      },
+      {
+        title: "Nopeampi toteutus",
+        description: "Nopeuta NIS2 yhteensopivuutta rakentamalla vahvistetun turvallisuuskehystesi päälle"
+      },
+      {
+        title: "Yhdistetty turvallisuuslähestymistapa",
+        description: "Luo yhtenäinen turvallisuusstrategia, joka täyttää sekä kansainväliset että eurooppalaiset vaatimukset"
+      },
+      {
+        title: "Riskin vähentäminen",
+        description: "Käsittele päällekkäisiä turvallisuusvaatimuksia integroidun kontrollin toteutuksen kautta"
+      }
+    ],
+    
+    // Mapping Framework Section
+    mappingTitle: "ISO 27001 NIS2:een kartoituskehys",
+    mappingSubtitle: "Kattava kontrollikartoitus ja aukkoanalyysi",
+    mappingAreas: [
+      {
+        title: "Riskinarviointi ja -johtaminen",
+        isoControls: "ISO 27001:2013 kohdat 6.1, 8.2, 8.3",
+        nis2Requirements: "NIS2 artikla 8 - Riskinjohtaminen",
+        description: "Kartoi olemassa olevat riskinarviointiprosessit NIS2 riskinjohtamisvaatimuksille"
+      },
+      {
+        title: "Tapahtumien johtaminen",
+        isoControls: "ISO 27001:2013 kohta 16.1",
+        nis2Requirements: "NIS2 artikla 10 - Tapahtumaraportointi",
+        description: "Laajenna tapahtumien johtamista sisältämään NIS2 raportointivelvollisuudet"
+      },
+      {
+        title: "Liiketoiminnan jatkuvuus",
+        isoControls: "ISO 27001:2013 kohta 17.1",
+        nis2Requirements: "NIS2 artikla 9 - Liiketoiminnan jatkuvuus",
+        description: "Yhdistä liiketoiminnan jatkuvuussuunnittelu NIS2 kestävyysvaatimuksille"
+      },
+      {
+        title: "Käyttöoikeuksien hallinta",
+        isoControls: "ISO 27001:2013 kohdat 9.1-9.4",
+        nis2Requirements: "NIS2 artikla 8 - Käyttöoikeuksien hallinta",
+        description: "Varmista että käyttöoikeuksien hallintatoimet täyttävät NIS2 turvallisuusvaatimukset"
+      }
+    ],
+    
+    // Implementation Steps Section
+    implementationTitle: "Toteutusvaiheet",
+    implementationSubtitle: "Systemaattinen lähestymistapa yhteensovittamisen saavuttamiseen",
+    steps: [
+      {
+        number: "01",
+        title: "Aukkoanalyysi",
+        description: "Suorita kattava kartoitus olemassa olevien ISO 27001 kontrollien ja NIS2 vaatimusten välillä"
+      },
+      {
+        number: "02",
+        title: "Kontrollin parantaminen",
+        description: "Paranna olemassa olevia kontrollia täyttämään NIS2-spesifiset vaatimukset missä aukot ovat"
+      },
+      {
+        number: "03",
+        title: "Dokumentaation päivittäminen",
+        description: "Päivitä politiikat, proseduurit ja dokumentaatio heijastamaan NIS2 yhteensopivuutta"
+      },
+      {
+        number: "04",
+        title: "Koulutus ja tietoisuus",
+        description: "Kouluta henkilökuntaa NIS2 vaatimuksista ja päivitetyistä turvallisuusproseduureista"
+      },
+      {
+        number: "05",
+        title: "Testaus ja validointi",
+        description: "Testaa paranneltuja kontrollia ja validoi NIS2 yhteensopivuus sisäisten auditien kautta"
+      }
+    ],
+    
+    // Why Choose Us Section
+    whyChooseTitle: "Miksi valita yhteensovituspalvelumme?",
+    whyChooseSubtitle: "Asiantuntevaa ohjausta saumattomaan ISO 27001 ja NIS2 integraatioon",
+    whyChoosePoints: [
+      "Sertifioidut ISO 27001 pääauditorit NIS2 asiantuntemuksella",
+      "Todistetut kartoitusmetodologiat ja työkalut",
+      "Kattava aukkoanalyysi ja korjaussuunnittelu",
+      "Jatkuva tuki ylläpitoon ja jatkuvaan parantamiseen",
+      "Kustannustehokkaat yhteensovitusstrategiat"
+    ],
+    
+    // Benefits Section
+    benefitsSectionTitle: "Ammattimaisen yhteensovittamisen edut",
+    benefitsSectionSubtitle: "Maksimoi turvallisuuskehystesi investointi",
+    benefitsList: [
+      "Alennettu yhteensopivuuskustannukset kontrollin uudelleenkäytön kautta",
+      "Nopeampi NIS2 yhteensopivuuden saavuttaminen",
+      "Säilytetyt ISO 27001 sertifikaatin edut",
+      "Parannettu turvallisuustaso ja riskinjohtaminen",
+      "Tehostetut audit- ja raportointiprosessit"
+    ],
+    
+    // CTA Section
+    ctaTitle: "Valmiina yhdistämään ISO 27001:si NIS2:een?",
+    ctaSubtitle: "Saa asiantuntevaa ohjausta olemassa olevien turvallisuusinvestointiesi maksimoimiseen",
+    ctaButton: "Aloita yhteensovitusarviointi",
+    ctaDescription: "Sertifioidut asiantuntijamme auttavat sinua kartoittamaan ISO 27001 kontrollisi NIS2 vaatimuksille ja tunnistamaan tehokkaimman tien yhteensopivuuteen."
+  }
+};
+
+const currentContent = content[lang];
+---
+
+<Layout title={title}>
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-br from-teal-50 via-white to-blue-50 py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-4xl">
+        <h1 class="text-4xl lg:text-5xl font-bold text-slate-900 mb-6">
+          {currentContent.title}
+        </h1>
+        <p class="text-xl text-slate-600 mb-8">
+          {currentContent.description}
+        </p>
+        <div class="bg-white rounded-xl p-6 shadow-sm border border-slate-200">
+          <h2 class="text-lg font-semibold text-slate-900 mb-4">
+            {lang === 'fi' ? 'Kelle tämä on tarkoitettu?' : 'Who is this for?'}
+          </h2>
+          <p class="text-slate-600 mb-4">{currentContent.whoFor}</p>
+          <h3 class="text-lg font-semibold text-slate-900 mb-2">
+            {lang === 'fi' ? 'Mitä saavutat?' : 'What will you achieve?'}
+          </h3>
+          <p class="text-slate-600">{currentContent.whatYouAchieve}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- What is Alignment Section -->
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-slate-900 mb-4">{currentContent.alignmentTitle}</h2>
+        <p class="text-xl text-slate-600 max-w-4xl mx-auto">{currentContent.alignmentDescription}</p>
+      </div>
+      
+      <div class="grid md:grid-cols-2 gap-12 items-center">
+        <div>
+          <div class="bg-slate-50 p-8 rounded-xl">
+            <h3 class="text-2xl font-bold text-slate-900 mb-4">ISO 27001</h3>
+            <ul class="space-y-3 text-slate-700">
+              <li class="flex items-start">
+                <Icon name="check" class="w-5 h-5 text-teal-600 mr-3 flex-shrink-0 mt-1" />
+                International information security standard
+              </li>
+              <li class="flex items-start">
+                <Icon name="check" class="w-5 h-5 text-teal-600 mr-3 flex-shrink-0 mt-1" />
+                Risk-based approach to security
+              </li>
+              <li class="flex items-start">
+                <Icon name="check" class="w-5 h-5 text-teal-600 mr-3 flex-shrink-0 mt-1" />
+                Comprehensive control framework
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div>
+          <div class="bg-slate-50 p-8 rounded-xl">
+            <h3 class="text-2xl font-bold text-slate-900 mb-4">NIS2</h3>
+            <ul class="space-y-3 text-slate-700">
+              <li class="flex items-start">
+                <Icon name="check" class="w-5 h-5 text-teal-600 mr-3 flex-shrink-0 mt-1" />
+                EU cybersecurity directive
+              </li>
+              <li class="flex items-start">
+                <Icon name="check" class="w-5 h-5 text-teal-600 mr-3 flex-shrink-0 mt-1" />
+                Sector-specific requirements
+              </li>
+              <li class="flex items-start">
+                <Icon name="check" class="w-5 h-5 text-teal-600 mr-3 flex-shrink-0 mt-1" />
+                Incident reporting obligations
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Key Benefits Section -->
+  <section class="py-20 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-slate-900 mb-4">{currentContent.benefitsTitle}</h2>
+        <p class="text-xl text-slate-600">{currentContent.benefitsSubtitle}</p>
+      </div>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {currentContent.benefits.map((benefit) => (
+          <div class="flex items-start gap-4 p-6 bg-white rounded-xl shadow-sm">
+            <Icon name="check" class="w-6 h-6 text-teal-600 flex-shrink-0 mt-1" />
+            <div>
+              <h3 class="text-lg font-semibold text-slate-900 mb-2">{benefit.title}</h3>
+              <p class="text-slate-600 text-sm">{benefit.description}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Mapping Framework Section -->
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-slate-900 mb-4">{currentContent.mappingTitle}</h2>
+        <p class="text-xl text-slate-600">{currentContent.mappingSubtitle}</p>
+      </div>
+      
+      <div class="space-y-6">
+        {currentContent.mappingAreas.map((area) => (
+          <div class="bg-slate-50 p-6 rounded-xl">
+            <h3 class="text-xl font-semibold text-slate-900 mb-4">{area.title}</h3>
+            <div class="grid md:grid-cols-3 gap-4">
+              <div class="bg-white p-4 rounded-lg border border-slate-200">
+                <h4 class="font-semibold text-slate-900 mb-2">ISO 27001 Controls</h4>
+                <p class="text-slate-600 text-sm">{area.isoControls}</p>
+              </div>
+              <div class="bg-white p-4 rounded-lg border border-slate-200">
+                <h4 class="font-semibold text-slate-900 mb-2">NIS2 Requirements</h4>
+                <p class="text-slate-600 text-sm">{area.nis2Requirements}</p>
+              </div>
+              <div class="bg-white p-4 rounded-lg border border-slate-200">
+                <h4 class="font-semibold text-slate-900 mb-2">Alignment Approach</h4>
+                <p class="text-slate-600 text-sm">{area.description}</p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Implementation Steps Section -->
+  <section class="py-20 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-slate-900 mb-4">{currentContent.implementationTitle}</h2>
+        <p class="text-xl text-slate-600">{currentContent.implementationSubtitle}</p>
+      </div>
+      
+      <div class="space-y-8">
+        {currentContent.steps.map((step, index) => (
+          <div class="flex gap-8 items-start">
+            <div class="flex-shrink-0 w-12 h-12 bg-teal-600 text-white rounded-full flex items-center justify-center font-bold">
+              {index + 1}
+            </div>
+            <div class="flex-1">
+              <h3 class="text-xl font-semibold text-slate-900 mb-4">{step.title}</h3>
+              <p class="text-slate-600">{step.description}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Choose Us Section -->
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-slate-900 mb-4">{currentContent.whyChooseTitle}</h2>
+        <p class="text-xl text-slate-600">{currentContent.whyChooseSubtitle}</p>
+      </div>
+      
+      <div class="grid md:grid-cols-2 gap-12">
+        <div>
+          <div class="space-y-6">
+            {currentContent.whyChoosePoints.map((point) => (
+              <div class="flex items-start">
+                <Icon name="check" class="w-6 h-6 text-teal-600 mr-4 mt-1" />
+                <p class="text-lg text-slate-700">{point}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div class="bg-teal-50 p-8 rounded-xl">
+          <h3 class="text-2xl font-bold text-teal-900 mb-6">Our Expertise</h3>
+          <div class="space-y-4">
+            <div class="flex items-center">
+              <div class="w-3 h-3 bg-teal-600 rounded-full mr-3"></div>
+              <span class="text-teal-800">ISO 27001 Lead Auditor certified</span>
+            </div>
+            <div class="flex items-center">
+              <div class="w-3 h-3 bg-teal-600 rounded-full mr-3"></div>
+              <span class="text-teal-800">NIS2 compliance specialists</span>
+            </div>
+            <div class="flex items-center">
+              <div class="w-3 h-3 bg-teal-600 rounded-full mr-3"></div>
+              <span class="text-teal-800">10+ years of experience</span>
+            </div>
+            <div class="flex items-center">
+              <div class="w-3 h-3 bg-teal-600 rounded-full mr-3"></div>
+              <span class="text-teal-800">Proven methodologies</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits Section -->
+  <section class="py-20 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-slate-900 mb-4">{currentContent.benefitsSectionTitle}</h2>
+        <p class="text-xl text-slate-600">{currentContent.benefitsSectionSubtitle}</p>
+      </div>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {currentContent.benefitsList.map((benefit) => (
+          <div class="flex items-start gap-4 p-6 bg-white rounded-xl shadow-sm">
+            <Icon name="check" class="w-6 h-6 text-teal-600 flex-shrink-0 mt-1" />
+            <p class="text-slate-700">{benefit}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-20 bg-slate-900 text-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl font-bold mb-4">{currentContent.ctaTitle}</h2>
+      <p class="text-xl text-slate-300 mb-8">{currentContent.ctaSubtitle}</p>
+      <p class="text-lg text-slate-300 mb-8 max-w-2xl mx-auto">{currentContent.ctaDescription}</p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <Button href={lang === 'fi' ? '/fi/contact?consultation=true' : '/contact?consultation=true'} variant="primary" className="text-lg px-8 py-4">
+          {lang === 'fi' ? 'Varaa konsultaatio' : 'Book consultation'}
+        </Button>
+        <Button href={lang === 'fi' ? '/fi/contact?proposal=true' : '/contact?proposal=true'} variant="secondary" className="text-lg px-8 py-4">
+          {lang === 'fi' ? 'Pyydä tarjous' : 'Request proposal'}
+        </Button>
+      </div>
+    </div>
+  </section>
+</Layout>

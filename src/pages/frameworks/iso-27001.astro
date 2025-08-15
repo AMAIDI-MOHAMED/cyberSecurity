@@ -1,0 +1,251 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import HeroSection from '@/components/sections/HeroSection.astro';
+import CTA from '@/components/sections/CTA.astro';
+import Button from '@/components/ui/Button.astro';
+
+const title = "ISO 27001 Services";
+const currentPath = Astro.url.pathname;
+const lang = currentPath.startsWith('/fi') ? 'fi' : 'en';
+
+const heroContent = {
+  title: "ISO 27001 Information Security Management System Certification",
+  subtitle: "Achieve international information security standards with Finnish market expertise and rapid certification pathways.",
+  description: "We specialize in ISO 27001 implementation and certification, helping Finnish organizations build robust information security management systems that protect critical assets and meet global compliance requirements.",
+  primaryCTA: { text: "Start ISO 27001 Journey", href: "/contact" },
+  secondaryCTA: { text: "Download ISO 27001 Guide", href: "/resources/guides/iso-27001-implementation-guide" }
+};
+
+const keyBenefits = [
+  {
+    title: "Rapid Certification",
+    description: "Achieve ISO 27001 certification in 90-120 days with our proven methodology and expert guidance.",
+    icon: "clock"
+  },
+  {
+    title: "Finnish Market Expertise",
+    description: "Deep understanding of Finnish regulatory environment and business practices for seamless implementation.",
+    icon: "flag"
+  },
+  {
+    title: "Risk-Based Approach",
+    description: "Comprehensive risk assessment and treatment aligned with ISO 27005 and Finnish business context.",
+    icon: "shield-check"
+  },
+  {
+    title: "Continuous Improvement",
+    description: "Ongoing support for maintaining and enhancing your ISMS beyond initial certification.",
+    icon: "arrow-trending-up"
+  }
+];
+
+const implementationSteps = [
+  {
+    phase: "Phase 1: Foundation",
+    duration: "Weeks 1-4",
+    activities: ["Gap Analysis", "Scope Definition", "Leadership Commitment", "Resource Planning"],
+    deliverables: ["Gap Analysis Report", "Project Charter", "Resource Allocation Plan"]
+  },
+  {
+    phase: "Phase 2: Design",
+    duration: "Weeks 5-12",
+    activities: ["Risk Assessment", "Control Selection", "Policy Development", "Process Design"],
+    deliverables: ["Risk Assessment Report", "Control Framework", "Policy Suite", "Process Documentation"]
+  },
+  {
+    phase: "Phase 3: Implementation",
+    duration: "Weeks 13-20",
+    activities: ["Control Implementation", "Training Delivery", "Documentation Control", "Internal Auditing"],
+    deliverables: ["Implemented Controls", "Training Records", "Documentation System", "Internal Audit Report"]
+  },
+  {
+    phase: "Phase 4: Certification",
+    duration: "Weeks 21-24",
+    activities: ["Pre-Certification Audit", "Management Review", "Certification Audit", "Continuous Monitoring"],
+    deliverables: ["ISO 27001 Certificate", "Management Review Report", "Improvement Plan"]
+  }
+];
+
+const industryExamples = [
+  {
+    industry: "Financial Services",
+    challenge: "Meeting FIN-FSA requirements while achieving ISO 27001 certification",
+    solution: "Integrated approach combining regulatory compliance with international standards",
+    outcome: "Certification achieved in 95 days with regulatory alignment"
+  },
+  {
+    industry: "Healthcare",
+    challenge: "Protecting patient data under GDPR while implementing ISO 27001",
+    solution: "Privacy-by-design approach with healthcare-specific controls",
+    outcome: "Comprehensive data protection framework with ISO 27001 certification"
+  },
+  {
+    industry: "Manufacturing",
+    challenge: "Securing industrial control systems and supply chain",
+    solution: "OT security integration with traditional IT security controls",
+    outcome: "End-to-end security framework protecting critical manufacturing processes"
+  }
+];
+
+const relatedServices = [
+  { title: "NIS2 Compliance", href: "/frameworks/nis2", description: "EU cybersecurity directive alignment" },
+  { title: "Risk Assessment", href: "/frameworks/risk-assessments", description: "ISO 27005 risk management" },
+  { title: "Policy Development", href: "/frameworks/policy-development", description: "Governance framework creation" },
+  { title: "Audit Preparation", href: "/frameworks/audit-preparation", description: "Certification readiness support" }
+];
+---
+
+<Layout title={title}>
+  <HeroSection content={heroContent} />
+  
+  <!-- Key Benefits Section -->
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-bold text-slate-900 mb-6">Why Choose Our ISO 27001 Services</h2>
+        <p class="text-xl text-slate-600 max-w-3xl mx-auto">
+          We deliver ISO 27001 certification with Finnish market expertise, ensuring your information security management system meets both international standards and local business requirements.
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {keyBenefits.map((benefit) => (
+          <div class="bg-gradient-to-br from-slate-50 to-white p-8 rounded-xl border border-slate-200 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+            <div class="w-16 h-16 bg-blue-100 rounded-xl flex items-center justify-center mb-6">
+              <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold text-slate-900 mb-4">{benefit.title}</h3>
+            <p class="text-slate-600 leading-relaxed">{benefit.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Implementation Process Section -->
+  <section class="py-20 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-bold text-slate-900 mb-6">Our Proven Implementation Process</h2>
+        <p class="text-xl text-slate-600 max-w-3xl mx-auto">
+          Structured approach ensuring successful ISO 27001 certification within 90-120 days while maintaining business continuity.
+        </p>
+      </div>
+      
+      <div class="space-y-8">
+        {implementationSteps.map((step, index) => (
+          <div class="bg-white p-8 rounded-xl border border-slate-200 shadow-lg">
+            <div class="flex items-start gap-6">
+              <div class="flex-shrink-0">
+                <div class="w-12 h-12 bg-blue-600 text-white rounded-full flex items-center justify-center text-xl font-bold">
+                  {index + 1}
+                </div>
+              </div>
+              <div class="flex-1">
+                <div class="flex items-center gap-4 mb-4">
+                  <h3 class="text-2xl font-bold text-slate-900">{step.phase}</h3>
+                  <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">
+                    {step.duration}
+                  </span>
+                </div>
+                <div class="grid md:grid-cols-2 gap-6">
+                  <div>
+                    <h4 class="font-semibold text-slate-900 mb-3">Key Activities</h4>
+                    <ul class="space-y-2">
+                      {step.activities.map((activity) => (
+                        <li class="flex items-center text-slate-600">
+                          <svg class="w-4 h-4 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                          </svg>
+                          {activity}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  <div>
+                    <h4 class="font-semibold text-slate-900 mb-3">Deliverables</h4>
+                    <ul class="space-y-2">
+                      {step.deliverables.map((deliverable) => (
+                        <li class="flex items-center text-slate-600">
+                          <svg class="w-4 h-4 text-blue-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                          </svg>
+                          {deliverable}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Industry Examples Section -->
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-bold text-slate-900 mb-6">Industry-Specific Success Stories</h2>
+        <p class="text-xl text-slate-600 max-w-3xl mx-auto">
+          See how we've helped organizations across different industries achieve ISO 27001 certification while addressing their unique challenges.
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        {industryExamples.map((example) => (
+          <div class="bg-slate-50 p-8 rounded-xl border border-slate-200">
+            <div class="mb-4">
+              <span class="inline-block bg-blue-100 text-blue-800 text-sm font-medium px-3 py-1 rounded-full">
+                {example.industry}
+              </span>
+            </div>
+            <h3 class="text-xl font-bold text-slate-900 mb-4">Challenge</h3>
+            <p class="text-slate-600 mb-6">{example.challenge}</p>
+            <h4 class="text-lg font-semibold text-slate-900 mb-3">Our Solution</h4>
+            <p class="text-slate-600 mb-6">{example.solution}</p>
+            <h4 class="text-lg font-semibold text-slate-900 mb-3">Outcome</h4>
+            <p class="text-slate-600">{example.outcome}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Related Services Section -->
+  <section class="py-20 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-bold text-slate-900 mb-6">Related Services</h2>
+        <p class="text-xl text-slate-600 max-w-3xl mx-auto">
+          Enhance your cybersecurity posture with our complementary services and frameworks.
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {relatedServices.map((service) => (
+          <a href={service.href} class="group">
+            <div class="bg-white p-6 rounded-xl border border-slate-200 hover:shadow-lg transition-shadow group-hover:border-blue-300">
+              <h3 class="text-lg font-semibold text-slate-900 mb-2 group-hover:text-blue-600 transition-colors">
+                {service.title}
+              </h3>
+              <p class="text-slate-600 text-sm">{service.description}</p>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <CTA 
+    title="Ready to Achieve ISO 27001 Certification?"
+    description="Join hundreds of Finnish organizations that have successfully implemented ISO 27001 with our expert guidance. Let's discuss how we can help you build a robust information security management system."
+    primaryCTA={{ text: "Start Your ISO 27001 Journey", href: "/contact" }}
+    secondaryCTA={{ text: "Download Implementation Guide", href: "/resources/guides/iso-27001-implementation-guide" }}
+  />
+</Layout>

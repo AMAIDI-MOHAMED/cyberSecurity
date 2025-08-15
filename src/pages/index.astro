@@ -1,0 +1,662 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import HeroSection from '@/components/sections/HeroSection.astro';
+import CTA from '@/components/sections/CTA.astro';
+import Button from '@/components/ui/Button.astro';
+
+const title = "Home";
+const currentPath = Astro.url.pathname;
+const lang = currentPath.startsWith('/fi') ? 'fi' : 'en';
+
+const heroContent = {
+  title: "Finland's Premier Cybersecurity & Compliance Partner",
+  subtitle: "Expert guidance for ISO 27001, NIS2, DORA, and SOC 2 compliance across Nordic and EU markets.",
+  description: "We help Finnish organizations and international companies operating in the EU navigate complex cybersecurity regulations while building robust, resilient security programs that protect your business and meet regulatory requirements.",
+  primaryCTA: { text: "Book a Consultation", href: "/contact" },
+  secondaryCTA: { text: "View Our Services", href: "/services" }
+};
+
+const keyServices = [
+  {
+    title: "ISO 27001 Implementation",
+    description: "Complete ISMS implementation with Finnish market expertise and rapid certification pathways.",
+    icon: "shield-check",
+    href: "/frameworks/iso-27001"
+  },
+  {
+    title: "NIS2 Compliance",
+    description: "EU Network and Information Security Directive compliance for critical infrastructure and essential services.",
+    icon: "globe",
+    href: "/frameworks/nis2"
+  },
+  {
+    title: "DORA Resilience",
+    description: "Digital Operational Resilience Act compliance for financial services and fintech organizations.",
+    icon: "banknotes",
+    href: "/frameworks/dora"
+  },
+  {
+    title: "SOC 2 Readiness",
+    description: "Service Organization Control 2 preparation for SaaS and technology companies.",
+    icon: "cloud",
+    href: "/frameworks/soc-2"
+  },
+  {
+    title: "Risk Assessment",
+    description: "Comprehensive cybersecurity risk assessments tailored to Finnish regulatory environment.",
+    icon: "chart-line",
+    href: "/frameworks/risk-assessments"
+  },
+  {
+    title: "Anti-Fraud Controls",
+    description: "Advanced fraud prevention and detection systems for financial and e-commerce operations.",
+    icon: "exclamation-triangle",
+    href: "/frameworks/fraud-risk-assessment"
+  }
+];
+
+const industries = [
+  { 
+    name: "Financial Services", 
+    icon: "bank", 
+    href: "/industries/financial-services-fintech",
+    image: "/images/industries/financial-services.svg",
+    description: "Banking, insurance, and fintech compliance"
+  },
+  { 
+    name: "Public Sector", 
+    icon: "building", 
+    href: "/industries/public-sector-finland",
+    image: "/images/industries/public-sector.svg",
+    description: "Government and public administration"
+  },
+  { 
+    name: "Healthcare", 
+    icon: "heart", 
+    href: "/industries/healthcare-life-sciences",
+    image: "/images/industries/healthcare.svg",
+    description: "Healthcare and life sciences"
+  },
+  { 
+    name: "Manufacturing", 
+    icon: "cog", 
+    href: "/industries/manufacturing-industrial",
+    image: "/images/industries/manufacturing.svg",
+    description: "Industrial and manufacturing"
+  },
+  { 
+    name: "Critical Infrastructure", 
+    icon: "bolt", 
+    href: "/industries/critical-infrastructure-energy",
+    image: "/images/industries/critical-infrastructure.svg",
+    description: "Energy and critical systems"
+  },
+  { 
+    name: "SaaS & Technology", 
+    icon: "code", 
+    href: "/industries/saas-technology",
+    image: "/images/industries/saas-technology.svg",
+    description: "Software and technology companies"
+  }
+];
+
+const trustSignals = [
+  { number: "98%", label: "Certification Success Rate", description: "First-time ISO 27001 success" },
+  { number: "500+", label: "Organizations Served", description: "Across Nordic and EU markets" },
+  { number: "15+", label: "Years Experience", description: "In cybersecurity and compliance" },
+  { number: "24/7", label: "Expert Support", description: "Available when you need us" }
+];
+
+const latestResources = [
+  {
+    title: "NIS2 Implementation Guide for Finnish Organizations",
+    excerpt: "Complete roadmap for achieving NIS2 compliance in the Finnish regulatory context.",
+    href: "/resources/guides/nis2-implementation-finland",
+    category: "Guide"
+  },
+  {
+    title: "ISO 27001 vs NIS2: Strategic Alignment Strategies",
+    excerpt: "How to leverage existing ISO 27001 frameworks to accelerate NIS2 compliance.",
+    href: "/resources/guides/iso27001-nis2-alignment",
+    category: "Strategy"
+  },
+  {
+    title: "DORA Compliance Checklist for Financial Services",
+    excerpt: "Essential steps for financial institutions to meet DORA requirements by 2025.",
+    href: "/resources/guides/dora-compliance-checklist",
+    category: "Checklist"
+  }
+];
+---
+
+<Layout title={title}>
+  <!-- Hero Section -->
+  <HeroSection content={heroContent} />
+  
+  <!-- Eye-catching animated background overlay -->
+  <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+    <!-- Morphing gradient background -->
+    <div class="absolute inset-0 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 animate-morphing-gradient"></div>
+    
+    <!-- Floating particles -->
+    <div class="absolute inset-0">
+      {Array.from({ length: 20 }).map((_, i) => (
+        <div 
+          class="absolute w-2 h-2 bg-white rounded-full opacity-60 animate-float-particle"
+          style={`
+            left: ${Math.random() * 100}%;
+            top: ${Math.random() * 100}%;
+            animation-delay: ${Math.random() * 3}s;
+            animation-duration: ${3 + Math.random() * 4}s;
+          `}
+        ></div>
+      ))}
+    </div>
+    
+    <!-- Glowing orbs -->
+    <div class="absolute top-1/4 left-1/4 w-32 h-32 bg-yellow-400 rounded-full opacity-30 animate-pulse blur-xl"></div>
+    <div class="absolute top-3/4 right-1/4 w-24 h-24 bg-cyan-400 rounded-full opacity-40 animate-pulse blur-lg" style="animation-delay: 1s;"></div>
+    <div class="absolute bottom-1/4 left-1/3 w-20 h-20 bg-pink-400 rounded-full opacity-35 animate-pulse blur-xl" style="animation-delay: 2s;"></div>
+  </div>
+  
+  <!-- Key Services Section -->
+  <section class="py-20 bg-white overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-bold text-slate-900 mb-6 animate-fade-in-up">Comprehensive Cybersecurity Solutions</h2>
+        <p class="text-xl text-slate-600 max-w-4xl mx-auto animate-fade-in-up animation-delay-200">
+          We deliver end-to-end cybersecurity and compliance services designed specifically for the Finnish and EU regulatory landscape.
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {keyServices.map((service, index) => (
+          <div class="group service-card bg-gradient-to-br from-slate-50 to-white p-8 rounded-xl border border-slate-200 hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 hover:scale-105 animate-fade-in-up will-change-transform backface-hidden" style={`animation-delay: ${index * 100}ms`}>
+            <div class="w-16 h-16 bg-blue-100 rounded-xl flex items-center justify-center mb-6 group-hover:bg-blue-200 transition-all duration-300 group-hover:scale-110 group-hover:rotate-3">
+              <svg class="w-8 h-8 text-blue-600 group-hover:text-blue-700 transition-all duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+            </div>
+            <h3 class="text-2xl font-bold text-slate-900 mb-4 group-hover:text-blue-600 transition-colors duration-300">{service.title}</h3>
+            <p class="text-slate-600 mb-6 leading-relaxed group-hover:text-slate-700 transition-colors duration-300">{service.description}</p>
+            <a href={service.href} class="inline-flex items-center text-blue-600 hover:text-blue-800 font-semibold group/link transition-all duration-300 hover:scale-105 glow-on-hover">
+              Learn more 
+              <svg class="w-4 h-4 ml-2 transform group-hover/link:translate-x-2 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+              </svg>
+            </a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Industries Section -->
+  <section class="py-20 bg-slate-50 overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-bold text-slate-900 mb-6 animate-fade-in-up">Industries We Serve</h2>
+        <p class="text-xl text-slate-600 max-w-3xl mx-auto animate-fade-in-up animation-delay-200">
+          Specialized expertise across regulated industries with deep understanding of sector-specific compliance requirements.
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {industries.map((industry, index) => (
+          <a href={industry.href} class="group industry-card bg-white rounded-xl p-6 hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 hover:scale-105 border border-slate-200 animate-fade-in-up will-change-transform backface-hidden" style={`animation-delay: ${index * 150}ms`}>
+            <div class="w-full h-48 bg-gradient-to-br from-slate-100 to-slate-200 rounded-lg mb-4 overflow-hidden relative">
+              <img 
+                src={industry.image} 
+                alt={`${industry.name} industry`}
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
+                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+              />
+              <div class="w-full h-full flex items-center justify-center bg-gradient-to-br from-blue-100 to-indigo-200 absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500" style="display: none;">
+                <svg class="w-16 h-16 text-slate-400 group-hover:scale-110 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+              </svg>
+            </div>
+              <!-- Floating elements -->
+              <div class="absolute top-4 right-4 w-3 h-3 bg-blue-400 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-500 group-hover:animate-bounce"></div>
+              <div class="absolute bottom-4 left-4 w-2 h-2 bg-green-400 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-500 group-hover:animate-pulse" style="animation-delay: 200ms"></div>
+            </div>
+            <div class="text-center">
+              <h3 class="text-xl font-bold text-slate-900 mb-2 group-hover:text-blue-600 transition-colors duration-300 group-hover:scale-105 transform">{industry.name}</h3>
+              <p class="text-sm text-slate-600 group-hover:text-slate-700 transition-colors duration-300">{industry.description}</p>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Trust Signals Section -->
+  <section class="py-20 bg-white overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-bold text-slate-900 mb-6 animate-fade-in-up">Why Organizations Choose Us</h2>
+        <p class="text-xl text-slate-600 max-w-3xl mx-auto animate-fade-in-up animation-delay-200">
+          Proven track record of delivering cybersecurity excellence with Finnish market expertise and international standards.
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {trustSignals.map((signal, index) => (
+          <div class="text-center group trust-signal animate-fade-in-up will-change-transform backface-hidden" style={`animation-delay: ${index * 100}ms`}>
+            <div class="text-5xl font-bold text-blue-600 mb-3 group-hover:scale-110 transition-transform duration-300 group-hover:text-blue-700">
+              {signal.number}
+            </div>
+            <div class="text-xl font-semibold text-slate-900 mb-2 group-hover:text-blue-600 transition-colors duration-300">{signal.label}</div>
+            <div class="text-slate-600 group-hover:text-slate-700 transition-colors duration-300">{signal.description}</div>
+            <!-- Animated underline -->
+            <div class="w-0 h-0.5 bg-blue-600 mx-auto mt-2 group-hover:w-16 transition-all duration-500"></div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Latest Resources Section -->
+  <section class="py-20 bg-slate-50 overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-bold text-slate-900 mb-6 animate-fade-in-up">Latest Insights and Resources</h2>
+        <p class="text-xl text-slate-600 max-w-3xl mx-auto animate-fade-in-up animation-delay-200">
+          Stay ahead with our latest cybersecurity insights, guides, and regulatory updates.
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {latestResources.map((resource, index) => (
+          <div class="bg-white p-8 rounded-xl shadow-sm hover:shadow-xl transition-all duration-500 hover:-translate-y-2 border border-slate-200 resource-card animate-fade-in-up will-change-transform backface-hidden" style={`animation-delay: ${index * 150}ms`}>
+            <div class="mb-4">
+              <span class="inline-block px-3 py-1 text-sm font-semibold text-blue-600 bg-blue-100 rounded-full group-hover:bg-blue-200 transition-colors duration-300">
+                {resource.category}
+              </span>
+            </div>
+            <h3 class="text-xl font-bold text-slate-900 mb-4 group-hover:text-blue-600 transition-colors duration-300">{resource.title}</h3>
+            <p class="text-slate-600 mb-6 leading-relaxed">{resource.excerpt}</p>
+            <a href={resource.href} class="inline-flex items-center text-blue-600 hover:text-blue-800 font-semibold group/link transition-all duration-300 hover:scale-105 glow-on-hover">
+              Read more 
+              <svg class="w-4 h-4 ml-2 transform group-hover/link:translate-x-2 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+              </svg>
+            </a>
+          </div>
+        ))}
+      </div>
+      
+      <div class="text-center mt-12">
+        <Button href="/resources" variant="secondary">
+          View All Resources
+        </Button>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-20 bg-gradient-to-r from-slate-900 via-blue-900 to-slate-900 text-white overflow-hidden relative">
+    <!-- Animated background elements -->
+    <div class="absolute inset-0 overflow-hidden">
+      <div class="absolute -top-40 -right-40 w-80 h-80 bg-blue-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob parallax"></div>
+      <div class="absolute -bottom-40 -left-40 w-80 h-80 bg-purple-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob animation-delay-2000 parallax"></div>
+      <div class="absolute top-40 left-40 w-80 h-80 bg-pink-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob animation-delay-4000 parallax"></div>
+    </div>
+    
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+      <h2 class="text-4xl font-bold mb-6 animate-fade-in-up">Ready to Transform Your Cybersecurity?</h2>
+      <p class="text-xl text-slate-300 mb-8 max-w-3xl mx-auto animate-fade-in-up animation-delay-200">
+        Join hundreds of organizations that trust us with their cybersecurity and compliance needs.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up animation-delay-400">
+        <Button href="/contact" variant="primary" className="text-lg px-8 py-3 hover:scale-105 transition-transform duration-300 hover:shadow-2xl bg-blue-600 hover:bg-blue-700 text-white border-0">
+          Get Started
+        </Button>
+        <Button href="/contact?assessment=true" variant="secondary" className="text-lg px-8 py-3 hover:scale-105 transition-transform duration-300 hover:shadow-2xl bg-white hover:bg-gray-100 text-slate-900 border border-slate-300">
+          NIS2 Readiness Check
+        </Button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Custom CSS for animations -->
+  <style>
+    @keyframes fade-in-up {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fade-in-left {
+      from {
+        opacity: 0;
+        transform: translateX(-30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes fade-in-right {
+      from {
+        opacity: 0;
+        transform: translateX(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes scale-in {
+      from {
+        opacity: 0;
+        transform: scale(0.8);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    @keyframes blob {
+      0% {
+        transform: translate(0px, 0px) scale(1);
+      }
+      33% {
+        transform: translate(30px, -50px) scale(1.1);
+      }
+      66% {
+        transform: translate(-20px, 20px) scale(0.9);
+      }
+      100% {
+        transform: translate(0px, 0px) scale(1);
+      }
+    }
+
+    @keyframes morphing-gradient {
+      0% {
+        background-size: 200% 200%;
+        background-position: 0% 50%;
+      }
+      50% {
+        background-size: 200% 200%;
+        background-position: 100% 50%;
+      }
+      100% {
+        background-size: 200% 200%;
+        background-position: 0% 50%;
+      }
+    }
+
+    @keyframes float-particle {
+      0% {
+        transform: translateY(0px) translateX(0px);
+        opacity: 0.6;
+      }
+      25% {
+        transform: translateY(-10px) translateX(5px);
+        opacity: 0.8;
+      }
+      50% {
+        transform: translateY(0px) translateX(0px);
+        opacity: 0.6;
+      }
+      75% {
+        transform: translateY(10px) translateX(-5px);
+        opacity: 0.8;
+      }
+      100% {
+        transform: translateY(0px) translateX(0px);
+        opacity: 0.6;
+      }
+    }
+
+    .animate-fade-in-up {
+      animation: fade-in-up 0.8s ease-out forwards;
+      opacity: 0;
+    }
+
+    .animate-fade-in-left {
+      animation: fade-in-left 0.8s ease-out forwards;
+      opacity: 0;
+    }
+
+    .animate-fade-in-right {
+      animation: fade-in-right 0.8s ease-out forwards;
+      opacity: 0;
+    }
+
+    .animate-scale-in {
+      animation: scale-in 0.8s ease-out forwards;
+      opacity: 0;
+    }
+
+    .animate-blob {
+      animation: blob 7s infinite;
+    }
+
+    .animate-morphing-gradient {
+      background-size: 200% 200%;
+      animation: morphing-gradient 8s ease-in-out infinite;
+    }
+
+    .animate-float-particle {
+      animation: float-particle 4s ease-in-out infinite;
+    }
+
+    .animation-delay-200 {
+      animation-delay: 200ms;
+    }
+
+    .animation-delay-400 {
+      animation-delay: 400ms;
+    }
+
+    .animation-delay-2000 {
+      animation-delay: 2s;
+    }
+
+    .animation-delay-4000 {
+      animation-delay: 4s;
+    }
+
+    /* Smooth scrolling */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* Enhanced hover effects */
+    .group:hover .group-hover\:scale-110 {
+      transform: scale(1.1);
+    }
+
+    .group:hover .group-hover\:rotate-3 {
+      transform: rotate(3deg);
+    }
+
+    /* Loading animation for images */
+    img {
+      transition: all 0.3s ease;
+    }
+
+    /* Enhanced button animations */
+    button, a[href] {
+      transition: all 0.3s ease;
+    }
+
+    button:hover, a[href]:hover {
+      transform: translateY(-2px);
+    }
+
+    /* Card hover effects */
+    .hover\:shadow-2xl:hover {
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    }
+
+    /* Floating animation for trust signals */
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0px);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+
+    .group:hover .animate-bounce {
+      animation: float 2s ease-in-out infinite;
+    }
+
+    .group:hover .animate-pulse {
+      animation: float 2s ease-in-out infinite reverse;
+    }
+
+    /* Parallax effect for background elements */
+    .parallax {
+      transform: translateZ(0);
+      will-change: transform;
+    }
+
+    /* Enhanced card animations */
+    .service-card {
+      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .service-card:hover {
+      transform: translateY(-8px) scale(1.02);
+    }
+
+    /* Industry card animations */
+    .industry-card {
+      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .industry-card:hover {
+      transform: translateY(-12px) scale(1.03);
+    }
+
+    /* Trust signal animations */
+    .trust-signal {
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .trust-signal:hover {
+      transform: translateY(-4px) scale(1.05);
+    }
+
+    /* Resource card animations */
+    .resource-card {
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .resource-card:hover {
+      transform: translateY(-8px) scale(1.02);
+    }
+
+    /* Glow effect for primary elements */
+    .glow-on-hover:hover {
+      box-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
+    }
+
+    /* Staggered animation delays */
+    .stagger-1 { animation-delay: 100ms; }
+    .stagger-2 { animation-delay: 200ms; }
+    .stagger-3 { animation-delay: 300ms; }
+    .stagger-4 { animation-delay: 400ms; }
+    .stagger-5 { animation-delay: 500ms; }
+    .stagger-6 { animation-delay: 600ms; }
+
+    /* Responsive animations */
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+
+    /* Performance optimizations */
+    .will-change-transform {
+      will-change: transform;
+    }
+
+    .backface-hidden {
+      backface-visibility: hidden;
+    }
+  </style>
+
+  <!-- JavaScript for enhanced interactions -->
+  <script>
+    // Intersection Observer for scroll-triggered animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate-in');
+        }
+      });
+    }, observerOptions);
+
+    // Observe all animated elements
+    document.addEventListener('DOMContentLoaded', () => {
+      const animatedElements = document.querySelectorAll('.animate-fade-in-up, .animate-fade-in-left, .animate-fade-in-right, .animate-scale-in');
+      animatedElements.forEach(el => observer.observe(el));
+
+      // Add parallax effect to background elements
+      const parallaxElements = document.querySelectorAll('.parallax');
+      window.addEventListener('scroll', () => {
+        const scrolled = window.pageYOffset;
+        parallaxElements.forEach((el, index) => {
+          const speed = 0.5 + (index * 0.1);
+          (el as HTMLElement).style.transform = `translateY(${scrolled * speed}px)`;
+        });
+      });
+
+      // Enhanced hover effects for cards
+      const cards = document.querySelectorAll('.service-card, .industry-card, .trust-signal, .resource-card');
+      cards.forEach(card => {
+        card.addEventListener('mouseenter', () => {
+          (card as HTMLElement).style.zIndex = '10';
+        });
+        card.addEventListener('mouseleave', () => {
+          (card as HTMLElement).style.zIndex = '1';
+        });
+      });
+
+      // Smooth reveal animations
+      const revealElements = document.querySelectorAll('.reveal-on-scroll');
+      revealElements.forEach((el, index) => {
+        (el as HTMLElement).style.opacity = '0';
+        (el as HTMLElement).style.transform = 'translateY(30px)';
+        (el as HTMLElement).style.transition = `all 0.6s ease-out ${index * 0.1}s`;
+        
+        const revealObserver = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              (entry.target as HTMLElement).style.opacity = '1';
+              (entry.target as HTMLElement).style.transform = 'translateY(0)';
+            }
+          });
+        }, { threshold: 0.1 });
+        
+        revealObserver.observe(el);
+      });
+    });
+
+    // Add smooth loading states
+    window.addEventListener('load', () => {
+      document.body.classList.add('loaded');
+    });
+  </script>
+</Layout>

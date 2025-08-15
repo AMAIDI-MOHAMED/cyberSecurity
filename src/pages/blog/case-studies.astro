@@ -1,0 +1,555 @@
+---
+import Layout from '@/layouts/Layout.astro';
+
+const title = "Case Studies";
+const currentPath = Astro.url.pathname;
+const lang = currentPath.startsWith('/fi') ? 'fi' : 'en';
+
+const content = {
+  en: {
+    title: "Case Studies",
+    subtitle: "Real Results from Real Organizations",
+    heroDescription: "Discover how organizations across industries have successfully implemented cybersecurity solutions and achieved compliance with our proven methodologies.",
+    featured: {
+      title: "Featured Case Studies",
+      description: "Success stories that demonstrate the transformative impact of our cybersecurity solutions.",
+      studies: [
+        {
+          title: "Nordic Bank: ISO 27001 Certification in 6 Months",
+          industry: "Financial Services",
+          challenge: "Achieve ISO 27001 certification within tight regulatory deadlines",
+          solution: "Comprehensive ISMS implementation with automated compliance monitoring",
+          results: ["ISO 27001 certification achieved in 6 months", "40% reduction in security incidents", "Streamlined audit processes"],
+          metrics: {
+            timeline: "6 months",
+            improvement: "40%",
+            certification: "ISO 27001:2022"
+          }
+        },
+        {
+          title: "Healthcare Provider: GDPR Compliance Transformation",
+          industry: "Healthcare",
+          challenge: "Ensure full GDPR compliance across multiple facilities and systems",
+          solution: "Data protection framework with privacy-by-design approach",
+          results: ["100% GDPR compliance achieved", "Enhanced patient data protection", "Improved operational efficiency"],
+          metrics: {
+            timeline: "8 months",
+            improvement: "100%",
+            certification: "GDPR Compliant"
+          }
+        },
+        {
+          title: "Manufacturing Company: SOC 2 Type II Success",
+          industry: "Manufacturing",
+          challenge: "Prepare for SOC 2 Type II audit with limited internal resources",
+          solution: "End-to-end SOC 2 preparation with ongoing support",
+          results: ["SOC 2 Type II certification obtained", "Enhanced customer trust", "Competitive advantage secured"],
+          metrics: {
+            timeline: "12 months",
+            improvement: "100%",
+            certification: "SOC 2 Type II"
+          }
+        }
+      ]
+    },
+    industries: {
+      title: "Industry Solutions",
+      description: "Explore case studies specific to your industry and compliance requirements.",
+      sectors: [
+        {
+          name: "Financial Services",
+          count: "12 case studies",
+          icon: "🏦",
+          description: "Banking, insurance, and fintech compliance solutions"
+        },
+        {
+          name: "Healthcare",
+          count: "8 case studies",
+          icon: "🏥",
+          description: "HIPAA, GDPR, and healthcare security implementations"
+        },
+        {
+          name: "Manufacturing",
+          count: "15 case studies",
+          icon: "🏭",
+          description: "Industrial cybersecurity and supply chain security"
+        },
+        {
+          name: "Technology",
+          count: "20 case studies",
+          icon: "💻",
+          description: "SaaS, cloud security, and software development"
+        },
+        {
+          name: "Retail",
+          count: "10 case studies",
+          icon: "🛒",
+          description: "E-commerce security and PCI DSS compliance"
+        },
+        {
+          name: "Government",
+          count: "6 case studies",
+          icon: "🏛️",
+          description: "Public sector cybersecurity and compliance"
+        }
+      ]
+    },
+    methodologies: {
+      title: "Implementation Methodologies",
+      description: "Learn about the proven approaches that drive successful outcomes.",
+      approaches: [
+        {
+          title: "Rapid Implementation",
+          description: "Accelerated deployment for urgent compliance needs",
+          duration: "3-6 months",
+          bestFor: "Organizations with immediate compliance deadlines",
+          successRate: "95%"
+        },
+        {
+          title: "Phased Rollout",
+          description: "Gradual implementation across multiple departments",
+          duration: "6-18 months",
+          bestFor: "Large organizations with complex infrastructures",
+          successRate: "98%"
+        },
+        {
+          title: "Custom Development",
+          description: "Tailored solutions for unique organizational requirements",
+          duration: "6-24 months",
+          bestFor: "Organizations with specific compliance needs",
+          successRate: "92%"
+        }
+      ]
+    },
+    testimonials: {
+      title: "Client Testimonials",
+      description: "Hear directly from our clients about their experience and results.",
+      quotes: [
+        {
+          quote: "CyberSecurity Finland transformed our cybersecurity posture completely. We achieved ISO 27001 certification in record time while building a sustainable security culture.",
+          author: "Maria Lindström",
+          title: "CISO",
+          company: "Nordic Financial Group",
+          rating: 5
+        },
+        {
+          quote: "The team's expertise in GDPR compliance helped us navigate complex requirements and achieve full compliance across all our European operations.",
+          author: "Dr. Thomas Weber",
+          title: "Data Protection Officer",
+          company: "European Healthcare Network",
+          rating: 5
+        },
+        {
+          quote: "Working with CyberSecurity Finland was a game-changer. Their SOC 2 preparation methodology was comprehensive and their ongoing support exceptional.",
+          author: "Sarah Chen",
+          title: "VP of Security",
+          company: "TechFlow Solutions",
+          rating: 5
+        }
+      ]
+    },
+    download: {
+      title: "Download Case Studies",
+      description: "Access detailed case studies and implementation guides to support your cybersecurity initiatives.",
+      resources: [
+        {
+          title: "Complete Case Study Collection",
+          description: "All case studies in one comprehensive document",
+          format: "PDF",
+          size: "15.2 MB",
+          download: "Download All"
+        },
+        {
+          title: "Implementation Guide",
+          description: "Step-by-step guide based on successful implementations",
+          format: "PDF",
+          size: "8.7 MB",
+          download: "Download Guide"
+        },
+        {
+          title: "ROI Calculator",
+          description: "Interactive tool to calculate potential returns on security investments",
+          format: "Excel",
+          size: "2.1 MB",
+          download: "Download Tool"
+        }
+      ]
+    },
+    cta: {
+      title: "Ready to Start Your Success Story?",
+      subtitle: "Let's discuss how we can help you achieve similar results in your organization.",
+      button: "Schedule a Consultation",
+      link: "/contact"
+    }
+  },
+  fi: {
+    title: "Tapaustutkimukset",
+    subtitle: "Todellisia tuloksia todellisista organisaatioista",
+    heroDescription: "Löydä, miten organisaatiot eri toimialoilla ovat onnistuneesti toteuttaneet kyberturvallisuusratkaisuja ja saavuttaneet yhteensopivuuden todistetulla metodologialla.",
+    featured: {
+      title: "Suositellut tapaustutkimukset",
+      description: "Menestystarinat, jotka osoittavat kyberturvallisuusratkaisuidemme muunnosvaikutuksen.",
+      studies: [
+        {
+          title: "Pohjoismainen pankki: ISO 27001 -sertifiointi 6 kuukaudessa",
+          industry: "Rahoituspalvelut",
+          challenge: "Saavuttaa ISO 27001 -sertifiointi tiukissa sääntelyajoissa",
+          solution: "Kattava ISMS-toteutus automatoidulla yhteensopivuusseurannalla",
+          results: ["ISO 27001 -sertifiointi saavutettu 6 kuukaudessa", "40% vähennys turvallisuustapahtumissa", "Sujuvoitetut tarkistusprosessit"],
+          metrics: {
+            timeline: "6 kuukautta",
+            improvement: "40%",
+            certification: "ISO 27001:2022"
+          }
+        },
+        {
+          title: "Terveydenhuoltopalveluntarjoaja: GDPR-yhteensopivuuden muutos",
+          industry: "Terveydenhuolto",
+          challenge: "Varmistaa täydellinen GDPR-yhteensopivuus useissa tiloissa ja järjestelmissä",
+          solution: "Tietosuojakehys yksityisyyssuunnittelun lähestymistavalla",
+          results: ["100% GDPR-yhteensopivuus saavutettu", "Parannettu potilastietojen suojaus", "Parannettu toiminnallinen tehokkuus"],
+          metrics: {
+            timeline: "8 kuukautta",
+            improvement: "100%",
+            certification: "GDPR-yhteensopiva"
+          }
+        },
+        {
+          title: "Valmistusyritys: SOC 2 Type II -menestys",
+          industry: "Valmistus",
+          challenge: "Valmistautua SOC 2 Type II -tarkistukseen rajoitetuilla sisäisillä resursseilla",
+          solution: "End-to-end SOC 2 -valmistelu jatkuvalla tuella",
+          results: ["SOC 2 Type II -sertifiointi saatu", "Parannettu asiakkaiden luottamus", "Kilpailuetu varmistettu"],
+          metrics: {
+            timeline: "12 kuukautta",
+            improvement: "100%",
+            certification: "SOC 2 Type II"
+          }
+        }
+      ]
+    },
+    industries: {
+      title: "Toimialaratkaisut",
+      description: "Tutustu toimialasi ja yhteensopivuusvaatimustesi mukaisiin tapaustutkimuksiin.",
+      sectors: [
+        {
+          name: "Rahoituspalvelut",
+          count: "12 tapaustutkimusta",
+          icon: "🏦",
+          description: "Pankkitoiminta, vakuutus ja fintech-yhteensopivuusratkaisut"
+        },
+        {
+          name: "Terveydenhuolto",
+          count: "8 tapaustutkimusta",
+          icon: "🏥",
+          description: "HIPAA, GDPR ja terveydenhuollon turvallisuustoteutukset"
+        },
+        {
+          name: "Valmistus",
+          count: "15 tapaustutkimusta",
+          icon: "🏭",
+          description: "Teollinen kyberturvallisuus ja toimitusketjun turvallisuus"
+        },
+        {
+          name: "Teknologia",
+          count: "20 tapaustutkimusta",
+          icon: "💻",
+          description: "SaaS, pilviturvallisuus ja ohjelmistokehitys"
+        },
+        {
+          name: "Vähittäiskauppa",
+          count: "10 tapaustutkimusta",
+          icon: "🛒",
+          description: "E-kaupan turvallisuus ja PCI DSS -yhteensopivuus"
+        },
+        {
+          name: "Julkishallinto",
+          count: "6 tapaustutkimusta",
+          icon: "🏛️",
+          description: "Julkisen sektorin kyberturvallisuus ja yhteensopivuus"
+        }
+      ]
+    },
+    methodologies: {
+      title: "Toteutusmetodologiat",
+      description: "Lue todistetuista lähestymistavoista, jotka tuottavat menestyksekkäitä tuloksia.",
+      approaches: [
+        {
+          title: "Nopea toteutus",
+          description: "Nopeutettu käyttöönotto kiireellisiin yhteensopivuustarpeisiin",
+          duration: "3-6 kuukautta",
+          bestFor: "Organisaatiot, joilla on välittömiä yhteensopivuusajoja",
+          successRate: "95%"
+        },
+        {
+          title: "Vaiheittainen käyttöönotto",
+          description: "Asteittainen toteutus useissa osastoissa",
+          duration: "6-18 kuukautta",
+          bestFor: "Suuret organisaatiot monimutkaisilla infrastruktuureilla",
+          successRate: "98%"
+        },
+        {
+          title: "Mukautettu kehitys",
+          description: "Räätälöidyt ratkaisut ainutlaatuisiin organisaatiovaatimukset",
+          duration: "6-24 kuukautta",
+          bestFor: "Organisaatiot, joilla on erityisiä yhteensopivuustarpeita",
+          successRate: "92%"
+        }
+      ]
+    },
+    testimonials: {
+      title: "Asiakkaiden suositukset",
+      description: "Kuule suoraan asiakkailtamme heidän kokemuksestaan ja tuloksistaan.",
+      quotes: [
+        {
+          quote: "CyberSecurity Finland muutti kyberturvallisuustilamme täysin. Saavutimme ISO 27001 -sertifioinnin ennätysajassa samalla kun rakensimme kestävän turvallisuuskulttuurin.",
+          author: "Maria Lindström",
+          title: "CISO",
+          company: "Pohjoismainen rahoitusryhmä",
+          rating: 5
+        },
+        {
+          quote: "Tiimin GDPR-yhteensopivuuden asiantuntemus auttoi meitä navigoimaan monimutkaisissa vaatimuksissa ja saavuttamaan täyden yhteensopivuuden kaikissa eurooppalaisissa toimissamme.",
+          author: "Dr. Thomas Weber",
+          title: "Tietosuojavastaava",
+          company: "Eurooppalainen terveydenhuoltoverkosto",
+          rating: 5
+        },
+        {
+          quote: "CyberSecurity Finlandin kanssa työskentely oli mullistavaa. Heidän SOC 2 -valmistelumetodologiansa oli kattava ja jatkuva tuki erinomaista.",
+          author: "Sarah Chen",
+          title: "Turvallisuuden VP",
+          company: "TechFlow Solutions",
+          rating: 5
+        }
+      ]
+    },
+    download: {
+      title: "Lataa tapaustutkimukset",
+      description: "Käytä yksityiskohtaisia tapaustutkimuksia ja toteutusoppaita kyberturvallisuusaloitteidesi tukemiseen.",
+      resources: [
+        {
+          title: "Kattava tapaustutkimuskokoelma",
+          description: "Kaikki tapaustutkimukset yhdessä kattavassa dokumentissa",
+          format: "PDF",
+          size: "15.2 MB",
+          download: "Lataa kaikki"
+        },
+        {
+          title: "Toteutusopas",
+          description: "Vaiheittainen opas menestyksekkäiden toteutusten perusteella",
+          format: "PDF",
+          size: "8.7 MB",
+          download: "Lataa opas"
+        },
+        {
+          title: "ROI-laskuri",
+          description: "Interaktiivinen työkalu turvallisuussijoitusten mahdollisten tuottojen laskemiseen",
+          format: "Excel",
+          size: "2.1 MB",
+          download: "Lataa työkalu"
+        }
+      ]
+    },
+    cta: {
+      title: "Valmiit aloittamaan menestystarinasi?",
+      subtitle: "Keskustellaan siitä, miten voimme auttaa sinua saavuttamaan samankaltaisia tuloksia organisaatiossasi.",
+      button: "Aikatauluta konsultaatio",
+      link: "/contact"
+    }
+  }
+};
+
+const currentContent = content[lang];
+---
+
+<Layout title={title}>
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h1 class="text-5xl font-bold mb-6">{currentContent.title}</h1>
+      <p class="text-2xl font-light mb-8">{currentContent.subtitle}</p>
+      <p class="text-xl text-slate-300 max-w-3xl mx-auto">{currentContent.heroDescription}</p>
+    </div>
+  </section>
+
+  <!-- Featured Case Studies Section -->
+  <section class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-bold text-gray-900 mb-4">{currentContent.featured.title}</h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">{currentContent.featured.description}</p>
+      </div>
+      
+      <div class="space-y-12">
+        {currentContent.featured.studies.map((study, index) => (
+          <div class={`grid md:grid-cols-2 gap-8 items-center ${index % 2 === 1 ? 'md:grid-flow-col-dense' : ''}`}>
+            <div class={index % 2 === 1 ? 'md:col-start-2' : ''}>
+              <div class="bg-gradient-to-br from-blue-50 to-indigo-50 p-8 rounded-lg border border-blue-200">
+                <div class="flex items-center gap-3 mb-4">
+                  <span class="bg-blue-600 text-white px-3 py-1 rounded-full text-sm font-medium">{study.industry}</span>
+                </div>
+                <h3 class="text-2xl font-bold text-gray-900 mb-4">{study.title}</h3>
+                
+                <div class="mb-6">
+                  <h4 class="font-semibold text-gray-900 mb-2">Challenge:</h4>
+                  <p class="text-gray-700">{study.challenge}</p>
+                </div>
+                
+                <div class="mb-6">
+                  <h4 class="font-semibold text-gray-900 mb-2">Solution:</h4>
+                  <p class="text-gray-700">{study.solution}</p>
+                </div>
+                
+                <div class="mb-6">
+                  <h4 class="font-semibold text-gray-900 mb-2">Results:</h4>
+                  <ul class="space-y-2">
+                    {study.results.map((result) => (
+                      <li class="flex items-center text-gray-700">
+                        <svg class="w-4 h-4 text-green-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        {result}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </div>
+            
+            <div class={index % 2 === 1 ? 'md:col-start-1' : ''}>
+              <div class="bg-white p-8 rounded-lg shadow-lg border border-gray-200">
+                <h4 class="text-lg font-semibold text-gray-900 mb-6 text-center">Key Metrics</h4>
+                <div class="space-y-6">
+                  <div class="text-center">
+                    <div class="text-3xl font-bold text-blue-600 mb-2">{study.metrics.timeline}</div>
+                    <div class="text-gray-600">Implementation Timeline</div>
+                  </div>
+                  <div class="text-center">
+                    <div class="text-3xl font-bold text-green-600 mb-2">{study.metrics.improvement}</div>
+                    <div class="text-gray-600">Improvement</div>
+                  </div>
+                  <div class="text-center">
+                    <div class="text-2xl font-bold text-purple-600 mb-2">{study.metrics.certification}</div>
+                    <div class="text-gray-600">Certification</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Industry Solutions Section -->
+  <section class="py-16 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-bold text-gray-900 mb-4">{currentContent.industries.title}</h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">{currentContent.industries.description}</p>
+      </div>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {currentContent.industries.sectors.map((sector) => (
+          <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition duration-300">
+            <div class="text-4xl mb-4">{sector.icon}</div>
+            <h3 class="text-xl font-bold text-gray-900 mb-2">{sector.name}</h3>
+            <p class="text-gray-600 mb-3">{sector.description}</p>
+            <div class="text-blue-600 font-medium">{sector.count}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Methodologies Section -->
+  <section class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-bold text-gray-900 mb-4">{currentContent.methodologies.title}</h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">{currentContent.methodologies.description}</p>
+      </div>
+      
+      <div class="grid md:grid-cols-3 gap-8">
+        {currentContent.methodologies.approaches.map((approach) => (
+          <div class="bg-gradient-to-br from-green-50 to-green-100 p-8 rounded-lg border border-green-200">
+            <h3 class="text-xl font-bold text-green-900 mb-3">{approach.title}</h3>
+            <p class="text-green-800 mb-4">{approach.description}</p>
+            <div class="space-y-3 text-sm text-green-700">
+              <div><strong>Duration:</strong> {approach.duration}</div>
+              <div><strong>Best for:</strong> {approach.bestFor}</div>
+              <div><strong>Success Rate:</strong> {approach.successRate}</div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section class="py-16 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-bold text-gray-900 mb-4">{currentContent.testimonials.title}</h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">{currentContent.testimonials.description}</p>
+      </div>
+      
+      <div class="grid md:grid-cols-3 gap-8">
+        {currentContent.testimonials.quotes.map((testimonial) => (
+          <div class="bg-white p-6 rounded-lg shadow-lg">
+            <div class="flex items-center mb-4">
+              {[...Array(testimonial.rating)].map(() => (
+                <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                </svg>
+              ))}
+            </div>
+            <blockquote class="text-gray-700 mb-4 italic">"{testimonial.quote}"</blockquote>
+            <div class="border-t pt-4">
+              <div class="font-semibold text-gray-900">{testimonial.author}</div>
+              <div class="text-gray-600">{testimonial.title}</div>
+              <div class="text-blue-600">{testimonial.company}</div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Download Section -->
+  <section class="py-16 bg-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-4xl font-bold text-gray-900 mb-4">{currentContent.download.title}</h2>
+        <p class="text-xl text-gray-600">{currentContent.download.description}</p>
+      </div>
+      
+      <div class="grid md:grid-cols-3 gap-6">
+        {currentContent.download.resources.map((resource) => (
+          <div class="bg-gradient-to-br from-blue-50 to-blue-100 p-6 rounded-lg border border-blue-200 text-center">
+            <h3 class="text-lg font-semibold text-blue-900 mb-3">{resource.title}</h3>
+            <p class="text-blue-800 mb-4 text-sm">{resource.description}</p>
+            <div class="text-blue-600 text-sm mb-4">
+              {resource.format} • {resource.size}
+            </div>
+            <button class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg transition duration-300">
+              {resource.download}
+            </button>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-16 bg-blue-600 text-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-4xl font-bold mb-4">{currentContent.cta.title}</h2>
+      <p class="text-xl mb-8">{currentContent.cta.subtitle}</p>
+      <a href={currentContent.cta.link} class="inline-block bg-white text-blue-600 font-semibold py-3 px-8 rounded-lg hover:bg-gray-100 transition duration-300">
+        {currentContent.cta.button}
+      </a>
+    </div>
+  </section>
+</Layout>

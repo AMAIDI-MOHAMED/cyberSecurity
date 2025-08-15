@@ -1,0 +1,426 @@
+---
+import Layout from '@/layouts/Layout.astro';
+
+const title = "Guides and Templates";
+const currentPath = Astro.url.pathname;
+const lang = currentPath.startsWith('/fi') ? 'fi' : 'en';
+
+const content = {
+  en: {
+    title: "Guides and Templates",
+    subtitle: "Expert Resources for Cybersecurity Success",
+    heroDescription: "Access our comprehensive collection of cybersecurity guides, compliance templates, and best practice resources to accelerate your security journey.",
+    guides: {
+      title: "Cybersecurity Guides",
+      description: "Step-by-step guides covering essential cybersecurity topics and compliance requirements.",
+      iso27001: {
+        title: "ISO 27001 Implementation Guide",
+        description: "Complete roadmap for implementing ISO 27001 Information Security Management System",
+        duration: "45 min read",
+        level: "Intermediate",
+        tags: ["ISO 27001", "Information Security", "Compliance"]
+      },
+      gdpr: {
+        title: "GDPR Compliance Guide",
+        description: "Essential steps to achieve and maintain GDPR compliance in your organization",
+        duration: "30 min read",
+        level: "Beginner",
+        tags: ["GDPR", "Data Protection", "Privacy"]
+      },
+      soc2: {
+        title: "SOC 2 Type II Preparation",
+        description: "Comprehensive guide to preparing for SOC 2 Type II certification audit",
+        duration: "60 min read",
+        level: "Advanced",
+        tags: ["SOC 2", "Audit", "Trust Services"]
+      },
+      dora: {
+        title: "DORA Compliance Framework",
+        description: "Understanding and implementing the Digital Operational Resilience Act requirements",
+        duration: "40 min read",
+        level: "Intermediate",
+        tags: ["DORA", "Financial Services", "Resilience"]
+      }
+    },
+    templates: {
+      title: "Ready-to-Use Templates",
+      description: "Downloadable templates and checklists to streamline your compliance processes.",
+      policies: {
+        title: "Security Policy Templates",
+        description: "Comprehensive security policy templates for various organizational needs",
+        items: ["Information Security Policy", "Acceptable Use Policy", "Incident Response Policy", "Data Classification Policy"]
+      },
+      checklists: {
+        title: "Compliance Checklists",
+        description: "Detailed checklists for various compliance frameworks and audits",
+        items: ["ISO 27001 Gap Analysis", "GDPR Assessment", "SOC 2 Readiness", "Vendor Security Assessment"]
+      },
+      procedures: {
+        title: "Standard Operating Procedures",
+        description: "Step-by-step procedures for common security operations",
+        items: ["Security Incident Response", "Access Management", "Change Management", "Risk Assessment"]
+      }
+    },
+    resources: {
+      title: "Additional Resources",
+      description: "Tools, calculators, and interactive resources to support your cybersecurity initiatives.",
+      tools: [
+        {
+          title: "Risk Assessment Calculator",
+          description: "Interactive tool to assess and quantify cybersecurity risks",
+          icon: "📊"
+        },
+        {
+          title: "Compliance Timeline Planner",
+          description: "Customizable timeline for compliance project planning",
+          icon: "📅"
+        },
+        {
+          title: "Security Maturity Assessment",
+          description: "Self-assessment tool to evaluate your security posture",
+          icon: "🔒"
+        },
+        {
+          title: "Vendor Security Questionnaire",
+          description: "Comprehensive questionnaire for third-party security assessments",
+          icon: "🤝"
+        }
+      ]
+    },
+    featured: {
+      title: "Featured Resources",
+      description: "Our most popular and recently updated guides and templates.",
+      items: [
+        {
+          title: "Cybersecurity Maturity Model",
+          description: "Framework for assessing and improving your organization's security posture",
+          category: "Framework",
+          updated: "2 weeks ago"
+        },
+        {
+          title: "Incident Response Playbook",
+          description: "Comprehensive playbook for handling security incidents effectively",
+          category: "Response",
+          updated: "1 month ago"
+        },
+        {
+          title: "Compliance Roadmap Template",
+          description: "Visual roadmap template for planning compliance initiatives",
+          category: "Planning",
+          updated: "3 weeks ago"
+        }
+      ]
+    },
+    cta: {
+      title: "Ready to Get Started?",
+      subtitle: "Download our resources and accelerate your cybersecurity journey today.",
+      button: "Access All Resources",
+      link: "/resources"
+    }
+  },
+  fi: {
+    title: "Oppaat ja mallit",
+    subtitle: "Asiantuntevat resurssit kyberturvallisuuden menestykseen",
+    heroDescription: "Käytä kattavaa kokoelmaamme kyberturvallisuusoppaita, yhteensopivuusmalleja ja parhaiden käytäntöjen resursseja nopeuttaaksesi turvallisuusmatkaasi.",
+    guides: {
+      title: "Kyberturvallisuusoppaat",
+      description: "Vaiheittaiset oppaat, jotka kattavat tärkeimmät kyberturvallisuusaiheet ja yhteensopivuusvaatimukset.",
+      iso27001: {
+        title: "ISO 27001 -toteutusopas",
+        description: "Täydellinen tiekartta ISO 27001 tietoturvajohtamisjärjestelmän toteuttamiseen",
+        duration: "45 min lukuaika",
+        level: "Keskitaso",
+        tags: ["ISO 27001", "Tietoturva", "Yhteensopivuus"]
+      },
+      gdpr: {
+        title: "GDPR-yhteensopivuusopas",
+        description: "Olennaiset vaiheet GDPR-yhteensopivuuden saavuttamiseen ja ylläpitämiseen organisaatiossasi",
+        duration: "30 min lukuaika",
+        level: "Aloittelija",
+        tags: ["GDPR", "Tietosuoja", "Yksityisyys"]
+      },
+      soc2: {
+        title: "SOC 2 Type II -valmistelu",
+        description: "Kattava opas SOC 2 Type II -sertifiointitarkastuksen valmisteluun",
+        duration: "60 min lukuaika",
+        level: "Edistynyt",
+        tags: ["SOC 2", "Tarkastus", "Luottamuspalvelut"]
+      },
+      dora: {
+        title: "DORA-yhteensopivuuskehys",
+        description: "Digital Operational Resilience Act -vaatimusten ymmärtäminen ja toteuttaminen",
+        duration: "40 min lukuaika",
+        level: "Keskitaso",
+        tags: ["DORA", "Rahoituspalvelut", "Resilienssi"]
+      }
+    },
+    templates: {
+      title: "Käyttövalmiit mallit",
+      description: "Ladattavat mallit ja tarkistuslistat yhteensopivuusprosessien sujuvoittamiseen.",
+      policies: {
+        title: "Turvallisuuspolitiikkamallit",
+        description: "Kattavat turvallisuuspolitiikkamallit erilaisiin organisaatiotarpeisiin",
+        items: ["Tietoturvapolitiikka", "Hyväksyttävä käyttöpolitiikka", "Tapahtumavastauspolitiikka", "Tietojen luokittelupolitiikka"]
+      },
+      checklists: {
+        title: "Yhteensopivuustarkistuslistat",
+        description: "Yksityiskohtaiset tarkistuslistat erilaisille yhteensopivuuskehyksille ja tarkistuksille",
+        items: ["ISO 27001 -kuiluanalyysi", "GDPR-arviointi", "SOC 2 -valmius", "Toimittajan turvallisuusarviointi"]
+      },
+      procedures: {
+        title: "Vakiokäyttömenettelyt",
+        description: "Vaiheittaiset menettelyt yleisille turvallisuustoiminnoille",
+        items: ["Turvallisuustapahtumavastaus", "Käyttöoikeuksien hallinta", "Muutosten hallinta", "Riskien arviointi"]
+      }
+    },
+    resources: {
+      title: "Lisäresurssit",
+      description: "Työkalut, laskurit ja interaktiiviset resurssit kyberturvallisuusaloitteidesi tukemiseen.",
+      tools: [
+        {
+          title: "Riskien arviointilaskuri",
+          description: "Interaktiivinen työkalu kyberturvallisuusriskien arviointiin ja mittaamiseen",
+          icon: "📊"
+        },
+        {
+          title: "Yhteensopivuusajastinsuunnittelija",
+          description: "Mukautettava ajastin yhteensopivuusprojektien suunnitteluun",
+          icon: "📅"
+        },
+        {
+          title: "Turvallisuuden kypsyysarviointi",
+          description: "Itsearviointityökalu turvallisuustilan arviointiin",
+          icon: "🔒"
+        },
+        {
+          title: "Toimittajan turvallisuuskysely",
+          description: "Kattava kysely kolmannen osapuolen turvallisuusarviointeihin",
+          icon: "🤝"
+        }
+      ]
+    },
+    featured: {
+      title: "Suositellut resurssit",
+      description: "Suosituimmat ja hiljattain päivitetyt oppaat ja mallit.",
+      items: [
+        {
+          title: "Kyberturvallisuuden kypsyysmalli",
+          description: "Kehys organisaatiosi turvallisuustilan arviointiin ja parantamiseen",
+          category: "Kehys",
+          updated: "2 viikkoa sitten"
+        },
+        {
+          title: "Tapahtumavastauskäsikirja",
+          description: "Kattava käsikirja turvallisuustapahtumien tehokkaaseen käsittelyyn",
+          category: "Vastaus",
+          updated: "1 kuukausi sitten"
+        },
+        {
+          title: "Yhteensopivuustiekarttamalli",
+          description: "Visuaalinen tiekarttamalli yhteensopivuusaloitteiden suunnitteluun",
+          category: "Suunnittelu",
+          updated: "3 viikkoa sitten"
+        }
+      ]
+    },
+    cta: {
+      title: "Valmiit aloittamaan?",
+      subtitle: "Lataa resurssimme ja nopeuta kyberturvallisuusmatkaasi tänään.",
+      button: "Käytä kaikkia resursseja",
+      link: "/resources"
+    }
+  }
+};
+
+const currentContent = content[lang];
+---
+
+<Layout title={title}>
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h1 class="text-5xl font-bold mb-6">{currentContent.title}</h1>
+      <p class="text-2xl font-light mb-8">{currentContent.subtitle}</p>
+      <p class="text-xl text-slate-300 max-w-3xl mx-auto">{currentContent.heroDescription}</p>
+    </div>
+  </section>
+
+  <!-- Guides Section -->
+  <section class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-bold text-gray-900 mb-4">{currentContent.guides.title}</h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">{currentContent.guides.description}</p>
+      </div>
+      
+      <div class="grid md:grid-cols-2 gap-8">
+        <div class="bg-gradient-to-br from-blue-50 to-blue-100 p-8 rounded-lg border border-blue-200">
+          <div class="flex items-center justify-between mb-4">
+            <span class="bg-blue-600 text-white px-3 py-1 rounded-full text-sm font-medium">{currentContent.guides.iso27001.level}</span>
+            <span class="text-blue-600 text-sm">{currentContent.guides.iso27001.duration}</span>
+          </div>
+          <h3 class="text-2xl font-bold text-blue-900 mb-3">{currentContent.guides.iso27001.title}</h3>
+          <p class="text-blue-800 mb-4">{currentContent.guides.iso27001.description}</p>
+          <div class="flex flex-wrap gap-2">
+            {currentContent.guides.iso27001.tags.map((tag) => (
+              <span class="bg-blue-200 text-blue-800 px-2 py-1 rounded text-xs">{tag}</span>
+            ))}
+          </div>
+        </div>
+        
+        <div class="bg-gradient-to-br from-green-50 to-green-100 p-8 rounded-lg border border-green-200">
+          <div class="flex items-center justify-between mb-4">
+            <span class="bg-green-600 text-white px-3 py-1 rounded-full text-sm font-medium">{currentContent.guides.gdpr.level}</span>
+            <span class="text-green-600 text-sm">{currentContent.guides.gdpr.duration}</span>
+          </div>
+          <h3 class="text-2xl font-bold text-green-900 mb-3">{currentContent.guides.gdpr.title}</h3>
+          <p class="text-green-800 mb-4">{currentContent.guides.gdpr.description}</p>
+          <div class="flex flex-wrap gap-2">
+            {currentContent.guides.gdpr.tags.map((tag) => (
+              <span class="bg-green-200 text-green-800 px-2 py-1 rounded text-xs">{tag}</span>
+            ))}
+          </div>
+        </div>
+        
+        <div class="bg-gradient-to-br from-purple-50 to-purple-100 p-8 rounded-lg border border-purple-200">
+          <div class="flex items-center justify-between mb-4">
+            <span class="bg-purple-600 text-white px-3 py-1 rounded-full text-sm font-medium">{currentContent.guides.soc2.level}</span>
+            <span class="text-purple-600 text-sm">{currentContent.guides.soc2.duration}</span>
+          </div>
+          <h3 class="text-2xl font-bold text-purple-900 mb-3">{currentContent.guides.soc2.title}</h3>
+          <p class="text-purple-800 mb-4">{currentContent.guides.soc2.description}</p>
+          <div class="flex flex-wrap gap-2">
+            {currentContent.guides.soc2.tags.map((tag) => (
+              <span class="bg-purple-200 text-purple-800 px-2 py-1 rounded text-xs">{tag}</span>
+            ))}
+          </div>
+        </div>
+        
+        <div class="bg-gradient-to-br from-orange-50 to-orange-100 p-8 rounded-lg border border-orange-200">
+          <div class="flex items-center justify-between mb-4">
+            <span class="bg-orange-600 text-white px-3 py-1 rounded-full text-sm font-medium">{currentContent.guides.dora.level}</span>
+            <span class="text-orange-600 text-sm">{currentContent.guides.dora.duration}</span>
+          </div>
+          <h3 class="text-2xl font-bold text-orange-900 mb-3">{currentContent.guides.dora.title}</h3>
+          <p class="text-orange-800 mb-4">{currentContent.guides.dora.description}</p>
+          <div class="flex flex-wrap gap-2">
+            {currentContent.guides.dora.tags.map((tag) => (
+              <span class="bg-orange-200 text-orange-800 px-2 py-1 rounded text-xs">{tag}</span>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Templates Section -->
+  <section class="py-16 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-bold text-gray-900 mb-4">{currentContent.templates.title}</h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">{currentContent.templates.description}</p>
+      </div>
+      
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="bg-white p-8 rounded-lg shadow-lg">
+          <h3 class="text-xl font-bold text-gray-900 mb-4">{currentContent.templates.policies.title}</h3>
+          <p class="text-gray-600 mb-6">{currentContent.templates.policies.description}</p>
+          <ul class="space-y-2">
+            {currentContent.templates.policies.items.map((item) => (
+              <li class="flex items-center text-gray-700">
+                <svg class="w-4 h-4 text-blue-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+        
+        <div class="bg-white p-8 rounded-lg shadow-lg">
+          <h3 class="text-xl font-bold text-gray-900 mb-4">{currentContent.templates.checklists.title}</h3>
+          <p class="text-gray-600 mb-6">{currentContent.templates.checklists.description}</p>
+          <ul class="space-y-2">
+            {currentContent.templates.checklists.items.map((item) => (
+              <li class="flex items-center text-gray-700">
+                <svg class="w-4 h-4 text-green-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+        
+        <div class="bg-white p-8 rounded-lg shadow-lg">
+          <h3 class="text-xl font-bold text-gray-900 mb-4">{currentContent.templates.procedures.title}</h3>
+          <p class="text-gray-600 mb-6">{currentContent.templates.procedures.description}</p>
+          <ul class="space-y-2">
+            {currentContent.templates.procedures.items.map((item) => (
+              <li class="flex items-center text-gray-700">
+                <svg class="w-4 h-4 text-purple-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tools Section -->
+  <section class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-bold text-gray-900 mb-4">{currentContent.resources.title}</h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">{currentContent.resources.description}</p>
+      </div>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {currentContent.resources.tools.map((tool) => (
+          <div class="bg-gradient-to-br from-slate-50 to-slate-100 p-6 rounded-lg border border-slate-200 text-center">
+            <div class="text-4xl mb-4">{tool.icon}</div>
+            <h3 class="text-lg font-semibold text-gray-900 mb-2">{tool.title}</h3>
+            <p class="text-gray-600 text-sm">{tool.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Resources Section -->
+  <section class="py-16 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-bold text-gray-900 mb-4">{currentContent.featured.title}</h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">{currentContent.featured.description}</p>
+      </div>
+      
+      <div class="grid md:grid-cols-3 gap-8">
+        {currentContent.featured.items.map((item) => (
+          <div class="bg-white p-6 rounded-lg shadow-lg">
+            <div class="flex items-center justify-between mb-3">
+              <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs font-medium">{item.category}</span>
+              <span class="text-gray-500 text-sm">{item.updated}</span>
+            </div>
+            <h3 class="text-lg font-semibold text-gray-900 mb-2">{item.title}</h3>
+            <p class="text-gray-600 text-sm">{item.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-16 bg-blue-600 text-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-4xl font-bold mb-4">{currentContent.cta.title}</h2>
+      <p class="text-xl mb-8">{currentContent.cta.subtitle}</p>
+      <a href={currentContent.cta.link} class="inline-block bg-white text-blue-600 font-semibold py-3 px-8 rounded-lg hover:bg-gray-100 transition duration-300">
+        {currentContent.cta.button}
+      </a>
+    </div>
+  </section>
+</Layout>

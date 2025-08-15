@@ -1,0 +1,237 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Icon from '@/components/ui/icons/Icon.astro';
+import Button from '@/components/ui/Button.astro';
+
+const currentPath = Astro.url.pathname;
+const lang = currentPath.startsWith('/fi') ? 'fi' : 'en';
+
+const title = lang === 'fi' ? "Kriittisen infrastruktuurin kyberturva" : "Critical Infrastructure Cybersecurity";
+const description = lang === 'fi' 
+  ? "Kattavat kyberturva- ja yhteensopivuuspalvelut energian ja kriittisen infrastruktuurin organisaatioille. Autamme suojaamaan kriittisiä järjestelmiä ja varmistamaan jatkuvan toiminnan."
+  : "Comprehensive cybersecurity and compliance services for energy and critical infrastructure organizations. We help protect critical systems and ensure continuous operation.";
+
+const challenges = [
+  {
+    title: lang === 'fi' ? "NIS2 Yhteensopivuus" : "NIS2 Compliance",
+    description: lang === 'fi' 
+      ? "EU:n kriittisen infrastruktuurin kyberturvadirektiivin vaatimusten täyttäminen"
+      : "Meeting EU critical infrastructure cybersecurity directive requirements",
+    icon: "shield"
+  },
+  {
+    title: lang === 'fi' ? "Operaatioteknologian suojaus" : "OT Security",
+    description: lang === 'fi' 
+      ? "Teollisuusjärjestelmien ja SCADA-järjestelmien kyberturvan vahvistaminen"
+      : "Strengthening cybersecurity for industrial systems and SCADA systems",
+    icon: "cpu"
+  },
+  {
+    title: lang === 'fi' ? "Jatkuvan toiminnan varmistus" : "Business Continuity",
+    description: lang === 'fi' 
+      ? "Kriittisten palvelujen toiminnan varmistaminen kyberhyökkäysten aikana"
+      : "Ensuring critical services continue operating during cyber attacks",
+    icon: "bolt"
+  },
+  {
+    title: lang === 'fi' ? "Regulaattorinen yhteensopivuus" : "Regulatory Compliance",
+    description: lang === 'fi' 
+      ? "Energian ja kriittisen infrastruktuurin sääntelyvaatimusten täyttäminen"
+      : "Meeting energy and critical infrastructure regulatory requirements",
+    icon: "document"
+  }
+];
+
+const solutions = [
+  {
+    title: lang === 'fi' ? "NIS2 Ohjelma" : "NIS2 Program",
+    description: lang === 'fi' 
+      ? "Kattava NIS2 yhteensopivuusohjelma kriittiselle infrastruktuurille"
+      : "Comprehensive NIS2 compliance program for critical infrastructure",
+    icon: "check"
+  },
+  {
+    title: lang === 'fi' ? "OT Kyberturva" : "OT Cybersecurity",
+    description: lang === 'fi' 
+      ? "Operaatioteknologian järjestelmien kyberturvan vahvistaminen"
+      : "Strengthening cybersecurity for operational technology systems",
+    icon: "server"
+  },
+  {
+    title: lang === 'fi' ? "Incident Response" : "Incident Response",
+    description: lang === 'fi' 
+      ? "Kriittisten kyberincidenttien nopea ja tehokas käsittely"
+      : "Rapid and effective handling of critical cyber incidents",
+    icon: "clock"
+  },
+  {
+    title: lang === 'fi' ? "Riskienhallinta" : "Risk Management",
+    description: lang === 'fi' 
+      ? "Kattava riskienhallintajärjestelmä kriittiselle infrastruktuurille"
+      : "Comprehensive risk management system for critical infrastructure",
+    icon: "chart"
+  }
+];
+
+const benefits = [
+  lang === 'fi' ? "Täytä NIS2 ja muut sääntelyvaatimukset" : "Meet NIS2 and other regulatory requirements",
+  lang === 'fi' ? "Suojaa kriittisiä järjestelmiä" : "Protect critical systems",
+  lang === 'fi' ? "Varmista jatkuvan toiminnan" : "Ensure business continuity",
+  lang === 'fi' ? "Paranna operaatioteknologian turvallisuutta" : "Enhance operational technology security",
+  lang === 'fi' ? "Vahvista kyberturvan kestävyyttä" : "Strengthen cybersecurity resilience"
+];
+---
+
+<Layout title={title} description={description}>
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-br from-orange-50 via-white to-red-50 py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-4xl">
+        <h1 class="text-4xl lg:text-5xl font-bold text-slate-900 mb-6">
+          {title}
+        </h1>
+        <p class="text-xl text-slate-600 mb-8">
+          {lang === 'fi' 
+            ? "Kattavat kyberturva- ja yhteensopivuuspalvelut energian ja kriittisen infrastruktuurin organisaatioille"
+            : "Comprehensive cybersecurity and compliance services for energy and critical infrastructure organizations"
+          }
+        </p>
+        <p class="text-lg text-slate-500 mb-10">
+          {lang === 'fi'
+            ? "Kriittinen infrastruktuuri ja energian tuotanto ovat yhteiskunnan perusta. Autamme organisaatioita suojaamaan kriittisiä järjestelmiä, täyttämään sääntelyvaatimukset ja varmistamaan jatkuvan toiminnan kyberuhkien varalta."
+            : "Critical infrastructure and energy production are the foundation of society. We help organizations protect critical systems, meet regulatory requirements, and ensure continuous operation during cyber threats."
+          }
+        </p>
+        <div class="bg-white rounded-xl p-6 shadow-sm border border-slate-200">
+          <h2 class="text-lg font-semibold text-slate-900 mb-4">
+            {lang === 'fi' ? 'Kelle tämä on tarkoitettu?' : 'Who is this for?'}
+          </h2>
+          <p class="text-slate-600 mb-4">
+            {lang === 'fi'
+              ? "Energian tuottajat, sähköverkot, vesilaitokset, liikennejärjestelmät, teollisuuslaitokset ja muut kriittisen infrastruktuurin organisaatiot, jotka haluavat vahvistaa kyberturvaansa."
+              : "Energy producers, power grids, water utilities, transportation systems, industrial facilities, and other critical infrastructure organizations looking to strengthen their cybersecurity."
+            }
+          </p>
+          <h3 class="text-lg font-semibold text-slate-900 mb-2">
+            {lang === 'fi' ? 'Mitä saavutat?' : 'What will you achieve?'}
+          </h3>
+          <p class="text-slate-600">
+            {lang === 'fi'
+              ? "NIS2 yhteensopivuus, kriittisten järjestelmien suoja, operaatioteknologian turvallisuus ja kestävä kyberturva."
+              : "NIS2 compliance, critical system protection, operational technology security, and resilient cybersecurity."
+            }
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Challenges Section -->
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-slate-900 mb-4">
+          {lang === 'fi' ? 'Suurimmat haasteet' : 'Key Challenges'}
+        </h2>
+        <p class="text-xl text-slate-600 max-w-3xl mx-auto">
+          {lang === 'fi'
+            ? "Kriittinen infrastruktuuri kohtaa ainutlaatuisia kyberturvahaasteita, jotka vaativat erikoistunutta osaamista."
+            : "Critical infrastructure faces unique cybersecurity challenges that require specialized expertise."
+          }
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {challenges.map((challenge) => (
+          <div class="bg-slate-50 p-8 rounded-xl">
+            <div class="w-16 h-16 bg-orange-100 rounded-xl flex items-center justify-center mb-6">
+              <Icon name={challenge.icon} className="w-8 h-8 text-orange-600" />
+            </div>
+            <h3 class="text-xl font-bold text-slate-900 mb-4">{challenge.title}</h3>
+            <p class="text-slate-600">{challenge.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Solutions Section -->
+  <section class="py-20 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-slate-900 mb-4">
+          {lang === 'fi' ? 'Ratkaisumme' : 'Our Solutions'}
+        </h2>
+        <p class="text-xl text-slate-600 max-w-3xl mx-auto">
+          {lang === 'fi'
+            ? "Kattavat palvelut, jotka auttavat kriittisen infrastruktuurin organisaatioita vahvistamaan kyberturvaansa."
+            : "Comprehensive services that help critical infrastructure organizations strengthen their cybersecurity."
+          }
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {solutions.map((solution) => (
+          <div class="bg-white p-8 rounded-xl shadow-sm">
+            <div class="w-16 h-16 bg-green-100 rounded-xl flex items-center justify-center mb-6">
+              <Icon name={solution.icon} className="w-8 h-8 text-green-600" />
+            </div>
+            <h3 class="text-xl font-bold text-slate-900 mb-4">{solution.title}</h3>
+            <p class="text-slate-600">{solution.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits Section -->
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-slate-900 mb-4">
+          {lang === 'fi' ? 'Edut' : 'Benefits'}
+        </h2>
+        <p class="text-xl text-slate-600 max-w-3xl mx-auto">
+          {lang === 'fi'
+            ? "Miksi kriittisen infrastruktuurin organisaatiot valitsevat meidät kyberturvapalveluihinsa."
+            : "Why critical infrastructure organizations choose us for their cybersecurity services."
+          }
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {benefits.map((benefit) => (
+          <div class="text-center">
+            <div class="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
+              <Icon name="check" className="w-8 h-8 text-orange-600" />
+            </div>
+            <p class="text-slate-700 font-medium">{benefit}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-20 bg-slate-900 text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl font-bold mb-6">
+        {lang === 'fi' ? 'Valmiit vahvistamaan kyberturvaasi?' : 'Ready to strengthen your cybersecurity?'}
+      </h2>
+      <p class="text-xl text-slate-300 mb-8 max-w-3xl mx-auto">
+        {lang === 'fi'
+          ? "Ota yhteyttä meihin ja aloitetaan kriittisen infrastruktuurin organisaatiosi kyberturvan vahvistaminen."
+          : "Contact us and let's start strengthening your critical infrastructure organization's cybersecurity."
+        }
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <Button href="/contact" variant="primary" className="text-lg px-8 py-3">
+          {lang === 'fi' ? 'Ota yhteyttä' : 'Get in Touch'}
+        </Button>
+        <Button href="/services/regulatory-compliance" variant="secondary" className="text-lg px-8 py-3">
+          {lang === 'fi' ? 'Lue lisää NIS2:sta' : 'Learn More About NIS2'}
+        </Button>
+      </div>
+    </div>
+  </section>
+</Layout>
