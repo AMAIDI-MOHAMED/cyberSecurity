@@ -273,52 +273,54 @@ const lang = 'en';
 
 <script>
   document.addEventListener('DOMContentLoaded', () => {
-    const trigger = document.getElementById('mobile-trigger');
-    const menuRoot = document.getElementById('mobile-menu');
+    const trigger = document.getElementById('mobile-trigger') as HTMLElement | null;
+    const menuRoot = document.getElementById('mobile-menu') as HTMLElement | null;
 
     if (!trigger || !menuRoot) return;
-    let lastFocus = null;
+    let lastFocus: HTMLElement | null = null;
 
     const focusableSelector = 'a[href], button:not([disabled]), [role="button"], summary, input, select, textarea';
 
-    function trapFocus(e) {
-      if (!(menuRoot instanceof HTMLElement)) return;
-      if (!menuRoot.classList.contains('hidden')) {
-        const focusables = Array.from(menuRoot.querySelectorAll(focusableSelector)).filter(el => el instanceof HTMLElement && el.offsetParent !== null);
-        if (!focusables.length) return;
-        const first = focusables[0];
-        const last = focusables[focusables.length - 1];
-        if (e.key === 'Tab') {
-          if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
-          else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
-        }
-        if (e.key === 'Escape') closeMenu();
+    function trapFocus(e: KeyboardEvent) {
+      if (!menuRoot || menuRoot.classList.contains('hidden')) return;
+      const focusables = Array.from(menuRoot.querySelectorAll(focusableSelector)) as HTMLElement[];
+      const visible = focusables.filter(el => el.offsetParent !== null);
+      if (!visible.length) return;
+      const first = visible[0];
+      const last = visible[visible.length - 1];
+      if (e.key === 'Tab') {
+        if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+        else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
       }
+      if (e.key === 'Escape') closeMenu();
     }
 
     function openMenu() {
-      lastFocus = document.activeElement;
+      if (!trigger || !menuRoot) return;
+      lastFocus = document.activeElement instanceof HTMLElement ? document.activeElement : null;
       menuRoot.classList.remove('hidden');
       // ensure start off-screen then animate in
-      requestAnimationFrame(() => menuRoot.classList.remove('translate-x-full'));
+      requestAnimationFrame(() => { if (menuRoot) menuRoot.classList.remove('translate-x-full'); });
       trigger.setAttribute('aria-expanded','true');
       menuRoot.removeAttribute('aria-hidden');
       document.documentElement.classList.add('overflow-hidden');
       document.body.classList.add('overflow-hidden');
-      const firstLink = menuRoot.querySelector('a, button, summary');
-      if (firstLink && firstLink.focus) setTimeout(() => firstLink.focus(), 50);
+      const firstLink = menuRoot.querySelector('a, button, summary') as HTMLElement | null;
+      if (firstLink) setTimeout(() => firstLink.focus(), 50);
       document.addEventListener('keydown', trapFocus);
     }
 
     function closeMenu() {
+      if (!trigger || !menuRoot) return;
       menuRoot.classList.add('translate-x-full');
       trigger.setAttribute('aria-expanded','false');
       menuRoot.setAttribute('aria-hidden','true');
       document.documentElement.classList.remove('overflow-hidden');
       document.body.classList.remove('overflow-hidden');
       document.removeEventListener('keydown', trapFocus);
-      if (lastFocus && lastFocus.focus) setTimeout(() => lastFocus.focus(), 50);
-      setTimeout(() => { if (menuRoot.classList.contains('translate-x-full')) menuRoot.classList.add('hidden'); }, 300);
+      const lf = lastFocus;
+      if (lf) setTimeout(() => lf.focus(), 50);
+      setTimeout(() => { if (menuRoot && menuRoot.classList.contains('translate-x-full')) menuRoot.classList.add('hidden'); }, 300);
     }
 
     trigger.addEventListener('click', () => {
@@ -326,10 +328,11 @@ const lang = 'en';
       open ? closeMenu() : openMenu();
     });
 
-    menuRoot.addEventListener('click', (e) => {
-      const t = e.target;
-      if (t && t.closest('[data-close]')) return closeMenu();
-      if (t && t.closest('a') && !t.closest('details')) return closeMenu();
+    menuRoot.addEventListener('click', (e: MouseEvent) => {
+      const t = e.target as Element | null;
+      if (!t) return;
+      if (t.closest('[data-close]')) return closeMenu();
+      if (t.closest('a') && !t.closest('details')) return closeMenu();
     });
 
     window.addEventListener('resize', () => { if (window.innerWidth >= 1024 && trigger.getAttribute('aria-expanded') === 'true') closeMenu(); });
@@ -337,7 +340,7 @@ const lang = 'en';
 </script>
 
 <!-- Google Translate Widget -->
-<script type="text/javascript">
+<script is:inline type="text/javascript">
   function googleTranslateElementInit() {
     new google.translate.TranslateElement({
       pageLanguage: 'en',
@@ -347,7 +350,7 @@ const lang = 'en';
     }, 'langToggle');
   }
 </script>
-<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+<script is:inline type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
 <style>
   /* Hide Google Translate branding and style the widget */

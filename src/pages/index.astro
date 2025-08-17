@@ -353,11 +353,13 @@ const latestResources = [
       // Add fade-in class to sections for smooth loading
       const sections = document.querySelectorAll('section');
       sections.forEach((section, index) => {
+        if (!(section instanceof HTMLElement)) return;
         section.style.opacity = '0';
         section.style.transform = 'translateY(20px)';
         section.style.transition = 'all 0.6s ease-out';
         
         setTimeout(() => {
+          if (!(section instanceof HTMLElement)) return;
           section.style.opacity = '1';
           section.style.transform = 'translateY(0)';
         }, index * 100);
@@ -366,6 +368,7 @@ const latestResources = [
       // Simple hover effects for cards
       const cards = document.querySelectorAll('[class*="hover:"]');
       cards.forEach(card => {
+        if (!(card instanceof HTMLElement)) return;
         card.addEventListener('mouseenter', () => {
           card.style.transform = 'translateY(-4px)';
         });

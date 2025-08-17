@@ -116,7 +116,9 @@ const { content } = Astro.props;
 
 <script>
   document.addEventListener('DOMContentLoaded', () => {
+    /** @type {HTMLElement | null} */
     const el = document.getElementById('typewriter');
+    /** @type {HTMLElement | null} */
     const underline = document.getElementById('typewriter-underline');
     if (!el || !underline) return;
 
@@ -134,11 +136,13 @@ const { content } = Astro.props;
 
     const ui = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     function setUnderlineWidth() {
+      if (!el || !underline) return;
       const rect = el.getBoundingClientRect();
       underline.style.width = rect.width + 'px';
     }
 
     function tick() {
+      if (!el || !underline) return;
       const word = phrases[pi];
       if (!del) {
         ci++;
