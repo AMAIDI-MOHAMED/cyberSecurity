@@ -11,94 +11,129 @@ export const menu = [
     href: "/services",
     children: [
       {
-        label_fi: "ISO 27001 Services",
-        label_en: "ISO 27001 Services",
-        href: "/services/iso-27001-services",
-        children: []
+        label_fi: "Regulatory Compliance",
+        label_en: "Regulatory Compliance",
+        href: "/services/regulatory-compliance",
+        children: [
+          {
+            label_fi: "NIS2 Compliance",
+            label_en: "NIS2 Compliance",
+            href: "/services/regulatory-compliance/nis2-compliance",
+            children: []
+          },
+          {
+            label_fi: "DORA Compliance",
+            label_en: "DORA Compliance",
+            href: "/services/regulatory-compliance/dora-compliance",
+            children: []
+          },
+          {
+            label_fi: "GDPR/Privacy Services",
+            label_en: "GDPR/Privacy Services",
+            href: "/services/regulatory-compliance/gdpr-privacy-services",
+            children: []
+          },
+          {
+            label_fi: "eIDAS/Digital Trust",
+            label_en: "eIDAS/Digital Trust",
+            href: "/services/regulatory-compliance/eidas-digital-trust",
+            children: []
+          }
+        ]
       },
       {
-        label_fi: "SOC 2 Readiness",
-        label_en: "SOC 2 Readiness",
-        href: "/services/soc-2-readiness",
-        children: []
+        label_fi: "Standards & Certifications",
+        label_en: "Standards & Certifications",
+        href: "/services/standards-and-certifications",
+        children: [
+          {
+            label_fi: "ISO 27001 Services",
+            label_en: "ISO 27001 Services",
+            href: "/services/standards-and-certifications/iso-27001-services",
+            children: []
+          },
+          {
+            label_fi: "SOC 2 Readiness",
+            label_en: "SOC 2 Readiness",
+            href: "/services/standards-and-certifications/soc-2-readiness",
+            children: []
+          },
+          {
+            label_fi: "Common Criteria",
+            label_en: "Common Criteria",
+            href: "/services/standards-and-certifications/common-criteria",
+            children: []
+          }
+        ]
       },
       {
-        label_fi: "NIS2 Compliance",
-        label_en: "NIS2 Compliance",
-        href: "/services/nis2-compliance",
-        children: []
+        label_fi: "Risk & Assessment Services",
+        label_en: "Risk & Assessment Services",
+        href: "/services/risk-and-assessment-services",
+        children: [
+          {
+            label_fi: "Risk Management",
+            label_en: "Risk Management",
+            href: "/services/risk-and-assessment-services/risk-management",
+            children: []
+          },
+          {
+            label_fi: "Risk Assessments",
+            label_en: "Risk Assessments",
+            href: "/services/risk-and-assessment-services/risk-assessments",
+            children: []
+          },
+          {
+            label_fi: "Third-Party Risk",
+            label_en: "Third-Party Risk",
+            href: "/services/risk-and-assessment-services/third-party-risk",
+            children: []
+          }
+        ]
       },
       {
-        label_fi: "DORA Compliance",
-        label_en: "DORA Compliance",
-        href: "/services/dora-compliance",
-        children: []
+        label_fi: "Governance & Strategy",
+        label_en: "Governance & Strategy",
+        href: "/services/governance-and-strategy",
+        children: [
+          {
+            label_fi: "Policy Governance",
+            label_en: "Policy Governance",
+            href: "/services/governance-and-strategy/policy-governance",
+            children: []
+          },
+          {
+            label_fi: "Business Continuity",
+            label_en: "Business Continuity",
+            href: "/services/governance-and-strategy/business-continuity",
+            children: []
+          },
+          {
+            label_fi: "Audit Preparation",
+            label_en: "Audit Preparation",
+            href: "/services/governance-and-strategy/audit-preparation",
+            children: []
+          }
+        ]
       },
       {
-        label_fi: "GDPR/Privacy Services",
-        label_en: "GDPR/Privacy Services",
-        href: "/services/gdpr-privacy-services",
-        children: []
-      },
-      {
-        label_fi: "eIDAS/Digital Trust",
-        label_en: "eIDAS/Digital Trust",
-        href: "/services/eidas-digital-trust",
-        children: []
-      },
-      {
-        label_fi: "Risk Management",
-        label_en: "Risk Management",
-        href: "/services/risk-management",
-        children: []
-      },
-      {
-        label_fi: "Anti-Fraud Services",
-        label_en: "Anti-Fraud Services",
-        href: "/services/anti-fraud",
-        children: []
-      },
-      {
-        label_fi: "CISO-as-a-Service",
-        label_en: "CISO-as-a-Service",
-        href: "/services/ciso-as-a-service",
-        children: []
-      },
-      {
-        label_fi: "Common Criteria",
-        label_en: "Common Criteria",
-        href: "/services/common-criteria",
-        children: []
-      },
-      {
-        label_fi: "Audit Preparation",
-        label_en: "Audit Preparation",
-        href: "/services/audit-preparation",
-        children: []
-      },
-      {
-        label_fi: "Policy Governance",
-        label_en: "Policy Governance",
-        href: "/services/policy-governance",
-        children: []
-      },
-      {
-        label_fi: "Third-Party Risk",
-        label_en: "Third-Party Risk",
-        href: "/services/third-party-risk",
-        children: []
-      },
-      {
-        label_fi: "Business Continuity",
-        label_en: "Business Continuity",
-        href: "/services/business-continuity",
-        children: []
-      },
-      {
-        label_fi: "Risk Assessments",
-        label_en: "Risk Assessments",
-        href: "/services/risk-assessments",
-        children: []
+        label_fi: "Managed GRC Services",
+        label_en: "Managed GRC Services",
+        href: "/services/managed-grc-services",
+        children: [
+          {
+            label_fi: "CISO-as-a-Service",
+            label_en: "CISO-as-a-Service",
+            href: "/services/managed-grc-services/ciso-as-a-service",
+            children: []
+          },
+          {
+            label_fi: "Anti-Fraud Services",
+            label_en: "Anti-Fraud Services",
+            href: "/services/managed-grc-services/anti-fraud",
+            children: []
+          }
+        ]
       }
     ]
   },

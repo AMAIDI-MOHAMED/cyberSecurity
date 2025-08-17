@@ -1,0 +1,46 @@
+---
+import Layout from '@/layouts/Layout.astro';
+
+const title = 'Governance & Strategy';
+const tagline = 'Build robust security governance frameworks';
+const items = [
+  {
+    title: 'Policy Governance',
+    href: '/services/governance-and-strategy/policy-governance',
+    description: 'Develop and maintain a clear policy architecture with ownership, lifecycle, and compliance mapping.'
+  },
+  {
+    title: 'Business Continuity',
+    href: '/services/governance-and-strategy/business-continuity',
+    description: 'Design and operate a BCMS: BIA, continuity strategies, plans, exercises, and continual improvement.'
+  },
+  {
+    title: 'Audit Preparation',
+    href: '/services/governance-and-strategy/audit-preparation',
+    description: 'Prepare for internal and external audits with evidence readiness and remediation tracking.'
+  }
+];
+---
+
+<Layout title={title} description={tagline}>
+  <section class="bg-gradient-to-br from-teal-50 via-white to-blue-50 py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h1 class="text-3xl md:text-4xl font-bold text-slate-900">{title}</h1>
+      <p class="mt-3 text-slate-600 text-lg">{tagline}</p>
+    </div>
+  </section>
+
+  <section class="py-12 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+        {items.map((s) => (
+          <a href={s.href} class="group block rounded-xl border border-slate-200 p-6 bg-white hover:bg-slate-50 transition-colors">
+            <h3 class="text-lg font-semibold text-slate-900 group-hover:text-teal-700">{s.title}</h3>
+            <p class="mt-2 text-slate-600 text-sm">{s.description}</p>
+            <span class="inline-flex items-center mt-4 text-teal-700 font-medium">Read more →</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>

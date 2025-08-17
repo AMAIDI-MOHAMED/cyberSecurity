@@ -1,0 +1,51 @@
+---
+import Layout from '@/layouts/Layout.astro';
+
+const title = 'Regulatory Compliance';
+const tagline = 'Navigate complex regulations with confidence';
+const items = [
+  {
+    title: 'NIS2 Compliance',
+    href: '/services/regulatory-compliance/nis2-compliance',
+    description: 'Assess gaps, implement controls, and operationalize incident reporting to meet EU NIS2 obligations for essential and important entities.'
+  },
+  {
+    title: 'DORA Compliance',
+    href: '/services/regulatory-compliance/dora-compliance',
+    description: 'Build Digital Operational Resilience with ICT risk management, testing, and incident processes aligned to DORA requirements.'
+  },
+  {
+    title: 'GDPR/Privacy Services',
+    href: '/services/regulatory-compliance/gdpr-privacy-services',
+    description: 'Operationalize privacy by design: data mapping, DPIAs, records of processing, and governance to demonstrate GDPR compliance.'
+  },
+  {
+    title: 'eIDAS/Digital Trust',
+    href: '/services/regulatory-compliance/eidas-digital-trust',
+    description: 'Establish trusted digital identity, qualified signatures and seals, and assurance aligned with eIDAS and ETSI standards.'
+  }
+];
+---
+
+<Layout title={title} description={tagline}>
+  <section class="bg-gradient-to-br from-teal-50 via-white to-blue-50 py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h1 class="text-3xl md:text-4xl font-bold text-slate-900">{title}</h1>
+      <p class="mt-3 text-slate-600 text-lg">{tagline}</p>
+    </div>
+  </section>
+
+  <section class="py-12 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+        {items.map((s) => (
+          <a href={s.href} class="group block rounded-xl border border-slate-200 p-6 bg-white hover:bg-slate-50 transition-colors">
+            <h3 class="text-lg font-semibold text-slate-900 group-hover:text-teal-700">{s.title}</h3>
+            <p class="mt-2 text-slate-600 text-sm">{s.description}</p>
+            <span class="inline-flex items-center mt-4 text-teal-700 font-medium">Read more →</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>

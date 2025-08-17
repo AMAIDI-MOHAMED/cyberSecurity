@@ -2,50 +2,65 @@
 // filepath: c:\Users\Administrator\Desktop\New folder (3)\src\components\Header.astro
 import { menu } from '@data/menu.js';
 import Icon from '@ui/icons/Icon.astro';
-import Button from '@ui/Button.astro';
 import SearchBar from './navigation/SearchBar.astro';
 
 const currentPath = Astro.url.pathname;
-const lang = 'en'; // Simplified - always use English, Google Translate handles translations
-const primaryCTA = { text: 'Get Started', href: '/contact?assessment=true'};
-const secondaryCTA = { text: 'Book a consultation', href: '/contact?consultation=true'};
+const lang = 'en';
 ---
 
-<header class="bg-white shadow-sm border-b border-slate-200 sticky top-0 z-[70]">
-  <!-- Header utility bar -->
-  <div class="bg-slate-900 text-white text-xs sm:text-sm py-1.5">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+<header class="bg-white shadow-sm border-b border-slate-200 sticky top-0 z-[70] transition-all duration-300 ease-in-out backdrop-blur-sm bg-white/95">
+  <!-- Header utility bar simplified -->
+  <div class="bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 text-white text-xs sm:text-sm py-1.5 overflow-hidden relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between relative z-10">
       <div class="hidden sm:flex space-x-5">
-        <span class="flex items-center">
-          <Icon name="phone" class="w-4 h-4 mr-1" /> 
-          +358 XX XXX XXXX
+        <span class="flex items-center group cursor-pointer hover:text-teal-300 transition-all duration-300 transform hover:scale-105 hover:translate-y-0.5 relative">
+          <Icon name="phone" class="w-4 h-4 mr-1 group-hover:scale-125 group-hover:rotate-12 transition-all duration-300" /> 
+          <span class="group-hover:tracking-wide transition-all duration-300 relative">
+            +358 XX XXX XXXX
+            <div class="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-teal-400 to-cyan-400 transition-all duration-500 group-hover:w-full"></div>
+          </span>
         </span>
-        <span class="flex items-center">
-          <Icon name="email" class="w-4 h-4 mr-1" /> 
-          info@cybersecurity.fi
+        <span class="flex items-center group cursor-pointer hover:text-teal-300 transition-all duration-300 transform hover:scale-105 hover:translate-y-0.5 relative">
+          <Icon name="email" class="w-4 h-4 mr-1 group-hover:scale-125 group-hover:rotate-12 transition-all duration-300" /> 
+          <span class="group-hover:tracking-wide transition-all duration-300 relative">
+            info@cybersecurity.fi
+            <div class="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-teal-400 to-cyan-400 transition-all duration-500 group-hover:w-full"></div>
+          </span>
         </span>
-        <span class="flex items-center">
-          <Icon name="mapPin" class="w-4 h-4 mr-1" /> 
-          Helsinki, Finland
+        <span class="flex items-center group cursor-pointer hover:text-teal-300 transition-all duration-300 transform hover:scale-105 hover:translate-y-0.5 relative">
+          <Icon name="mapPin" class="w-4 h-4 mr-1 group-hover:scale-125 group-hover:rotate-12 transition-all duration-300" /> 
+          <span class="group-hover:tracking-wide transition-all duration-300 relative">
+            Helsinki, Finland
+            <div class="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-teal-400 to-cyan-400 transition-all duration-500 group-hover:w-full"></div>
+          </span>
         </span>
       </div>
       <div class="sm:hidden flex items-center text-[11px] gap-3">
-        <a href="tel:+358XXXXXXXXX" class="flex items-center">
-          <Icon name="phone" class="w-4 h-4 mr-1" /> 
-          +358 XX XXX XXXX
+        <a href="tel:+358XXXXXXXXX" class="flex items-center group hover:text-teal-300 transition-all duration-300 transform hover:scale-105 hover:translate-y-0.5 relative">
+          <Icon name="phone" class="w-4 h-4 mr-1 group-hover:scale-125 group-hover:rotate-12 transition-all duration-300" /> 
+          <span class="group-hover:tracking-wide transition-all duration-300 relative">
+            +358 XX XXX XXXX
+            <div class="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-teal-400 to-cyan-400 transition-all duration-500 group-hover:w-full"></div>
+          </span>
         </a>
       </div>
       
       <!-- Google Translate widget -->
-      <div id="langToggle" class="flex bg-slate-800 rounded-md p-1"></div>
+      <div id="langToggle" class="flex bg-slate-800 rounded-md p-1 hover:bg-slate-700 transition-colors duration-200 relative overflow-hidden">
+        <!-- subtle hover only -->
+      </div>
     </div>
   </div>
 
   <!-- Main navigation -->
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <nav class="h-14 flex items-center justify-between" aria-label="Main navigation">
-      <a href="/" class="flex items-center px-2.5 py-1.5 rounded-md transition-colors hover:bg-slate-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-500">
-        <img src="/logo.png" alt="Cybersecurity Finland" class="block h-7 sm:h-8 lg:h-9 w-auto object-contain" decoding="async" loading="eager" style="filter: drop-shadow(0 0 1px rgba(0,0,0,0.25)) contrast(1.1) brightness(0.9);" />
+    <nav class="h-14 flex items-center justify-between relative" aria-label="Main navigation">
+      <a href="/" class="flex items-center px-2.5 py-1.5 rounded-md transition-all duration-500 hover:bg-slate-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 hover:scale-105 group relative overflow-hidden">
+        <img src="/logo.png" alt="Cybersecurity Finland" class="block h-7 sm:h-8 lg:h-9 w-auto object-contain group-hover:scale-110 group-hover:rotate-2 transition-all duration-500 relative z-10" decoding="async" loading="eager" style="filter: drop-shadow(0 0 1px rgba(0,0,0,0.25)) contrast(1.1) brightness(0.9);" />
+        <div class="absolute -inset-1 bg-gradient-to-r from-teal-500 to-cyan-500 rounded-lg blur opacity-0 group-hover:opacity-30 transition-all duration-500"></div>
+        <div class="absolute inset-0 bg-gradient-to-r from-teal-50/50 to-cyan-50/50 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-md"></div>
+        <!-- Animated border effect -->
+        <div class="absolute inset-0 rounded-md border-2 border-transparent group-hover:border-teal-200 transition-all duration-500"></div>
       </a>
 
       <!-- Desktop Navigation -->
@@ -59,113 +74,81 @@ const secondaryCTA = { text: 'Book a consultation', href: '/contact?consultation
           return <div class="relative group">
             {hasChildren ? (
               <>
-                <button class={`flex items-center px-2.5 py-1 text-[12px] font-medium rounded-md transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 ${isActive ? 'text-teal-700 bg-teal-50' : 'text-slate-700 hover:text-teal-700 hover:bg-slate-50'}`} aria-haspopup="true" aria-expanded="false">
-                  {label}
-                  <Icon name="chevronDown" class="w-3 h-3 ml-1" />
+                <button class={`flex items-center px-2.5 py-1 text-[12px] font-medium rounded-md transition-all duration-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 transform hover:scale-105 hover:shadow-md hover:-translate-y-0.5 relative overflow-hidden group ${isActive ? 'text-teal-700 bg-teal-50' : 'text-slate-700 hover:text-teal-700 hover:bg-gradient-to-r hover:from-slate-50 hover:to-teal-50/50'}`} aria-haspopup="true" aria-expanded="false">
+                  <span class="relative z-10 group-hover:tracking-wide transition-all duration-300">{label}</span>
+                  <Icon name="chevronDown" class="w-3 h-3 ml-1 transform group-hover:rotate-180 group-hover:scale-110 transition-all duration-500" />
+                  <div class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-teal-500 to-cyan-500 transition-all duration-500 group-hover:w-full"></div>
+                  <div class="absolute inset-0 bg-gradient-to-r from-teal-500/10 to-cyan-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-md animate-pulse"></div>
                 </button>
                 
-                {/* Services Mega Menu */}
-                {item.label_en === 'SERVICES' ? (
-                  <div class="absolute left-0 top-full w-[800px] bg-white shadow-lg rounded-lg border border-slate-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150 z-50">
-                    <div class="p-6 grid grid-cols-2 gap-8">
-                      {item.children && item.children.map(sub => {
-                        const subHref = sub.href;
-                        const subLabel = sub.label_en;
-                        const hasSubChildren = sub.children && sub.children.length > 0;
-                        
-                        return (
-                          <div>
-                            <h3 class="font-semibold text-slate-900 text-sm mb-3 border-b border-slate-100 pb-2">
-                              <a href={subHref} class="hover:text-teal-700 transition-colors">
-                                {subLabel}
-                              </a>
-                            </h3>
-                            {hasSubChildren ? (
-                              <div class="space-y-1">
-                                {sub.children.map(nested => {
-                                  const nestedHref = nested.href;
-                                  const nestedLabel = nested.label_en;
-                                  return (
-                                    <a 
-                                      href={nestedHref}
-                                      class="block text-xs text-slate-600 hover:text-teal-700 hover:bg-slate-50 p-2 rounded-md transition-colors"
-                                    >
-                                      {nestedLabel}
-                                    </a>
-                                  );
-                                })}
-                              </div>
-                            ) : (
-                              <a 
-                                href={subHref}
-                                class="block text-xs text-slate-600 hover:text-teal-700 hover:bg-slate-50 p-2 rounded-md transition-colors"
-                              >
-                                View all {subLabel}
-                              </a>
-                            )}
-                          </div>
-                        );
-                      })}
-                    </div>
+                {/* Dropdown menu (uniform style for all, including SERVICES) */}
+                <div class="absolute left-0 top-full min-w-48 bg-white shadow-xl rounded-lg border border-slate-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 z-50 backdrop-blur-sm bg-white/95">
+                  <div class="py-2 relative">
+                    <div class="absolute inset-0 bg-gradient-to-br from-teal-50/30 to-cyan-50/20 rounded-lg"></div>
+                    {item.children && item.children.map(sub => {
+                      const subHref = sub.href;
+                      const subLabel = sub.label_en;
+                      return <a href={subHref} class="block px-4 py-1.5 text-[12px] text-slate-700 hover:text-teal-700 hover:bg-slate-50 transition-all duration-300 transform hover:scale-105 hover:translate-x-1 group/dropdown relative overflow-hidden" aria-label={subLabel}>
+                        <span class="relative z-10 group-hover/dropdown:tracking-wide transition-all duration-300">{subLabel}</span>
+                        <div class="absolute inset-0 bg-gradient-to-r from-teal-50 to-cyan-50 opacity-0 group-hover/dropdown:opacity-100 transition-opacity duration-300"></div>
+                      </a>;
+                    })}
                   </div>
-                ) : (
-                  /* Regular dropdown for other items */
-                  <div class="absolute left-0 top-full min-w-48 bg-white shadow-lg rounded-lg border border-slate-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150 z-50">
-                    <div class="py-2">
-                      {item.children && item.children.map(sub => {
-                        const subHref = sub.href;
-                        const subLabel = sub.label_en;
-                        return <a href={subHref} class="block px-4 py-1.5 text-[12px] text-slate-700 hover:text-teal-700 hover:bg-slate-50" aria-label={subLabel}>{subLabel}</a>;
-                      })}
-                    </div>
-                  </div>
-                )}
+                </div>
               </>
             ) : (
-              <a href={href} class={`flex items-center px-2.5 py-1 text-[12px] font-medium rounded-md transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 ${isActive ? 'text-teal-700 bg-teal-50' : 'text-slate-700 hover:text-teal-700 hover:bg-slate-50'}`}>
-                {label}
+              <a href={href} class={`flex items-center px-2.5 py-1 text-[12px] font-medium rounded-md transition-all duration-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 transform hover:scale-105 hover:shadow-md hover:-translate-y-0.5 relative overflow-hidden group ${isActive ? 'text-teal-700 bg-teal-50' : 'text-slate-700 hover:text-teal-700 hover:bg-gradient-to-r hover:from-slate-50 hover:to-teal-50/50'}`}>
+                <span class="relative z-10 group-hover:tracking-wide transition-all duration-300">{label}</span>
+                <div class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-teal-500 to-cyan-500 transition-all duration-500 group-hover:w-full"></div>
+                <div class="absolute inset-0 bg-gradient-to-r from-teal-500/10 to-cyan-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-md animate-pulse"></div>
               </a>
             )}
           </div>;
         })}
       </div>
 
-      <!-- Desktop Header Utility -->
+      <!-- Desktop Header Utility: keep search only, remove CTAs -->
       <div class="hidden lg:flex items-center space-x-3 shrink-0">
-        <div class="w-44 lg:w-48 xl:w-56">
+        <div class="w-44 lg:w-48 xl:w-56 transform transition-all duration-500 hover:scale-105 focus-within:scale-105 relative group">
           <SearchBar placeholder="Search..." />
+          <div class="absolute inset-0 bg-gradient-to-r from-teal-500/5 to-cyan-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg pointer-events-none"></div>
         </div>
-        <Button href={secondaryCTA.href} variant="secondary" className="px-2.5 py-0.5 text-[11px] !rounded-md whitespace-nowrap">{secondaryCTA.text}</Button>
-        <Button href={primaryCTA.href} variant="primary" className="px-2.5 py-0.5 text-[11px] !rounded-md whitespace-nowrap">{primaryCTA.text}</Button>
       </div>
 
-      <!-- Mobile Menu Trigger -->
-      <div class="lg:hidden flex items-center space-x-2">
-        <button id="mobile-trigger" class="p-2 rounded-md text-slate-700 hover:bg-slate-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-500" aria-controls="mobile-menu" aria-expanded="false">
-          <Icon name="menu" class="w-6 h-6" />
+      <!-- Mobile Controls: hamburger trigger (visible on small screens) -->
+      <div class="lg:hidden ml-auto flex items-center">
+        <button id="mobile-trigger" aria-controls="mobile-menu" aria-expanded="false" aria-label="Open menu" class="p-2 rounded-md text-slate-700 hover:bg-slate-50 transition-all duration-300">
+          <span class="sr-only">Open menu</span>
+          <span class="block w-5 h-0.5 bg-slate-700 rounded"></span>
+          <span class="block w-5 h-0.5 bg-slate-700 rounded mt-1"></span>
+          <span class="block w-5 h-0.5 bg-slate-700 rounded mt-1"></span>
         </button>
       </div>
     </nav>
 
-    <div id="mobile-search" class="lg:hidden hidden pb-4">
-      <SearchBar placeholder="Search site..." />
-    </div>
+    <!-- Mobile Menu -->
   </div>
 </header>
 
-<!-- Mobile Menu Overlay -->
-<div id="mobile-menu-overlay" class="lg:hidden fixed inset-0 bg-black bg-opacity-25 z-[75] hidden"></div>
-
-<!-- Mobile Menu -->
-<div id="mobile-menu" class="lg:hidden fixed top-0 right-0 w-full max-w-sm h-full bg-white shadow-xl z-[80] transform translate-x-full transition-transform duration-300 ease-in-out hidden" aria-hidden="true">
-  <div class="flex items-center justify-between p-4 border-b border-slate-200">
-    <span class="text-lg font-semibold text-slate-900">Menu</span>
-    <button data-close class="p-2 rounded-md text-slate-700 hover:bg-slate-50">
-      <Icon name="close" class="w-5 h-5" />
+<!-- Mobile Menu: moved outside header for full-viewport coverage -->
+<div id="mobile-menu" class="lg:hidden fixed inset-0 w-screen h-screen bg-white z-[9999] transform translate-x-full transition-transform duration-300 ease-out hidden overflow-y-auto overscroll-contain touch-pan-y" aria-hidden="true" role="dialog" aria-modal="true">
+  <div class="flex items-center justify-between p-4 pt-[env(safe-area-inset-top)] border-b border-slate-200 bg-gradient-to-r from-slate-50 to-white relative overflow-hidden">
+    <span class="text-lg font-semibold text-slate-900 tracking-wide relative z-10">Menu</span>
+    <button data-close class="p-2 rounded-md text-slate-700 hover:bg-slate-50 transition-all duration-300 transform hover:scale-110 hover:rotate-90 group relative overflow-hidden">
+      <Icon name="close" class="w-5 h-5 group-hover:scale-125 transition-all duration-300" />
+      <div class="absolute inset-0 bg-gradient-to-r from-red-500/10 to-pink-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-md"></div>
     </button>
+    <div class="absolute inset-0 bg-gradient-to-r from-teal-500/5 to-cyan-500/5 opacity-50"></div>
+  </div>
+
+  <!-- Mobile search -->
+  <div class="p-4 border-b border-slate-200">
+    <div class="max-w-full">
+      <SearchBar placeholder="Search..." />
+    </div>
   </div>
   
-  <div class="overflow-y-auto h-full pb-20">
+  <div class="h-full pb-24">
     <nav class="p-4 space-y-1">
       {menu && menu.map(item => {
         const href = item.href;
@@ -174,31 +157,64 @@ const secondaryCTA = { text: 'Book a consultation', href: '/contact?consultation
         const label = item.label_en; // Always use English labels
         
         if (hasChildren) {
+          // For SERVICES, use the standard expandable structure and list only the 5 category links
+          if (label === 'SERVICES') {
+            return (
+              <details class="group">
+                <summary class={`flex items-center justify-between p-3 rounded-lg cursor-pointer transition-all duration-300 transform hover:scale-105 hover:translate-x-1 group/summary relative overflow-hidden ${
+                  isActive ? 'text-teal-700 bg-teal-50' : 'text-slate-700 hover:text-teal-700 hover:bg-gradient-to-r hover:from-slate-50 hover:to-teal-50/50'
+                }`}>
+                  <span class="font-medium group-hover/summary:tracking-wide transition-all duration-300 relative z-10">{label}</span>
+                  <Icon name="chevronDown" class="w-4 h-4 transition-all duration-300 group-open:rotate-180 group-hover/summary:scale-110" />
+                  <div class="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-teal-500 to-cyan-500 transition-all duration-300 group-hover/summary:w-full"></div>
+                </summary>
+                <div class="mt-2 ml-4 space-y-1">
+                  {item.children && item.children.map(sub => {
+                    const subHref = sub.href;
+                    const subLabel = sub.label_en;
+                    const subIsActive = currentPath.startsWith(subHref);
+                    return (
+                      <a 
+                        href={subHref}
+                        class={`block p-2 rounded-md text-sm transition-all duration-300 transform hover:scale-105 hover:translate-x-1 group/sub relative overflow-hidden ${
+                          subIsActive ? 'text-teal-700 bg-teal-50' : 'text-slate-600 hover:text-teal-700 hover:bg-gradient-to-r hover:from-slate-50 hover:to-teal-50/50'
+                        }`}
+                      >
+                        <span class="group-hover/sub:tracking-wide transition-all duration-300 relative z-10">{subLabel}</span>
+                        <div class="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-teal-500 to-cyan-500 transition-all duration-300 group-hover/sub:w-full"></div>
+                      </a>
+                    );
+                  })}
+                </div>
+              </details>
+            );
+          }
+
           return (
             <details class="group">
-              <summary class={`flex items-center justify-between p-3 rounded-lg cursor-pointer transition-colors ${
-                isActive ? 'text-teal-700 bg-teal-50' : 'text-slate-700 hover:text-teal-700 hover:bg-slate-50'
+              <summary class={`flex items-center justify-between p-3 rounded-lg cursor-pointer transition-all duration-300 transform hover:scale-105 hover:translate-x-1 group/summary relative overflow-hidden ${
+                isActive ? 'text-teal-700 bg-teal-50' : 'text-slate-700 hover:text-teal-700 hover:bg-gradient-to-r hover:from-slate-50 hover:to-teal-50/50'
               }`}>
-                <span class="font-medium">{label}</span>
-                <Icon name="chevronDown" class="w-4 h-4 transition-transform group-open:rotate-180" />
+                <span class="font-medium group-hover/summary:tracking-wide transition-all duration-300 relative z-10">{label}</span>
+                <Icon name="chevronDown" class="w-4 h-4 transition-all duration-300 group-open:rotate-180 group-hover/summary:scale-110" />
+                <div class="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-teal-500 to-cyan-500 transition-all duration-300 group-hover/summary:w-full"></div>
               </summary>
               <div class="mt-2 ml-4 space-y-1">
                 {item.children && item.children.map(sub => {
                   const subHref = sub.href;
                   const subLabel = sub.label_en;
                   const subIsActive = currentPath.startsWith(subHref);
-                  
-                  // Check if this sub-item has children (nested menu)
                   const hasSubChildren = sub.children && sub.children.length > 0;
                   
                   if (hasSubChildren) {
                     return (
                       <details class="group ml-2">
-                        <summary class={`flex items-center justify-between p-2 rounded-md cursor-pointer text-sm transition-colors ${
-                          subIsActive ? 'text-teal-700 bg-teal-50' : 'text-slate-600 hover:text-teal-700 hover:bg-slate-50'
+                        <summary class={`flex items-center justify-between p-2 rounded-md cursor-pointer text-sm transition-all duration-300 transform hover:scale-105 hover:translate-x-1 group/sub relative overflow-hidden ${
+                          subIsActive ? 'text-teal-700 bg-teal-50' : 'text-slate-600 hover:text-teal-700 hover:bg-gradient-to-r hover:from-slate-50 hover:to-teal-50/50'
                         }`}>
-                          <span>{subLabel}</span>
-                          <Icon name="chevronDown" class="w-3 h-3 transition-transform group-open:rotate-180" />
+                          <span class="group-hover/sub:tracking-wide transition-all duration-300 relative z-10">{subLabel}</span>
+                          <Icon name="chevronDown" class="w-3 h-3 transition-all duration-300 group-open:rotate-180 group-hover/sub:scale-110" />
+                          <div class="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-teal-500 to-cyan-500 transition-all duration-300 group-hover/sub:w-full"></div>
                         </summary>
                         <div class="mt-1 ml-4 space-y-1">
                           {sub.children && sub.children.map(nested => {
@@ -208,11 +224,12 @@ const secondaryCTA = { text: 'Book a consultation', href: '/contact?consultation
                             return (
                               <a 
                                 href={nestedHref}
-                                class={`block p-2 rounded-md text-xs transition-colors ${
-                                  nestedIsActive ? 'text-teal-700 bg-teal-50' : 'text-slate-500 hover:text-teal-700 hover:bg-slate-50'
+                                class={`block p-2 rounded-md text-xs transition-all duration-300 transform hover:scale-105 hover:translate-x-1 group/nested relative overflow-hidden ${
+                                  nestedIsActive ? 'text-teal-700 bg-teal-50' : 'text-slate-500 hover:text-teal-700 hover:bg-gradient-to-r hover:from-slate-50 hover:to-teal-50/50'
                                 }`}
                               >
-                                {nestedLabel}
+                                <span class="group-hover/nested:tracking-wide transition-all duration-300 relative z-10">{nestedLabel}</span>
+                                <div class="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-teal-500 to-cyan-500 transition-all duration-300 group-hover/nested:w-full"></div>
                               </a>
                             );
                           })}
@@ -223,11 +240,12 @@ const secondaryCTA = { text: 'Book a consultation', href: '/contact?consultation
                     return (
                       <a 
                         href={subHref}
-                        class={`block p-2 rounded-md text-sm transition-colors ${
-                          subIsActive ? 'text-teal-700 bg-teal-50' : 'text-slate-600 hover:text-teal-700 hover:bg-slate-50'
+                        class={`block p-2 rounded-md text-sm transition-all duration-300 transform hover:scale-105 hover:translate-x-1 group/sub relative overflow-hidden ${
+                          subIsActive ? 'text-teal-700 bg-teal-50' : 'text-slate-600 hover:text-teal-700 hover:bg-gradient-to-r hover:from-slate-50 hover:to-teal-50/50'
                         }`}
                       >
-                        {subLabel}
+                        <span class="group-hover/sub:tracking-wide transition-all duration-300 relative z-10">{subLabel}</span>
+                        <div class="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-teal-500 to-cyan-500 transition-all duration-300 group-hover/sub:w-full"></div>
                       </a>
                     );
                   }
@@ -239,26 +257,17 @@ const secondaryCTA = { text: 'Book a consultation', href: '/contact?consultation
           return (
             <a 
               href={href}
-              class={`block p-3 rounded-lg font-medium transition-colors ${
-                isActive ? 'text-teal-700 bg-teal-50' : 'text-slate-700 hover:text-teal-700 hover:bg-slate-50'
+              class={`block p-3 rounded-lg font-medium transition-all duration-300 transform hover:scale-105 hover:translate-x-1 group/main relative overflow-hidden ${
+                isActive ? 'text-teal-700 bg-teal-50' : 'text-slate-700 hover:text-teal-700 hover:bg-gradient-to-r hover:from-slate-50 hover:to-teal-50/50'
               }`}
             >
-              {label}
+              <span class="group-hover/main:tracking-wide transition-all duration-300 relative z-10">{label}</span>
+              <div class="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-teal-500 to-cyan-500 transition-all duration-300 group-hover/main:w-full"></div>
             </a>
           );
         }
       })}
     </nav>
-    
-    <!-- Mobile CTAs -->
-    <div class="p-4 space-y-3 border-t border-slate-200">
-      <Button href={secondaryCTA.href} variant="secondary" className="w-full justify-center">
-        {secondaryCTA.text}
-      </Button>
-      <Button href={primaryCTA.href} variant="primary" className="w-full justify-center">
-        {primaryCTA.text}
-      </Button>
-    </div>
   </div>
 </div>
 
@@ -266,62 +275,50 @@ const secondaryCTA = { text: 'Book a consultation', href: '/contact?consultation
   document.addEventListener('DOMContentLoaded', () => {
     const trigger = document.getElementById('mobile-trigger');
     const menuRoot = document.getElementById('mobile-menu');
-    const mobileSearch = document.getElementById('mobile-search');
-    const mobileOverlay = document.getElementById('mobile-menu-overlay');
-    
+
     if (!trigger || !menuRoot) return;
-    let lastFocus: HTMLElement | null = null;
+    let lastFocus = null;
 
     const focusableSelector = 'a[href], button:not([disabled]), [role="button"], summary, input, select, textarea';
 
-    function trapFocus(e: KeyboardEvent) {
+    function trapFocus(e) {
       if (!(menuRoot instanceof HTMLElement)) return;
       if (!menuRoot.classList.contains('hidden')) {
         const focusables = Array.from(menuRoot.querySelectorAll(focusableSelector)).filter(el => el instanceof HTMLElement && el.offsetParent !== null);
-        if (focusables.length === 0) return;
+        if (!focusables.length) return;
         const first = focusables[0];
         const last = focusables[focusables.length - 1];
         if (e.key === 'Tab') {
-          if (e.shiftKey && document.activeElement === first) {
-            e.preventDefault();
-            (last as HTMLElement).focus();
-          } else if (!e.shiftKey && document.activeElement === last) {
-            e.preventDefault();
-            (first as HTMLElement).focus();
-          }
+          if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+          else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
         }
         if (e.key === 'Escape') closeMenu();
       }
     }
 
     function openMenu() {
-      if (!(menuRoot instanceof HTMLElement) || !(trigger instanceof HTMLElement)) return;
-      lastFocus = document.activeElement as HTMLElement;
+      lastFocus = document.activeElement;
       menuRoot.classList.remove('hidden');
-      menuRoot.classList.remove('translate-x-full');
-      if (mobileOverlay) mobileOverlay.classList.remove('hidden');
+      // ensure start off-screen then animate in
+      requestAnimationFrame(() => menuRoot.classList.remove('translate-x-full'));
       trigger.setAttribute('aria-expanded','true');
       menuRoot.removeAttribute('aria-hidden');
-      document.body.classList.add('overflow-hidden','touch-none');
+      document.documentElement.classList.add('overflow-hidden');
+      document.body.classList.add('overflow-hidden');
       const firstLink = menuRoot.querySelector('a, button, summary');
-      if (firstLink && 'focus' in firstLink) setTimeout(() => (firstLink as HTMLElement).focus(), 10);
+      if (firstLink && firstLink.focus) setTimeout(() => firstLink.focus(), 50);
       document.addEventListener('keydown', trapFocus);
     }
 
     function closeMenu() {
-      if (!(menuRoot instanceof HTMLElement) || !(trigger instanceof HTMLElement)) return;
       menuRoot.classList.add('translate-x-full');
-      if (mobileOverlay) mobileOverlay.classList.add('hidden');
       trigger.setAttribute('aria-expanded','false');
       menuRoot.setAttribute('aria-hidden','true');
-      document.body.classList.remove('overflow-hidden','touch-none');
+      document.documentElement.classList.remove('overflow-hidden');
+      document.body.classList.remove('overflow-hidden');
       document.removeEventListener('keydown', trapFocus);
-      if (lastFocus && 'focus' in lastFocus && typeof lastFocus.focus === 'function') setTimeout(() => (lastFocus as HTMLElement).focus(), 10);
-      setTimeout(() => {
-        if (menuRoot.classList.contains('translate-x-full')) {
-          menuRoot.classList.add('hidden');
-        }
-      }, 300);
+      if (lastFocus && lastFocus.focus) setTimeout(() => lastFocus.focus(), 50);
+      setTimeout(() => { if (menuRoot.classList.contains('translate-x-full')) menuRoot.classList.add('hidden'); }, 300);
     }
 
     trigger.addEventListener('click', () => {
@@ -329,35 +326,13 @@ const secondaryCTA = { text: 'Book a consultation', href: '/contact?consultation
       open ? closeMenu() : openMenu();
     });
 
-    if (mobileOverlay) {
-      mobileOverlay.addEventListener('click', closeMenu);
-    }
-
     menuRoot.addEventListener('click', (e) => {
       const t = e.target;
-      if (t instanceof HTMLElement) {
-        if (t.matches('[data-close]') || t.closest('[data-close]')) {
-          closeMenu();
-          return;
-        }
-        if (t.closest('a') && !t.closest('details')) closeMenu();
-      }
+      if (t && t.closest('[data-close]')) return closeMenu();
+      if (t && t.closest('a') && !t.closest('details')) return closeMenu();
     });
 
-    window.addEventListener('resize', () => {
-      if (window.innerWidth >= 1024) {
-        if (trigger.getAttribute('aria-expanded') === 'true') closeMenu();
-        if (mobileSearch && !mobileSearch.classList.contains('hidden')) mobileSearch.classList.add('hidden');
-      }
-    });
-
-    document.addEventListener('click', (e) => {
-      if (mobileSearch && !mobileSearch.classList.contains('hidden') && !mobileSearch.contains(e.target as Node)) mobileSearch.classList.add('hidden');
-    });
-
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && mobileSearch && !mobileSearch.classList.contains('hidden')) mobileSearch.classList.add('hidden');
-    });
+    window.addEventListener('resize', () => { if (window.innerWidth >= 1024 && trigger.getAttribute('aria-expanded') === 'true') closeMenu(); });
   });
 </script>
 
@@ -406,12 +381,13 @@ const secondaryCTA = { text: 'Book a consultation', href: '/contact?consultation
     border: none !important;
     text-decoration: none !important;
     font-weight: 400 !important;
-    transition: all 0.2s ease !important;
+    transition: all 0.3s ease !important;
   }
 
   #langToggle .goog-te-gadget-simple .goog-te-menu-value:hover {
     color: white !important;
     background-color: rgba(255, 255, 255, 0.1) !important;
+    transform: scale(1.05) !important;
   }
 
   #langToggle .goog-te-gadget-simple .goog-te-menu-value span {
