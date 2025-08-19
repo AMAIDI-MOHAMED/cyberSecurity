@@ -8,89 +8,146 @@ const currentPath = Astro.url.pathname;
 const lang = currentPath.startsWith('/fi') ? 'fi' : 'en';
 
 const heroContent = {
-  title: "SOC 2 Readiness in 12 Weeks",
-  subtitle: "Achieve SOC 2 Type I readiness in just 12 weeks with our comprehensive preparation program.",
-  description: "Our intensive SOC 2 readiness program ensures your organization meets all trust service criteria and is fully prepared for a successful SOC 2 Type I audit.",
-  primaryCTA: { text: "Start SOC 2 Program", href: "/contact?package=soc2-readiness" },
-  secondaryCTA: { text: "Download SOC 2 Guide", href: "/downloads/soc2-readiness-guide.pdf" }
+  title: "📊 SOC 2 Readiness in 12 Weeks - Trust Service Excellence",
+  subtitle: "Achieve SOC 2 Type I and Type II readiness with comprehensive trust service criteria implementation and audit preparation",
+  description: "Cybersecurity.fi's SOC 2 Readiness Program delivers complete preparation for successful SOC 2 audits, ensuring your organization meets all Trust Service Criteria while building customer confidence through demonstrated security, availability, processing integrity, confidentiality, and privacy controls.",
+  primaryCTA: { text: "Start SOC 2 Readiness Program", href: "/contact?package=soc2-readiness" },
+  secondaryCTA: { text: "Download SOC 2 Implementation Guide", href: "/downloads/soc2-implementation-guide" }
 };
 
 const trustServiceCriteria = [
   {
-    criterion: "Security",
-    description: "Protection of system resources against unauthorized access",
-    focus: "Access controls, network security, system boundaries, data protection",
-    weeks: "Week 1-3"
+    criterion: "🔒 Security (Mandatory)",
+    description: "Protection of system resources against unauthorized access, use, disclosure, disruption, modification, or destruction",
+    focus: "Access controls, logical and physical security, network security, system boundaries, data protection, change management, risk assessment and mitigation",
+    weeks: "Weeks 1-4",
+    controlCount: "64 common criteria controls"
   },
   {
-    criterion: "Availability",
-    description: "System availability for operation and use as committed or agreed",
-    focus: "System monitoring, backup procedures, incident response, capacity management",
-    weeks: "Week 4-5"
+    criterion: "🟢 Availability (Optional)",
+    description: "System availability for operation and use as committed or agreed, typically 99.9% or higher uptime requirements",
+    focus: "System monitoring, backup procedures, incident response, capacity management, disaster recovery, business continuity planning, performance monitoring",
+    weeks: "Weeks 5-6",
+    controlCount: "13 additional criteria controls"
   },
   {
-    criterion: "Processing Integrity",
-    description: "System processing is complete, valid, accurate, timely, and authorized",
-    focus: "Data validation, error handling, processing controls, system monitoring",
-    weeks: "Week 6-7"
+    criterion: "✓ Processing Integrity (Optional)",
+    description: "System processing is complete, valid, accurate, timely, and authorized to meet the entity's objectives",
+    focus: "Data validation, error handling, processing controls, system monitoring, data accuracy, completeness checks, authorized processing",
+    weeks: "Weeks 7-8",
+    controlCount: "11 additional criteria controls"
   },
   {
-    criterion: "Confidentiality",
-    description: "Information designated as confidential is protected as committed or agreed",
-    focus: "Data classification, encryption, access restrictions, confidentiality agreements",
-    weeks: "Week 8-9"
+    criterion: "🤐 Confidentiality (Optional)",
+    description: "Information designated as confidential is protected as committed or agreed through its collection, use, retention, disclosure, and disposal",
+    focus: "Data classification, encryption, access restrictions, confidentiality agreements, secure disposal, data loss prevention, information handling policies",
+    weeks: "Weeks 9-10",
+    controlCount: "8 additional criteria controls"
   },
   {
-    criterion: "Privacy",
-    description: "Personal information is collected, used, retained, disclosed, and disposed of in conformity with commitments",
-    focus: "Privacy policies, consent management, data retention, privacy controls",
-    weeks: "Week 10-12"
+    criterion: "🛡️ Privacy (Optional)",
+    description: "Personal information is collected, used, retained, disclosed, and disposed of in conformity with the entity's privacy notice and criteria set forth in Generally Accepted Privacy Principles (GAPP)",
+    focus: "Privacy policies, consent management, data retention, privacy controls, data subject rights, cross-border transfers, privacy impact assessments",
+    weeks: "Weeks 11-12",
+    controlCount: "19 additional criteria controls"
   }
 ];
 
 const programPhases = [
   {
-    phase: "Week 1-2",
-    title: "SOC 2 Readiness Assessment",
+    phase: "Weeks 1-2: Foundation & Assessment 🔍",
+    title: "SOC 2 Readiness Assessment & Scoping",
     activities: [
-      "Current state assessment against SOC 2 criteria",
-      "Gap analysis and risk identification",
-      "Scoping and boundary definition",
-      "Service organization description development",
-      "Control environment evaluation"
+      "Comprehensive current state assessment against all applicable Trust Service Criteria",
+      "Detailed gap analysis with risk-based prioritization and remediation planning",
+      "SOC 2 scoping and system boundary definition with data flow mapping",
+      "Service Organization Description (SOD) development and stakeholder review",
+      "Control environment evaluation with governance framework assessment",
+      "Audit firm selection criteria and procurement support"
+    ],
+    deliverables: [
+      "SOC 2 Readiness Assessment Report with gap analysis",
+      "System Scoping Document and data flow diagrams",
+      "Service Organization Description (SOD) first draft",
+      "Control Environment Assessment with recommendations",
+      "Implementation Roadmap with timeline and resource requirements"
     ]
   },
   {
-    phase: "Week 3-6",
-    title: "Control Design & Implementation",
+    phase: "Weeks 3-6: Security Foundation & Core Controls 🔒",
+    title: "Mandatory Security Controls Design & Implementation",
     activities: [
-      "Security control design and implementation",
-      "Availability and system monitoring setup",
-      "Access management and user provisioning",
-      "Incident response procedures",
-      "Change management processes"
+      "Access management and identity governance system implementation",
+      "Logical and physical security controls deployment and configuration",
+      "Network security architecture review and segmentation implementation",
+      "Data protection and encryption mechanisms deployment",
+      "Change management and system development lifecycle controls",
+      "Risk assessment and management framework establishment"
+    ],
+    deliverables: [
+      "Access Management Framework with role-based access controls",
+      "Network Security Architecture with segmentation and monitoring",
+      "Data Protection and Encryption Implementation documentation",
+      "Change Management Procedures with approval workflows",
+      "Risk Management Framework with assessment methodologies"
     ]
   },
   {
-    phase: "Week 7-10",
-    title: "Policy & Procedure Development",
+    phase: "Weeks 7-8: Additional Trust Service Criteria Implementation 🎯",
+    title: "Availability, Processing Integrity, Confidentiality & Privacy Controls",
     activities: [
-      "SOC 2 compliant policies and procedures",
-      "Data handling and privacy policies",
-      "Vendor management procedures",
-      "Risk management framework",
-      "Business continuity planning"
+      "Availability monitoring and incident response capabilities implementation",
+      "Processing integrity controls for data validation and accuracy",
+      "Confidentiality controls for sensitive information protection",
+      "Privacy controls for personal data handling and GDPR alignment",
+      "Business continuity and disaster recovery planning and testing",
+      "Performance monitoring and capacity management system deployment"
+    ],
+    deliverables: [
+      "Availability Monitoring Dashboard with automated alerting",
+      "Processing Integrity Controls with data validation procedures",
+      "Confidentiality Framework with classification and handling procedures",
+      "Privacy Management Program with consent and rights management",
+      "Business Continuity and Disaster Recovery tested procedures"
     ]
   },
   {
-    phase: "Week 11-12",
-    title: "Audit Preparation & Testing",
+    phase: "Weeks 9-10: Policy Development & Documentation 📋",
+    title: "SOC 2 Compliant Policies, Procedures & Evidence Repository",
     activities: [
-      "Internal control testing and validation",
-      "Evidence collection and documentation",
-      "Pre-audit readiness assessment",
-      "Auditor selection and engagement",
-      "Final preparation and training"
+      "Comprehensive SOC 2 compliant policy suite development and approval",
+      "Detailed procedure documentation with step-by-step instructions",
+      "Vendor management and third-party risk assessment procedures",
+      "Evidence collection and documentation management system setup",
+      "Control testing procedures and validation methodologies development",
+      "Management review and approval processes establishment"
+    ],
+    deliverables: [
+      "Complete SOC 2 Policy Suite with board approval",
+      "Detailed Procedure Documentation with control activities",
+      "Vendor Management Framework with assessment criteria",
+      "Evidence Repository with automated collection capabilities",
+      "Control Testing Procedures with validation criteria"
+    ]
+  },
+  {
+    phase: "Weeks 11-12: Audit Preparation & Readiness Validation ✅",
+    title: "Internal Testing, Audit Preparation & Certification Readiness",
+    activities: [
+      "Comprehensive internal control testing and effectiveness validation",
+      "Evidence collection and organization for auditor review",
+      "Pre-audit readiness assessment with simulated audit procedures",
+      "Auditor selection, engagement, and contract negotiation support",
+      "Staff training for audit interviews and evidence presentation",
+      "Final SOC 2 readiness certification and sign-off procedures"
+    ],
+    deliverables: [
+      "Internal Control Testing Results with effectiveness validation",
+      "Organized Evidence Portfolio ready for auditor review",
+      "Pre-Audit Readiness Assessment with certification",
+      "Auditor Engagement Support with contract review",
+      "Staff Training Materials and audit interview preparation",
+      "SOC 2 Readiness Certification with management sign-off"
     ]
   }
 ];
@@ -129,26 +186,36 @@ const deliverables = [
 ];
 
 const pricing = {
-  startingPrice: "€35,000",
-  note: "Pricing varies based on organization size, system complexity, and selected trust service criteria",
+  startingPrice: "€48,000",
+  note: "Investment varies based on organization size, system complexity, selected Trust Service Criteria, and existing security maturity. Type I and Type II audit preparation included.",
   packages: [
     {
-      name: "Essential (Security Only)",
-      price: "€35,000",
-      criteria: ["Security"],
-      suitable: "Small SaaS companies, basic compliance needs"
+      name: "🔒 Essential (Security Only)",
+      price: "€48,000",
+      criteria: ["Security (64 controls)"],
+      suitable: "Small to medium SaaS companies, basic SOC 2 Type I compliance needs",
+      includes: "Security controls, policies, evidence collection, Type I audit prep"
     },
     {
-      name: "Standard (Security + Availability)",
-      price: "€45,000",
-      criteria: ["Security", "Availability"],
-      suitable: "Growing companies with uptime commitments"
+      name: "🟢 Standard (Security + Availability)",
+      price: "€62,000",
+      criteria: ["Security (64 controls)", "Availability (13 controls)"],
+      suitable: "Growing companies with uptime commitments and SLA requirements",
+      includes: "Security + Availability controls, monitoring, incident response, Type I/II prep"
     },
     {
-      name: "Comprehensive (All 5 Criteria)",
-      price: "€65,000",
+      name: "🏆 Comprehensive (All 5 Criteria)",
+      price: "€85,000",
       criteria: ["Security", "Availability", "Processing Integrity", "Confidentiality", "Privacy"],
-      suitable: "Enterprise organizations, full compliance requirements"
+      suitable: "Enterprise organizations, financial services, healthcare, full compliance requirements",
+      includes: "All Trust Service Criteria, comprehensive controls (115+ total), Type I/II audit readiness"
+    },
+    {
+      name: "🚀 Enterprise Plus (All Criteria + Ongoing)",
+      price: "€125,000",
+      criteria: ["All 5 Criteria + 12 months ongoing support"],
+      suitable: "Large enterprises requiring continuous compliance management and support",
+      includes: "Complete implementation + 12 months ongoing compliance monitoring and support"
     }
   ]
 };
@@ -366,3 +433,4 @@ const pricing = {
     secondaryCTA={{ text: "Download SOC 2 Checklist", href: "/downloads/soc2-readiness-checklist.pdf" }}
   />
 </Layout>
+

@@ -9,54 +9,111 @@ const currentPath = Astro.url.pathname;
 const lang = currentPath.startsWith('/fi') ? 'fi' : 'en';
 
 const heroContent = {
-  title: "SOC 2 Type II Compliance Preparation",
-  subtitle: "Achieve SOC 2 certification with our proven methodology designed for SaaS and technology companies operating in Nordic markets.",
-  description: "We help Finnish and Nordic technology organizations prepare for SOC 2 Type II audits, implementing robust controls that demonstrate security, availability, processing integrity, confidentiality, and privacy to your customers and stakeholders.",
-  primaryCTA: { text: "Start SOC 2 Preparation", href: "/contact" },
-  secondaryCTA: { text: "Download SOC 2 Guide", href: "/resources/guides/soc-2-readiness-guide" }
+  title: "📊 SOC 2 Trust Service Excellence Framework",
+  subtitle: "Comprehensive SOC 2 Type I and Type II compliance for SaaS, cloud, and technology companies",
+  description: "Cybersecurity.fi specializes in SOC 2 compliance preparation, helping Finnish and Nordic technology organizations achieve certification across all Trust Service Criteria while building customer confidence through demonstrated security, availability, processing integrity, confidentiality, and privacy excellence.",
+  primaryCTA: { text: "Start SOC 2 Compliance Journey", href: "/contact" },
+  secondaryCTA: { text: "Download SOC 2 Framework Guide", href: "/downloads/soc-2-framework-guide" }
 };
 
 const keyBenefits = [
   {
-    title: "12-Week Preparation",
-    description: "Complete SOC 2 Type II readiness in just 12 weeks with our accelerated methodology and expert guidance.",
-    icon: "clock"
+    title: "🎯 Customer Trust Acceleration",
+    description: "Build immediate credibility with enterprise customers requiring SOC 2 certification, accelerating sales cycles and enabling access to larger deals and enterprise markets.",
+    icon: "target"
   },
   {
-    title: "Nordic Market Expertise",
-    description: "Deep understanding of Nordic business practices and regulatory requirements for seamless SOC 2 implementation.",
+    title: "🚀 Competitive Differentiation",
+    description: "Distinguish your organization from competitors through independently verified security and privacy controls, creating sustainable competitive advantage in B2B markets.",
+    icon: "rocket"
+  },
+  {
+    title: "🔒 Comprehensive Control Framework",
+    description: "Implement robust, auditor-approved control framework covering all five Trust Service Criteria with customization for your specific business model and risk profile.",
+    icon: "shield"
+  },
+  {
+    title: "⚡ Accelerated Implementation",
+    description: "Achieve SOC 2 Type I readiness in 12 weeks and Type II certification within 15 months using our proven methodology and expert guidance.",
+    icon: "lightning"
+  },
+  {
+    title: "🌐 Nordic Market Expertise",
+    description: "Deep understanding of Nordic business practices, GDPR alignment, and cultural considerations for seamless SOC 2 implementation in European markets.",
     icon: "globe"
   },
   {
-    title: "Control Framework Design",
-    description: "Customized control framework aligned with your business processes and risk profile.",
-    icon: "shield-check"
-  },
-  {
-    title: "Auditor Partnership",
-    description: "Direct collaboration with accredited SOC 2 auditors to ensure smooth certification process.",
+    title: "🤝 Auditor Partnership Program",
+    description: "Direct collaboration with accredited SOC 2 auditors and streamlined audit process to ensure smooth certification and cost-effective compliance journey.",
     icon: "handshake"
   }
 ];
 
 const trustServiceCriteria = [
   {
-    criterion: "Security",
-    description: "Protection against unauthorized access to systems and information",
-    controls: ["Access Management", "Network Security", "Vulnerability Management", "Security Monitoring"],
-    icon: "lock-closed"
+    criterion: "🔒 Security (Mandatory for all SOC 2 reports)",
+    description: "Protection against unauthorized access, use, disclosure, disruption, modification, or destruction of information and systems",
+    controls: [
+      "Logical and physical access controls with multi-factor authentication",
+      "Network security controls and perimeter protection", 
+      "Vulnerability management and penetration testing programs",
+      "Security monitoring and incident response capabilities",
+      "Change management and system development lifecycle controls"
+    ],
+    icon: "lock-closed",
+    auditFocus: "64 common criteria controls - foundation for all SOC 2 reports"
   },
   {
-    criterion: "Availability",
-    description: "Systems and services are available for operation and use as committed",
-    controls: ["Business Continuity", "Disaster Recovery", "Capacity Management", "Performance Monitoring"],
-    icon: "clock"
+    criterion: "🟢 Availability (Optional - Service level commitments)",
+    description: "Systems, products, and services are available for operation and use as committed or agreed with stakeholders",
+    controls: [
+      "Business continuity and disaster recovery planning and testing",
+      "Capacity management and performance monitoring systems", 
+      "Redundancy and failover mechanisms for critical systems",
+      "Service level monitoring and incident escalation procedures",
+      "Preventive maintenance and system monitoring capabilities"
+    ],
+    icon: "clock",
+    auditFocus: "13 additional controls - proves uptime and availability commitments"
   },
   {
-    criterion: "Processing Integrity",
-    description: "System processing is complete, accurate, timely, and authorized",
-    controls: ["Data Validation", "Error Handling", "Processing Controls", "Quality Assurance"],
-    icon: "check-circle"
+    criterion: "✅ Processing Integrity (Optional - Data accuracy commitments)",
+    description: "System processing is complete, valid, accurate, timely, and authorized to meet entity's objectives",
+    controls: [
+      "Data validation and input controls with error detection",
+      "Processing controls and automated quality assurance checks",
+      "Error handling and exception management procedures", 
+      "Data accuracy monitoring and correction processes",
+      "Authorized processing controls and approval workflows"
+    ],
+    icon: "check-circle", 
+    auditFocus: "11 additional controls - validates data processing accuracy and completeness"
+  },
+  {
+    criterion: "🤐 Confidentiality (Optional - Sensitive data protection)",
+    description: "Information designated as confidential is protected as committed or agreed through collection, use, retention, and disposal",
+    controls: [
+      "Data classification and confidentiality labeling systems",
+      "Encryption and data protection technologies deployment",
+      "Access restrictions and need-to-know principle enforcement",
+      "Confidentiality agreements and non-disclosure management",
+      "Secure disposal and data destruction procedures"
+    ],
+    icon: "eye-slash",
+    auditFocus: "8 additional controls - protects confidential and proprietary information"
+  },
+  {
+    criterion: "🛡️ Privacy (Optional - Personal data protection)",
+    description: "Personal information is collected, used, retained, disclosed, and disposed of in conformity with entity's privacy notice and GAPP principles",
+    controls: [
+      "Privacy policies and notice management with consent tracking",
+      "Data subject rights management and request fulfillment",
+      "Cross-border data transfer controls and adequacy assessments",
+      "Data retention and disposal policies with automated enforcement",
+      "Privacy impact assessments and privacy by design implementation"
+    ],
+    icon: "shield-check",
+    auditFocus: "19 additional controls - demonstrates comprehensive privacy program alignment"
   },
   {
     criterion: "Confidentiality",
@@ -319,3 +376,4 @@ const relatedServices = [
     secondaryCTA={{ text: "Download SOC 2 Guide", href: "/resources/guides/soc-2-readiness-guide" }}
   />
 </Layout>
+

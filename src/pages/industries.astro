@@ -9,55 +9,55 @@ const currentPath = Astro.url.pathname;
 const lang = currentPath.startsWith('/fi') ? 'fi' : 'en';
 
 const heroContent = {
-  title: "Industry-Specific Cybersecurity Solutions",
-  subtitle: "Tailored cybersecurity services designed for your industry's unique challenges and regulatory requirements.",
-  description: "We understand that different industries face different cybersecurity challenges. Our specialized solutions address sector-specific risks, compliance requirements, and operational needs.",
+  title: "Industries We Serve",
+  subtitle: "Specialized cybersecurity expertise across regulated industries with deep understanding of sector-specific compliance requirements.",
+  description: "We deliver tailored cybersecurity solutions that address the unique challenges, risks, and regulatory requirements of your industry.",
   primaryCTA: { text: "Explore Industries", href: "#industries" },
   secondaryCTA: { text: "Get Industry Assessment", href: "/contact?assessment=true" }
 };
 
 const industries = [
   {
-    title: "Technology and Software",
-    description: "Cybersecurity solutions for tech companies, software developers, and digital service providers.",
-    icon: "code",
-    href: "/industries/technology-software",
-    challenges: ["Intellectual property protection", "DevSecOps integration", "API security", "Customer data protection"]
-  },
-  {
-    title: "Financial Services and Banking",
-    description: "Comprehensive security solutions for banks, fintech, and financial service providers.",
+    title: "💰 Financial Services & Fintech",
+    description: "Specialized DORA, PCI DSS, and operational resilience expertise for banks, payment processors, and fintech companies.",
     icon: "bank",
-    href: "/industries/financial-services",
-    challenges: ["DORA compliance", "PCI DSS requirements", "Anti-fraud measures", "Open banking security"]
+    href: "/industries/financial-services-fintech",
+    challenges: ["DORA compliance requirements", "PCI DSS certification", "Operational resilience testing", "Anti-fraud controls"]
   },
   {
-    title: "Healthcare and Life Sciences",
-    description: "HIPAA-compliant cybersecurity solutions for healthcare organizations and life sciences companies.",
+    title: "💻 SaaS & Technology",
+    description: "ISO 27001, SOC 2, and cloud security frameworks tailored for software companies and technology service providers.",
+    icon: "code",
+    href: "/industries/saas-technology",
+    challenges: ["SOC 2 Type II certification", "ISO 27001 implementation", "Cloud security architecture", "DevSecOps integration"]
+  },
+  {
+    title: "🏥 Healthcare & Life Sciences",
+    description: "GDPR, medical device regulations, and patient data protection compliance for healthcare organizations and life sciences companies.",
     icon: "heart",
     href: "/industries/healthcare-life-sciences",
-    challenges: ["HIPAA compliance", "Medical device security", "Patient data protection", "Research data security"]
+    challenges: ["Patient data protection", "Medical device security", "GDPR compliance", "Clinical trial data security"]
   },
   {
-    title: "Critical Infrastructure and Energy",
-    description: "Specialized security for power grids, utilities, and critical infrastructure operators.",
+    title: "🏭 Critical Infrastructure",
+    description: "NIS2 directive implementation, operational technology security, and resilience planning for essential service providers.",
     icon: "zap",
     href: "/industries/critical-infrastructure-energy",
-    challenges: ["NIS2 compliance", "SCADA security", "OT/IT convergence", "National security requirements"]
+    challenges: ["NIS2 directive compliance", "OT/IT security convergence", "SCADA protection", "Business continuity planning"]
   },
   {
-    title: "Manufacturing and Industrial",
-    description: "Industrial cybersecurity solutions for manufacturing and production environments.",
+    title: "🏛️ Public Sector",
+    description: "Government-specific compliance frameworks, public procurement requirements, and citizen data protection standards.",
+    icon: "shield",
+    href: "/industries/public-sector-finland",
+    challenges: ["National security frameworks", "Citizen data protection", "EU procurement compliance", "Inter-agency security"]
+  },
+  {
+    title: "⚙️ Manufacturing & Industrial",
+    description: "Industrial IoT security, supply chain protection, and operational continuity for manufacturing and industrial organizations.",
     icon: "settings",
     href: "/industries/manufacturing-industrial",
-    challenges: ["ICS/SCADA protection", "Supply chain security", "Production continuity", "Industry 4.0 security"]
-  },
-  {
-    title: "Government and Public Sector",
-    description: "Security solutions tailored for government agencies and public sector organizations.",
-    icon: "shield",
-    href: "/industries/government-public-sector",
-    challenges: ["National security frameworks", "Citizen data protection", "Inter-agency collaboration", "Public service continuity"]
+    challenges: ["Industrial IoT security", "Supply chain protection", "Production system resilience", "Industry 4.0 security"]
   }
 ];
 ---
@@ -169,3 +169,4 @@ const industries = [
     secondaryCTA={{ text: "View Our Services", href: "/services" }}
   />
 </Layout>
+

@@ -8,88 +8,217 @@ const title = "NIS2 Compliance";
 const currentPath = Astro.url.pathname;
 const lang = currentPath.startsWith('/fi') ? 'fi' : 'en';
 
+// Check if this is the homepage to show promotional content
+const isHomepage = Astro.url.pathname === '/' || Astro.url.pathname === '';
+
 const heroContent = {
-  title: "NIS2 Network and Information Security Directive Compliance",
-  subtitle: "Achieve EU cybersecurity compliance with Finnish market expertise and rapid implementation pathways.",
-  description: "We help Finnish organizations navigate the complex NIS2 directive requirements, implementing robust cybersecurity measures that protect critical infrastructure and essential services while meeting EU regulatory obligations.",
-  primaryCTA: { text: "Start NIS2 Compliance", href: "/contact" },
-  secondaryCTA: { text: "Download NIS2 Guide", href: "/resources/guides/nis2-compliance-guide" }
+  title: isHomepage ? "🏛️ NIS2 Network and Information Security Directive" : "NIS2 Network and Information Security Directive",
+  subtitle: isHomepage ? "Comprehensive EU cybersecurity compliance for critical infrastructure and essential service providers" : "EU cybersecurity compliance for critical infrastructure and essential service providers",
+  description: isHomepage ? "Cybersecurity.fi specializes in NIS2 Directive implementation, helping Finnish organizations achieve full compliance with enhanced cybersecurity requirements while building resilient digital infrastructure that protects critical operations and ensures regulatory alignment across the EU." : "Expert NIS2 Directive implementation helping Finnish organizations achieve compliance with enhanced cybersecurity requirements while building resilient digital infrastructure.",
+  primaryCTA: { text: "Start NIS2 Compliance Journey", href: "/contact" },
+  secondaryCTA: { text: "Download NIS2 Implementation Guide", href: "/downloads/nis2-compliance-guide" }
 };
 
 const keyBenefits = [
   {
-    title: "6-Month Implementation",
-    description: "Achieve NIS2 compliance within 6 months with our proven methodology and expert guidance.",
-    icon: "clock"
+    title: "🎯 Regulatory Compliance Assurance",
+    description: "Achieve full NIS2 compliance with expert guidance through complex EU cybersecurity requirements, ensuring your organization meets all mandatory obligations and avoids significant penalties.",
+    icon: "target"
   },
   {
-    title: "Finnish Regulatory Expertise",
-    description: "Deep understanding of Finnish implementation of EU directives and local business context.",
+    title: "🇫🇮 Finnish Market Specialization",
+    description: "Deep understanding of Finnish implementation of EU directives, local business context, and Traficom (Finnish Transport and Communications Agency) requirements and reporting procedures.",
     icon: "flag"
   },
   {
-    title: "Risk-Based Approach",
-    description: "Comprehensive risk assessment aligned with NIS2 requirements and Finnish business environment.",
-    icon: "shield-check"
+    title: "⚡ Accelerated Implementation",
+    description: "Achieve NIS2 compliance in 12-16 weeks with our proven methodology, expert guidance, and parallel workstream approach that minimizes business disruption.",
+    icon: "lightning"
   },
   {
-    title: "Incident Response Ready",
-    description: "Robust incident reporting and response capabilities meeting EU cybersecurity requirements.",
-    icon: "exclamation-triangle"
+    title: "🚨 24/7 Incident Response",
+    description: "Robust incident detection, reporting, and response capabilities meeting EU cybersecurity requirements with 24-hour, 72-hour, and monthly reporting timelines to authorities.",
+    icon: "bell"
+  },
+  {
+    title: "🔒 Risk-Based Security Framework",
+    description: "Comprehensive risk assessment and management aligned with NIS2 requirements, integrating cybersecurity risk management with business strategy and operational resilience.",
+    icon: "shield"
+  },
+  {
+    title: "🤝 Supply Chain Protection",
+    description: "Advanced third-party risk management and supply chain security controls protecting against cascade failures and ensuring partner ecosystem security alignment.",
+    icon: "link"
   }
 ];
 
 const nis2Requirements = [
   {
-    requirement: "Risk Management",
-    description: "Implement comprehensive risk management measures for network and information systems",
-    controls: ["Risk Assessment", "Risk Treatment", "Risk Monitoring", "Risk Reporting"],
-    icon: "chart-line"
+    requirement: "🎯 Cybersecurity Risk Management",
+    description: "Implement comprehensive cybersecurity risk management framework with policies, procedures, and continuous monitoring",
+    controls: [
+      "Risk analysis and information system security policies",
+      "Incident handling and business continuity management", 
+      "Supply chain security and vendor risk management",
+      "Security in acquisition, development and maintenance",
+      "Policies to assess effectiveness of cybersecurity measures"
+    ],
+    icon: "chart-line",
+    timeline: "3-4 months",
+    penalty: "Up to €10M or 2% annual turnover"
   },
   {
-    requirement: "Incident Reporting",
-    description: "Establish incident detection and reporting mechanisms within required timeframes",
-    controls: ["Incident Detection", "24/7 Monitoring", "Reporting Procedures", "Response Coordination"],
-    icon: "bell"
+    requirement: "🚨 ICT-Related Incident Management",
+    description: "Establish 24/7 incident detection, response, and regulatory reporting capabilities with specific timelines",
+    controls: [
+      "Computer security incident detection and response",
+      "Early warning systems and threat monitoring",
+      "24-hour initial notification to authorities",
+      "72-hour detailed incident report submission", 
+      "Monthly progress reports and final incident assessment"
+    ],
+    icon: "bell",
+    timeline: "2-3 months",
+    penalty: "Personal liability for senior management"
   },
   {
-    requirement: "Supply Chain Security",
-    description: "Ensure security of supply chain and third-party relationships",
-    controls: ["Supplier Assessment", "Contract Security", "Ongoing Monitoring", "Incident Coordination"],
-    icon: "link"
+    requirement: "🔒 Technical & Organizational Measures",
+    description: "Deploy appropriate technical and organizational cybersecurity measures proportionate to identified risks",
+    controls: [
+      "Multi-factor authentication and secure communications",
+      "Encryption mechanisms and cryptographic security",
+      "Network security and network segmentation",
+      "Backup mechanisms and disaster recovery",
+      "Security testing and vulnerability management"
+    ],
+    icon: "shield",
+    timeline: "4-6 months", 
+    penalty: "Operational sanctions and service suspension"
   },
   {
-    requirement: "Business Continuity",
-    description: "Maintain business continuity and disaster recovery capabilities",
-    controls: ["BCP Development", "DR Testing", "Resource Planning", "Regular Updates"],
-    icon: "arrow-path"
+    requirement: "🤝 Third-Party ICT Provider Management",
+    description: "Comprehensive management of ICT service provider relationships and supply chain security",
+    controls: [
+      "Third-party risk assessment and due diligence",
+      "Contractual security requirements and SLAs",
+      "Continuous monitoring of provider performance",
+      "Incident coordination and information sharing",
+      "Exit strategies and contingency planning"
+    ],
+    icon: "link",
+    timeline: "2-4 months",
+    penalty: "Enhanced supervisory measures"
   },
   {
-    requirement: "Security Testing",
-    description: "Conduct regular security testing and vulnerability assessments",
-    controls: ["Penetration Testing", "Vulnerability Scanning", "Security Audits", "Remediation Tracking"],
-    icon: "magnifying-glass"
+    requirement: "🧪 Digital Operational Resilience Testing",
+    description: "Regular testing of cybersecurity measures and operational resilience capabilities",
+    controls: [
+      "Vulnerability assessments and penetration testing",
+      "Security testing programs and methodologies", 
+      "Testing documentation and reporting procedures",
+      "Remediation tracking and validation processes",
+      "Advanced testing for critical entities (TLPT)"
+    ],
+    icon: "magnifying-glass",
+    timeline: "Ongoing - quarterly/annually",
+    penalty: "Compliance monitoring and audit requirements"
+  },
+  {
+    requirement: "📊 Information Sharing & Reporting",
+    description: "Participate in cybersecurity information sharing and maintain comprehensive documentation",
+    controls: [
+      "Cyber threat intelligence sharing arrangements",
+      "Participation in information sharing platforms",
+      "Documentation of cybersecurity measures",
+      "Regular reporting to competent authorities",
+      "Cooperation with supervisory authorities"
+    ],
+    icon: "share",
+    timeline: "Ongoing",
+    penalty: "Regulatory enforcement actions"
   }
 ];
 
 const implementationPhases = [
   {
-    phase: "Phase 1: Scope & Assessment",
+    phase: "Phase 1: Scope Assessment & Legal Analysis 🔍",
     duration: "Months 1-2",
-    activities: ["Scope Definition", "Gap Analysis", "Risk Assessment", "Stakeholder Engagement"],
-    deliverables: ["Scope Document", "Gap Analysis Report", "Risk Register", "Project Charter"]
+    activities: [
+      "NIS2 applicability determination and entity classification (Essential vs Important)",
+      "Comprehensive gap analysis against all NIS2 cybersecurity requirements",
+      "Current cybersecurity posture assessment and maturity evaluation",
+      "Stakeholder engagement and senior management commitment securing",
+      "Risk assessment methodology development and threat landscape analysis",
+      "Regulatory mapping and Traficom reporting requirements analysis"
+    ],
+    deliverables: [
+      "NIS2 Legal Applicability Assessment Report",
+      "Comprehensive Gap Analysis with prioritized action plan",
+      "Current State Cybersecurity Assessment",
+      "Project Charter with executive sponsorship",
+      "Risk Assessment Framework aligned with NIS2",
+      "Regulatory Compliance Roadmap"
+    ]
   },
   {
-    phase: "Phase 2: Framework Design",
+    phase: "Phase 2: Cybersecurity Framework Design 🛠️",
     duration: "Months 3-4",
-    activities: ["Control Framework", "Policy Development", "Process Design", "Training Planning"],
-    deliverables: ["Control Framework", "Policy Suite", "Process Maps", "Training Program"]
+    activities: [
+      "Cybersecurity governance framework development with board oversight",
+      "Risk management policies and procedures creation",
+      "Technical security control framework design and selection",
+      "Incident response and crisis management framework development",
+      "Supply chain security and third-party risk management framework",
+      "Training and awareness program design"
+    ],
+    deliverables: [
+      "Cybersecurity Governance Charter with board approval",
+      "Complete NIS2 Policy and Procedure Suite",
+      "Technical Security Control Framework",
+      "Incident Response Plan with regulatory reporting procedures",
+      "Supply Chain Security Framework",
+      "Training and Awareness Program materials"
+    ]
   },
   {
-    phase: "Phase 3: Implementation",
+    phase: "Phase 3: Technical Implementation & Controls Deployment 🔧",
     duration: "Months 5-6",
-    activities: ["Control Implementation", "Training Delivery", "Testing", "Documentation"],
-    deliverables: ["Implemented Controls", "Training Records", "Test Results", "Compliance Documentation"]
+    activities: [
+      "Technical security controls implementation across all systems",
+      "24/7 security monitoring and incident detection capabilities deployment",
+      "Multi-factor authentication and access control system implementation",
+      "Network segmentation and encryption deployment",
+      "Backup, disaster recovery, and business continuity system implementation",
+      "Vulnerability management and security testing program establishment"
+    ],
+    deliverables: [
+      "Deployed Technical Security Controls with documentation",
+      "24/7 Security Operations Center (SOC) capabilities",
+      "Identity and Access Management (IAM) system",
+      "Network Security Architecture with segmentation",
+      "Business Continuity and Disaster Recovery tested procedures",
+      "Vulnerability Management Program with automated scanning"
+    ]
+  },
+  {
+    phase: "Phase 4: Compliance Validation & Certification 📋",
+    duration: "Months 7-8",
+    activities: [
+      "Comprehensive compliance testing and validation against NIS2 requirements",
+      "Internal audit program execution and effectiveness assessment",
+      "Incident response testing and tabletop exercises",
+      "Regulatory reporting system testing and Traficom integration",
+      "Staff training delivery and competency validation",
+      "Continuous monitoring and improvement program establishment"
+    ],
+    deliverables: [
+      "NIS2 Compliance Validation Report with certification",
+      "Internal Audit Results and remediation tracking",
+      "Tested Incident Response Capabilities",
+      "Regulatory Reporting System with automated workflows",
+      "Trained Staff with competency records",
+      "Continuous Compliance Monitoring Program"
+    ]
   }
 ];
 
@@ -313,3 +442,4 @@ const relatedServices = [
     secondaryCTA={{ text: "Download NIS2 Guide", href: "/resources/guides/nis2-compliance-guide" }}
   />
 </Layout>
+

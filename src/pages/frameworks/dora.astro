@@ -9,54 +9,116 @@ const currentPath = Astro.url.pathname;
 const lang = currentPath.startsWith('/fi') ? 'fi' : 'en';
 
 const heroContent = {
-  title: "DORA Digital Operational Resilience Act Compliance",
-  subtitle: "Achieve EU financial services cybersecurity compliance with our specialized DORA implementation methodology.",
-  description: "We help Finnish financial institutions and fintech companies implement DORA requirements, building robust digital operational resilience frameworks that protect against cyber threats and ensure business continuity.",
-  primaryCTA: { text: "Start DORA Implementation", href: "/contact" },
-  secondaryCTA: { text: "Download DORA Guide", href: "/resources/guides/dora-compliance-guide" }
+  title: "💼 DORA Digital Operational Resilience Act",
+  subtitle: "Comprehensive EU financial services cybersecurity compliance for digital operational resilience excellence",
+  description: "Cybersecurity.fi specializes in DORA implementation for Finnish financial institutions and critical ICT service providers, delivering comprehensive digital operational resilience frameworks that ensure business continuity, protect against cyber threats, and meet EU regulatory requirements by January 17, 2025.",
+  primaryCTA: { text: "Start DORA Compliance Program", href: "/contact" },
+  secondaryCTA: { text: "Download DORA Framework Guide", href: "/downloads/dora-framework-guide" }
 };
 
 const keyBenefits = [
   {
-    title: "8-Month Implementation",
-    description: "Complete DORA compliance within 8 months using our proven methodology and expert guidance.",
-    icon: "clock"
-  },
-  {
-    title: "Financial Services Expertise",
-    description: "Deep understanding of FIN-FSA requirements and EU financial regulations integration.",
+    title: "🏦 Financial Services Specialization",
+    description: "Deep expertise in FIN-FSA requirements, EU financial regulations, and integration with existing risk management frameworks specific to banking, insurance, and investment services.",
     icon: "building-library"
   },
   {
-    title: "Risk-Based Framework",
-    description: "Comprehensive risk assessment aligned with DORA and financial sector requirements.",
-    icon: "shield-check"
+    title: "⚡ Accelerated Compliance",
+    description: "Achieve DORA compliance in 12-18 months with our proven methodology, meeting the January 17, 2025 deadline while maintaining business operations and customer service excellence.",
+    icon: "lightning"
   },
   {
-    title: "Incident Response Ready",
-    description: "Robust incident reporting and response capabilities meeting EU financial standards.",
-    icon: "exclamation-triangle"
+    title: "🎯 Risk-Based Digital Resilience",
+    description: "Comprehensive ICT risk management framework aligned with DORA requirements and financial sector operational risk management, ensuring proportionate and effective controls.",
+    icon: "target"
+  },
+  {
+    title: "🔧 Operational Resilience Testing",
+    description: "Advanced digital operational resilience testing including threat-led penetration testing (TLPT) for significant entities and comprehensive scenario-based testing programs.",
+    icon: "wrench"
+  },
+  {
+    title: "🤝 Third-Party ICT Management",
+    description: "Comprehensive critical ICT service provider management, contractual frameworks, and oversight mechanisms ensuring supply chain resilience and regulatory compliance.",
+    icon: "handshake"
+  },
+  {
+    title: "📊 Intelligence & Information Sharing",
+    description: "Participation in cyber threat intelligence sharing platforms and implementation of information sharing arrangements to enhance collective defense capabilities.",
+    icon: "chart-bar"
   }
 ];
 
 const doraRequirements = [
   {
-    requirement: "ICT Risk Management",
-    description: "Establish comprehensive ICT risk management framework for digital operations",
-    controls: ["Risk Assessment", "Risk Treatment", "Risk Monitoring", "Risk Reporting"],
-    icon: "chart-line"
+    requirement: "🎯 ICT Risk Management Framework",
+    description: "Establish comprehensive ICT risk management framework integrated with overall operational risk management and business strategy",
+    controls: [
+      "ICT risk management policy with board oversight and accountability",
+      "Risk assessment methodologies and treatment processes",
+      "ICT asset inventory, classification, and dependency mapping", 
+      "Risk monitoring, reporting, and key risk indicator frameworks",
+      "Integration with business continuity and operational risk management"
+    ],
+    icon: "chart-line",
+    timeline: "6-9 months",
+    scope: "All financial entities subject to DORA"
   },
   {
-    requirement: "Incident Reporting",
-    description: "Implement incident detection and reporting within required timeframes",
-    controls: ["Incident Detection", "24/7 Monitoring", "Reporting Procedures", "Response Coordination"],
-    icon: "bell"
+    requirement: "🚨 ICT-Related Incident Management",
+    description: "Implement robust incident detection, classification, response, and regulatory reporting capabilities",
+    controls: [
+      "24/7 incident detection and response capabilities",
+      "Incident classification framework with severity levels",
+      "Regulatory reporting procedures to competent authorities",
+      "Root cause analysis and lessons learned integration",
+      "Cross-border incident notification and coordination"
+    ],
+    icon: "bell",
+    timeline: "4-6 months", 
+    scope: "Mandatory reporting for major incidents within defined timeframes"
   },
   {
-    requirement: "Digital Resilience Testing",
-    description: "Conduct regular testing of digital operational resilience capabilities",
-    controls: ["Penetration Testing", "Vulnerability Assessment", "Resilience Testing", "Remediation Tracking"],
-    icon: "magnifying-glass"
+    requirement: "🔬 Digital Operational Resilience Testing (DORT)",
+    description: "Conduct comprehensive testing of ICT systems, applications, and business processes for operational resilience",
+    controls: [
+      "Threat-led penetration testing (TLPT) for significant entities",
+      "Vulnerability assessments and penetration testing programs",
+      "Scenario-based testing for critical business functions",
+      "Testing documentation, reporting, and remediation tracking",
+      "Advanced testing methodologies and red team exercises"
+    ],
+    icon: "magnifying-glass",
+    timeline: "Ongoing - annual/bi-annual testing cycles",
+    scope: "TLPT mandatory for entities identified by supervisory authorities"
+  },
+  {
+    requirement: "🤝 Third-Party ICT Service Provider Management",
+    description: "Comprehensive oversight and management of critical ICT service providers and supply chain risks",
+    controls: [
+      "Critical ICT service provider identification and assessment",
+      "Contractual arrangements with specific DORA requirements",
+      "Continuous monitoring and performance oversight",
+      "Exit strategies and contingency planning for critical services",
+      "Register of information on all contractual arrangements"
+    ],
+    icon: "link",
+    timeline: "12-18 months for full implementation",
+    scope: "Enhanced oversight for critical and important ICT service providers"
+  },
+  {
+    requirement: "📊 Information and Intelligence Sharing",
+    description: "Participate in cybersecurity information sharing mechanisms and enhance collective defense capabilities",
+    controls: [
+      "Arrangements for sharing cyber threat intelligence",
+      "Participation in information sharing platforms and communities",
+      "Threat intelligence analysis and integration capabilities",
+      "Information sharing agreements with industry peers",
+      "Contribution to collective defense and situational awareness"
+    ],
+    icon: "share",
+    timeline: "3-6 months for platform participation",
+    scope: "Voluntary but encouraged for enhanced threat awareness"
   },
   {
     requirement: "Third-Party Risk",
@@ -319,3 +381,4 @@ const relatedServices = [
     secondaryCTA={{ text: "Download DORA Guide", href: "/resources/guides/dora-compliance-guide" }}
   />
 </Layout>
+

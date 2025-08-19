@@ -1,13 +1,212 @@
 ---
 import Layout from '@/layouts/Layout.astro';
-const title = 'NIS2 Compliance';
-const description = 'Meet EU NIS2 requirements with structured gap analysis, remediation, and operational readiness.';
+import HeroSection from '@/components/sections/HeroSection.astro';
+import CTA from '@/components/sections/CTA.astro';
+
+const title = 'NIS2 Compliance Services';
+const description = 'Comprehensive NIS2 Directive compliance for essential and important entities with expert Finnish regulatory guidance.';
+
+// Check if this is the homepage to show promotional content
+const isHomepage = Astro.url.pathname === '/' || Astro.url.pathname === '';
+
+const heroContent = {
+  title: isHomepage ? "🏛️ NIS2 Directive Compliance Services" : "NIS2 Compliance Services",
+  subtitle: isHomepage ? "Comprehensive EU cybersecurity compliance for critical infrastructure and essential service providers" : "Expert NIS2 compliance guidance for essential and important entities",
+  description: isHomepage ? "Expert guidance through NIS2 requirements including gap assessment, risk management implementation, 24/7 incident response capabilities, and regulatory reporting to ensure full compliance while building resilient cybersecurity foundations." : "Professional NIS2 compliance services helping organizations meet EU cybersecurity requirements through comprehensive risk management, technical controls, and regulatory reporting.",
+  primaryCTA: { text: "Start NIS2 Assessment", href: "/contact?service=nis2-compliance" },
+  secondaryCTA: { text: "Download NIS2 Guide", href: "/downloads/nis2-compliance-guide" }
+};
+
+const serviceAreas = [
+  {
+    title: "🔍 NIS2 Gap Assessment & Scoping",
+    description: "Comprehensive evaluation of current cybersecurity posture against NIS2 requirements",
+    deliverables: [
+      "Entity classification (Essential vs Important services)",
+      "Detailed gap analysis against all NIS2 requirements",
+      "Risk assessment and threat landscape analysis",
+      "Implementation roadmap with prioritized actions",
+      "Resource planning and budget estimation"
+    ]
+  },
+  {
+    title: "🎯 Cybersecurity Risk Management Framework",
+    description: "Implementation of comprehensive risk management aligned with NIS2 requirements",
+    deliverables: [
+      "Risk management policies and procedures",
+      "ICT asset inventory and classification",
+      "Supply chain security framework",
+      "Business continuity and crisis management",
+      "Regular risk assessment and monitoring processes"
+    ]
+  },
+  {
+    title: "🚨 Incident Response & Reporting System",
+    description: "24/7 incident detection, response, and regulatory reporting capabilities",
+    deliverables: [
+      "24/7 security monitoring and detection",
+      "Incident classification and severity assessment",
+      "Regulatory reporting to Traficom within required timeframes",
+      "Crisis communication and escalation procedures",
+      "Recovery and lessons learned processes"
+    ]
+  },
+  {
+    title: "🔒 Technical Security Controls Implementation",
+    description: "Deployment of appropriate technical and organizational cybersecurity measures",
+    deliverables: [
+      "Multi-factor authentication and access controls",
+      "Network security and segmentation",
+      "Encryption and data protection measures",
+      "Backup and disaster recovery systems",
+      "Vulnerability management and security testing"
+    ]
+  }
+];
+
+const complianceTimeline = [
+  {
+    milestone: "NIS2 Directive Entry into Force",
+    date: "January 16, 2023",
+    status: "Completed",
+    description: "EU NIS2 Directive officially entered into force"
+  },
+  {
+    milestone: "National Implementation Deadline",
+    date: "October 17, 2024",
+    status: "Active",
+    description: "EU Member States must transpose directive into national law"
+  },
+  {
+    milestone: "Entity Compliance Deadline",
+    date: "October 17, 2024",
+    status: "Mandatory",
+    description: "Organizations must be fully compliant with NIS2 requirements"
+  }
+];
+
+const penalties = [
+  {
+    violation: "Administrative Fines",
+    penalty: "Up to €10 million or 2% of annual turnover",
+    scope: "Non-compliance with cybersecurity measures"
+  },
+  {
+    violation: "Management Liability",
+    penalty: "Personal sanctions for senior management",
+    scope: "Failure to implement required measures"
+  },
+  {
+    violation: "Operational Sanctions",
+    penalty: "Suspension of services",
+    scope: "Severe non-compliance cases"
+  }
+];
 ---
+
 <Layout title={title} description={description}>
-  <section class="py-16 bg-white">
-    <div class="max-w-3xl mx-auto px-4">
-      <h1 class="text-3xl font-bold text-slate-900">{title}</h1>
-      <p class="mt-4 text-slate-600">{description}</p>
+  <HeroSection content={heroContent} />
+  
+  <!-- Service Areas -->
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-bold text-slate-900 mb-6">NIS2 Compliance Service Areas</h2>
+        <p class="text-xl text-slate-600 max-w-3xl mx-auto">
+          Comprehensive support across all NIS2 requirements to ensure your organization achieves and maintains compliance while building cybersecurity resilience.
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        {serviceAreas.map((area) => (
+          <div class="bg-gradient-to-br from-slate-50 to-white p-8 rounded-xl border border-slate-200 hover:shadow-xl transition-all duration-300">
+            <h3 class="text-xl font-bold text-slate-900 mb-4">{area.title}</h3>
+            <p class="text-slate-600 mb-6">{area.description}</p>
+            <div>
+              <h4 class="font-semibold text-slate-900 mb-3">Key Deliverables</h4>
+              <ul class="space-y-2">
+                {area.deliverables.map((deliverable) => (
+                  <li class="flex items-start text-slate-600">
+                    <svg class="w-4 h-4 text-green-500 mr-2 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                    {deliverable}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   </section>
+
+  <!-- Compliance Timeline -->
+  <section class="py-20 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-bold text-slate-900 mb-6">NIS2 Compliance Timeline</h2>
+        <p class="text-xl text-slate-600 max-w-3xl mx-auto">
+          Key dates and milestones for NIS2 implementation and compliance requirements.
+        </p>
+      </div>
+      
+      <div class="space-y-8">
+        {complianceTimeline.map((item, index) => (
+          <div class="flex items-start gap-6">
+            <div class="flex-shrink-0">
+              <div class={`w-12 h-12 rounded-full flex items-center justify-center text-white font-bold ${
+                item.status === 'Completed' ? 'bg-green-500' : 
+                item.status === 'Active' ? 'bg-blue-500' : 'bg-red-500'
+              }`}>
+                {index + 1}
+              </div>
+            </div>
+            <div class="flex-1 bg-white p-6 rounded-xl border border-slate-200">
+              <div class="flex items-center gap-4 mb-2">
+                <h3 class="text-xl font-bold text-slate-900">{item.milestone}</h3>
+                <span class={`px-3 py-1 rounded-full text-sm font-medium ${
+                  item.status === 'Completed' ? 'bg-green-100 text-green-800' :
+                  item.status === 'Active' ? 'bg-blue-100 text-blue-800' : 'bg-red-100 text-red-800'
+                }`}>
+                  {item.date}
+                </span>
+              </div>
+              <p class="text-slate-600">{item.description}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Penalties Section -->
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-bold text-slate-900 mb-6">NIS2 Penalties & Sanctions</h2>
+        <p class="text-xl text-slate-600 max-w-3xl mx-auto">
+          Understanding the potential consequences of non-compliance with NIS2 requirements.
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {penalties.map((penalty) => (
+          <div class="bg-red-50 border-l-4 border-red-400 p-6 rounded-xl">
+            <h3 class="text-lg font-bold text-red-900 mb-2">{penalty.violation}</h3>
+            <div class="text-2xl font-bold text-red-600 mb-2">{penalty.penalty}</div>
+            <p class="text-red-700 text-sm">{penalty.scope}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CTA 
+    title="Ready to Achieve NIS2 Compliance?"
+    description="Don't wait until the deadline. Start your NIS2 compliance journey today with expert Finnish regulatory guidance and proven implementation methodologies."
+    primaryCTA={{ text: "Start NIS2 Assessment", href: "/contact?service=nis2-compliance" }}
+    secondaryCTA={{ text: "Download NIS2 Framework Guide", href: "/frameworks/nis2" }}
+  />
 </Layout>
+

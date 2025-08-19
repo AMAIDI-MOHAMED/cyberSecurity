@@ -8,53 +8,97 @@ const currentPath = Astro.url.pathname;
 const lang = currentPath.startsWith('/fi') ? 'fi' : 'en';
 
 const heroContent = {
-  title: "GDPR Compliance Accelerator",
-  subtitle: "Accelerate your GDPR compliance with our comprehensive privacy program designed for modern businesses.",
-  description: "Complete GDPR compliance solution including privacy impact assessments, data mapping, policy development, and ongoing privacy management to ensure full regulatory compliance.",
-  primaryCTA: { text: "Start GDPR Program", href: "/contact?package=gdpr-accelerator" },
-  secondaryCTA: { text: "Download GDPR Guide", href: "/downloads/gdpr-compliance-guide.pdf" }
+  title: "🛡️ GDPR Accelerator - Privacy Excellence Program",
+  subtitle: "Comprehensive GDPR compliance solution with privacy-by-design implementation and ongoing privacy management",
+  description: "Cybersecurity.fi's GDPR Accelerator delivers complete privacy compliance including data mapping, privacy impact assessments, consent management, data subject rights implementation, and ongoing privacy governance to ensure sustainable GDPR compliance and build customer trust through privacy excellence.",
+  primaryCTA: { text: "Start GDPR Accelerator Program", href: "/contact?package=gdpr-accelerator" },
+  secondaryCTA: { text: "Download GDPR Implementation Guide", href: "/downloads/gdpr-implementation-guide" }
 };
 
 const gdprPrinciples = [
   {
-    principle: "Lawfulness, Fairness & Transparency",
-    description: "Processing must be lawful, fair, and transparent to the data subject",
+    principle: "⚖️ Lawfulness, Fairness & Transparency",
+    description: "Processing must be lawful, fair, and transparent to the data subject with clear legal basis",
     implementation: [
-      "Legal basis identification and documentation",
-      "Privacy notices and transparency measures",
-      "Fair processing assessments",
-      "Data subject communication protocols"
-    ]
+      "Legal basis identification and documentation for all processing activities",
+      "Comprehensive privacy notices and transparency measures",
+      "Fair processing assessments and impact evaluations",
+      "Clear data subject communication protocols and plain language policies",
+      "Regular legal basis reviews and updates"
+    ],
+    legalBases: "Consent, Contract, Legal Obligation, Vital Interests, Public Task, Legitimate Interests"
   },
   {
-    principle: "Purpose Limitation",
-    description: "Data must be collected for specified, explicit, and legitimate purposes",
+    principle: "🎯 Purpose Limitation",
+    description: "Data must be collected for specified, explicit, and legitimate purposes only",
     implementation: [
-      "Purpose specification documentation",
-      "Compatible use assessments",
-      "Processing purpose restrictions",
-      "Regular purpose review processes"
-    ]
+      "Detailed purpose specification documentation for all data processing",
+      "Compatible use assessments and further processing evaluations",
+      "Clear processing purpose restrictions and limitations",
+      "Regular purpose review processes and compatibility assessments",
+      "Purpose change notification and consent management"
+    ],
+    keyRequirement: "Cannot process for incompatible purposes without new legal basis"
   },
   {
-    principle: "Data Minimisation",
-    description: "Data processing must be adequate, relevant, and limited to necessary purposes",
+    principle: "📊 Data Minimisation",
+    description: "Data processing must be adequate, relevant, and limited to what is necessary",
     implementation: [
-      "Data minimization assessments",
-      "Data collection reviews",
-      "Processing necessity evaluations",
-      "Regular data audits"
-    ]
+      "Comprehensive data minimization assessments and collection reviews",
+      "Data field necessity evaluations and collection justifications",
+      "Regular data audits and unnecessary data identification",
+      "Processing scope limitations and data reduction initiatives",
+      "Automated data minimization controls and monitoring"
+    ],
+    impact: "Reduces data breach risk and storage costs while improving compliance"
   },
   {
-    principle: "Accuracy",
-    description: "Personal data must be accurate and kept up to date",
+    principle: "✅ Accuracy",
+    description: "Personal data must be accurate and kept up to date where necessary",
     implementation: [
-      "Data accuracy procedures",
-      "Update and correction processes",
-      "Data quality monitoring",
-      "Rectification mechanisms"
-    ]
+      "Data accuracy procedures and quality management systems",
+      "Regular update and correction processes with data subject input",
+      "Data quality monitoring and automated accuracy checks",
+      "Rectification mechanisms and error correction workflows",
+      "Data source verification and validation procedures"
+    ],
+    dataSubjectRight: "Right to rectification - correction of inaccurate data"
+  },
+  {
+    principle: "⏰ Storage Limitation",
+    description: "Data kept in identifiable form only as long as necessary for processing purposes",
+    implementation: [
+      "Data retention policy development with clear retention periods",
+      "Automated deletion processes and data lifecycle management",
+      "Regular data review and purging procedures",
+      "Archival and pseudonymization strategies for long-term storage",
+      "Legal hold and litigation exception management"
+    ],
+    requirement: "Must define and justify retention periods for all data categories"
+  },
+  {
+    principle: "🔒 Integrity & Confidentiality (Security)",
+    description: "Appropriate security measures to protect against unauthorized processing and data breaches",
+    implementation: [
+      "Technical and organizational security measures implementation",
+      "Encryption, access controls, and data protection technologies",
+      "Staff training and security awareness programs",
+      "Regular security assessments and penetration testing",
+      "Incident response and data breach notification procedures"
+    ],
+    requirement: "Security measures appropriate to the risk and state of technology"
+  },
+  {
+    principle: "📋 Accountability",
+    description: "Controllers must demonstrate compliance with all GDPR principles",
+    implementation: [
+      "Comprehensive compliance documentation and evidence collection",
+      "Privacy governance frameworks and management systems",
+      "Regular compliance audits and assessment programs",
+      "Data Protection Impact Assessment (DPIA) processes",
+      "Privacy by design and by default implementation"
+    ],
+    evidence: "Documentation, policies, training records, audit reports, DPIAs"
   },
   {
     principle: "Storage Limitation",
@@ -592,3 +636,4 @@ const pricing = {
     secondaryCTA={{ text: "Download GDPR Toolkit", href: "/downloads/gdpr-compliance-toolkit.pdf" }}
   />
 </Layout>
+

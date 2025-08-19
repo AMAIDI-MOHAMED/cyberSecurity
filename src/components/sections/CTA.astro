@@ -1,14 +1,35 @@
 ---
 import Button from "@ui/Button.astro";
 
-// Content for the section title and subtitle
-const title =
-  'Transform Your Cybersecurity Today. <br /> Get started with <span class="font-medium text-teal-700">Cyber</span><span class="font-light text-slate-400">Security Finland</span>.';
-const subTitle =
-  "Begin your cybersecurity journey and discover how CyberSecurity Finland's powerful security platform can revolutionize your digital protection and compliance.";
+interface Props {
+  title?: string;
+  description?: string;
+  primaryCTA?: { text: string; href: string };
+  secondaryCTA?: { text: string; href: string };
+  showPromoBranding?: boolean;
+}
 
-// Call-to-action configuration for the primary button
-const primaryCTA = { text: "Get Started", href: "#contact" };
+const { 
+  title, 
+  description, 
+  primaryCTA,
+  secondaryCTA,
+  showPromoBranding = false 
+} = Astro.props;
+
+// Default content for the section title and subtitle
+const defaultTitle = showPromoBranding
+  ? 'Transform Your Cybersecurity Today. <br /> Get started with <span class="font-medium text-teal-700">Cyber</span><span class="font-light text-slate-400">Security Finland</span>.'
+  : 'Transform Your Cybersecurity Today. <br /> Get started with our <span class="font-medium text-teal-700">security</span> <span class="font-light text-slate-400">solutions</span>.';
+
+const defaultSubTitle = showPromoBranding
+  ? "Begin your cybersecurity journey and discover how CyberSecurity Finland's powerful security platform can revolutionize your digital protection and compliance."
+  : "Begin your cybersecurity journey and discover how our powerful security platform can revolutionize your digital protection and compliance.";
+
+// Use provided content or defaults
+const finalTitle = title || defaultTitle;
+const finalSubTitle = description || defaultSubTitle;
+const finalPrimaryCTA = primaryCTA || { text: "Get Started", href: "#contact" };
 ---
 
 <section
@@ -18,15 +39,16 @@ const primaryCTA = { text: "Get Started", href: "#contact" };
     <h2
       class="text-balance text-4xl text-slate-800 sm:text-5xl"
     >
-      <Fragment set:html={title} />
+      <Fragment set:html={finalTitle} />
     </h2>
     <p class="text-lg\/8 mt-5 text-pretty text-slate-600">
-      {subTitle}
+      {finalSubTitle}
     </p>
     <Button
-      href={primaryCTA.href}
+      href={finalPrimaryCTA.href}
       variant="primary"
-      className="mt-7 inline-flex border-none px-3.5!">{primaryCTA.text}</Button
+      className="mt-7 inline-flex border-none px-3.5!">{finalPrimaryCTA.text}</Button
     >
   </div>
 </section>
+

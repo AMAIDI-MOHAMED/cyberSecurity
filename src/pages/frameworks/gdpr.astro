@@ -9,54 +9,130 @@ const currentPath = Astro.url.pathname;
 const lang = currentPath.startsWith('/fi') ? 'fi' : 'en';
 
 const heroContent = {
-  title: "GDPR and Data Privacy Compliance Services",
-  subtitle: "Achieve comprehensive data protection compliance with our Finnish market expertise and privacy-by-design approach.",
-  description: "We help Finnish organizations implement GDPR requirements, building robust data protection frameworks that protect personal data while ensuring business operations continue seamlessly.",
-  primaryCTA: { text: "Start GDPR Implementation", href: "/contact" },
-  secondaryCTA: { text: "Download GDPR Guide", href: "/resources/guides/gdpr-compliance-guide" }
+  title: "🛡️ GDPR & Data Privacy Excellence Framework",
+  subtitle: "Comprehensive data protection compliance with privacy-by-design implementation and sustainable privacy governance",
+  description: "Cybersecurity.fi specializes in GDPR and data privacy compliance, helping Finnish organizations build robust data protection frameworks that safeguard personal data, ensure regulatory compliance, and create competitive advantage through privacy excellence and customer trust.",
+  primaryCTA: { text: "Start GDPR Compliance Journey", href: "/contact" },
+  secondaryCTA: { text: "Download GDPR Framework Guide", href: "/downloads/gdpr-framework-guide" }
 };
 
 const keyBenefits = [
   {
-    title: "Privacy-by-Design",
-    description: "Integrate data protection principles into every aspect of your business operations and technology.",
+    title: "🔒 Privacy-by-Design Excellence",
+    description: "Integrate comprehensive data protection principles into every aspect of business operations, technology architecture, and organizational processes from the ground up.",
     icon: "shield-check"
   },
   {
-    title: "Finnish Market Expertise",
-    description: "Deep understanding of Finnish Data Protection Act and EU GDPR implementation requirements.",
+    title: "🇫🇮 Finnish Legal Expertise",
+    description: "Deep understanding of Finnish Data Protection Act, Tietosuojavaltuutettu requirements, and EU GDPR implementation with local regulatory nuances and enforcement practices.",
     icon: "flag"
   },
   {
-    title: "Risk-Based Approach",
-    description: "Comprehensive data protection impact assessments aligned with GDPR requirements.",
+    title: "⚡ Competitive Privacy Advantage",
+    description: "Transform privacy compliance into competitive differentiation, building customer trust and enabling premium positioning in privacy-conscious markets.",
+    icon: "lightning"
+  },
+  {
+    title: "📊 Risk-Based Implementation",
+    description: "Comprehensive Data Protection Impact Assessments (DPIAs) and risk-based approach ensuring proportionate and effective privacy controls aligned with business objectives.",
     icon: "chart-line"
   },
   {
-    title: "Ongoing Compliance",
-    description: "Continuous monitoring and updates to maintain GDPR compliance as regulations evolve.",
-    icon: "arrow-path"
+    title: "🔄 Sustainable Compliance",
+    description: "Ongoing monitoring, continuous improvement, and adaptive privacy governance ensuring long-term compliance as regulations evolve and business grows.",
+    icon: "refresh"
+  },
+  {
+    title: "💰 Cost-Effective Implementation",
+    description: "Efficient privacy program implementation that maximizes compliance value while minimizing operational overhead and avoiding costly regulatory penalties.",
+    icon: "currency-euro"
   }
 ];
 
 const gdprRequirements = [
   {
-    requirement: "Data Processing Principles",
-    description: "Implement lawful, fair, and transparent data processing practices",
-    controls: ["Legal Basis Assessment", "Purpose Limitation", "Data Minimization", "Accuracy & Storage"],
-    icon: "check-circle"
+    requirement: "⚖️ Data Processing Principles & Legal Basis",
+    description: "Implement lawful, fair, and transparent data processing practices with clearly established legal basis for all processing activities",
+    controls: [
+      "Legal basis identification and documentation for all processing",
+      "Purpose limitation and compatible use assessments", 
+      "Data minimization and necessity evaluations",
+      "Accuracy maintenance and storage limitation enforcement",
+      "Integrity, confidentiality, and accountability frameworks"
+    ],
+    icon: "balance-scale",
+    penalty: "Up to €20M or 4% annual turnover",
+    timeline: "2-4 months implementation"
   },
   {
-    requirement: "Data Subject Rights",
-    description: "Enable individuals to exercise their GDPR rights effectively",
-    controls: ["Access Requests", "Rectification", "Erasure", "Portability", "Objection"],
-    icon: "user"
+    requirement: "👤 Data Subject Rights Management",
+    description: "Enable individuals to exercise their comprehensive GDPR rights effectively with automated systems and clear procedures",
+    controls: [
+      "Access request fulfillment within 30 days (subject access requests)",
+      "Rectification and correction procedures for inaccurate data",
+      "Right to erasure (right to be forgotten) implementation", 
+      "Data portability and structured data export capabilities",
+      "Right to object and automated decision-making opt-outs"
+    ],
+    icon: "user-circle",
+    penalty: "Individual fines up to €20M or 4% annual turnover",
+    timeline: "3-6 months for system implementation"
   },
   {
-    requirement: "Data Protection Impact Assessment",
-    description: "Conduct systematic assessments for high-risk processing activities",
-    controls: ["Risk Identification", "Mitigation Measures", "Stakeholder Consultation", "Documentation"],
-    icon: "magnifying-glass"
+    requirement: "🔍 Data Protection Impact Assessment (DPIA)",
+    description: "Conduct systematic privacy impact assessments for high-risk processing activities and new technologies",
+    controls: [
+      "DPIA methodology and risk identification frameworks",
+      "Stakeholder consultation and privacy expert involvement",
+      "Mitigation measures and residual risk assessment", 
+      "Documentation and ongoing monitoring requirements",
+      "Prior consultation with supervisory authority when required"
+    ],
+    icon: "magnifying-glass",
+    penalty: "Processing prohibition until compliant DPIA completed",
+    timeline: "4-8 weeks per high-risk processing activity"
+  },
+  {
+    requirement: "🚨 Data Breach Notification & Response",
+    description: "Implement comprehensive data breach detection, assessment, notification, and response capabilities",
+    controls: [
+      "72-hour supervisory authority notification procedures",
+      "Data subject notification within 30 days for high-risk breaches",
+      "Breach detection and assessment methodologies",
+      "Documentation and evidence preservation protocols", 
+      "Recovery procedures and lessons learned processes"
+    ],
+    icon: "exclamation-triangle",
+    penalty: "€10M or 2% annual turnover for notification failures",
+    timeline: "Immediate implementation required"
+  },
+  {
+    requirement: "📋 Privacy Governance & Documentation",
+    description: "Establish comprehensive privacy governance framework with complete documentation and accountability measures",
+    controls: [
+      "Privacy policies and procedure documentation suite",
+      "Record of processing activities (Article 30 records)",
+      "Privacy governance framework and management oversight",
+      "Staff training and awareness programs with competency tracking",
+      "Regular compliance audits and effectiveness assessments"
+    ],
+    icon: "document-text",
+    penalty: "€10M or 2% annual turnover for documentation failures",
+    timeline: "6-12 months for comprehensive framework"
+  },
+  {
+    requirement: "🤝 International Transfers & Third Parties",
+    description: "Ensure lawful international data transfers and comprehensive third-party data processing agreements",
+    controls: [
+      "Transfer impact assessments and adequacy decision compliance",
+      "Standard Contractual Clauses (SCCs) implementation and monitoring",
+      "Binding Corporate Rules (BCRs) for multinational organizations",
+      "Data processing agreements (DPAs) with all processors",
+      "Sub-processor management and accountability frameworks"
+    ],
+    icon: "globe",
+    penalty: "Transfer suspension and €20M or 4% annual turnover",
+    timeline: "3-6 months for comprehensive transfer framework"
   },
   {
     requirement: "Data Breach Management",
@@ -319,3 +395,4 @@ const relatedServices = [
     secondaryCTA={{ text: "Download GDPR Guide", href: "/resources/guides/gdpr-compliance-guide" }}
   />
 </Layout>
+

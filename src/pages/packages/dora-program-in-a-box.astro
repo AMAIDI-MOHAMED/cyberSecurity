@@ -8,73 +8,82 @@ const currentPath = Astro.url.pathname;
 const lang = currentPath.startsWith('/fi') ? 'fi' : 'en';
 
 const heroContent = {
-  title: "DORA Program-in-a-Box",
-  subtitle: "Complete Digital Operational Resilience Act (DORA) compliance solution for financial institutions.",
-  description: "Comprehensive DORA compliance program including risk assessment, governance framework, incident management, and third-party risk management to meet EU regulatory requirements by January 2025.",
-  primaryCTA: { text: "Start DORA Compliance", href: "/contact?package=dora-program" },
-  secondaryCTA: { text: "Download DORA Guide", href: "/downloads/dora-compliance-guide.pdf" }
+  title: "💼 DORA Program-in-a-Box - Digital Operational Resilience Excellence",
+  subtitle: "Complete Digital Operational Resilience Act (DORA) compliance solution for financial institutions and critical third-party ICT service providers",
+  description: "Cybersecurity.fi's DORA Program-in-a-Box delivers comprehensive digital operational resilience capabilities including ICT risk management, incident response, operational resilience testing, and third-party risk management to ensure full compliance with EU DORA regulations by January 17, 2025.",
+  primaryCTA: { text: "Start DORA Compliance Program", href: "/contact?package=dora-program" },
+  secondaryCTA: { text: "Download DORA Implementation Guide", href: "/downloads/dora-implementation-guide" }
 };
 
 const doraRequirements = [
   {
-    pillar: "ICT Risk Management",
-    description: "Establish comprehensive ICT risk management framework",
+    pillar: "🎯 ICT Risk Management Framework",
+    description: "Establish comprehensive ICT risk management framework with governance, strategy, and risk appetite alignment",
     requirements: [
-      "ICT risk management policy and procedures",
-      "Risk assessment and treatment processes",
-      "ICT asset inventory and classification",
-      "Risk monitoring and reporting mechanisms",
-      "Regular risk assessment updates"
+      "ICT risk management policy and procedures with board oversight",
+      "Risk assessment methodologies and treatment processes",
+      "ICT asset inventory, classification, and dependency mapping",
+      "Risk monitoring, reporting, and key risk indicator (KRI) frameworks",
+      "Regular risk assessment updates and continuous monitoring",
+      "Integration with overall operational risk management"
     ],
-    timeline: "Month 1-2"
+    timeline: "Months 1-3",
+    complexity: "High - Requires board engagement and enterprise-wide implementation"
   },
   {
-    pillar: "ICT-related Incident Management",
-    description: "Implement robust incident detection, management, and reporting",
+    pillar: "🚨 ICT-related Incident Management & Reporting",
+    description: "Implement robust incident detection, classification, management, and regulatory reporting capabilities",
     requirements: [
-      "Incident classification and severity levels",
-      "Incident response procedures and playbooks",
-      "Reporting mechanisms to authorities",
-      "Root cause analysis processes",
-      "Business continuity and recovery plans"
+      "Incident classification framework with severity levels and impact assessment",
+      "24/7 incident response procedures and escalation playbooks",
+      "Regulatory reporting mechanisms to competent authorities (within 24h for major incidents)",
+      "Root cause analysis processes and lessons learned integration",
+      "Business continuity and recovery plans with testing requirements",
+      "Cross-border incident notification and coordination procedures"
     ],
-    timeline: "Month 2-3"
+    timeline: "Months 2-4",
+    complexity: "Medium-High - Requires coordination with regulatory bodies"
   },
   {
-    pillar: "Digital Operational Resilience Testing",
-    description: "Establish comprehensive testing framework for ICT systems",
+    pillar: "🔬 Digital Operational Resilience Testing (DORT)",
+    description: "Establish comprehensive testing framework for ICT systems, applications, and operational processes",
     requirements: [
-      "Testing strategy and methodology",
-      "Vulnerability assessments and penetration testing",
+      "Testing strategy and methodology aligned with business strategy",
+      "Vulnerability assessments and penetration testing programs",
       "Threat-led penetration testing (TLPT) for significant entities",
-      "Testing documentation and reporting",
-      "Remediation tracking and validation"
+      "Scenario-based testing for critical business functions",
+      "Testing documentation, reporting, and remediation tracking",
+      "Advanced testing methodologies including red team exercises"
     ],
-    timeline: "Month 3-4"
+    timeline: "Months 3-6",
+    complexity: "High - Requires specialized testing capabilities and tools"
   },
   {
-    pillar: "Third-party ICT Service Provider Management",
-    description: "Manage risks from ICT third-party dependencies",
+    pillar: "🤝 Third-party ICT Service Provider Management",
+    description: "Comprehensive management of risks from ICT third-party dependencies and critical service providers",
     requirements: [
-      "Third-party risk assessment framework",
-      "Contractual arrangements and SLAs",
-      "Monitoring and oversight processes",
-      "Exit strategies and contingency plans",
-      "Critical service provider registration"
+      "Third-party risk assessment framework with due diligence processes",
+      "Contractual arrangements with specific DORA requirements and SLAs",
+      "Continuous monitoring of third-party service provider performance",
+      "Exit strategies and contingency plans for critical service providers",
+      "Subcontracting oversight and fourth-party risk management",
+      "Register of information on all contractual arrangements"
     ],
-    timeline: "Month 4-5"
+    timeline: "Months 4-6",
+    complexity: "Medium - Requires legal and procurement coordination"
   },
   {
-    pillar: "Information Sharing",
-    description: "Establish mechanisms for sharing cyber threat information",
+    pillar: "📊 Information and Intelligence Sharing",
+    description: "Participate in information sharing mechanisms to enhance cyber threat awareness and collective defense",
     requirements: [
-      "Information sharing arrangements",
-      "Threat intelligence processes",
-      "Collaboration with authorities and peers",
-      "Data protection and confidentiality measures",
-      "Reporting and disclosure protocols"
+      "Arrangements for sharing information on cyber threats and vulnerabilities",
+      "Participation in relevant information sharing platforms and communities",
+      "Cyber threat intelligence integration and analysis capabilities",
+      "Information sharing agreements with industry peers and authorities",
+      "Threat intelligence feeds and analysis for risk assessment enhancement"
     ],
-    timeline: "Month 5-6"
+    timeline: "Months 5-6",
+    complexity: "Low-Medium - Primarily process and partnership focused"
   }
 ];
 
@@ -518,3 +527,4 @@ const pricing = {
     secondaryCTA={{ text: "Download DORA Checklist", href: "/downloads/dora-compliance-checklist.pdf" }}
   />
 </Layout>
+

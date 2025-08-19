@@ -7,156 +7,181 @@ const title = "NIS2 Sprint Program";
 const currentPath = Astro.url.pathname;
 const lang = currentPath.startsWith('/fi') ? 'fi' : 'en';
 
+// Check if this is the homepage to show promotional content
+const isHomepage = Astro.url.pathname === '/' || Astro.url.pathname === '';
+
 const heroContent = {
-  title: "NIS2 Sprint Program",
-  subtitle: "Rapid NIS2 compliance implementation for critical infrastructure and essential service providers.",
-  description: "Accelerated 8-week program to achieve NIS2 compliance with comprehensive cybersecurity measures, incident response capabilities, and regulatory reporting for organizations in scope of the NIS2 Directive.",
-  primaryCTA: { text: "Start NIS2 Sprint", href: "/contact?package=nis2-sprint" },
-  secondaryCTA: { text: "Download NIS2 Guide", href: "/downloads/nis2-sprint-guide.pdf" }
+  title: isHomepage ? "🚀 NIS2 Sprint Program - Rapid Compliance Implementation" : "NIS2 Sprint Program - Rapid Compliance Implementation",
+  subtitle: isHomepage ? "Accelerated 12-week program ensuring full NIS2 Directive compliance for critical infrastructure and essential service providers" : "Accelerated 12-week program for NIS2 Directive compliance",
+  description: isHomepage ? "Cybersecurity.fi's NIS2 Sprint Program delivers comprehensive cybersecurity governance, risk management, and incident response capabilities required under the EU NIS2 Directive. Fast-track your compliance while building resilient cybersecurity foundations that protect critical operations and ensure regulatory alignment." : "NIS2 Sprint Program delivers comprehensive cybersecurity governance, risk management, and incident response capabilities required under the EU NIS2 Directive.",
+  primaryCTA: { text: "Start NIS2 Sprint Program", href: "/contact?package=nis2-sprint" },
+  secondaryCTA: { text: "Download NIS2 Compliance Guide", href: "/downloads/nis2-compliance-guide" }
 };
 
 const nis2Sectors = [
   {
-    category: "Essential Services",
+    category: "🏛️ Essential Services (High Risk)",
     sectors: [
-      "Energy (electricity, oil, gas)",
-      "Transport (air, rail, water, road)",
+      "Energy sector (electricity, oil, gas distribution and supply)",
+      "Transport (air, rail, water, road transport and traffic management)",
       "Banking and financial market infrastructures",
-      "Health sector",
-      "Drinking water supply and distribution",
-      "Digital infrastructure (IXPs, DNS, TLD registries)"
+      "Health sector (healthcare providers and institutions)",
+      "Drinking water supply and distribution systems",
+      "Digital infrastructure (Internet Exchange Points, DNS, TLD registries)",
+      "ICT service management (B2B) and cloud computing services",
+      "Public administration (central government entities)"
     ]
   },
   {
-    category: "Important Services", 
+    category: "🏢 Important Services (Medium-High Risk)", 
     sectors: [
-      "Digital services (cloud computing, data centers)",
-      "Waste water management",
-      "Chemicals production and distribution",
-      "Food production and distribution",
+      "Digital services (online marketplaces, search engines, social networks)",
+      "Waste water management and treatment facilities",
+      "Chemicals production, processing and distribution",
+      "Food production, processing and distribution",
       "Manufacturing (medical devices, electronics, machinery, motor vehicles)",
-      "Research organizations"
+      "Research organizations and facilities",
+      "Space sector (satellite operations and services)",
+      "Postal and courier services (cross-border operations)"
+    ]
+  },
+  {
+    category: "📊 Size Thresholds",
+    sectors: [
+      "Essential Services: All entities regardless of size",
+      "Important Services: Medium and large enterprises only",
+      "Medium enterprises: 50-249 employees OR €10-50M turnover",
+      "Large enterprises: 250+ employees OR €50M+ turnover",
+      "Public sector entities are generally in scope"
     ]
   }
 ];
 
 const nis2Requirements = [
   {
-    area: "Risk Management",
-    description: "Comprehensive cybersecurity risk assessment and management",
+    area: "🎯 Cybersecurity Risk Management",
+    description: "Comprehensive cybersecurity risk assessment and management framework",
     requirements: [
-      "Risk assessment policies and procedures",
-      "Business continuity management",
-      "Supply chain security measures",
-      "Security incident handling procedures",
-      "Crisis management capabilities"
+      "Policies on risk analysis and information system security",
+      "Incident handling and business continuity management",
+      "Supply chain security and security in network relationships",
+      "Security in acquisition, development and maintenance of systems",
+      "Policies and procedures to assess effectiveness of measures"
     ],
-    timeline: "Week 1-2"
+    timeline: "Weeks 1-3"
   },
   {
-    area: "Cybersecurity Measures",
-    description: "Technical and organizational cybersecurity measures",
+    area: "🔒 Technical & Organizational Measures",
+    description: "Implementation of appropriate technical and organizational cybersecurity measures",
     requirements: [
-      "Multi-factor authentication implementation",
-      "Encryption of data at rest and in transit",
-      "Network security monitoring",
-      "System backup and recovery procedures",
-      "Vulnerability management program"
+      "Multi-factor authentication and secure communication protocols",
+      "Encryption and cryptographic mechanisms for data protection",
+      "Network security measures and network segmentation",
+      "Backup mechanisms and disaster recovery procedures",
+      "Security testing and vulnerability management programs"
     ],
-    timeline: "Week 3-4"
+    timeline: "Weeks 4-7"
   },
   {
-    area: "Incident Reporting",
-    description: "Incident detection, response, and notification capabilities",
+    area: "🚨 Incident Reporting & Response",
+    description: "24/7 incident detection, response, and regulatory notification capabilities",
     requirements: [
-      "24/7 incident detection and response",
-      "Incident classification procedures", 
-      "Regulatory notification processes",
-      "Evidence preservation protocols",
-      "Recovery and lessons learned procedures"
+      "Computer security incident detection and response capabilities", 
+      "Early warning notifications to relevant authorities",
+      "24-hour, 72-hour, and one-month incident reporting timelines",
+      "Evidence preservation and forensic investigation protocols",
+      "Recovery procedures and lessons learned documentation"
     ],
-    timeline: "Week 5-6"
+    timeline: "Weeks 8-10"
   },
   {
-    area: "Governance & Training",
-    description: "Corporate governance and human resource security",
+    area: "👥 Governance & Human Resources",
+    description: "Corporate governance framework and human resource security measures",
     requirements: [
-      "Cybersecurity governance framework",
-      "Regular cybersecurity training programs",
-      "Third-party vendor assessments",
-      "Access control management",
-      "Regular security testing and audits"
+      "Cybersecurity governance policies and management responsibilities",
+      "Regular cybersecurity training and awareness programs",
+      "Access control policies and privileged access management",
+      "Third-party risk assessment and vendor security requirements",
+      "Regular security audits and penetration testing programs"
     ],
-    timeline: "Week 7-8"
+    timeline: "Weeks 11-12"
   }
 ];
 
 const implementationPhases = [
   {
-    phase: "Week 1-2: Assessment & Gap Analysis",
+    phase: "Weeks 1-3: Foundation & Assessment 🔍",
     objectives: [
-      "NIS2 scope and applicability assessment",
-      "Current cybersecurity posture evaluation",
-      "Gap analysis against NIS2 requirements",
-      "Risk assessment and threat modeling",
-      "Implementation roadmap development"
+      "NIS2 scope and applicability determination with legal analysis",
+      "Comprehensive cybersecurity posture assessment and maturity evaluation",
+      "Gap analysis against all NIS2 technical and organizational requirements",
+      "Risk assessment methodology selection and threat landscape analysis",
+      "Governance framework design and management responsibility mapping",
+      "Implementation roadmap development with resource planning"
     ],
     deliverables: [
-      "NIS2 scope assessment report",
-      "Cybersecurity gap analysis",
-      "Risk assessment documentation",
-      "Implementation timeline and resource plan"
+      "NIS2 Legal Applicability Assessment Report",
+      "Cybersecurity Maturity Assessment with gap analysis",
+      "Risk Assessment Framework and threat modeling documentation", 
+      "Governance Charter with roles and responsibilities",
+      "12-week Implementation Roadmap with resource allocation"
     ]
   },
   {
-    phase: "Week 3-4: Technical Implementation",
+    phase: "Weeks 4-7: Technical Implementation & Security Controls 🛠️",
     objectives: [
-      "Critical security controls deployment",
-      "Network security architecture review",
-      "Access control systems enhancement",
-      "Backup and recovery system setup",
-      "Monitoring and detection capabilities"
+      "Critical security controls deployment across all infrastructure",
+      "Network architecture review and segmentation implementation",
+      "Identity and access management system enhancement",
+      "Encryption and cryptographic controls implementation",
+      "Backup, disaster recovery, and business continuity setup",
+      "Security monitoring and threat detection capabilities deployment"
     ],
     deliverables: [
-      "Enhanced security infrastructure",
-      "Network segmentation implementation",
-      "Multi-factor authentication deployment",
-      "Monitoring dashboard and alerting",
-      "Backup and disaster recovery procedures"
+      "Enhanced security infrastructure with documented controls",
+      "Network segmentation and microsegmentation implementation",
+      "Multi-factor authentication deployment across all systems",
+      "Security Information and Event Management (SIEM) platform",
+      "Comprehensive backup and disaster recovery procedures",
+      "24/7 security monitoring dashboard and alerting system"
     ]
   },
   {
-    phase: "Week 5-6: Incident Response & Reporting",
+    phase: "Weeks 8-10: Incident Response & Regulatory Compliance 🚨",
     objectives: [
-      "Incident response team establishment",
-      "Incident detection and classification",
-      "Regulatory reporting procedures",
-      "Communication and escalation protocols",
-      "Recovery and business continuity planning"
+      "Computer Security Incident Response Team (CSIRT) establishment",
+      "Incident detection, classification, and severity assessment procedures",
+      "Regulatory reporting workflows for 24h, 72h, and monthly requirements",
+      "Crisis communication and stakeholder notification protocols",
+      "Evidence preservation and digital forensics capabilities",
+      "Recovery procedures and business continuity activation protocols"
     ],
     deliverables: [
-      "Incident response plan and procedures",
-      "Incident management platform setup",
-      "Regulatory reporting templates",
-      "Business continuity and disaster recovery plan",
-      "Crisis communication procedures"
+      "Complete Incident Response Plan with CSIRT operational procedures",
+      "Incident Management Platform with automated reporting capabilities",
+      "Regulatory reporting templates and notification workflows",
+      "Crisis Communication Plan with stakeholder contact procedures",
+      "Digital forensics toolkit and evidence preservation protocols",
+      "Business Continuity and Disaster Recovery activation procedures"
     ]
   },
   {
-    phase: "Week 7-8: Governance & Validation",
+    phase: "Weeks 11-12: Governance Finalization & Compliance Validation 📋",
     objectives: [
-      "Cybersecurity governance framework",
-      "Policy and procedure finalization",
-      "Staff training and awareness programs",
-      "Compliance testing and validation",
-      "Continuous improvement planning"
+      "Cybersecurity governance framework finalization and board approval",
+      "Complete policy and procedure suite development and approval",
+      "Comprehensive staff training and cybersecurity awareness programs",
+      "Third-party vendor assessment and supply chain security protocols",
+      "Compliance testing, validation, and audit readiness preparation",
+      "Continuous monitoring and improvement planning with KPI establishment"
     ],
     deliverables: [
-      "Cybersecurity governance charter",
-      "Complete policy and procedure suite",
-      "Training materials and programs",
-      "Compliance validation report",
-      "Ongoing compliance monitoring plan"
+      "Board-approved Cybersecurity Governance Charter and policies",
+      "Complete NIS2 Policy and Procedure Documentation Suite",
+      "Staff Training Programs with completion tracking and certification",
+      "Vendor Assessment Framework and supply chain security requirements",
+      "NIS2 Compliance Validation Report with audit-ready documentation",
+      "Continuous Compliance Monitoring Plan with performance indicators"
     ]
   }
 ];
@@ -210,18 +235,21 @@ const penalties = [
 ];
 
 const pricing = {
-  basePrice: "€65,000",
-  note: "Pricing varies based on organization size, sector complexity, and existing security maturity",
+  basePrice: "€85,000",
+  note: "Investment varies based on organization size, sector complexity, existing security maturity, and geographical scope. Essential services entities may qualify for expedited implementation pricing.",
   includes: [
-    "Complete NIS2 gap assessment",
-    "Cybersecurity risk management framework",
-    "Technical security controls implementation",
-    "Incident response and reporting system",
-    "Regulatory compliance documentation",
-    "Staff training and awareness programs",
-    "Continuous monitoring setup",
-    "6 months post-implementation support",
-    "Annual compliance review"
+    "🔍 Complete NIS2 applicability and gap assessment",
+    "🎯 Cybersecurity risk management framework implementation",
+    "🔒 Technical security controls deployment and configuration",
+    "🚨 24/7 incident response and regulatory reporting system",
+    "📋 Complete regulatory compliance documentation package",
+    "👥 Comprehensive staff training and awareness programs",
+    "📊 Continuous monitoring and threat detection setup",
+    "🛡️ 12 months post-implementation support and maintenance",
+    "📈 Quarterly compliance reviews and improvement recommendations",
+    "⚖️ Legal compliance verification and audit support",
+    "🔄 Annual NIS2 compliance assessment and certification",
+    "📞 24/7 expert support hotline for compliance questions"
   ]
 };
 ---
@@ -508,3 +536,4 @@ const pricing = {
     secondaryCTA={{ text: "Download NIS2 Checklist", href: "/downloads/nis2-compliance-checklist.pdf" }}
   />
 </Layout>
+

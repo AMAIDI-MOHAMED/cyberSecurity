@@ -8,38 +8,33 @@ const currentPath = Astro.url.pathname;
 const lang = currentPath.startsWith('/fi') ? 'fi' : 'en';
 
 const heroContent = {
-  title: "ISO 27001 Fast‑Track Program",
-  subtitle: "Achieve ISO 27001 certification in just 90-120 days with our accelerated implementation program.",
-  description: "Our proven fast-track methodology combines expert guidance, pre-built templates, and intensive support to get you certified quickly without compromising on quality.",
+  title: "ISO 27001 Fast-Track: Complete Implementation in 90-120 Days",
+  subtitle: "From assessment to certification in record time",
+  description: "Transform your information security management in just 3-4 months with our proven fast-track methodology. This all-inclusive program takes you from initial assessment to ISO 27001 certification with everything you need included.",
   primaryCTA: { text: "Get Started", href: "/contact?package=iso-27001-fast-track" },
-  secondaryCTA: { text: "Download Brochure", href: "/downloads/iso-27001-fast-track.pdf" }
+  secondaryCTA: { text: "Download Guide", href: "/downloads/iso-27001-guide.pdf" }
 };
 
 const packageFeatures = [
   {
-    title: "Rapid Gap Analysis",
-    description: "Comprehensive assessment of your current security posture against ISO 27001 requirements.",
-    duration: "Week 1-2"
+    title: "🔍 Assessment & Planning",
+    description: "Comprehensive security posture assessment and gap analysis, risk assessment covering all organizational assets and processes, implementation roadmap with detailed timeline and milestones.",
+    duration: "Weeks 1-2"
   },
   {
-    title: "Policy Development",
-    description: "Creation of all required policies, procedures, and documentation using our proven templates.",
-    duration: "Week 3-6"
+    title: "🏗️ Implementation Services",
+    description: "Information Security Management System (ISMS) design, policy library development (50+ policies and procedures), risk treatment plan implementation and control deployment.",
+    duration: "Weeks 3-8"
   },
   {
-    title: "Control Implementation",
-    description: "Hands-on support to implement security controls and measures across your organization.",
-    duration: "Week 7-10"
+    title: "🎓 Training & Documentation",
+    description: "Comprehensive staff training programs across all levels, complete documentation package with professional ISMS documentation, implementation tools & systems.",
+    duration: "Weeks 9-10"
   },
   {
-    title: "Internal Audit",
-    description: "Comprehensive internal audit to identify any gaps before the certification audit.",
-    duration: "Week 11-12"
-  },
-  {
-    title: "Certification Support",
-    description: "Full support during the certification audit process with our expert consultants.",
-    duration: "Week 13-16"
+    title: "✅ Certification & Support",
+    description: "Stage 1 and Stage 2 audit preparation and support, certification body liaison, 12-month post-certification support and guidance.",
+    duration: "Weeks 11-12"
   }
 ];
 
@@ -189,3 +184,4 @@ const pricing = {
     secondaryCTA={{ text: "View All Packages", href: "/packages" }}
   />
 </Layout>
+
