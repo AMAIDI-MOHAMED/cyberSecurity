@@ -22,12 +22,6 @@ const content = {
     locations: {
       title: "Our Locations",
       description: "Serving clients across Finland and internationally with local expertise and global standards.",
-      helsinki: {
-        city: "Helsinki",
-        country: "Finland",
-        phone: "+358 9 123 4567",
-        email: "helsinki@cybersecurity.fi"
-      },
       tampere: {
         city: "Tampere",
         country: "Finland",
@@ -92,12 +86,6 @@ const content = {
     locations: {
       title: "Sijainnimme",
       description: "Palvelemme asiakkaita ympäri Suomea ja kansainvälisesti paikallisella asiantuntemuksella ja kansainvälisillä standardeilla.",
-      helsinki: {
-        city: "Helsinki",
-        country: "Suomi",
-        phone: "+358 9 123 4567",
-        email: "helsinki@cybersecurity.fi"
-      },
       tampere: {
         city: "Tampere",
         country: "Suomi",
@@ -231,26 +219,13 @@ const currentContent = content[lang];
         </p>
       </div>
 
-      <div class="grid md:grid-cols-2 gap-8">
-        <div class="bg-white p-8 rounded-xl shadow-sm">
-          <h3 class="text-2xl font-bold text-slate-900 mb-4">
-            {currentContent.locations.helsinki.city}
-          </h3>
-          <p class="text-slate-600 mb-4">{currentContent.locations.helsinki.country}</p>
-          <div class="space-y-3">
-            <p class="text-slate-600">{currentContent.locations.helsinki.address}</p>
-            <p class="text-slate-600">{currentContent.locations.helsinki.phone}</p>
-            <p class="text-slate-600">{currentContent.locations.helsinki.email}</p>
-          </div>
-        </div>
-
-        <div class="bg-white p-8 rounded-xl shadow-sm">
+      <div class="flex justify-center">
+        <div class="bg-white p-8 rounded-xl shadow-sm max-w-md w-full">
           <h3 class="text-2xl font-bold text-slate-900 mb-4">
             {currentContent.locations.tampere.city}
           </h3>
           <p class="text-slate-600 mb-4">{currentContent.locations.tampere.country}</p>
           <div class="space-y-3">
-            <p class="text-slate-600">{currentContent.locations.tampere.address}</p>
             <p class="text-slate-600">{currentContent.locations.tampere.phone}</p>
             <p class="text-slate-600">{currentContent.locations.tampere.email}</p>
           </div>

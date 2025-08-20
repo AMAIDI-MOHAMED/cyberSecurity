@@ -39,7 +39,6 @@ const fontSizeLabel = isFi ? 'Tekstin koko' : 'Font size';
           {companyDescription}
         </p>
         <div class="text-sm text-slate-500 space-y-1" aria-label={isFi ? 'Yhteystiedot' : 'Contact details'}>
-          <div>{contactDetails.address}</div>
           <div><a href={`tel:${contactDetails.phone}`} class="hover:text-teal-700" data-track="footer-contact" data-contact-type="phone">{contactDetails.phone}</a></div>
           <div><a href={`mailto:${contactDetails.email}`} class="hover:text-teal-700" data-track="footer-contact" data-contact-type="email">{contactDetails.email}</a></div>
           <div>{isFi ? 'Y-tunnus' : 'Business ID'}: {contactDetails.businessId}</div>
