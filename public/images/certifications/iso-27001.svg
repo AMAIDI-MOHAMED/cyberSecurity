@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="isoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1e40af;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#3b82f6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#60a5fa;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="shieldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffffff;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#f8fafc;stop-opacity:1" />
+    </linearGradient>
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="4" dy="4" stdDeviation="8" flood-color="#000" flood-opacity="0.2"/>
+    </filter>
+    <filter id="innerShadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feFlood flood-color="#1e40af" flood-opacity="0.1"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  
+  <!-- Background circle with gradient -->
+  <circle cx="200" cy="200" r="190" fill="url(#isoGradient)" filter="url(#shadow)"/>
+  
+  <!-- Outer ring -->
+  <circle cx="200" cy="200" r="170" fill="none" stroke="#ffffff" stroke-width="3" opacity="0.3"/>
+  
+  <!-- Shield background -->
+  <path d="M200 50 L280 100 L280 250 Q280 300 200 350 Q120 300 120 250 L120 100 Z" 
+        fill="url(#shieldGradient)" stroke="#e2e8f0" stroke-width="3" filter="url(#innerShadow)"/>
+  
+  <!-- Inner shield border -->
+  <path d="M200 60 L270 105 L270 245 Q270 285 200 330 Q130 285 130 245 L130 105 Z" 
+        fill="none" stroke="#1e40af" stroke-width="2" opacity="0.6"/>
+  
+  <!-- Lock body -->
+  <rect x="170" y="160" width="60" height="50" rx="6" fill="#1e40af"/>
+  <rect x="175" y="165" width="50" height="40" rx="4" fill="#ffffff"/>
+  
+  <!-- Lock shackle -->
+  <path d="M180 160 V140 C180 125 188 115 200 115 C212 115 220 125 220 140 V160" 
+        stroke="#1e40af" stroke-width="6" fill="none" stroke-linecap="round"/>
+  
+  <!-- Key hole -->
+  <circle cx="200" cy="185" r="5" fill="#1e40af"/>
+  <rect x="197" y="185" width="6" height="12" fill="#1e40af"/>
+  
+  <!-- ISO Text -->
+  <text x="200" y="250" text-anchor="middle" font-family="Arial, sans-serif" 
+        font-size="32" font-weight="bold" fill="#1e40af">ISO</text>
+  <text x="200" y="280" text-anchor="middle" font-family="Arial, sans-serif" 
+        font-size="28" font-weight="bold" fill="#1e40af">27001</text>
+  
+  <!-- Information Security -->
+  <text x="200" y="310" text-anchor="middle" font-family="Arial, sans-serif" 
+        font-size="14" fill="#64748b">Information Security</text>
+  <text x="200" y="325" text-anchor="middle" font-family="Arial, sans-serif" 
+        font-size="14" fill="#64748b">Management System</text>
+  
+  <!-- Checkmark badge -->
+  <circle cx="280" cy="120" r="25" fill="#10b981"/>
+  <path d="M270 120 L278 128 L295 110" stroke="#ffffff" stroke-width="4" 
+        fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  
+  <!-- Decorative elements -->
+  <circle cx="140" cy="140" r="3" fill="#fbbf24" opacity="0.8"/>
+  <circle cx="260" cy="160" r="3" fill="#fbbf24" opacity="0.8"/>
+  <circle cx="150" cy="260" r="3" fill="#fbbf24" opacity="0.8"/>
+  <circle cx="250" cy="280" r="3" fill="#fbbf24" opacity="0.8"/>
+</svg>

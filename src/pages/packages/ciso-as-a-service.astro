@@ -61,7 +61,6 @@ const cisoResponsibilities = [
 const servicePlans = [
   {
     name: "Essential CISO",
-    price: "€3,500/month",
     commitment: "6-month minimum",
     hours: "20 hours/month",
     suitable: "Small to medium businesses (10-100 employees)",
@@ -79,12 +78,11 @@ const servicePlans = [
     popular: false
   },
   {
-    name: "Business CISO",
-    price: "€6,500/month",
+    name: "Professional CISO",
     commitment: "12-month minimum",
     hours: "40 hours/month",
-    suitable: "Mid-size organizations (100-500 employees)",
-    description: "Comprehensive cybersecurity leadership and hands-on support",
+    suitable: "Medium to large businesses (100-500 employees)",
+    description: "Comprehensive cybersecurity leadership with dedicated support",
     features: [
       "Bi-weekly strategy sessions",
       "Monthly risk assessments",
@@ -101,27 +99,10 @@ const servicePlans = [
   },
   {
     name: "Enterprise CISO",
-    price: "€12,000/month",
-    commitment: "12-month minimum",
+    commitment: "24-month minimum",
     hours: "80 hours/month",
     suitable: "Large enterprises (500+ employees)",
-    description: "Full-service virtual CISO with dedicated support team",
-    features: [
-      "Weekly strategic consultations",
-      "Continuous risk monitoring",
-      "Full compliance management",
-      "Security transformation leadership",
-      "Advanced threat intelligence",
-      "Crisis management support",
-      "Security team development",
-      "Board and C-level engagement",
-      "24/7 emergency response",
-      "Dedicated security analyst support",
-      "Custom reporting and dashboards",
-      "Annual security program review"
-    ],
-    popular: false
-  }
+    description: "Full executive-level cybersecurity leadership and governance",
 ];
 
 const industryExpertise = [
@@ -263,7 +244,7 @@ const implementation = [
       <div class="text-center mb-12">
         <h2 class="text-3xl font-bold text-slate-900 mb-4">Why Choose Virtual CISO Services?</h2>
         <p class="text-lg text-slate-600 max-w-4xl mx-auto">
-          Get access to seasoned cybersecurity executives at a fraction of the cost of a full-time hire. 
+          Get access to seasoned cybersecurity executives with flexible engagement options. 
           Our virtual CISOs bring enterprise-level expertise to organizations of all sizes.
         </p>
       </div>
@@ -274,7 +255,7 @@ const implementation = [
             <svg class="w-6 h-6 text-teal-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"></path>
             </svg>
-            <h3 class="text-lg font-semibold text-teal-900">Cost-Effective</h3>
+            <h3 class="text-lg font-semibold text-teal-900">Flexible Engagement</h3>
           </div>
           <p class="text-teal-700">Save 60-70% compared to full-time CISO salaries and benefits</p>
         </div>
@@ -363,9 +344,6 @@ const implementation = [
             
             <div class="text-center mb-6">
               <h3 class="text-2xl font-bold text-slate-900 mb-2">{plan.name}</h3>
-              <div class="mb-2">
-                <span class="text-3xl font-bold text-teal-600">{plan.price}</span>
-              </div>
               <p class="text-sm text-slate-500 mb-2">{plan.commitment}</p>
               <p class="text-sm text-slate-600 mb-4">{plan.hours}</p>
               <p class="text-slate-700">{plan.description}</p>
@@ -534,81 +512,6 @@ const implementation = [
             </ul>
           </div>
         ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- ROI Calculator -->
-  <section class="py-16 bg-slate-50">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl font-bold text-slate-900 mb-4">Calculate Your ROI</h2>
-        <p class="text-lg text-slate-600 max-w-3xl mx-auto">
-          See how much you can save with virtual CISO services compared to hiring a full-time executive.
-        </p>
-      </div>
-      
-      <div class="bg-white rounded-lg shadow-lg p-8">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div>
-            <h3 class="text-lg font-semibold text-slate-900 mb-4">Full-Time CISO Costs</h3>
-            <ul class="space-y-3 text-sm">
-              <li class="flex justify-between">
-                <span class="text-slate-700">Annual Salary</span>
-                <span class="font-medium">€180,000 - €250,000</span>
-              </li>
-              <li class="flex justify-between">
-                <span class="text-slate-700">Benefits & Taxes (30%)</span>
-                <span class="font-medium">€54,000 - €75,000</span>
-              </li>
-              <li class="flex justify-between">
-                <span class="text-slate-700">Recruitment Costs</span>
-                <span class="font-medium">€25,000 - €40,000</span>
-              </li>
-              <li class="flex justify-between">
-                <span class="text-slate-700">Training & Certifications</span>
-                <span class="font-medium">€10,000 - €15,000</span>
-              </li>
-              <li class="border-t pt-3 flex justify-between font-semibold">
-                <span class="text-slate-900">Total Annual Cost</span>
-                <span class="text-red-600">€269,000 - €380,000</span>
-              </li>
-            </ul>
-          </div>
-          
-          <div>
-            <h3 class="text-lg font-semibold text-slate-900 mb-4">Virtual CISO Service</h3>
-            <ul class="space-y-3 text-sm">
-              <li class="flex justify-between">
-                <span class="text-slate-700">Essential Plan (12 months)</span>
-                <span class="font-medium">€42,000</span>
-              </li>
-              <li class="flex justify-between">
-                <span class="text-slate-700">Business Plan (12 months)</span>
-                <span class="font-medium">€78,000</span>
-              </li>
-              <li class="flex justify-between">
-                <span class="text-slate-700">Enterprise Plan (12 months)</span>
-                <span class="font-medium">€144,000</span>
-              </li>
-              <li class="flex justify-between">
-                <span class="text-slate-700">Setup & Onboarding</span>
-                <span class="font-medium">Included</span>
-              </li>
-              <li class="border-t pt-3 flex justify-between font-semibold">
-                <span class="text-slate-900">Potential Savings</span>
-                <span class="text-teal-600">60% - 85%</span>
-              </li>
-            </ul>
-          </div>
-        </div>
-        
-        <div class="mt-8 p-4 bg-teal-50 rounded-lg">
-          <p class="text-center text-teal-800">
-            <strong>Additional Benefits:</strong> Immediate availability, proven expertise, 
-            no recruitment risk, and flexible scaling as your organization grows.
-          </p>
-        </div>
       </div>
     </div>
   </section>

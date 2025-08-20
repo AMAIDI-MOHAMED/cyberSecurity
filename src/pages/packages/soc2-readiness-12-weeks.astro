@@ -185,40 +185,32 @@ const deliverables = [
   }
 ];
 
-const pricing = {
-  startingPrice: "€48,000",
-  note: "Investment varies based on organization size, system complexity, selected Trust Service Criteria, and existing security maturity. Type I and Type II audit preparation included.",
-  packages: [
-    {
-      name: "🔒 Essential (Security Only)",
-      price: "€48,000",
-      criteria: ["Security (64 controls)"],
-      suitable: "Small to medium SaaS companies, basic SOC 2 Type I compliance needs",
-      includes: "Security controls, policies, evidence collection, Type I audit prep"
-    },
-    {
-      name: "🟢 Standard (Security + Availability)",
-      price: "€62,000",
-      criteria: ["Security (64 controls)", "Availability (13 controls)"],
-      suitable: "Growing companies with uptime commitments and SLA requirements",
-      includes: "Security + Availability controls, monitoring, incident response, Type I/II prep"
-    },
-    {
-      name: "🏆 Comprehensive (All 5 Criteria)",
-      price: "€85,000",
-      criteria: ["Security", "Availability", "Processing Integrity", "Confidentiality", "Privacy"],
-      suitable: "Enterprise organizations, financial services, healthcare, full compliance requirements",
-      includes: "All Trust Service Criteria, comprehensive controls (115+ total), Type I/II audit readiness"
-    },
-    {
-      name: "🚀 Enterprise Plus (All Criteria + Ongoing)",
-      price: "€125,000",
-      criteria: ["All 5 Criteria + 12 months ongoing support"],
-      suitable: "Large enterprises requiring continuous compliance management and support",
-      includes: "Complete implementation + 12 months ongoing compliance monitoring and support"
-    }
-  ]
-};
+const packageOptions = [
+  {
+    name: "🔒 Essential (Security Only)",
+    criteria: ["Security (64 controls)"],
+    suitable: "Small to medium SaaS companies, basic SOC 2 Type I compliance needs",
+    includes: "Security controls, policies, evidence collection, Type I audit prep"
+  },
+  {
+    name: "🟢 Standard (Security + Availability)",
+    criteria: ["Security (64 controls)", "Availability (13 controls)"],
+    suitable: "Growing companies with uptime commitments and SLA requirements",
+    includes: "Security + Availability controls, monitoring, incident response, Type I/II prep"
+  },
+  {
+    name: "🏆 Comprehensive (All 5 Criteria)",
+    criteria: ["Security", "Availability", "Processing Integrity", "Confidentiality", "Privacy"],
+    suitable: "Enterprise organizations, financial services, healthcare, full compliance requirements",
+    includes: "All Trust Service Criteria, comprehensive controls (115+ total), Type I/II audit readiness"
+  },
+  {
+    name: "🚀 Enterprise Plus (All Criteria + Ongoing)",
+    criteria: ["All 5 Criteria + 12 months ongoing support"],
+    suitable: "Large enterprises requiring continuous compliance management and support",
+    includes: "Complete implementation + 12 months ongoing compliance monitoring and support"
+  }
+];
 ---
 
 <Layout title={title}>
@@ -388,13 +380,10 @@ const pricing = {
       </div>
       
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        {pricing.packages.map((pkg, index) => (
+        {packageOptions.map((pkg, index) => (
           <div class={`rounded-lg shadow-lg p-8 ${index === 1 ? 'bg-teal-50 border-2 border-teal-200' : 'bg-white border border-slate-200'}`}>
             <div class="text-center mb-6">
               <h3 class="text-xl font-semibold text-slate-900 mb-2">{pkg.name}</h3>
-              <div class="mb-4">
-                <span class="text-3xl font-bold text-teal-600">{pkg.price}</span>
-              </div>
               <p class="text-sm text-slate-600">{pkg.suitable}</p>
             </div>
             

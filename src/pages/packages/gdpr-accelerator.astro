@@ -265,51 +265,44 @@ const specialCategories = [
   }
 ];
 
-const pricing = {
-  basePrice: "€45,000",
-  note: "Pricing varies based on organization size, data complexity, and processing activities",
-  tiers: [
-    {
-      name: "Startup Package",
-      price: "€25,000",
-      suitable: "Small companies (up to 50 employees)",
-      includes: [
-        "Basic data mapping",
-        "Essential policies and procedures",
-        "Privacy notice templates",
-        "Data subject rights setup",
-        "3 months support"
-      ]
-    },
-    {
-      name: "Business Package",
-      price: "€45,000",
-      suitable: "Medium companies (50-250 employees)",
-      includes: [
-        "Comprehensive data mapping",
-        "Full policy suite",
-        "Privacy impact assessments",
-        "Training programs",
-        "Technical implementation support",
-        "6 months support"
-      ]
-    },
-    {
-      name: "Enterprise Package",
-      price: "€85,000",
-      suitable: "Large organizations (250+ employees)",
-      includes: [
-        "Complex data mapping and modeling",
-        "Advanced privacy controls",
-        "Multi-jurisdiction compliance",
-        "Executive training",
-        "Ongoing compliance monitoring",
-        "12 months support",
-        "Annual compliance review"
-      ]
-    }
-  ]
-};
+const packageTiers = [
+  {
+    name: "Startup Package",
+    suitable: "Small companies (up to 50 employees)",
+    includes: [
+      "Basic data mapping",
+      "Essential policies and procedures",
+      "Privacy notice templates",
+      "Data subject rights setup",
+      "3 months support"
+    ]
+  },
+  {
+    name: "Business Package",
+    suitable: "Medium companies (50-250 employees)",
+    includes: [
+      "Comprehensive data mapping",
+      "Full policy suite",
+      "Privacy impact assessments",
+      "Training programs",
+      "Technical implementation support",
+      "6 months support"
+    ]
+  },
+  {
+    name: "Enterprise Package",
+    suitable: "Large organizations (250+ employees)",
+    includes: [
+      "Complex data mapping and modeling",
+      "Advanced privacy controls",
+      "Multi-jurisdiction compliance",
+      "Executive training",
+      "Ongoing compliance monitoring",
+      "12 months support",
+      "Annual compliance review"
+    ]
+  }
+];
 ---
 
 <Layout title={title}>
@@ -540,13 +533,10 @@ const pricing = {
       </div>
       
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        {pricing.tiers.map((tier, index) => (
+        {packageTiers.map((tier, index) => (
           <div class={`rounded-lg shadow-lg p-8 ${index === 1 ? 'bg-teal-50 border-2 border-teal-200 transform scale-105' : 'bg-white border border-slate-200'}`}>
             <div class="text-center mb-6">
               <h3 class="text-xl font-semibold text-slate-900 mb-2">{tier.name}</h3>
-              <div class="mb-4">
-                <span class="text-3xl font-bold text-teal-600">{tier.price}</span>
-              </div>
               <p class="text-sm text-slate-600">{tier.suitable}</p>
             </div>
             

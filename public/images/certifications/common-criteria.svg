@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="ccGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1f2937;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#374151;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#6b7280;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="diamondGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffffff;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#f9fafb;stop-opacity:1" />
+    </linearGradient>
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="4" dy="4" stdDeviation="8" flood-color="#000" flood-opacity="0.2"/>
+    </filter>
+  </defs>
+  
+  <!-- Background circle -->
+  <circle cx="200" cy="200" r="190" fill="url(#ccGradient)" filter="url(#shadow)"/>
+  
+  <!-- Outer ring -->
+  <circle cx="200" cy="200" r="170" fill="none" stroke="#ffffff" stroke-width="3" opacity="0.3"/>
+  
+  <!-- Common Criteria Diamond -->
+  <polygon points="200,70 270,140 200,210 130,140" 
+           fill="url(#diamondGradient)" stroke="#e2e8f0" stroke-width="3"/>
+  
+  <!-- CC symbol -->
+  <text x="200" y="150" text-anchor="middle" font-family="Arial, sans-serif" 
+        font-size="32" font-weight="bold" fill="#1f2937">CC</text>
+  
+  <!-- Evaluation levels (EAL1-EAL7) -->
+  <g fill="#fbbf24">
+    <rect x="160" y="230" width="15" height="10"/>
+    <rect x="180" y="225" width="15" height="15"/>
+    <rect x="200" y="220" width="15" height="20"/>
+    <rect x="220" y="225" width="15" height="15"/>
+    <rect x="240" y="230" width="15" height="10"/>
+  </g>
+  
+  <!-- Security shield overlay -->
+  <path d="M200 155 L185 165 L185 180 L200 190 L215 180 L215 165 Z" 
+        fill="none" stroke="#1f2937" stroke-width="3"/>
+  
+  <!-- Common Criteria Text -->
+  <text x="200" y="270" text-anchor="middle" font-family="Arial, sans-serif" 
+        font-size="24" font-weight="bold" fill="#ffffff">Common</text>
+  <text x="200" y="295" text-anchor="middle" font-family="Arial, sans-serif" 
+        font-size="24" font-weight="bold" fill="#ffffff">Criteria</text>
+  
+  <!-- Security Evaluation -->
+  <text x="200" y="320" text-anchor="middle" font-family="Arial, sans-serif" 
+        font-size="16" fill="#d1d5db">Security Evaluation</text>
+  <text x="200" y="340" text-anchor="middle" font-family="Arial, sans-serif" 
+        font-size="14" fill="#d1d5db">International Standard</text>
+  
+  <!-- ISO badge -->
+  <circle cx="280" cy="100" r="28" fill="#10b981"/>
+  <text x="280" y="108" text-anchor="middle" font-family="Arial, sans-serif" 
+        font-size="16" font-weight="bold" fill="#ffffff">ISO</text>
+  
+  <!-- Evaluation level indicators -->
+  <text x="200" y="255" text-anchor="middle" font-family="Arial, sans-serif" 
+        font-size="12" fill="#6b7280">EAL 1-7</text>
+</svg>

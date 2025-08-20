@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="eidasGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1e40af;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#3b82f6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#60a5fa;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="cardGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffffff;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#eff6ff;stop-opacity:1" />
+    </linearGradient>
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="4" dy="4" stdDeviation="8" flood-color="#000" flood-opacity="0.2"/>
+    </filter>
+  </defs>
+  
+  <!-- Background circle -->
+  <circle cx="200" cy="200" r="190" fill="url(#eidasGradient)" filter="url(#shadow)"/>
+  
+  <!-- Outer ring -->
+  <circle cx="200" cy="200" r="170" fill="none" stroke="#ffffff" stroke-width="3" opacity="0.3"/>
+  
+  <!-- eIDAS Digital ID Card -->
+  <rect x="100" y="100" width="200" height="120" rx="20" fill="url(#cardGradient)" stroke="#e2e8f0" stroke-width="3"/>
+  
+  <!-- Chip symbol -->
+  <rect x="120" y="125" width="35" height="25" rx="4" fill="#fbbf24" stroke="#f59e0b" stroke-width="2"/>
+  <g stroke="#f59e0b" stroke-width="2">
+    <line x1="125" y1="132" x2="150" y2="132"/>
+    <line x1="125" y1="137" x2="150" y2="137"/>
+    <line x1="125" y1="142" x2="150" y2="142"/>
+  </g>
+  
+  <!-- Digital ID lines -->
+  <g stroke="#1e40af" stroke-width="3">
+    <line x1="170" y1="130" x2="270" y2="130"/>
+    <line x1="170" y1="140" x2="250" y2="140"/>
+    <line x1="170" y1="150" x2="230" y2="150"/>
+  </g>
+  
+  <!-- Trust seal -->
+  <circle cx="250" cy="175" r="20" fill="#10b981"/>
+  <path d="M240 175 L248 183 L260 170" stroke="#ffffff" stroke-width="4" 
+        fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  
+  <!-- Digital signature waves -->
+  <g stroke="#1e40af" stroke-width="3" fill="none" opacity="0.7">
+    <path d="M120 180 Q150 175 180 180 T240 180"/>
+    <path d="M120 195 Q150 190 180 195 T240 195"/>
+  </g>
+  
+  <!-- eIDAS Text -->
+  <text x="200" y="260" text-anchor="middle" font-family="Arial, sans-serif" 
+        font-size="32" font-weight="bold" fill="#ffffff">eIDAS</text>
+  
+  <!-- Electronic Identification -->
+  <text x="200" y="290" text-anchor="middle" font-family="Arial, sans-serif" 
+        font-size="16" fill="#dbeafe">Electronic Identification</text>
+  <text x="200" y="310" text-anchor="middle" font-family="Arial, sans-serif" 
+        font-size="16" fill="#dbeafe">&amp; Trust Services</text>
+  
+  <!-- EU compliance badge -->
+  <circle cx="270" cy="90" r="28" fill="#fbbf24"/>
+  <text x="270" y="98" text-anchor="middle" font-family="Arial, sans-serif" 
+        font-size="18" font-weight="bold" fill="#ffffff">EU</text>
+  
+  <!-- Security lock -->
+  <rect x="210" y="165" width="20" height="12" rx="2" fill="#1e40af"/>
+  <path d="M215 165 V160 C215 157 216.5 155 220 155 C223.5 155 225 157 225 160 V165" 
+        stroke="#1e40af" stroke-width="2" fill="none"/>
+  
+  <!-- Digital elements -->
+  <circle cx="130" cy="170" r="3" fill="#10b981"/>
+  <circle cx="270" cy="160" r="3" fill="#10b981"/>
+  <circle cx="150" cy="200" r="3" fill="#10b981"/>
+  <circle cx="250" cy="200" r="3" fill="#10b981"/>
+</svg>

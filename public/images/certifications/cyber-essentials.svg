@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="cyberGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#059669;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#10b981;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#34d399;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="shieldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffffff;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#f0fdf4;stop-opacity:1" />
+    </linearGradient>
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="4" dy="4" stdDeviation="8" flood-color="#000" flood-opacity="0.2"/>
+    </filter>
+  </defs>
+  
+  <!-- Background circle -->
+  <circle cx="200" cy="200" r="190" fill="url(#cyberGradient)" filter="url(#shadow)"/>
+  
+  <!-- Outer ring -->
+  <circle cx="200" cy="200" r="170" fill="none" stroke="#ffffff" stroke-width="3" opacity="0.3"/>
+  
+  <!-- UK Government Shield -->
+  <path d="M200 50 L280 100 L280 220 Q280 260 200 310 Q120 260 120 220 L120 100 Z" 
+        fill="url(#shieldGradient)" stroke="#e2e8f0" stroke-width="3"/>
+  
+  <!-- Crown symbol (UK Government) -->
+  <path d="M150 110 L170 90 L190 110 L210 90 L230 110 L250 90 L270 110 L260 130 L140 130 Z" 
+        fill="#fbbf24" stroke="#f59e0b" stroke-width="2"/>
+  
+  <!-- Central cyber security symbol -->
+  <circle cx="200" cy="180" r="35" fill="none" stroke="#059669" stroke-width="4"/>
+  <path d="M200 160 L185 170 L185 190 L200 200 L215 190 L215 170 Z" fill="#059669"/>
+  
+  <!-- Cyber Elements -->
+  <g stroke="#059669" stroke-width="3" fill="none">
+    <circle cx="175" cy="155" r="6"/>
+    <circle cx="225" cy="155" r="6"/>
+    <circle cx="175" cy="205" r="6"/>
+    <circle cx="225" cy="205" r="6"/>
+    
+    <!-- Connections -->
+    <line x1="181" y1="155" x2="194" y2="168"/>
+    <line x1="219" y1="155" x2="206" y2="168"/>
+    <line x1="181" y1="205" x2="194" y2="192"/>
+    <line x1="219" y1="205" x2="206" y2="192"/>
+  </g>
+  
+  <!-- Plus symbol -->
+  <circle cx="260" cy="140" r="20" fill="#10b981"/>
+  <path d="M250 140 L270 140 M260 130 L260 150" stroke="#ffffff" stroke-width="4" stroke-linecap="round"/>
+  
+  <!-- CYBER Text -->
+  <text x="200" y="240" text-anchor="middle" font-family="Arial, sans-serif" 
+        font-size="28" font-weight="bold" fill="#059669">CYBER</text>
+  <text x="200" y="270" text-anchor="middle" font-family="Arial, sans-serif" 
+        font-size="24" font-weight="bold" fill="#059669">ESSENTIALS</text>
+  <text x="200" y="295" text-anchor="middle" font-family="Arial, sans-serif" 
+        font-size="20" font-weight="bold" fill="#10b981">PLUS</text>
+  
+  <!-- UK Government -->
+  <text x="200" y="320" text-anchor="middle" font-family="Arial, sans-serif" 
+        font-size="16" fill="#64748b">UK Government</text>
+  <text x="200" y="340" text-anchor="middle" font-family="Arial, sans-serif" 
+        font-size="16" fill="#64748b">Security Standard</text>
+  
+  <!-- Government badge -->
+  <rect x="265" y="75" width="40" height="25" rx="12" fill="#1e40af"/>
+  <text x="285" y="92" text-anchor="middle" font-family="Arial, sans-serif" 
+        font-size="14" font-weight="bold" fill="#ffffff">UK</text>
+  
+  <!-- Security indicators -->
+  <circle cx="150" cy="180" r="4" fill="#10b981"/>
+  <circle cx="250" cy="180" r="4" fill="#10b981"/>
+  <circle cx="150" cy="220" r="4" fill="#10b981"/>
+  <circle cx="250" cy="220" r="4" fill="#10b981"/>
+  
+  <!-- Checkmark verification -->
+  <circle cx="280" cy="120" r="18" fill="#10b981"/>
+  <path d="M272 120 L278 126 L288 115" stroke="#ffffff" stroke-width="3" 
+        fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

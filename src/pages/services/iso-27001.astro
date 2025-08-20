@@ -64,7 +64,6 @@ const serviceData = {
       ]
     }
   ],
-  pricing: lang === 'fi' ? 'alkaen 15 000 € tyypilliselle laajuudelle' : 'from €15,000 for typical scope',
   caseStudy: {
     title: lang === 'fi' ? 'SaaS-yritys sai ISO 27001 -sertifikaatin 90 päivässä' : 'SaaS company achieved ISO 27001 certification in 90 days',
     description: lang === 'fi' ? 'Teknologiayritys pystyi osoittamaan tietoturvansa asiakkaille ja kasvattamaan liiketoimintaansa 40%.' : 'Technology company was able to demonstrate their security to customers and grew their business by 40%.',
@@ -78,10 +77,6 @@ const serviceData = {
     {
       question: lang === 'fi' ? 'Kuinka kauan ISO 27001 -sertifiointi kestää?' : 'How long does ISO 27001 certification take?',
       answer: lang === 'fi' ? 'Tyypillisesti 90-120 päivää Fast-Track -ohjelmalla. Perinteinen prosessi voi kestää 6-12 kuukautta.' : 'Typically 90-120 days with our Fast-Track program. Traditional process can take 6-12 months.'
-    },
-    {
-      question: lang === 'fi' ? 'Mikä on ISO 27001:n kustannukset?' : 'What are the costs of ISO 27001?',
-      answer: lang === 'fi' ? 'Fast-Track -ohjelma maksaa alkaen 15 000 €. Hinta riippuu organisaation koosta ja monimutkaisuudesta.' : 'Fast-Track program costs from €15,000. Price depends on organization size and complexity.'
     },
     {
       question: lang === 'fi' ? 'Onko ISO 27001 pakollinen?' : 'Is ISO 27001 mandatory?',
@@ -180,24 +175,8 @@ const serviceData = {
   </section>
 
   <!-- Pricing -->
-  <section class="py-20 bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <h2 class="text-3xl font-bold text-slate-900 mb-4">
-        {lang === 'fi' ? 'Hinnoittelu' : 'Pricing'}
-      </h2>
-      <p class="text-xl text-slate-600 mb-8">
-        {serviceData.pricing}
-      </p>
-      <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <Button href={lang === 'fi' ? '/fi/contact?consultation=true' : '/contact?consultation=true'} variant="primary" className="text-lg px-8 py-4">
-          {lang === 'fi' ? 'Varaa konsultaatio' : 'Book consultation'}
-        </Button>
-        <Button href={lang === 'fi' ? '/fi/packages/iso-27001-fast-track' : '/packages/iso-27001-fast-track'} variant="secondary" className="text-lg px-8 py-4">
-          {lang === 'fi' ? 'Katso Fast-Track -paketti' : 'View Fast-Track package'}
-        </Button>
-      </div>
-    </div>
-  </section>
+    <!-- Case Study -->
+  <section class="py-20 bg-slate-50">
 
   <!-- Case Study -->
   <section class="py-20 bg-teal-50">

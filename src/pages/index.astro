@@ -11,7 +11,7 @@ const lang = currentPath.startsWith('/fi') ? 'fi' : 'en';
 const heroContent = {
   title: "Cybersecurity Compliance Made Simple for Finnish Businesses",
   subtitle: "Fast-track your ISO 27001, NIS2, and GDPR compliance with our proven 90-day programs. Expert guidance, complete documentation, and ongoing support included.",
-  description: "Trusted by 200+ Finnish companies • ISO 27001 Lead Auditors • 95% certification success rate",
+  description: "Expert cybersecurity compliance services for Finnish companies • ISO 27001 Lead Auditors • Professional implementation services",
   primaryCTA: { text: "Get Free Compliance Assessment", href: "/contact" },
   secondaryCTA: { text: "Download ISO 27001 Toolkit", href: "/downloads" }
 };
@@ -86,13 +86,6 @@ const industries = [
     image: "/images/industries/manufacturing.svg",
     description: "Industrial IoT security, supply chain protection, and operational continuity for manufacturing and industrial organizations."
   }
-];
-
-const trustSignals = [
-  { number: "200+", label: "Successful Implementations", description: "Organizations served across industries" },
-  { number: "95%", label: "First-time Certification Rate", description: "Industry-leading success rate" },
-  { number: "90", label: "Days Average", description: "Time to ISO 27001 certification" },
-  { number: "€500K+", label: "Average Cost Savings", description: "vs. traditional consulting" }
 ];
 
 const latestResources = [
@@ -351,32 +344,6 @@ const latestResources = [
             </div>
           </div>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Trust Signals Section -->
-  <section class="py-20 bg-white overflow-hidden">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-16">
-        <h2 class="text-4xl font-bold text-slate-900 mb-6">Success Metrics</h2>
-        <p class="text-xl text-slate-600 max-w-3xl mx-auto">
-          Proven track record of delivering cybersecurity excellence with Finnish market expertise and international standards.
-        </p>
-      </div>
-      
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-        {trustSignals.map((signal, index) => (
-          <div class="text-center group" style={`animation-delay: ${index * 100}ms`}>
-            <div class="text-5xl font-bold text-teal-600 mb-3 group-hover:text-teal-700 transition-colors duration-300">
-              {signal.number}
-            </div>
-            <div class="text-xl font-semibold text-slate-900 mb-2 group-hover:text-teal-600 transition-colors duration-300">{signal.label}</div>
-            <div class="text-slate-600">{signal.description}</div>
-            <!-- Simple underline -->
-            <div class="w-0 h-0.5 bg-teal-600 mx-auto mt-2 group-hover:w-16 transition-all duration-300"></div>
-          </div>
-        ))}
       </div>
     </div>
   </section>

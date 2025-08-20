@@ -49,7 +49,7 @@ const companyCertifications = [
     issuer: "DNV GL",
     validUntil: "2025-12-31",
     description: "International standard for information security management systems",
-    logo: "/certifications/iso27001.png"
+    logo: "/images/certifications/iso-27001.svg"
   },
   {
     name: "SOC 2 Type II",
@@ -57,7 +57,7 @@ const companyCertifications = [
     issuer: "AICPA",
     validUntil: "2024-12-31",
     description: "Third-party assurance on security, availability, and confidentiality controls",
-    logo: "/certifications/soc2.png"
+    logo: "/images/certifications/soc-2.svg"
   },
   {
     name: "Cyber Essentials Plus",
@@ -65,7 +65,7 @@ const companyCertifications = [
     issuer: "IASME Consortium",
     validUntil: "2024-12-31",
     description: "Government-backed cybersecurity certification for organizations",
-    logo: "/certifications/cyber-essentials.png"
+    logo: "/images/certifications/cyber-essentials.svg"
   },
   {
     name: "GDPR Compliance",
@@ -73,7 +73,39 @@ const companyCertifications = [
     issuer: "EU Commission",
     validUntil: "Ongoing",
     description: "Full compliance with European data protection regulations",
-    logo: "/certifications/gdpr.png"
+    logo: "/images/certifications/gdpr.svg"
+  },
+  {
+    name: "NIS2 Compliance",
+    type: "Network and Information Security Directive",
+    issuer: "EU Commission",
+    validUntil: "Ongoing",
+    description: "Compliance with the updated Network and Information Security Directive",
+    logo: "/images/certifications/nis2.svg"
+  },
+  {
+    name: "DORA Compliance",
+    type: "Digital Operational Resilience Act",
+    issuer: "EU Commission",
+    validUntil: "Ongoing",
+    description: "Compliance with digital operational resilience requirements for financial services",
+    logo: "/images/certifications/dora.svg"
+  },
+  {
+    name: "eIDAS Compliance",
+    type: "Electronic Identification and Trust Services",
+    issuer: "EU Commission",
+    validUntil: "Ongoing",
+    description: "Compliance with electronic identification and trust services regulation",
+    logo: "/images/certifications/eidas.svg"
+  },
+  {
+    name: "Common Criteria",
+    type: "Security Evaluation Standard",
+    issuer: "ISO/IEC 15408",
+    validUntil: "2025-12-31",
+    description: "International standard for computer security certification and evaluation",
+    logo: "/images/certifications/common-criteria.svg"
   }
 ];
 
@@ -170,20 +202,24 @@ const currentContent = content[lang];
         <p class="text-xl text-slate-600">{currentContent.certifications.subtitle}</p>
       </div>
       
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {companyCertifications.map((cert) => (
-          <div class="bg-white border border-slate-200 rounded-lg p-6 shadow-md">
-            <div class="flex items-start space-x-4">
-              <div class="w-16 h-16 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                <div class="text-blue-600 text-2xl font-bold">{cert.name.split(' ')[0]}</div>
+          <div class="bg-white border border-slate-200 rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow">
+            <div class="flex flex-col items-center text-center">
+              <div class="w-32 h-32 mb-6 flex items-center justify-center bg-slate-50 rounded-lg">
+                <img src={cert.logo} alt={cert.name} class="w-28 h-28 object-contain" />
               </div>
-              <div class="flex-1">
+              <div class="w-full">
                 <h3 class="text-xl font-semibold text-slate-900 mb-2">{cert.name}</h3>
                 <p class="text-blue-600 font-medium mb-2">{cert.type}</p>
-                <p class="text-slate-600 mb-3">{cert.description}</p>
-                <div class="flex items-center justify-between text-sm">
-                  <span class="text-slate-500">Issued by: {cert.issuer}</span>
-                  <span class="text-slate-500">Valid until: {cert.validUntil}</span>
+                <p class="text-slate-600 mb-4 text-sm">{cert.description}</p>
+                <div class="border-t pt-4 space-y-1">
+                  <div class="text-sm text-slate-500">
+                    <span class="font-medium">Issued by:</span> {cert.issuer}
+                  </div>
+                  <div class="text-sm text-slate-500">
+                    <span class="font-medium">Valid until:</span> {cert.validUntil}
+                  </div>
                 </div>
               </div>
             </div>
