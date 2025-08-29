@@ -1,13 +1,276 @@
 ---
 import Layout from '@/layouts/Layout.astro';
-const title = 'Policy Governance';
-const description = 'Create a clear, owned, and maintained security policy architecture mapped to compliance requirements.';
+import Icon from '@/components/ui/icons/Icon.astro';
+import Button from '@/components/ui/Button.astro';
+
+const currentPath = Astro.url.pathname;
+const lang = currentPath.startsWith('/fi') ? 'fi' : 'en';
+
+const title = lang === 'fi' ? 'Politiikkahallinta' : 'Policy Governance';
+const description = lang === 'fi' 
+  ? 'Luo selkeä, omistettu ja ylläpidetty tietoturvapolitiikka-arkkitehtuuri, joka on kartoitettu compliance-vaatimuksiin.'
+  : 'Create a clear, owned, and maintained security policy architecture mapped to compliance requirements.';
+
+const policyFramework = [
+  {
+    icon: 'document',
+    titleFi: 'Politiikka-arkkitehtuuri',
+    titleEn: 'Policy Architecture',
+    descFi: 'Hierarkkinen politiikkarakenne standardeista prosesseihin',
+    descEn: 'Hierarchical policy structure from standards to procedures'
+  },
+  {
+    icon: 'users',
+    titleFi: 'Omistajuusmalli',
+    titleEn: 'Ownership Model',
+    descFi: 'Selkeät roolit ja vastuut politiikkojen hallinnassa',
+    descEn: 'Clear roles and responsibilities in policy management'
+  },
+  {
+    icon: 'refresh-cw',
+    titleFi: 'Elinkaaren hallinta',
+    titleEn: 'Lifecycle Management',
+    descFi: 'Politiikkojen luonti, päivitys ja poistamisprosessit',
+    descEn: 'Policy creation, update and retirement processes'
+  },
+  {
+    icon: 'shield-check',
+    titleFi: 'Compliance-kartoitus',
+    titleEn: 'Compliance Mapping',
+    descFi: 'Politiikkojen linkitys säädöksiin ja standardeihin',
+    descEn: 'Policy mapping to regulations and standards'
+  }
+];
+
+const policyCategories = [
+  {
+    icon: 'building',
+    titleFi: 'Organisaatiotason politiikat',
+    titleEn: 'Organizational Policies',
+    descFi: 'Ylätason strategiset politiikat ja periaatteet',
+    descEn: 'High-level strategic policies and principles',
+    examplesFi: ['Tietoturvapolitiikka', 'Riskienhallintapolitiikka', 'Henkilöstöturvallisuus'],
+    examplesEn: ['Information Security Policy', 'Risk Management Policy', 'Personnel Security']
+  },
+  {
+    icon: 'cog',
+    titleFi: 'Operatiiviset politiikat',
+    titleEn: 'Operational Policies',
+    descFi: 'Käytännön toimintaa ohjaavat politiikat',
+    descEn: 'Policies guiding practical operations',
+    examplesFi: ['Käyttöoikeuspolitiikka', 'Varmuuskopiointipolitiikka', 'Muutoshallinta'],
+    examplesEn: ['Access Control Policy', 'Backup Policy', 'Change Management']
+  },
+  {
+    icon: 'tool',
+    titleFi: 'Tekniset politiikat',
+    titleEn: 'Technical Policies',
+    descFi: 'IT-järjestelmien teknisiä vaatimuksia määrittävät politiikat',
+    descEn: 'Policies defining technical requirements for IT systems',
+    examplesFi: ['Salauspolitiikka', 'Verkkoturvapolitiikka', 'Pilvipolitiikka'],
+    examplesEn: ['Encryption Policy', 'Network Security Policy', 'Cloud Policy']
+  }
+];
+
+const governanceProcess = [
+  {
+    titleFi: 'Suunnittelu',
+    titleEn: 'Planning',
+    itemsFi: ['Politiikka-arkkitehtuurin suunnittelu', 'Omistajuuksien määrittely', 'Aikataulutus ja resursointi', 'Stakeholder-analyysi'],
+    itemsEn: ['Policy architecture planning', 'Ownership definition', 'Scheduling and resourcing', 'Stakeholder analysis']
+  },
+  {
+    titleFi: 'Kehittäminen',
+    titleEn: 'Development',
+    itemsFi: ['Politiikkojen laatiminen', 'Stakeholder-kuuleminen', 'Lakiasiantuntijoiden konsultointi', 'Sisäinen arviointi'],
+    itemsEn: ['Policy drafting', 'Stakeholder consultation', 'Legal expert consultation', 'Internal review']
+  },
+  {
+    titleFi: 'Hyväksyntä',
+    titleEn: 'Approval',
+    itemsFi: ['Johdon katselmointi', 'Muodollinen hyväksyntä', 'Julkaisuprosessi', 'Kommunikaatio'],
+    itemsEn: ['Management review', 'Formal approval', 'Publication process', 'Communication']
+  },
+  {
+    titleFi: 'Ylläpito',
+    titleEn: 'Maintenance',
+    itemsFi: ['Säännölliset katselmukset', 'Päivitystarpeiden arviointi', 'Versioiden hallinta', 'Arkistointi'],
+    itemsEn: ['Regular reviews', 'Update needs assessment', 'Version control', 'Archiving']
+  }
+];
+
+const complianceMapping = [
+  {
+    icon: 'shield',
+    titleFi: 'ISO 27001',
+    titleEn: 'ISO 27001',
+    descFi: 'Liite A kontrollien kartoitus politiikkoihin',
+    descEn: 'Annex A controls mapping to policies'
+  },
+  {
+    icon: 'globe',
+    titleFi: 'GDPR',
+    titleEn: 'GDPR',
+    descFi: 'Tietosuoja-artiklojen vaatimusten täyttäminen',
+    descEn: 'Meeting data protection article requirements'
+  },
+  {
+    icon: 'building-2',
+    titleFi: 'SOC 2',
+    titleEn: 'SOC 2',
+    descFi: 'Trust Services Criteria -vaatimusten täyttäminen',
+    descEn: 'Meeting Trust Services Criteria requirements'
+  },
+  {
+    icon: 'flag',
+    titleFi: 'NIS2/DORA',
+    titleEn: 'NIS2/DORA',
+    descFi: 'EU-säädösten vaatimusten täyttäminen',
+    descEn: 'Meeting EU regulation requirements'
+  }
+];
+
+const implementationSteps = [
+  { step: '1', fi: 'Arkkitehtuurin suunnittelu', en: 'Architecture Design', fiDesc: 'Politiikkahierarkian ja -kategorioiden määrittely', enDesc: 'Policy hierarchy and category definition' },
+  { step: '2', fi: 'Omistajuuksien määrittely', en: 'Ownership Assignment', fiDesc: 'Vastuuhenkilöiden ja roolien määrittäminen', enDesc: 'Responsible persons and role assignment' },
+  { step: '3', fi: 'Sisällön kehittäminen', en: 'Content Development', fiDesc: 'Politiikkojen laatiminen ja tarkastelu', enDesc: 'Policy drafting and review' },
+  { step: '4', fi: 'Hyväksyntäprosessi', en: 'Approval Process', fiDesc: 'Muodollinen hyväksyntä ja julkaisu', enDesc: 'Formal approval and publication' },
+  { step: '5', fi: 'Ylläpitomalli', en: 'Maintenance Model', fiDesc: 'Jatkuvan ylläpidon prosessien käyttöönotto', enDesc: 'Ongoing maintenance process implementation' }
+];
 ---
 <Layout title={title} description={description}>
-  <section class="py-16 bg-white">
-    <div class="max-w-3xl mx-auto px-4">
-      <h1 class="text-3xl font-bold text-slate-900">{title}</h1>
-      <p class="mt-4 text-slate-600">{description}</p>
+  <section class="bg-gradient-to-br from-purple-50 via-white to-indigo-50 py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-4xl">
+        <h1 class="text-4xl lg:text-5xl font-bold text-slate-900 mb-6">{title}</h1>
+        <p class="text-xl text-slate-600 mb-8">{description}</p>
+        <div class="bg-white rounded-xl p-6 shadow-sm border border-slate-200">
+          <h2 class="text-lg font-semibold text-slate-900 mb-4">{lang==='fi' ? 'Mitä saat?' : 'What you get'}</h2>
+          <p class="text-slate-600">{lang==='fi' ? 'Kattavan politiikkakehikon, jossa jokainen politiikka on selkeästi omistettu, säännöllisesti päivitetty ja linkitetty compliance-vaatimuksiin. Järjestelmä, joka kasvaa organisaatiosi mukana.' : 'A comprehensive policy framework where every policy is clearly owned, regularly updated, and linked to compliance requirements. A system that grows with your organization.'}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-slate-900 mb-4">{lang==='fi' ? 'Politiikkakehikon perusteet' : 'Policy Framework Foundations'}</h2>
+        <p class="text-xl text-slate-600 max-w-3xl mx-auto">{lang==='fi' ? 'Rakennamme politiikkahallintajärjestelmän, joka tukee organisaatiosi tavoitteita ja täyttää säädösvaatimukset.' : 'We build a policy management system that supports your organizational objectives and meets regulatory requirements.'}</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {policyFramework.map(pf => (
+          <div class="bg-gradient-to-br from-slate-50 to-white p-8 rounded-xl border border-slate-200 hover:shadow-xl transition-all duration-300">
+            <div class="w-16 h-16 bg-purple-100 rounded-xl flex items-center justify-center mb-6">
+              <Icon name={pf.icon} className="w-8 h-8 text-purple-600" />
+            </div>
+            <h3 class="text-xl font-bold text-slate-900 mb-2">{lang==='fi' ? pf.titleFi : pf.titleEn}</h3>
+            <p class="text-slate-600">{lang==='fi' ? pf.descFi : pf.descEn}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-slate-900 mb-4">{lang==='fi' ? 'Politiikkakategoriat' : 'Policy Categories'}</h2>
+        <p class="text-xl text-slate-600 max-w-3xl mx-auto">{lang==='fi' ? 'Järjestämme politiikat selkeisiin kategorioihin, jotka kattavat kaikki organisaation toiminta-alueet.' : 'We organize policies into clear categories that cover all organizational areas.'}</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {policyCategories.map(pc => (
+          <div class="bg-white p-8 rounded-xl border border-slate-200 hover:shadow-lg transition-all duration-300">
+            <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
+              <Icon name={pc.icon} className="w-6 h-6 text-purple-600" />
+            </div>
+            <h3 class="text-xl font-bold text-slate-900 mb-2">{lang==='fi' ? pc.titleFi : pc.titleEn}</h3>
+            <p class="text-slate-600 mb-4">{lang==='fi' ? pc.descFi : pc.descEn}</p>
+            <div class="text-sm">
+              <h4 class="font-semibold text-slate-800 mb-2">{lang==='fi' ? 'Esimerkkejä:' : 'Examples:'}</h4>
+              <ul class="space-y-1">
+                {(lang==='fi' ? pc.examplesFi : pc.examplesEn).map(example => (
+                  <li class="text-slate-600">• {example}</li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-slate-900 mb-4">{lang==='fi' ? 'Hallintaprosessi' : 'Governance Process'}</h2>
+        <p class="text-xl text-slate-600 max-w-3xl mx-auto">{lang==='fi' ? 'Strukturoitu lähestymistapa politiikkojen koko elinkaaren hallintaan.' : 'Structured approach to managing the entire policy lifecycle.'}</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {governanceProcess.map((process, index) => (
+          <div class="bg-gradient-to-br from-slate-50 to-white p-8 rounded-xl border border-slate-200">
+            <div class="w-12 h-12 bg-purple-600 rounded-lg flex items-center justify-center mb-4 text-white font-bold">{index + 1}</div>
+            <h3 class="text-xl font-bold text-slate-900 mb-4">{lang==='fi' ? process.titleFi : process.titleEn}</h3>
+            <ul class="space-y-2">
+              {(lang==='fi' ? process.itemsFi : process.itemsEn).map(item => (
+                <li class="flex items-start">
+                  <Icon name="check" className="w-5 h-5 text-green-600 mt-0.5 mr-3 flex-shrink-0" />
+                  <span class="text-slate-600">{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-slate-900 mb-4">{lang==='fi' ? 'Compliance-kartoitus' : 'Compliance Mapping'}</h2>
+        <p class="text-xl text-slate-600 max-w-3xl mx-auto">{lang==='fi' ? 'Linkitämme politiikat suoraan säädöksiin ja standardeihin, jotta compliance on helppoa seurata.' : 'We link policies directly to regulations and standards for easy compliance tracking.'}</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {complianceMapping.map(cm => (
+          <div class="bg-white p-6 rounded-xl border border-slate-200 hover:shadow-lg transition-all duration-300 text-center">
+            <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4 mx-auto">
+              <Icon name={cm.icon} className="w-6 h-6 text-purple-600" />
+            </div>
+            <h3 class="text-lg font-bold text-slate-900 mb-2">{lang==='fi' ? cm.titleFi : cm.titleEn}</h3>
+            <p class="text-slate-600 text-sm">{lang==='fi' ? cm.descFi : cm.descEn}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-slate-900 mb-4">{lang==='fi' ? 'Toteutusprosessi' : 'Implementation Process'}</h2>
+        <p class="text-xl text-slate-600 max-w-3xl mx-auto">{lang==='fi' ? 'Vaiheittainen lähestymistapa politiikkahallintajärjestelmän rakentamiseen.' : 'Step-by-step approach to building a policy management system.'}</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-5 gap-6">
+        {implementationSteps.map(step => (
+          <div class="text-center">
+            <div class="w-16 h-16 bg-purple-600 rounded-full flex items-center justify-center mx-auto mb-4 text-white text-xl font-bold">{step.step}</div>
+            <h3 class="text-lg font-semibold text-slate-900 mb-1">{lang==='fi' ? step.fi : step.en}</h3>
+            <p class="text-slate-600 text-sm">{lang==='fi' ? step.fiDesc : step.enDesc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 bg-slate-900 text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl font-bold mb-6">{lang==='fi' ? 'Rakennetaanko politiikkakehikko?' : 'Ready to build a policy framework?'}</h2>
+      <p class="text-xl text-slate-300 mb-8 max-w-3xl mx-auto">{lang==='fi' ? 'Keskustellaan politiikkatarpeistanne ja suunnitellaan kestävä hallintamalli.' : 'Let\'s discuss your policy needs and design a sustainable governance model.'}</p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <Button href="/contact" variant="primary" className="text-lg px-8 py-3">{lang==='fi' ? 'Ota yhteyttä' : 'Get in Touch'}</Button>
+        <Button href="/contact?consultation=true" variant="secondary" className="text-lg px-8 py-3">{lang==='fi' ? 'Varaa konsultaatio' : 'Book Consultation'}</Button>
+      </div>
     </div>
   </section>
 </Layout>

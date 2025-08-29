@@ -1,13 +1,218 @@
 ---
 import Layout from '@/layouts/Layout.astro';
-const title = 'Risk Management';
-const description = 'Establish a practical risk framework, registers, KRIs, and governance that guide security decisions.';
+import Icon from '@/components/ui/icons/Icon.astro';
+import Button from '@/components/ui/Button.astro';
+
+const currentPath = Astro.url.pathname;
+const lang = currentPath.startsWith('/fi') ? 'fi' : 'en';
+
+const title = lang === 'fi' ? 'Riskienhallinta' : 'Risk Management';
+const description = lang === 'fi' 
+  ? 'Rakenna käytännöllinen riskikehikko, rekisterit, KRI-mittarit ja hallintamalli, joka ohjaa turvallisuuspäätöksiä.'
+  : 'Establish a practical risk framework, registers, KRIs, and governance that guide security decisions.';
+
+const riskFrameworks = [
+  {
+    icon: 'target',
+    titleFi: 'Riskikehikko',
+    titleEn: 'Risk Framework',
+    descFi: 'ISO 27005/NIST-pohjainen riskienhallintakehikko',
+    descEn: 'ISO 27005/NIST-based risk management framework'
+  },
+  {
+    icon: 'database',
+    titleFi: 'Riskirekisteri',
+    titleEn: 'Risk Register',
+    descFi: 'Keskitetty riskirekisteri seurannalla ja raportoinnilla',
+    descEn: 'Centralized risk register with tracking and reporting'
+  },
+  {
+    icon: 'trending-up',
+    titleFi: 'KRI-mittarit',
+    titleEn: 'KRI Metrics',
+    descFi: 'Keskeisten riskiindikaattoreiden seuranta ja hälytykset',
+    descEn: 'Key Risk Indicator monitoring and alerting'
+  },
+  {
+    icon: 'users',
+    titleFi: 'Hallintamalli',
+    titleEn: 'Governance Model',
+    descFi: 'Roolit, vastuut ja päätöksentekoprosessit',
+    descEn: 'Roles, responsibilities and decision-making processes'
+  }
+];
+
+const riskTypes = [
+  {
+    icon: 'shield',
+    titleFi: 'Kyberturvariskit',
+    titleEn: 'Cybersecurity Risks',
+    descFi: 'Teknologiariskit, haavoittuvuudet ja kyberuhkat',
+    descEn: 'Technology risks, vulnerabilities and cyber threats'
+  },
+  {
+    icon: 'users',
+    titleFi: 'Operatiiviset riskit',
+    titleEn: 'Operational Risks',
+    descFi: 'Prosessi-, henkilöstö- ja toimintariskit',
+    descEn: 'Process, personnel and operational risks'
+  },
+  {
+    icon: 'building',
+    titleFi: 'Kolmannen osapuolen riskit',
+    titleEn: 'Third-Party Risks',
+    descFi: 'Toimittaja-, kumppani- ja toimitusketjuriskit',
+    descEn: 'Vendor, partner and supply chain risks'
+  },
+  {
+    icon: 'book-open',
+    titleFi: 'Sääntelyriskit',
+    titleEn: 'Regulatory Risks',
+    descFi: 'Compliance-riskit ja säädösmuutokset',
+    descEn: 'Compliance risks and regulatory changes'
+  }
+];
+
+const riskProcess = [
+  {
+    titleFi: 'Tunnistaminen',
+    titleEn: 'Identification',
+    itemsFi: ['Uhkien kartoitus', 'Haavoittuvuusanalyysi', 'Vaikutusanalyysi', 'Riskiskenaarioiden kehittäminen'],
+    itemsEn: ['Threat mapping', 'Vulnerability analysis', 'Impact analysis', 'Risk scenario development']
+  },
+  {
+    titleFi: 'Arviointi',
+    titleEn: 'Assessment',
+    itemsFi: ['Todennäköisyyden arviointi', 'Vaikutuksen arviointi', 'Riskin luokittelu', 'Prioriteettijärjestys'],
+    itemsEn: ['Probability assessment', 'Impact assessment', 'Risk classification', 'Priority ranking']
+  },
+  {
+    titleFi: 'Käsittely',
+    titleEn: 'Treatment',
+    itemsFi: ['Kontrollien suunnittelu', 'Riskien hyväksyminen', 'Riskien siirtäminen', 'Riskien välttäminen'],
+    itemsEn: ['Control design', 'Risk acceptance', 'Risk transfer', 'Risk avoidance']
+  },
+  {
+    titleFi: 'Seuranta',
+    titleEn: 'Monitoring',
+    itemsFi: ['KRI-seuranta', 'Säännölliset katselmukset', 'Raportointi johdolle', 'Jatkuva parantaminen'],
+    itemsEn: ['KRI monitoring', 'Regular reviews', 'Executive reporting', 'Continuous improvement']
+  }
+];
+
+const implementationSteps = [
+  { step: '1', fi: 'Kehyksen suunnittelu', en: 'Framework Design', fiDesc: 'Riskikehikon ja menetelmien määrittely', enDesc: 'Risk framework and methodology definition' },
+  { step: '2', fi: 'Riskien tunnistus', en: 'Risk Identification', fiDesc: 'Kattava riskien kartoitus ja dokumentointi', enDesc: 'Comprehensive risk mapping and documentation' },
+  { step: '3', fi: 'Arviointi ja priorisointi', en: 'Assessment and Prioritization', fiDesc: 'Riskien arviointi ja tärkeysjärjestys', enDesc: 'Risk assessment and priority ranking' },
+  { step: '4', fi: 'Kontrollien suunnittelu', en: 'Control Design', fiDesc: 'Riskien käsittelytapojen suunnittelu', enDesc: 'Risk treatment approach design' },
+  { step: '5', fi: 'Toteutus ja seuranta', en: 'Implementation and Monitoring', fiDesc: 'KRI-mittarit ja seurantaprosessit', enDesc: 'KRI metrics and monitoring processes' }
+];
 ---
 <Layout title={title} description={description}>
-  <section class="py-16 bg-white">
-    <div class="max-w-3xl mx-auto px-4">
-      <h1 class="text-3xl font-bold text-slate-900">{title}</h1>
-      <p class="mt-4 text-slate-600">{description}</p>
+  <section class="bg-gradient-to-br from-red-50 via-white to-orange-50 py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-4xl">
+        <h1 class="text-4xl lg:text-5xl font-bold text-slate-900 mb-6">{title}</h1>
+        <p class="text-xl text-slate-600 mb-8">{description}</p>
+        <div class="bg-white rounded-xl p-6 shadow-sm border border-slate-200">
+          <h2 class="text-lg font-semibold text-slate-900 mb-4">{lang==='fi' ? 'Mitä saat?' : 'What you get'}</h2>
+          <p class="text-slate-600">{lang==='fi' ? 'Kattavan riskienhallintajärjestelmän, joka ohjaa päätöksentekoa ja varmistaa, että organisaatiosi keskittyy oikeisiin riskeihin oikeassa järjestyksessä.' : 'A comprehensive risk management system that guides decision-making and ensures your organization focuses on the right risks in the right order.'}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-slate-900 mb-4">{lang==='fi' ? 'Riskienhallintakomponentit' : 'Risk Management Components'}</h2>
+        <p class="text-xl text-slate-600 max-w-3xl mx-auto">{lang==='fi' ? 'Kokonaisvaltainen lähestymistapa riskien hallintaan organisaation kaikilla tasoilla.' : 'Comprehensive approach to risk management across all organizational levels.'}</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {riskFrameworks.map(rf => (
+          <div class="bg-gradient-to-br from-slate-50 to-white p-8 rounded-xl border border-slate-200 hover:shadow-xl transition-all duration-300">
+            <div class="w-16 h-16 bg-red-100 rounded-xl flex items-center justify-center mb-6">
+              <Icon name={rf.icon} className="w-8 h-8 text-red-600" />
+            </div>
+            <h3 class="text-xl font-bold text-slate-900 mb-2">{lang==='fi' ? rf.titleFi : rf.titleEn}</h3>
+            <p class="text-slate-600">{lang==='fi' ? rf.descFi : rf.descEn}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-slate-900 mb-4">{lang==='fi' ? 'Riskityypit' : 'Risk Types'}</h2>
+        <p class="text-xl text-slate-600 max-w-3xl mx-auto">{lang==='fi' ? 'Kattamme kaikki keskeiset riskikategoriat organisaatiossanne.' : 'We cover all key risk categories in your organization.'}</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {riskTypes.map(rt => (
+          <div class="bg-white p-6 rounded-xl border border-slate-200 hover:shadow-lg transition-all duration-300">
+            <div class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mb-4">
+              <Icon name={rt.icon} className="w-6 h-6 text-red-600" />
+            </div>
+            <h3 class="text-lg font-bold text-slate-900 mb-2">{lang==='fi' ? rt.titleFi : rt.titleEn}</h3>
+            <p class="text-slate-600 text-sm">{lang==='fi' ? rt.descFi : rt.descEn}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-slate-900 mb-4">{lang==='fi' ? 'Riskienhallintaprosessi' : 'Risk Management Process'}</h2>
+        <p class="text-xl text-slate-600 max-w-3xl mx-auto">{lang==='fi' ? 'Strukturoitu lähestymistapa riskien hallintaan koko elinkaaren ajan.' : 'Structured approach to risk management throughout the entire lifecycle.'}</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {riskProcess.map((process, index) => (
+          <div class="bg-gradient-to-br from-slate-50 to-white p-8 rounded-xl border border-slate-200">
+            <div class="w-12 h-12 bg-red-600 rounded-lg flex items-center justify-center mb-4 text-white font-bold">{index + 1}</div>
+            <h3 class="text-xl font-bold text-slate-900 mb-4">{lang==='fi' ? process.titleFi : process.titleEn}</h3>
+            <ul class="space-y-2">
+              {(lang==='fi' ? process.itemsFi : process.itemsEn).map(item => (
+                <li class="flex items-start">
+                  <Icon name="check" className="w-5 h-5 text-green-600 mt-0.5 mr-3 flex-shrink-0" />
+                  <span class="text-slate-600">{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-slate-900 mb-4">{lang==='fi' ? 'Toteutusprosessi' : 'Implementation Process'}</h2>
+        <p class="text-xl text-slate-600 max-w-3xl mx-auto">{lang==='fi' ? 'Vaiheittainen lähestymistapa tehokkaaseen riskienhallintaan.' : 'Step-by-step approach to effective risk management.'}</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-5 gap-6">
+        {implementationSteps.map(step => (
+          <div class="text-center">
+            <div class="w-16 h-16 bg-red-600 rounded-full flex items-center justify-center mx-auto mb-4 text-white text-xl font-bold">{step.step}</div>
+            <h3 class="text-lg font-semibold text-slate-900 mb-1">{lang==='fi' ? step.fi : step.en}</h3>
+            <p class="text-slate-600 text-sm">{lang==='fi' ? step.fiDesc : step.enDesc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 bg-slate-900 text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl font-bold mb-6">{lang==='fi' ? 'Rakennetaanko riskienhallinta?' : 'Ready to build risk management?'}</h2>
+      <p class="text-xl text-slate-300 mb-8 max-w-3xl mx-auto">{lang==='fi' ? 'Keskustellaan organisaationne riskiprofiilista ja suunnitellaan tehokas hallintamalli.' : 'Let\'s discuss your organization\'s risk profile and design an effective management model.'}</p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <Button href="/contact" variant="primary" className="text-lg px-8 py-3">{lang==='fi' ? 'Ota yhteyttä' : 'Get in Touch'}</Button>
+        <Button href="/contact?consultation=true" variant="secondary" className="text-lg px-8 py-3">{lang==='fi' ? 'Varaa konsultaatio' : 'Book Consultation'}</Button>
+      </div>
     </div>
   </section>
 </Layout>

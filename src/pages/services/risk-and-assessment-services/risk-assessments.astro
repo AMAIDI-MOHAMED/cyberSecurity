@@ -1,13 +1,263 @@
 ---
 import Layout from '@/layouts/Layout.astro';
-const title = 'Risk Assessments';
-const description = 'Perform balanced technical and organizational risk assessments with clear, prioritized outcomes.';
+import Icon from '@/components/ui/icons/Icon.astro';
+import Button from '@/components/ui/Button.astro';
+
+const currentPath = Astro.url.pathname;
+const lang = currentPath.startsWith('/fi') ? 'fi' : 'en';
+
+const title = lang === 'fi' ? 'Riskiarvioinnit' : 'Risk Assessments';
+const description = lang === 'fi' 
+  ? 'Suorita tasapainoisia teknisiä ja organisatorisia riskiarviointeja selkeillä, priorisoitavilla tuloksilla.'
+  : 'Perform balanced technical and organizational risk assessments with clear, prioritized outcomes.';
+
+const assessmentTypes = [
+  {
+    icon: 'computer',
+    titleFi: 'Tekniset riskiarvioinnit',
+    titleEn: 'Technical Risk Assessments',
+    descFi: 'Järjestelmien, verkkojen ja sovellusten turvallisuusriskit',
+    descEn: 'Security risks in systems, networks and applications'
+  },
+  {
+    icon: 'users',
+    titleFi: 'Organisatoriset arvioinnit',
+    titleEn: 'Organizational Assessments',
+    descFi: 'Prosessien, henkilöstön ja toimintojen riskiarvioinnit',
+    descEn: 'Risk assessments of processes, personnel and operations'
+  },
+  {
+    icon: 'building',
+    titleFi: 'Toimittaja-arvioinnit',
+    titleEn: 'Vendor Assessments',
+    descFi: 'Kolmannen osapuolen palveluiden ja toimittajien arviointi',
+    descEn: 'Third-party services and vendor assessments'
+  },
+  {
+    icon: 'shield',
+    titleFi: 'Tietoturva-audititit',
+    titleEn: 'Security Audits',
+    descFi: 'Kattavat tietoturvallisuuden compliance-arvioinnit',
+    descEn: 'Comprehensive information security compliance assessments'
+  }
+];
+
+const methodologies = [
+  {
+    icon: 'target',
+    titleFi: 'ISO 27005',
+    titleEn: 'ISO 27005',
+    descFi: 'Kansainvälinen standardi tietoturvariskien hallintaan',
+    descEn: 'International standard for information security risk management'
+  },
+  {
+    icon: 'shield-check',
+    titleFi: 'NIST Framework',
+    titleEn: 'NIST Framework',
+    descFi: 'NIST Cybersecurity Framework -pohjainen arviointi',
+    descEn: 'NIST Cybersecurity Framework-based assessment'
+  },
+  {
+    icon: 'book-open',
+    titleFi: 'FAIR Model',
+    titleEn: 'FAIR Model',
+    descFi: 'Factor Analysis of Information Risk -menetelmä',
+    descEn: 'Factor Analysis of Information Risk methodology'
+  },
+  {
+    icon: 'database',
+    titleFi: 'OCTAVE',
+    titleEn: 'OCTAVE',
+    descFi: 'Operationally Critical Threat, Asset, and Vulnerability Evaluation',
+    descEn: 'Operationally Critical Threat, Asset, and Vulnerability Evaluation'
+  }
+];
+
+const assessmentScope = [
+  {
+    titleFi: 'Tekninen arviointi',
+    titleEn: 'Technical Assessment',
+    itemsFi: ['Haavoittuvuusskannauksset', 'Penetraatiotestaukset', 'Konfiguraation tarkastukset', 'Verkkoturvallisuus'],
+    itemsEn: ['Vulnerability scans', 'Penetration testing', 'Configuration reviews', 'Network security']
+  },
+  {
+    titleFi: 'Prosessiarviointi',
+    titleEn: 'Process Assessment',
+    itemsFi: ['Politiikkojen tarkastelu', 'Prosessien dokumentointi', 'Kontrollien testaus', 'Compliance-arviointi'],
+    itemsEn: ['Policy review', 'Process documentation', 'Control testing', 'Compliance assessment']
+  },
+  {
+    titleFi: 'Henkilöstöarviointi',
+    titleEn: 'Personnel Assessment',
+    itemsFi: ['Koulutustarpeiden kartoitus', 'Tietoisuuden testaus', 'Käyttöoikeuksien tarkastelu', 'Sosiaalinen manipulointi'],
+    itemsEn: ['Training needs assessment', 'Awareness testing', 'Access rights review', 'Social engineering']
+  }
+];
+
+const deliverables = [
+  {
+    icon: 'file-text',
+    titleFi: 'Riskiarviointiraportti',
+    titleEn: 'Risk Assessment Report',
+    descFi: 'Kattava raportti tunnistetuista riskeistä ja suosituksista',
+    descEn: 'Comprehensive report of identified risks and recommendations'
+  },
+  {
+    icon: 'trending-up',
+    titleFi: 'Riskipriorisointi',
+    titleEn: 'Risk Prioritization',
+    descFi: 'Riskit prioriteettijärjestyksessä vaikutuksen ja todennäköisyyden mukaan',
+    descEn: 'Risks prioritized by impact and likelihood'
+  },
+  {
+    icon: 'tool',
+    titleFi: 'Korjaustoimenpiteet',
+    titleEn: 'Remediation Plan',
+    descFi: 'Yksityiskohtainen suunnitelma riskien käsittelyyn',
+    descEn: 'Detailed plan for risk treatment'
+  },
+  {
+    icon: 'clock',
+    titleFi: 'Aikataulu ja seuranta',
+    titleEn: 'Timeline and Tracking',
+    descFi: 'Toteutusaikataulu ja edistymisen seurantamalli',
+    descEn: 'Implementation timeline and progress tracking model'
+  }
+];
+
+const process = [
+  { step: '1', fi: 'Laajuuden määrittely', en: 'Scope Definition', fiDesc: 'Arvioinnin kohteen ja rajauksen määrittely', enDesc: 'Assessment target and boundary definition' },
+  { step: '2', fi: 'Tiedonkeruu', en: 'Data Collection', fiDesc: 'Järjestelmien, prosessien ja dokumenttien kartoitus', enDesc: 'Systems, processes and documentation mapping' },
+  { step: '3', fi: 'Riskien tunnistus', en: 'Risk Identification', fiDesc: 'Uhkien, haavoittuvuuksien ja riskien tunnistaminen', enDesc: 'Threat, vulnerability and risk identification' },
+  { step: '4', fi: 'Riskianalyysi', en: 'Risk Analysis', fiDesc: 'Riskien todennäköisyyden ja vaikutuksen arviointi', enDesc: 'Risk probability and impact assessment' },
+  { step: '5', fi: 'Raportointi', en: 'Reporting', fiDesc: 'Tulosten raportointi ja suositukset', enDesc: 'Results reporting and recommendations' }
+];
 ---
 <Layout title={title} description={description}>
-  <section class="py-16 bg-white">
-    <div class="max-w-3xl mx-auto px-4">
-      <h1 class="text-3xl font-bold text-slate-900">{title}</h1>
-      <p class="mt-4 text-slate-600">{description}</p>
+  <section class="bg-gradient-to-br from-blue-50 via-white to-purple-50 py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-4xl">
+        <h1 class="text-4xl lg:text-5xl font-bold text-slate-900 mb-6">{title}</h1>
+        <p class="text-xl text-slate-600 mb-8">{description}</p>
+        <div class="bg-white rounded-xl p-6 shadow-sm border border-slate-200">
+          <h2 class="text-lg font-semibold text-slate-900 mb-4">{lang==='fi' ? 'Mitä saat?' : 'What you get'}</h2>
+          <p class="text-slate-600">{lang==='fi' ? 'Selkeän kuvan organisaatiosi riskeistä ja priorisoidun toimintasuunnitelman niiden käsittelyyn. Arvioinnit perustuvat alan parhaimpiin menetelmiin ja antavat käytännöllisiä tuloksia.' : 'A clear view of your organization\'s risks and a prioritized action plan to address them. Assessments based on industry best practices with practical outcomes.'}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-slate-900 mb-4">{lang==='fi' ? 'Arviointityypit' : 'Assessment Types'}</h2>
+        <p class="text-xl text-slate-600 max-w-3xl mx-auto">{lang==='fi' ? 'Kattavat riskiarvioinnit kaikilla organisaation osa-alueilla.' : 'Comprehensive risk assessments across all organizational areas.'}</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {assessmentTypes.map(at => (
+          <div class="bg-gradient-to-br from-slate-50 to-white p-8 rounded-xl border border-slate-200 hover:shadow-xl transition-all duration-300">
+            <div class="w-16 h-16 bg-blue-100 rounded-xl flex items-center justify-center mb-6">
+              <Icon name={at.icon} className="w-8 h-8 text-blue-600" />
+            </div>
+            <h3 class="text-xl font-bold text-slate-900 mb-2">{lang==='fi' ? at.titleFi : at.titleEn}</h3>
+            <p class="text-slate-600">{lang==='fi' ? at.descFi : at.descEn}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-slate-900 mb-4">{lang==='fi' ? 'Käytetyt menetelmät' : 'Used Methodologies'}</h2>
+        <p class="text-xl text-slate-600 max-w-3xl mx-auto">{lang==='fi' ? 'Hyödynnämme alan parhaita ja kansainvälisesti tunnustettuja riskiarviointimenetelmiä.' : 'We utilize industry-leading and internationally recognized risk assessment methodologies.'}</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {methodologies.map(m => (
+          <div class="bg-white p-6 rounded-xl border border-slate-200 hover:shadow-lg transition-all duration-300">
+            <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
+              <Icon name={m.icon} className="w-6 h-6 text-blue-600" />
+            </div>
+            <h3 class="text-lg font-bold text-slate-900 mb-2">{lang==='fi' ? m.titleFi : m.titleEn}</h3>
+            <p class="text-slate-600 text-sm">{lang==='fi' ? m.descFi : m.descEn}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-slate-900 mb-4">{lang==='fi' ? 'Arvioinnin laajuus' : 'Assessment Scope'}</h2>
+        <p class="text-xl text-slate-600 max-w-3xl mx-auto">{lang==='fi' ? 'Kolmiulotteinen lähestymistapa kattavaan riskiarviointiin.' : 'Three-dimensional approach to comprehensive risk assessment.'}</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {assessmentScope.map((scope, index) => (
+          <div class="bg-gradient-to-br from-slate-50 to-white p-8 rounded-xl border border-slate-200">
+            <div class="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center mb-4 text-white font-bold">{index + 1}</div>
+            <h3 class="text-xl font-bold text-slate-900 mb-4">{lang==='fi' ? scope.titleFi : scope.titleEn}</h3>
+            <ul class="space-y-2">
+              {(lang==='fi' ? scope.itemsFi : scope.itemsEn).map(item => (
+                <li class="flex items-start">
+                  <Icon name="check" className="w-5 h-5 text-green-600 mt-0.5 mr-3 flex-shrink-0" />
+                  <span class="text-slate-600">{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-slate-900 mb-4">{lang==='fi' ? 'Toimitukset' : 'Deliverables'}</h2>
+        <p class="text-xl text-slate-600 max-w-3xl mx-auto">{lang==='fi' ? 'Saat käytännölliset ja toiminnalliset tulokset, jotka ohjaavat tietoturvainvestointejasi.' : 'You receive practical and actionable results that guide your security investments.'}</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {deliverables.map(d => (
+          <div class="bg-white p-6 rounded-xl border border-slate-200 hover:shadow-lg transition-all duration-300 text-center">
+            <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4 mx-auto">
+              <Icon name={d.icon} className="w-6 h-6 text-blue-600" />
+            </div>
+            <h3 class="text-lg font-bold text-slate-900 mb-2">{lang==='fi' ? d.titleFi : d.titleEn}</h3>
+            <p class="text-slate-600 text-sm">{lang==='fi' ? d.descFi : d.descEn}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-slate-900 mb-4">{lang==='fi' ? 'Arviointiprosessi' : 'Assessment Process'}</h2>
+        <p class="text-xl text-slate-600 max-w-3xl mx-auto">{lang==='fi' ? 'Systemaattinen ja dokumentoitu lähestymistapa tehokkaaseen riskiarviointiin.' : 'Systematic and documented approach to effective risk assessment.'}</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-5 gap-6">
+        {process.map(step => (
+          <div class="text-center">
+            <div class="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-4 text-white text-xl font-bold">{step.step}</div>
+            <h3 class="text-lg font-semibold text-slate-900 mb-1">{lang==='fi' ? step.fi : step.en}</h3>
+            <p class="text-slate-600 text-sm">{lang==='fi' ? step.fiDesc : step.enDesc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 bg-slate-900 text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl font-bold mb-6">{lang==='fi' ? 'Tarvitsetko riskiarvioinnin?' : 'Need a risk assessment?'}</h2>
+      <p class="text-xl text-slate-300 mb-8 max-w-3xl mx-auto">{lang==='fi' ? 'Keskustellaan arviointitarpeistanne ja suunnitellaan sopiva lähestymistapa.' : 'Let\'s discuss your assessment needs and plan an appropriate approach.'}</p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <Button href="/contact" variant="primary" className="text-lg px-8 py-3">{lang==='fi' ? 'Ota yhteyttä' : 'Get in Touch'}</Button>
+        <Button href="/contact?consultation=true" variant="secondary" className="text-lg px-8 py-3">{lang==='fi' ? 'Varaa konsultaatio' : 'Book Consultation'}</Button>
+      </div>
     </div>
   </section>
 </Layout>

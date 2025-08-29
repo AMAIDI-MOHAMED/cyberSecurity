@@ -1,13 +1,403 @@
 ---
 import Layout from '@/layouts/Layout.astro';
-const title = 'Anti-Fraud Services';
-const description = 'Reduce fraud losses with pragmatic controls for BEC/invoice fraud, payment controls, and detection and response.';
+import Icon from '@/components/ui/icons/Icon.astro';
+import Button from '@/components/ui/Button.astro';
+
+const currentPath = Astro.url.pathname;
+const lang = currentPath.startsWith('/fi') ? 'fi' : 'en';
+
+const title = lang === 'fi' ? 'Petostentorjuntapalvelut' : 'Anti-Fraud Services';
+const description = lang === 'fi' 
+  ? 'Vähennä petostappioita pragmaattisilla kontrolleilla BEC/laskupetoksiin, maksukontrolleilla ja tunnistuksella.'
+  : 'Reduce fraud losses with pragmatic controls for BEC/invoice fraud, payment controls, and detection and response.';
+
+const fraudTypes = [
+  {
+    icon: 'mail',
+    titleFi: 'Sähköpostipetokset (BEC)',
+    titleEn: 'Email Fraud (BEC)',
+    descFi: 'Business Email Compromise ja CEO-petokset',
+    descEn: 'Business Email Compromise and CEO fraud',
+    riskFi: 'Keskimäärin €175k tappio',
+    riskEn: 'Average €175k loss'
+  },
+  {
+    icon: 'file-text',
+    titleFi: 'Laskupetokset',
+    titleEn: 'Invoice Fraud',
+    descFi: 'Väärennökset ja toimittajatietojen manipulointi',
+    descEn: 'Falsification and vendor data manipulation',
+    riskFi: 'Usein huomaamaton',
+    riskEn: 'Often undetected'
+  },
+  {
+    icon: 'credit-card',
+    titleFi: 'Maksupetokset',
+    titleEn: 'Payment Fraud',
+    descFi: 'Maksujärjestelmien väärinkäyttö',
+    descEn: 'Payment system manipulation',
+    riskFi: 'Nopea tappioiden kertyminen',
+    riskEn: 'Rapid loss accumulation'
+  },
+  {
+    icon: 'user-x',
+    titleFi: 'Identiteettipetokset',
+    titleEn: 'Identity Fraud',
+    descFi: 'Henkilöllisyyksien väärinkäyttö',
+    descEn: 'Identity misuse and impersonation',
+    riskFi: 'Maine- ja lakihaasteet',
+    riskEn: 'Reputation and legal risks'
+  }
+];
+
+const defenseStrategy = [
+  {
+    layerFi: 'Teknologiakontrollit',
+    layerEn: 'Technology Controls',
+    icon: 'shield',
+    controlsFi: ['Email-turvallisuus', 'MFA-pakotus', 'Maksujen validointi', 'Anomalian tunnistus'],
+    controlsEn: ['Email security', 'MFA enforcement', 'Payment validation', 'Anomaly detection']
+  },
+  {
+    layerFi: 'Prosessikontrollit',
+    layerEn: 'Process Controls',
+    icon: 'settings',
+    controlsFi: ['Nelisilmäperiaate', 'Hyväksymisrajat', 'Toimittajien verifiointi', 'Muutosten hallinta'],
+    controlsEn: ['Four-eyes principle', 'Approval limits', 'Vendor verification', 'Change management']
+  },
+  {
+    layerFi: 'Inhimilliset kontrollit',
+    layerEn: 'Human Controls',
+    icon: 'users',
+    controlsFi: ['Tietoisuuskoulutus', 'Phishing-simulaatiot', 'Ilmoituskanavat', 'Vastuiden määrittely'],
+    controlsEn: ['Awareness training', 'Phishing simulations', 'Reporting channels', 'Role definition']
+  }
+];
+
+const detectionMethods = [
+  {
+    icon: 'search',
+    titleFi: 'Reaaliaikainen tunnistus',
+    titleEn: 'Real-time Detection',
+    descFi: 'Automaattiset hälytykset epäilyttävistä tapahtumista',
+    descEn: 'Automated alerts for suspicious activities',
+    methodsFi: ['Sähköpostianalyysi', 'Maksupoikkeamat', 'Käyttäytymismallit', 'Geolokation seuranta'],
+    methodsEn: ['Email analysis', 'Payment anomalies', 'Behavioral patterns', 'Geolocation tracking']
+  },
+  {
+    icon: 'activity',
+    titleFi: 'Trendianalyysi',
+    titleEn: 'Trend Analysis',
+    descFi: 'Pitkän aikavälin mallien tunnistaminen',
+    descEn: 'Long-term pattern recognition',
+    methodsFi: ['Toimittaja-analyysit', 'Maksukäyttäytyminen', 'Ajankohta-analyysi', 'Volyymimuutokset'],
+    methodsEn: ['Vendor analytics', 'Payment behavior', 'Timing analysis', 'Volume changes']
+  },
+  {
+    icon: 'database',
+    titleFi: 'Forensinen analyysi',
+    titleEn: 'Forensic Analysis',
+    descFi: 'Syvällinen petostapausten tutkinta',
+    descEn: 'Deep investigation of fraud cases',
+    methodsFi: ['Digitaalinen forensiikka', 'Tiedonlouhinta', 'Verkostoanalyysi', 'Aikajanarekonstruktio'],
+    methodsEn: ['Digital forensics', 'Data mining', 'Network analysis', 'Timeline reconstruction']
+  }
+];
+
+const responseFramework = [
+  {
+    phaseFi: 'Tunnistaminen',
+    phaseEn: 'Detection',
+    timeFi: '0-15 min',
+    timeEn: '0-15 min',
+    actionsFi: ['Automaattinen hälytys', 'Tapahtuman luokittelu', 'Alustava arviointi', 'Eskalointi'],
+    actionsEn: ['Automatic alert', 'Event classification', 'Initial assessment', 'Escalation']
+  },
+  {
+    phaseFi: 'Eristäminen',
+    phaseEn: 'Containment',
+    timeFi: '15-60 min',
+    timeEn: '15-60 min',
+    actionsFi: ['Maksun pysäytys', 'Tilin sulkeminen', 'Pääsyn estäminen', 'Evidenssin säilytys'],
+    actionsEn: ['Payment freeze', 'Account suspension', 'Access blocking', 'Evidence preservation']
+  },
+  {
+    phaseFi: 'Tutkinta',
+    phaseEn: 'Investigation',
+    timeFi: '1-24 h',
+    timeEn: '1-24 h',
+    actionsFi: ['Forensinen analyysi', 'Vaikutusarvio', 'Juurisyyn analyysi', 'Raportointi'],
+    actionsEn: ['Forensic analysis', 'Impact assessment', 'Root cause analysis', 'Reporting']
+  },
+  {
+    phaseFi: 'Palautus',
+    phaseEn: 'Recovery',
+    timeFi: '1-7 päivää',
+    timeEn: '1-7 days',
+    actionsFi: ['Toiminnan palautus', 'Kontrollien vahvistus', 'Prosessien päivitys', 'Oppimispisteet'],
+    actionsEn: ['Operations restore', 'Control enhancement', 'Process updates', 'Lessons learned']
+  }
+];
+
+const metrics = [
+  { metricFi: 'Petostappioiden vähennys', metricEn: 'Fraud Loss Reduction', targetFi: '-85% vuodessa', targetEn: '-85% annually' },
+  { metricFi: 'Tunnistusaika', metricEn: 'Detection Time', targetFi: '<15 minuuttia', targetEn: '<15 minutes' },
+  { metricFi: 'Väärät hälytykset', metricEn: 'False Positives', targetFi: '<5% hälytyksistä', targetEn: '<5% of alerts' },
+  { metricFi: 'Henkilöstön tietoisuus', metricEn: 'Staff Awareness', targetFi: '95% koulutetuista', targetEn: '95% trained' }
+];
 ---
 <Layout title={title} description={description}>
-  <section class="py-16 bg-white">
-    <div class="max-w-3xl mx-auto px-4">
-      <h1 class="text-3xl font-bold text-slate-900">{title}</h1>
-      <p class="mt-4 text-slate-600">{description}</p>
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-br from-red-50 to-orange-100 py-20">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center">
+        <div class="inline-flex items-center px-4 py-2 bg-red-100 text-red-800 rounded-full text-sm font-medium mb-6">
+          <Icon name="shield" class="w-4 h-4 mr-2" />
+          {lang === 'fi' ? 'Petostentorjunta' : 'Anti-Fraud'}
+        </div>
+        <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+          {lang === 'fi' ? 'Kattava petostentorjunta ja -tunnistus' : 'Comprehensive Fraud Prevention & Detection'}
+        </h1>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
+          {lang === 'fi' 
+            ? 'Suojaa organisaatiosi BEC-petoksilta, laskupetoksilta ja maksupetoksilta monipuolisilla kontrolleilla ja reaaliaikaisella tunnistuksella.'
+            : 'Protect your organization from BEC fraud, invoice fraud, and payment fraud with multi-layered controls and real-time detection.'
+          }
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <Button href="/contact" variant="primary" size="lg">
+            {lang === 'fi' ? 'Arvioi riskitaso' : 'Assess Risk Level'}
+          </Button>
+          <Button href="/demo" variant="outline" size="lg">
+            {lang === 'fi' ? 'Tutustu ratkaisuun' : 'Explore Solution'}
+          </Button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Fraud Types Section -->
+  <section class="py-20 bg-white">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">
+          {lang === 'fi' ? 'Tärkeimmät petostyypit' : 'Key Fraud Types'}
+        </h2>
+        <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+          {lang === 'fi' 
+            ? 'Tunnista ja ymmärrä yleisimmät petostyypit, jotka uhkaavat organisaatioita tänään'
+            : 'Identify and understand the most common fraud types threatening organizations today'
+          }
+        </p>
+      </div>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {fraudTypes.map((fraud) => (
+          <div class="bg-gray-50 rounded-lg p-6 text-center hover:shadow-lg transition-shadow border-t-4 border-red-500">
+            <div class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mx-auto mb-4">
+              <Icon name={fraud.icon} class="w-6 h-6 text-red-600" />
+            </div>
+            <h3 class="text-lg font-semibold text-gray-900 mb-2">
+              {lang === 'fi' ? fraud.titleFi : fraud.titleEn}
+            </h3>
+            <p class="text-gray-600 text-sm mb-3">
+              {lang === 'fi' ? fraud.descFi : fraud.descEn}
+            </p>
+            <div class="bg-red-50 rounded px-3 py-2">
+              <p class="text-red-700 text-xs font-medium">
+                {lang === 'fi' ? fraud.riskFi : fraud.riskEn}
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Defense Strategy Section -->
+  <section class="py-20 bg-gray-50">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">
+          {lang === 'fi' ? 'Kolmikerroksinen puolustusstrategia' : 'Three-Layer Defense Strategy'}
+        </h2>
+        <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+          {lang === 'fi' 
+            ? 'Kattava lähestymistapa petostentorjuntaan teknologian, prosessien ja ihmisten kautta'
+            : 'Comprehensive approach to fraud prevention through technology, processes, and people'
+          }
+        </p>
+      </div>
+
+      <div class="grid lg:grid-cols-3 gap-8">
+        {defenseStrategy.map((layer, index) => (
+          <div class="bg-white rounded-lg p-8 shadow-lg relative">
+            <div class="absolute -top-4 left-8 w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold text-sm">
+              {index + 1}
+            </div>
+            <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-6 mt-4">
+              <Icon name={layer.icon} class="w-6 h-6 text-blue-600" />
+            </div>
+            <h3 class="text-xl font-semibold text-gray-900 mb-4">
+              {lang === 'fi' ? layer.layerFi : layer.layerEn}
+            </h3>
+            <ul class="space-y-2">
+              {(lang === 'fi' ? layer.controlsFi : layer.controlsEn).map((control) => (
+                <li class="flex items-center text-sm text-gray-600">
+                  <Icon name="check" class="w-4 h-4 text-green-500 mr-2 flex-shrink-0" />
+                  {control}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Detection Methods Section -->
+  <section class="py-20 bg-white">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">
+          {lang === 'fi' ? 'Tunnistusmenetelmät' : 'Detection Methods'}
+        </h2>
+        <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+          {lang === 'fi' 
+            ? 'Edistyneet analyysimenetelmät petostoiminnan varhaiseen tunnistamiseen'
+            : 'Advanced analytical methods for early detection of fraudulent activities'
+          }
+        </p>
+      </div>
+
+      <div class="grid lg:grid-cols-3 gap-8">
+        {detectionMethods.map((method) => (
+          <div class="bg-gradient-to-br from-gray-50 to-blue-50 rounded-lg p-8">
+            <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-6">
+              <Icon name={method.icon} class="w-6 h-6 text-blue-600" />
+            </div>
+            <h3 class="text-xl font-semibold text-gray-900 mb-3">
+              {lang === 'fi' ? method.titleFi : method.titleEn}
+            </h3>
+            <p class="text-gray-600 mb-4">
+              {lang === 'fi' ? method.descFi : method.descEn}
+            </p>
+            <ul class="space-y-2">
+              {(lang === 'fi' ? method.methodsFi : method.methodsEn).map((methodItem) => (
+                <li class="flex items-start">
+                  <Icon name="arrow-right" class="w-4 h-4 text-blue-600 mr-2 mt-1 flex-shrink-0" />
+                  <span class="text-gray-700 text-sm">{methodItem}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Response Framework Section -->
+  <section class="py-20 bg-gray-50">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">
+          {lang === 'fi' ? 'Vastetoimintakehys' : 'Response Framework'}
+        </h2>
+        <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+          {lang === 'fi' 
+            ? 'Nopea ja järjestelmällinen vastetoiminta petostapausten minimoimiseksi'
+            : 'Rapid and systematic response to minimize fraud impact'
+          }
+        </p>
+      </div>
+
+      <div class="space-y-8">
+        {responseFramework.map((phase, index) => (
+          <div class="bg-white rounded-lg p-6 shadow-lg">
+            <div class="flex items-center space-x-6">
+              <div class="flex-shrink-0">
+                <div class="w-12 h-12 bg-red-600 text-white rounded-lg flex items-center justify-center font-bold text-lg">
+                  {index + 1}
+                </div>
+              </div>
+              <div class="flex-1">
+                <div class="flex items-center space-x-4 mb-3">
+                  <h3 class="text-xl font-semibold text-gray-900">
+                    {lang === 'fi' ? phase.phaseFi : phase.phaseEn}
+                  </h3>
+                  <span class="bg-red-100 text-red-800 px-3 py-1 rounded-full text-sm font-medium">
+                    {lang === 'fi' ? phase.timeFi : phase.timeEn}
+                  </span>
+                </div>
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+                  {(lang === 'fi' ? phase.actionsFi : phase.actionsEn).map((action) => (
+                    <div class="flex items-center text-sm text-gray-600">
+                      <Icon name="check" class="w-4 h-4 text-green-500 mr-2 flex-shrink-0" />
+                      {action}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Metrics Section -->
+  <section class="py-20 bg-white">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">
+          {lang === 'fi' ? 'Tavoitemittarit' : 'Target Metrics'}
+        </h2>
+        <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+          {lang === 'fi' 
+            ? 'Mitattavat tulokset tehokkaan petostentorjuntaohjelman käyttöönotosta'
+            : 'Measurable outcomes from implementing effective anti-fraud program'
+          }
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {metrics.map((metric) => (
+          <div class="bg-gradient-to-br from-red-50 to-orange-50 rounded-lg p-6 text-center">
+            <h3 class="text-lg font-semibold text-gray-900 mb-2">
+              {lang === 'fi' ? metric.metricFi : metric.metricEn}
+            </h3>
+            <div class="text-3xl font-bold text-red-600 mb-2">
+              {lang === 'fi' ? metric.targetFi : metric.targetEn}
+            </div>
+            <div class="w-8 h-8 bg-red-100 rounded-full flex items-center justify-center mx-auto">
+              <Icon name="shield" class="w-4 h-4 text-red-600" />
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-20 bg-gradient-to-r from-red-600 to-orange-600">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl font-bold text-white mb-4">
+        {lang === 'fi' ? 'Suojaa organisaatiosi petoksilta?' : 'Protect Your Organization from Fraud?'}
+      </h2>
+      <p class="text-xl text-red-100 mb-8">
+        {lang === 'fi' 
+          ? 'Aloita petostentorjuntaohjelman suunnittelu ja toteutus asiantuntijoiden kanssa.'
+          : 'Start planning and implementing your anti-fraud program with experts.'
+        }
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <Button href="/contact" variant="secondary" size="lg">
+          {lang === 'fi' ? 'Ota yhteyttä' : 'Contact Us'}
+        </Button>
+        <Button href="/demo" variant="outline-white" size="lg">
+          {lang === 'fi' ? 'Pyydä riskiarvio' : 'Request Risk Assessment'}
+        </Button>
+      </div>
     </div>
   </section>
 </Layout>

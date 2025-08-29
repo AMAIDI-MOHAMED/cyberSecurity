@@ -1,13 +1,398 @@
 ---
 import Layout from '@/layouts/Layout.astro';
-const title = 'Audit Preparation';
-const description = 'Be audit-ready with evidence, control narratives, walkthroughs, and remediation guidance.';
+import Icon from '@/components/ui/icons/Icon.astro';
+import Button from '@/components/ui/Button.astro';
+
+const currentPath = Astro.url.pathname;
+const lang = currentPath.startsWith('/fi') ? 'fi' : 'en';
+
+const title = lang === 'fi' ? 'Tilintarkastuksen valmistelu' : 'Audit Preparation';
+const description = lang === 'fi' 
+  ? 'Tarkastuksenvalmistelu evidenssien hallinnalla, kontrollien kuvauksilla ja toimenpiteiden seurannalla.'
+  : 'Audit readiness through evidence management, control narratives, and remediation tracking.';
+
+const auditComponents = [
+  {
+    icon: 'folder',
+    titleFi: 'Evidenssien hallinta',
+    titleEn: 'Evidence Management',
+    descFi: 'Tarkastusevidenssin kerääminen, järjestely ja hallinta',
+    descEn: 'Audit evidence collection, organization, and management'
+  },
+  {
+    icon: 'file-text',
+    titleFi: 'Kontrollien kuvaukset',
+    titleEn: 'Control Narratives',
+    descFi: 'Yksityiskohtaiset prosessi- ja kontrollien dokumentoinnit',
+    descEn: 'Detailed process and control documentation'
+  },
+  {
+    icon: 'target',
+    titleFi: 'Puutteiden korjaus',
+    titleEn: 'Gap Remediation',
+    descFi: 'Löydettyjen puutteiden systemaattinen korjaaminen',
+    descEn: 'Systematic remediation of identified gaps'
+  },
+  {
+    icon: 'check-circle',
+    titleFi: 'Valmiuden arviointi',
+    titleEn: 'Readiness Assessment',
+    descFi: 'Tarkastusvalmiuden systemaattinen arviointi',
+    descEn: 'Systematic audit readiness evaluation'
+  }
+];
+
+const evidenceTypes = [
+  {
+    icon: 'database',
+    titleFi: 'Järjestelmäevidenssi',
+    titleEn: 'System Evidence',
+    descFi: 'Automaattiset raportit ja lokit',
+    descEn: 'Automated reports and logs',
+    examplesFi: ['Käyttöoikeusraportit', 'Lokitiedot', 'Konfiguraatioasetukset', 'Muutoshistoria'],
+    examplesEn: ['Access rights reports', 'Log files', 'Configuration settings', 'Change history']
+  },
+  {
+    icon: 'users',
+    titleFi: 'Manuaalinen evidenssi',
+    titleEn: 'Manual Evidence',
+    descFi: 'Henkilöstön toiminnan dokumentointi',
+    descEn: 'Personnel activity documentation',
+    examplesFi: ['Hyväksyntäprosessit', 'Tarkastustehtävät', 'Koulutustiedot', 'Allekirjoitukset'],
+    examplesEn: ['Approval processes', 'Review tasks', 'Training records', 'Signatures']
+  },
+  {
+    icon: 'shield',
+    titleFi: 'Turvallisuusevidenssi',
+    titleEn: 'Security Evidence',
+    descFi: 'Tietoturvatoimenpiteiden dokumentointi',
+    descEn: 'Information security measures documentation',
+    examplesFi: ['Haavoittuvuusskannauksit', 'Penetraatiotestit', 'Riskiarvioinnit', 'Incidentiraportit'],
+    examplesEn: ['Vulnerability scans', 'Penetration tests', 'Risk assessments', 'Incident reports']
+  }
+];
+
+const auditStandards = [
+  {
+    titleFi: 'SOC 2 Type II',
+    titleEn: 'SOC 2 Type II',
+    focusFi: 'Palvelun organisaatioiden kontrollit',
+    focusEn: 'Service organization controls',
+    criteriiaFi: ['Turvallisuus', 'Saatavuus', 'Prosessien eheys', 'Luottamuksellisuus', 'Yksityisyys'],
+    criteriaEn: ['Security', 'Availability', 'Processing integrity', 'Confidentiality', 'Privacy']
+  },
+  {
+    titleFi: 'ISO 27001',
+    titleEn: 'ISO 27001',
+    focusFi: 'Tietoturvallisuuden hallintajärjestelmä',
+    focusEn: 'Information security management system',
+    criteriiaFi: ['ISMS-politiikka', 'Riskinhallinta', 'Kontrollit', 'Jatkuva parantaminen'],
+    criteriaEn: ['ISMS policy', 'Risk management', 'Controls', 'Continual improvement']
+  },
+  {
+    titleFi: 'PCI DSS',
+    titleEn: 'PCI DSS',
+    focusFi: 'Maksukorttitietojen suojaus',
+    focusEn: 'Payment card data protection',
+    criteriiaFi: ['Verkon suojaus', 'Tietojen salaus', 'Haavoittuvuuksien hallinta', 'Pääsynhallinta'],
+    criteriaEn: ['Network protection', 'Data encryption', 'Vulnerability management', 'Access control']
+  },
+  {
+    titleFi: 'GDPR',
+    titleEn: 'GDPR',
+    focusFi: 'Henkilötietojen suoja',
+    focusEn: 'Personal data protection',
+    criteriiaFi: ['Tietosuojakäytännöt', 'Oikeudet', 'Tietoturvaloukkaukset', 'DPO-rooli'],
+    criteriaEn: ['Privacy practices', 'Rights', 'Data breaches', 'DPO role']
+  }
+];
+
+const preparationPhases = [
+  {
+    icon: 'search',
+    titleFi: 'Esiauditointi',
+    titleEn: 'Pre-audit',
+    descFi: 'Nykytilan kartoitus ja puutteiden tunnistaminen',
+    descEn: 'Current state mapping and gap identification',
+    tasksFi: ['Kontrollien inventointi', 'Evidenssien kartoitus', 'Puuteanalyysi', 'Korjaussuunnitelma'],
+    tasksEn: ['Control inventory', 'Evidence mapping', 'Gap analysis', 'Remediation plan']
+  },
+  {
+    icon: 'tool',
+    titleFi: 'Korjaustoimenpiteet',
+    titleEn: 'Remediation',
+    descFi: 'Löydettyjen puutteiden korjaaminen',
+    descEn: 'Fixing identified gaps',
+    tasksFi: ['Kontrollien implementointi', 'Prosessien parantaminen', 'Dokumentoinnin täydentäminen', 'Testaus'],
+    tasksEn: ['Control implementation', 'Process improvement', 'Documentation completion', 'Testing']
+  },
+  {
+    icon: 'clipboard',
+    titleFi: 'Evidenssien valmistelu',
+    titleEn: 'Evidence Preparation',
+    descFi: 'Tarkastusevidenssin kokoaminen ja järjestäminen',
+    descEn: 'Audit evidence compilation and organization',
+    tasksFi: ['Evidenssien kerääminen', 'Järjestäminen', 'Indeksointi', 'Varmistaminen'],
+    tasksEn: ['Evidence collection', 'Organization', 'Indexing', 'Verification']
+  },
+  {
+    icon: 'check-circle',
+    titleFi: 'Valmiuden testaus',
+    titleEn: 'Readiness Testing',
+    descFi: 'Tarkastusvalmiuden lopullinen varmistaminen',
+    descEn: 'Final audit readiness verification',
+    tasksFi: ['Mock audit', 'Walkthrough-testit', 'Evidenssien validointi', 'Tiimin valmistaminen'],
+    tasksEn: ['Mock audit', 'Walkthrough tests', 'Evidence validation', 'Team preparation']
+  }
+];
+
+const trackingMetrics = [
+  { metricFi: 'Kontrollien kattavuus', metricEn: 'Control Coverage', targetFi: '100% vaatimuksista', targetEn: '100% of requirements' },
+  { metricFi: 'Evidenssien täydellisyys', metricEn: 'Evidence Completeness', targetFi: '≥95% evidensseistä', targetEn: '≥95% of evidence' },
+  { metricFi: 'Korjausajan keskiarvo', metricEn: 'Average Remediation Time', targetFi: '<30 päivää', targetEn: '<30 days' },
+  { metricFi: 'Mock audit -tulokset', metricEn: 'Mock Audit Results', targetFi: '≥90% hyväksytty', targetEn: '≥90% passed' }
+];
 ---
 <Layout title={title} description={description}>
-  <section class="py-16 bg-white">
-    <div class="max-w-3xl mx-auto px-4">
-      <h1 class="text-3xl font-bold text-slate-900">{title}</h1>
-      <p class="mt-4 text-slate-600">{description}</p>
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-br from-blue-50 to-indigo-100 py-20">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center">
+        <div class="inline-flex items-center px-4 py-2 bg-blue-100 text-blue-800 rounded-full text-sm font-medium mb-6">
+          <Icon name="clipboard" class="w-4 h-4 mr-2" />
+          {lang === 'fi' ? 'Tilintarkastuksen valmistelu' : 'Audit Preparation'}
+        </div>
+        <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+          {lang === 'fi' ? 'Tarkastusvalmius ja evidenssinhallinta' : 'Audit Readiness & Evidence Management'}
+        </h1>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
+          {lang === 'fi' 
+            ? 'Varmista sujuva ja onnistunut tarkastusprosessi evidenssien hallinnalla, kontrollien dokumentoinnilla ja systemaattisella valmistelulla.'
+            : 'Ensure smooth and successful audit processes with evidence management, control documentation, and systematic preparation.'
+          }
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <Button href="/contact" variant="primary">
+            {lang === 'fi' ? 'Aloita valmistelu' : 'Start Preparation'}
+          </Button>
+          <Button href="/demo" variant="secondary">
+            {lang === 'fi' ? 'Tutustu palveluun' : 'Explore Service'}
+          </Button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Audit Components Section -->
+  <section class="py-20 bg-white">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">
+          {lang === 'fi' ? 'Tarkastusvalmistelun komponentit' : 'Audit Preparation Components'}
+        </h2>
+        <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+          {lang === 'fi' 
+            ? 'Kattava lähestymistapa tarkastusvalmiuden varmistamiseen neljän keskeisen elementin kautta'
+            : 'Comprehensive approach to ensuring audit readiness through four core elements'
+          }
+        </p>
+      </div>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {auditComponents.map((component) => (
+          <div class="bg-gray-50 rounded-lg p-6 text-center hover:shadow-lg transition-shadow">
+            <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mx-auto mb-4">
+              <Icon name={component.icon} class="w-6 h-6 text-blue-600" />
+            </div>
+            <h3 class="text-lg font-semibold text-gray-900 mb-2">
+              {lang === 'fi' ? component.titleFi : component.titleEn}
+            </h3>
+            <p class="text-gray-600 text-sm">
+              {lang === 'fi' ? component.descFi : component.descEn}
+            </p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Evidence Types Section -->
+  <section class="py-20 bg-gray-50">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">
+          {lang === 'fi' ? 'Evidenssityypit ja hallinta' : 'Evidence Types and Management'}
+        </h2>
+        <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+          {lang === 'fi' 
+            ? 'Systemaattinen lähestymistapa erilaisten tarkastusevidenssien keräämiseen ja hallintaan'
+            : 'Systematic approach to collecting and managing different types of audit evidence'
+          }
+        </p>
+      </div>
+
+      <div class="grid lg:grid-cols-3 gap-8">
+        {evidenceTypes.map((evidence) => (
+          <div class="bg-white rounded-lg p-8 shadow-lg">
+            <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-6">
+              <Icon name={evidence.icon} class="w-6 h-6 text-blue-600" />
+            </div>
+            <h3 class="text-xl font-semibold text-gray-900 mb-3">
+              {lang === 'fi' ? evidence.titleFi : evidence.titleEn}
+            </h3>
+            <p class="text-gray-600 mb-4">
+              {lang === 'fi' ? evidence.descFi : evidence.descEn}
+            </p>
+            <ul class="space-y-2">
+              {(lang === 'fi' ? evidence.examplesFi : evidence.examplesEn).map((example) => (
+                <li class="flex items-center text-sm text-gray-600">
+                  <Icon name="check" class="w-4 h-4 text-green-500 mr-2 flex-shrink-0" />
+                  {example}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Audit Standards Section -->
+  <section class="py-20 bg-white">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">
+          {lang === 'fi' ? 'Tuetut tarkastusstandardit' : 'Supported Audit Standards'}
+        </h2>
+        <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+          {lang === 'fi' 
+            ? 'Valmistautuminen eri kansainvälisiin tarkastus- ja sertifiointistandardeihin'
+            : 'Preparation for various international audit and certification standards'
+          }
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8">
+        {auditStandards.map((standard) => (
+          <div class="bg-gradient-to-br from-gray-50 to-blue-50 rounded-lg p-8">
+            <h3 class="text-xl font-semibold text-gray-900 mb-3">
+              {lang === 'fi' ? standard.titleFi : standard.titleEn}
+            </h3>
+            <p class="text-gray-600 mb-4">
+              {lang === 'fi' ? standard.focusFi : standard.focusEn}
+            </p>
+            <div class="space-y-2">
+              <p class="text-sm font-medium text-gray-700 mb-2">
+                {lang === 'fi' ? 'Keskeiset alueet:' : 'Key areas:'}
+              </p>
+              <div class="flex flex-wrap gap-2">
+                {(lang === 'fi' ? standard.criteriiaFi : standard.criteriaEn).map((criteria) => (
+                  <span class="px-3 py-1 bg-blue-100 text-blue-800 text-xs rounded-full">
+                    {criteria}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Preparation Phases Section -->
+  <section class="py-20 bg-gray-50">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">
+          {lang === 'fi' ? 'Valmisteluprosessin vaiheet' : 'Preparation Process Phases'}
+        </h2>
+        <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+          {lang === 'fi' 
+            ? 'Neljän vaiheen systemaattinen lähestymistapa tarkastusvalmiuden varmistamiseen'
+            : 'Four-phase systematic approach to ensuring audit readiness'
+          }
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {preparationPhases.map((phase) => (
+          <div class="bg-white rounded-lg p-6 shadow-lg">
+            <div class="w-16 h-16 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-lg flex items-center justify-center mx-auto mb-4">
+              <Icon name={phase.icon} class="w-8 h-8 text-white" />
+            </div>
+            <h3 class="text-lg font-semibold text-gray-900 mb-2 text-center">
+              {lang === 'fi' ? phase.titleFi : phase.titleEn}
+            </h3>
+            <p class="text-gray-600 text-sm text-center mb-4">
+              {lang === 'fi' ? phase.descFi : phase.descEn}
+            </p>
+            <ul class="space-y-1 text-xs text-gray-600">
+              {(lang === 'fi' ? phase.tasksFi : phase.tasksEn).map((task) => (
+                <li class="flex items-start">
+                  <Icon name="check" class="w-3 h-3 text-green-500 mr-1 mt-0.5 flex-shrink-0" />
+                  {task}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Tracking Metrics Section -->
+  <section class="py-20 bg-white">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">
+          {lang === 'fi' ? 'Seurantamittarit' : 'Tracking Metrics'}
+        </h2>
+        <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+          {lang === 'fi' 
+            ? 'Mittarit tarkastusvalmiuden objektiiviseen arviointiin ja seurantaan'
+            : 'Metrics for objective assessment and tracking of audit readiness'
+          }
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {trackingMetrics.map((metric) => (
+          <div class="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-lg p-6 text-center">
+            <h3 class="text-lg font-semibold text-gray-900 mb-2">
+              {lang === 'fi' ? metric.metricFi : metric.metricEn}
+            </h3>
+            <div class="text-2xl font-bold text-blue-600 mb-2">
+              {lang === 'fi' ? metric.targetFi : metric.targetEn}
+            </div>
+            <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center mx-auto">
+              <Icon name="target" class="w-4 h-4 text-blue-600" />
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-20 bg-gradient-to-r from-blue-600 to-indigo-700">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl font-bold text-white mb-4">
+        {lang === 'fi' ? 'Valmis onnistuneeseen tarkastukseen?' : 'Ready for Successful Audit?'}
+      </h2>
+      <p class="text-xl text-blue-100 mb-8">
+        {lang === 'fi' 
+          ? 'Ota yhteyttä ja aloitetaan tarkastusvalmisteluprojekti yhdessä.'
+          : 'Contact us to start your audit preparation project together.'
+        }
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <Button href="/contact" variant="secondary">
+          {lang === 'fi' ? 'Ota yhteyttä' : 'Contact Us'}
+        </Button>
+        <Button href="/demo" variant="tertiary">
+          {lang === 'fi' ? 'Varaa demo' : 'Book Demo'}
+        </Button>
+      </div>
     </div>
   </section>
 </Layout>

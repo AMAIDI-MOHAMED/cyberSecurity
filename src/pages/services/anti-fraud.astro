@@ -10,10 +10,94 @@ const title = lang === 'fi' ? 'Petosriskien arviointi' : 'Fraud Risk Assessment'
 const description = lang === 'fi' ? 'TPRM, maksuprosessit ja käyttäjäprosessit läpi käyvää petosriskiarviointia – BEC, laskupetos, tilin kaappaus.' : 'Comprehensive fraud risk assessment across TPRM, payment and user processes – BEC, invoice fraud, account takeover.';
 
 const lenses = [
-  { icon:'user', fi:'Sosiaalinen manipulointi', en:'Social engineering' },
-  { icon:'mail', fi:'BEC ja laskupetos', en:'BEC and invoice fraud' },
-  { icon:'document', fi:'Prosessi- ja maksukontrollit', en:'Process and payment controls' },
-  { icon:'network', fi:'Kolmannen osapuolen riskit', en:'Third‑party risks' }
+  { 
+    icon:'user', 
+    fi:'Sosiaalinen manipulointi', 
+    en:'Social engineering',
+    fiDesc: 'Phishing, vishing, pretexting ja muut manipulointitekniikat',
+    enDesc: 'Phishing, vishing, pretexting and other manipulation techniques'
+  },
+  { 
+    icon:'mail', 
+    fi:'BEC ja laskupetos', 
+    en:'BEC and invoice fraud',
+    fiDesc: 'CEO-fraud, toimittajien tietojen vaihto ja maksupetokset',
+    enDesc: 'CEO fraud, vendor impersonation and payment fraud'
+  },
+  { 
+    icon:'document', 
+    fi:'Prosessi- ja maksukontrollit', 
+    en:'Process and payment controls',
+    fiDesc: 'Maksuprosessien validointi ja nelisilmäperiaate',
+    enDesc: 'Payment process validation and four-eyes principle'
+  },
+  { 
+    icon:'network', 
+    fi:'Kolmannen osapuolen riskit', 
+    en:'Third‑party risks',
+    fiDesc: 'Toimittajaketjun petosriskit ja kumppanivalidointi',
+    enDesc: 'Supply chain fraud risks and partner validation'
+  }
+];
+
+const threatTypes = [
+  {
+    icon: 'alert',
+    titleFi: 'BEC (Business Email Compromise)',
+    titleEn: 'BEC (Business Email Compromise)',
+    descFi: 'CEO-fraud, laskupetokset ja pankkitietojen vaihto',
+    descEn: 'CEO fraud, invoice fraud and banking detail changes'
+  },
+  {
+    icon: 'phone',
+    titleFi: 'Vishing ja Smishing',
+    titleEn: 'Vishing and Smishing',
+    descFi: 'Puhelinpetokset ja tekstiviestipetokset',
+    descEn: 'Phone-based and SMS-based fraud attacks'
+  },
+  {
+    icon: 'user-x',
+    titleFi: 'Tilin kaappaus',
+    titleEn: 'Account Takeover',
+    descFi: 'Käyttäjätilien haltuunotto ja väärinkäyttö',
+    enDesc: 'User account compromise and abuse'
+  },
+  {
+    icon: 'credit-card',
+    titleFi: 'Maksupetokset',
+    titleEn: 'Payment Fraud',
+    descFi: 'Korttipetokset ja pankkisiirtojen manipulointi',
+    enDesc: 'Card fraud and bank transfer manipulation'
+  }
+];
+
+const controls = [
+  {
+    titleFi: 'Tekninen suojaus',
+    titleEn: 'Technical Controls',
+    itemsFi: ['SPF/DKIM/DMARC konfigurointi', 'Väärennyssuojaus', 'MFA kaikille tileille', 'Anomalianseuranta'],
+    itemsEn: ['SPF/DKIM/DMARC configuration', 'Anti-spoofing protection', 'MFA for all accounts', 'Anomaly detection']
+  },
+  {
+    titleFi: 'Prosessikontrollit',
+    titleEn: 'Process Controls',
+    itemsFi: ['Nelisilmäperiaate maksuille', 'Toimittajatietojen validointi', 'Muutosprosessien vahvistus', 'Eskalointiprosessit'],
+    itemsEn: ['Four-eyes principle for payments', 'Vendor information validation', 'Change process verification', 'Escalation procedures']
+  },
+  {
+    titleFi: 'Henkilöstön koulutus',
+    titleEn: 'Staff Training',
+    itemsFi: ['Petosriskien tunnistaminen', 'Varmistusprosessit', 'Raportointikanavat', 'Simulaatiot ja testit'],
+    itemsEn: ['Fraud risk recognition', 'Verification procedures', 'Reporting channels', 'Simulations and testing']
+  }
+];
+
+const process = [
+  { step: '1', fi: 'Uhka-analyysi', en: 'Threat Analysis', fiDesc: 'Toimialakohtaiset petosriskit', enDesc: 'Industry-specific fraud risks' },
+  { step: '2', fi: 'Prosessikatsaus', en: 'Process Review', fiDesc: 'Kriittisten prosessien arviointi', enDesc: 'Critical process assessment' },
+  { step: '3', fi: 'Tekninen testaus', en: 'Technical Testing', fiDesc: 'Phishing-simulaatiot ja testit', enDesc: 'Phishing simulations and tests' },
+  { step: '4', fi: 'Suositukset', en: 'Recommendations', fiDesc: 'Kontrollimatriisi ja toimenpiteet', enDesc: 'Control matrix and actions' },
+  { step: '5', fi: 'Toteutus', en: 'Implementation', fiDesc: 'Kontrollit ja koulutusohjelma', enDesc: 'Controls and training program' }
 ];
 ---
 
@@ -29,11 +113,78 @@ const lenses = [
 
   <section class="py-20 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-slate-900 mb-4">{lang==='fi' ? 'Petosuhkien kartoitus' : 'Fraud Risk Mapping'}</h2>
+        <p class="text-xl text-slate-600 max-w-3xl mx-auto">{lang==='fi' ? 'Tunnistamme ja arvioimme keskeisimmät petosriskit organisaatiossanne.' : 'We identify and assess the most critical fraud risks in your organization.'}</p>
+      </div>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
         {lenses.map(l => (
           <div class="bg-gradient-to-br from-slate-50 to-white p-8 rounded-xl border border-slate-200 hover:shadow-xl transition-all duration-300">
             <div class="w-16 h-16 bg-amber-100 rounded-xl flex items-center justify-center mb-6"><Icon name={l.icon} className="w-8 h-8 text-amber-600" /></div>
-            <h3 class="text-lg font-bold text-slate-900">{lang==='fi'?l.fi:l.en}</h3>
+            <h3 class="text-lg font-bold text-slate-900 mb-2">{lang==='fi'?l.fi:l.en}</h3>
+            <p class="text-slate-600 text-sm">{lang==='fi'?l.fiDesc:l.enDesc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-slate-900 mb-4">{lang==='fi' ? 'Yleisimmät petosuhkat' : 'Common Fraud Threats'}</h2>
+        <p class="text-xl text-slate-600 max-w-3xl mx-auto">{lang==='fi' ? 'Organisaatioita kohtaavat petosuhkat kehittyvät jatkuvasti – tunnetaan riskit ja rakenteet suojaus.' : 'Fraud threats against organizations continuously evolve – know the risks and build protection.'}</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {threatTypes.map(t => (
+          <div class="bg-white p-6 rounded-xl border border-slate-200 hover:shadow-lg transition-all duration-300">
+            <div class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mb-4">
+              <Icon name={t.icon} className="w-6 h-6 text-red-600" />
+            </div>
+            <h3 class="text-lg font-bold text-slate-900 mb-2">{lang==='fi' ? t.titleFi : t.titleEn}</h3>
+            <p class="text-slate-600 text-sm">{lang==='fi' ? t.descFi : t.descEn}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-slate-900 mb-4">{lang==='fi' ? 'Petosriskien kontrollit' : 'Fraud Risk Controls'}</h2>
+        <p class="text-xl text-slate-600 max-w-3xl mx-auto">{lang==='fi' ? 'Monikerroksinen lähestymistapa teknisten, prosessuaalisten ja henkilöstöön liittyvien kontrollien avulla.' : 'Multi-layered approach through technical, process, and human controls.'}</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {controls.map(c => (
+          <div class="bg-gradient-to-br from-slate-50 to-white p-8 rounded-xl border border-slate-200">
+            <h3 class="text-xl font-bold text-slate-900 mb-4">{lang==='fi' ? c.titleFi : c.titleEn}</h3>
+            <ul class="space-y-2">
+              {(lang==='fi' ? c.itemsFi : c.itemsEn).map(item => (
+                <li class="flex items-start">
+                  <Icon name="check" className="w-5 h-5 text-green-600 mt-0.5 mr-3 flex-shrink-0" />
+                  <span class="text-slate-600">{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-slate-900 mb-4">{lang==='fi' ? 'Arviointiprosessi' : 'Assessment Process'}</h2>
+        <p class="text-xl text-slate-600 max-w-3xl mx-auto">{lang==='fi' ? 'Systemaattinen lähestymistapa petosriskien tunnistamiseen ja kontrollien suunnitteluun.' : 'Systematic approach to identify fraud risks and design controls.'}</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-5 gap-6">
+        {process.map(p => (
+          <div class="text-center">
+            <div class="w-16 h-16 bg-amber-600 rounded-full flex items-center justify-center mx-auto mb-4 text-white text-xl font-bold">{p.step}</div>
+            <h3 class="text-lg font-semibold text-slate-900 mb-1">{lang==='fi' ? p.fi : p.en}</h3>
+            <p class="text-slate-600 text-sm">{lang==='fi' ? p.fiDesc : p.enDesc}</p>
           </div>
         ))}
       </div>

@@ -10,16 +10,110 @@ const title = lang==='fi' ? 'Maksukontrollit' : 'Payment Controls';
 const description = lang==='fi' ? 'Kovennamme maksuprosessit petoksia vastaan ja rakennamme palautumisvalmiuden.' : 'We harden payment processes against fraud and build recovery readiness.';
 
 const pillars = [
-  { icon:'document', fi:'Prosessikontrollit', en:'Process Controls', fiD:'Neljän silmän periaate, maksurajojen ja muutosten hallinta.', enD:'Four‑eyes approvals, payment limits and change control.' },
-  { icon:'lock', fi:'Tekniset kontrollit', en:'Technical Controls', fiD:'SPF/DMARC, treasuryn ja ERP‑integraatiot, vahva tunnistus.', enD:'SPF/DMARC, treasury/ERP integrations, strong authentication.' },
-  { icon:'user', fi:'Ihmiskontrollit', en:'People Controls', fiD:'Soittopaluu, todennus, koulutus ja simulaatiot.', enD:'Call‑backs, verification, training and simulations.' }
+  { 
+    icon:'document', 
+    fi:'Prosessikontrollit', 
+    en:'Process Controls', 
+    fiD:'Neljän silmän periaate, maksurajojen ja muutosten hallinta.', 
+    enD:'Four‑eyes approvals, payment limits and change control.' 
+  },
+  { 
+    icon:'lock', 
+    fi:'Tekniset kontrollit', 
+    en:'Technical Controls', 
+    fiD:'SPF/DMARC, treasuryn ja ERP‑integraatiot, vahva tunnistus.', 
+    enD:'SPF/DMARC, treasury/ERP integrations, strong authentication.' 
+  },
+  { 
+    icon:'user', 
+    fi:'Ihmiskontrollit', 
+    en:'People Controls', 
+    fiD:'Soittopaluu, todennus, koulutus ja simulaatiot.', 
+    enD:'Call‑backs, verification, training and simulations.' 
+  }
+];
+
+const threatVectors = [
+  {
+    icon: 'alert-triangle',
+    titleFi: 'BEC/CEO Fraud',
+    titleEn: 'BEC/CEO Fraud',
+    descFi: 'Johdon tunnuksilla tehdyt väärät maksupyynnöt',
+    descEn: 'False payment requests using executive credentials'
+  },
+  {
+    icon: 'mail',
+    titleFi: 'Toimittajapetokset',
+    titleEn: 'Vendor Fraud',
+    descFi: 'Toimittajan pankkitietojen vaihto ja väärät laskut',
+    descEn: 'Vendor banking detail changes and false invoices'
+  },
+  {
+    icon: 'credit-card',
+    titleFi: 'Maksujärjestelmäpetokset',
+    titleEn: 'Payment System Fraud',
+    descFi: 'ERP- ja maksujärjestelmien väärinkäyttö',
+    descEn: 'ERP and payment system abuse'
+  },
+  {
+    icon: 'phone',
+    titleFi: 'Sosiaalinen manipulointi',
+    titleEn: 'Social Engineering',
+    descFi: 'Puhelinpetokset ja henkilöstön manipulointi',
+    descEn: 'Phone fraud and staff manipulation'
+  }
+];
+
+const controlFramework = [
+  {
+    titleFi: 'Ennaltaehkäisy',
+    titleEn: 'Prevention',
+    itemsFi: ['Maksulimiitin asettaminen', 'Nelisilmäperiaate', 'Toimittajatietojen lukitseminen', 'Tekninen suojaus'],
+    itemsEn: ['Payment limit setting', 'Four-eyes principle', 'Vendor data locking', 'Technical protection']
+  },
+  {
+    titleFi: 'Tunnistaminen',
+    titleEn: 'Detection',
+    itemsFi: ['Anomalianseuranta', 'Transaktion valvonta', 'Raportointikanavat', 'Säännölliset tarkastukset'],
+    itemsEn: ['Anomaly detection', 'Transaction monitoring', 'Reporting channels', 'Regular reviews']
+  },
+  {
+    titleFi: 'Vastaus',
+    titleEn: 'Response',
+    itemsFi: ['Maksun pysäytys', 'Pankkikontaktit', 'Tapauksen selvitys', 'Viranomaisilmoitus'],
+    itemsEn: ['Payment stopping', 'Bank contacts', 'Incident investigation', 'Authority reporting']
+  }
 ];
 
 const playbooks = [
-  { step:'1', fi:'STOP‑maksu ja pankkikontaktit', en:'Payment STOP and bank contacts' },
-  { step:'2', fi:'Tapahtumaselvitys', en:'Incident triage and scoping' },
-  { step:'3', fi:'Rikosilmoitus ja toimet', en:'Police report and coordination' },
-  { step:'4', fi:'Palautuminen ja parannukset', en:'Recovery and improvements' }
+  { 
+    step:'1', 
+    fi:'STOP‑maksu ja pankkikontaktit', 
+    en:'Payment STOP and bank contacts',
+    fiDesc: 'Välitön maksun pysäytys ja pankin informointi',
+    enDesc: 'Immediate payment stop and bank notification'
+  },
+  { 
+    step:'2', 
+    fi:'Tapahtumaselvitys', 
+    en:'Incident triage and scoping',
+    fiDesc: 'Tapahtuman laajuuden ja vaikutusten selvitys',
+    enDesc: 'Incident scope and impact assessment'
+  },
+  { 
+    step:'3', 
+    fi:'Rikosilmoitus ja toimet', 
+    en:'Police report and coordination',
+    fiDesc: 'Viranomaisten informointi ja yhteistyö',
+    enDesc: 'Authority notification and cooperation'
+  },
+  { 
+    step:'4', 
+    fi:'Palautuminen ja parannukset', 
+    en:'Recovery and improvements',
+    fiDesc: 'Kontrollien vahvistaminen ja oppiminen',
+    enDesc: 'Control strengthening and lessons learned'
+  }
 ];
 ---
 
@@ -35,6 +129,10 @@ const playbooks = [
 
   <section class="py-20 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-slate-900 mb-4">{lang==='fi' ? 'Maksukontrollien kolme pilaria' : 'Three Pillars of Payment Controls'}</h2>
+        <p class="text-xl text-slate-600 max-w-3xl mx-auto">{lang==='fi' ? 'Tehokas maksupetossuojaus vaatii teknisten, prosessuaalisten ja henkilöstöön liittyvien kontrollien yhdistämistä.' : 'Effective payment fraud protection requires combining technical, process, and human controls.'}</p>
+      </div>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {pillars.map(p => (
           <div class="bg-gradient-to-br from-slate-50 to-white p-8 rounded-xl border border-slate-200 hover:shadow-xl transition-all duration-300">
@@ -52,13 +150,60 @@ const playbooks = [
   <section class="py-20 bg-slate-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-16">
-        <h2 class="text-3xl font-bold text-slate-900 mb-4">{lang==='fi'?'Palautumis‑playbookit':'Recovery Playbooks'}</h2>
+        <h2 class="text-3xl font-bold text-slate-900 mb-4">{lang==='fi' ? 'Maksupetosuhkat' : 'Payment Fraud Threats'}</h2>
+        <p class="text-xl text-slate-600 max-w-3xl mx-auto">{lang==='fi' ? 'Tunnista ja suojaudu yleisimmiltä maksupetoksilta.' : 'Identify and protect against the most common payment frauds.'}</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {threatVectors.map(t => (
+          <div class="bg-white p-6 rounded-xl border border-slate-200 hover:shadow-lg transition-all duration-300">
+            <div class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mb-4">
+              <Icon name={t.icon} className="w-6 h-6 text-red-600" />
+            </div>
+            <h3 class="text-lg font-bold text-slate-900 mb-2">{lang==='fi' ? t.titleFi : t.titleEn}</h3>
+            <p class="text-slate-600 text-sm">{lang==='fi' ? t.descFi : t.descEn}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-slate-900 mb-4">{lang==='fi' ? 'Kontrollikehikko' : 'Control Framework'}</h2>
+        <p class="text-xl text-slate-600 max-w-3xl mx-auto">{lang==='fi' ? 'Kattava lähestymistapa maksupetosriskien hallintaan.' : 'Comprehensive approach to payment fraud risk management.'}</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {controlFramework.map((cf, index) => (
+          <div class="bg-gradient-to-br from-slate-50 to-white p-8 rounded-xl border border-slate-200">
+            <div class="w-12 h-12 bg-emerald-600 rounded-lg flex items-center justify-center mb-4 text-white font-bold">{index + 1}</div>
+            <h3 class="text-xl font-bold text-slate-900 mb-4">{lang==='fi' ? cf.titleFi : cf.titleEn}</h3>
+            <ul class="space-y-2">
+              {(lang==='fi' ? cf.itemsFi : cf.itemsEn).map(item => (
+                <li class="flex items-start">
+                  <Icon name="check" className="w-5 h-5 text-green-600 mt-0.5 mr-3 flex-shrink-0" />
+                  <span class="text-slate-600">{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-slate-900 mb-4">{lang==='fi'?'Palautumisplaybookit':'Recovery Playbooks'}</h2>
+        <p class="text-xl text-slate-600 max-w-3xl mx-auto">{lang==='fi' ? 'Valmiit toimintamallit maksupetostapausten käsittelyyn ja palautumiseen.' : 'Ready action models for handling payment fraud incidents and recovery.'}</p>
       </div>
       <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
         {playbooks.map(pb => (
           <div class="text-center">
             <div class="w-16 h-16 bg-teal-600 rounded-full flex items-center justify-center mx-auto mb-4 text-white text-xl font-bold">{pb.step}</div>
-            <p class="text-slate-700 font-medium">{lang==='fi'?pb.fi:pb.en}</p>
+            <h3 class="text-lg font-semibold text-slate-900 mb-1">{lang==='fi'?pb.fi:pb.en}</h3>
+            <p class="text-slate-600 text-sm">{lang==='fi'?pb.fiDesc:pb.enDesc}</p>
           </div>
         ))}
       </div>

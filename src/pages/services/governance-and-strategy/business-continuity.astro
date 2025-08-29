@@ -1,13 +1,377 @@
 ---
 import Layout from '@/layouts/Layout.astro';
-const title = 'Business Continuity';
-const description = 'Stand up and improve your BCMS with BIAs, strategies, plans, exercises, and continual improvement.';
+import Icon from '@/components/ui/icons/Icon.astro';
+import Button from '@/components/ui/Button.astro';
+
+const currentPath = Astro.url.pathname;
+const lang = currentPath.startsWith('/fi') ? 'fi' : 'en';
+
+const title = lang === 'fi' ? 'Liiketoiminnan jatkuvuus' : 'Business Continuity';
+const description = lang === 'fi' 
+  ? 'Rakenna ja paranna BCMS:ää BIA:lla, strategioilla, suunnitelmilla, harjoituksilla ja jatkuvalla parantamisella.'
+  : 'Stand up and improve your BCMS with BIAs, strategies, plans, exercises, and continual improvement.';
+
+const bcmsComponents = [
+  {
+    icon: 'activity',
+    titleFi: 'Liiketoimintavaikutusanalyysi (BIA)',
+    titleEn: 'Business Impact Analysis (BIA)',
+    descFi: 'Kriittisten prosessien tunnistaminen ja häiriövaikutusten arviointi',
+    descEn: 'Critical process identification and disruption impact assessment'
+  },
+  {
+    icon: 'shield',
+    titleFi: 'Jatkuvuusstrategiat',
+    titleEn: 'Continuity Strategies',
+    descFi: 'Vaihtoehtoisten toimintatapojen ja varasuunnitelmien kehittäminen',
+    descEn: 'Alternative operating methods and contingency plan development'
+  },
+  {
+    icon: 'file-text',
+    titleFi: 'Jatkuvuussuunnitelmat',
+    titleEn: 'Continuity Plans',
+    descFi: 'Yksityiskohtaiset toimintaohjeet kriisitilanteisiin',
+    descEn: 'Detailed operational procedures for crisis situations'
+  },
+  {
+    icon: 'users',
+    titleFi: 'Harjoitukset ja testaus',
+    titleEn: 'Exercises and Testing',
+    descFi: 'Suunnitelmien säännöllinen testaus ja henkilöstön koulutus',
+    descEn: 'Regular plan testing and staff training'
+  }
+];
+
+const bcProcesses = [
+  {
+    icon: 'search',
+    titleFi: 'Riskinarviointi',
+    titleEn: 'Risk Assessment',
+    descFi: 'Tunnista uhkat ja haavoittuvuudet',
+    descEn: 'Identify threats and vulnerabilities',
+    detailsFi: ['Luonnonkatastrofit', 'Teknologiariskit', 'Henkilöstöriskit', 'Toimittajariskit'],
+    detailsEn: ['Natural disasters', 'Technology risks', 'Personnel risks', 'Supplier risks']
+  },
+  {
+    icon: 'bar-chart',
+    titleFi: 'Vaikutusanalyysi',
+    titleEn: 'Impact Analysis',
+    descFi: 'Arviointi häiriöiden vaikutuksista',
+    descEn: 'Assessment of disruption impacts',
+    detailsFi: ['Taloudellinen vaikutus', 'Operatiivinen vaikutus', 'Maineriski', 'Säädösvaikutukset'],
+    detailsEn: ['Financial impact', 'Operational impact', 'Reputation risk', 'Regulatory impacts']
+  },
+  {
+    icon: 'clock',
+    titleFi: 'Palautumisaikataulut',
+    titleEn: 'Recovery Timelines',
+    descFi: 'RTO ja RPO määrittely prosesseille',
+    descEn: 'RTO and RPO definition for processes',
+    detailsFi: ['Recovery Time Objective', 'Recovery Point Objective', 'Minimum Service Level', 'Maximum Tolerable Downtime'],
+    detailsEn: ['Recovery Time Objective', 'Recovery Point Objective', 'Minimum Service Level', 'Maximum Tolerable Downtime']
+  }
+];
+
+const planTypes = [
+  {
+    titleFi: 'Kriisienhallintasuunnitelma',
+    titleEn: 'Crisis Management Plan',
+    itemsFi: ['Kriisitiimin aktivointi', 'Päätöksentekoprosessit', 'Kommunikaatiostrategiat', 'Mediasuhde'],
+    itemsEn: ['Crisis team activation', 'Decision-making processes', 'Communication strategies', 'Media relations']
+  },
+  {
+    titleFi: 'Liiketoiminnan jatkuvuussuunnitelma',
+    titleEn: 'Business Continuity Plan',
+    itemsFi: ['Vaihtoehtoisten prosessien aktivointi', 'Resurssien uudelleenkohdentaminen', 'Toimittajasuhteiden hallinta', 'Asiakasviestintä'],
+    itemsEn: ['Alternative process activation', 'Resource reallocation', 'Supplier relationship management', 'Customer communication']
+  },
+  {
+    titleFi: 'IT-katastrofipalautumissuunnitelma',
+    titleEn: 'IT Disaster Recovery Plan',
+    itemsFi: ['Järjestelmien varmuuskopiointi', 'Vaihtoehtoisten IT-resurssien aktivointi', 'Tietojen palautus', 'Tekninen tuki'],
+    itemsEn: ['System backup', 'Alternative IT resource activation', 'Data recovery', 'Technical support']
+  },
+  {
+    titleFi: 'Toipumissuunnitelma',
+    titleEn: 'Recovery Plan',
+    itemsFi: ['Normaalien toimintojen palautus', 'Opittujen asioiden arviointi', 'Suunnitelmien päivitys', 'Sidosryhmäraportointi'],
+    itemsEn: ['Normal operations restoration', 'Lessons learned assessment', 'Plan updates', 'Stakeholder reporting']
+  }
+];
+
+const exerciseTypes = [
+  {
+    icon: 'book-open',
+    titleFi: 'Pöytäkirjaharjoitukset',
+    titleEn: 'Tabletop Exercises',
+    descFi: 'Skenaariopohjaiset keskusteluharjoitukset',
+    descEn: 'Scenario-based discussion exercises'
+  },
+  {
+    icon: 'play',
+    titleFi: 'Simulaatiot',
+    titleEn: 'Simulations',
+    descFi: 'Realistiset kriisiskenaarioiden läpikäynnit',
+    descEn: 'Realistic crisis scenario walkthroughs'
+  },
+  {
+    icon: 'zap',
+    titleFi: 'Täyden mittakaavan testit',
+    titleEn: 'Full-Scale Tests',
+    descFi: 'Todelliset häiriötilanteiden testaukset',
+    descEn: 'Actual disruption situation testing'
+  },
+  {
+    icon: 'target',
+    titleFi: 'Komponenttitestit',
+    titleEn: 'Component Tests',
+    descFi: 'Yksittäisten suunnitelman osien testaus',
+    descEn: 'Individual plan component testing'
+  }
+];
+
+const implementationSteps = [
+  { step: '1', fi: 'BCMS-kehyksen suunnittelu', en: 'BCMS Framework Design', fiDesc: 'Liiketoiminnan jatkuvuuden hallintajärjestelmän perusteet', enDesc: 'Business continuity management system foundations' },
+  { step: '2', fi: 'BIA ja riskinarviointi', en: 'BIA and Risk Assessment', fiDesc: 'Kriittisten prosessien ja riskien tunnistaminen', enDesc: 'Critical process and risk identification' },
+  { step: '3', fi: 'Strategioiden kehittäminen', en: 'Strategy Development', fiDesc: 'Jatkuvuusstrategioiden ja vaihtoehtojen suunnittelu', enDesc: 'Continuity strategy and alternative planning' },
+  { step: '4', fi: 'Suunnitelmien laatiminen', en: 'Plan Development', fiDesc: 'Yksityiskohtaisten toimintasuunnitelmien luominen', enDesc: 'Detailed operational plan creation' },
+  { step: '5', fi: 'Testaus ja ylläpito', en: 'Testing and Maintenance', fiDesc: 'Harjoitusten suoritus ja jatkuva parantaminen', enDesc: 'Exercise execution and continuous improvement' }
+];
 ---
 <Layout title={title} description={description}>
-  <section class="py-16 bg-white">
-    <div class="max-w-3xl mx-auto px-4">
-      <h1 class="text-3xl font-bold text-slate-900">{title}</h1>
-      <p class="mt-4 text-slate-600">{description}</p>
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-br from-blue-50 to-indigo-100 py-20">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center">
+        <div class="inline-flex items-center px-4 py-2 bg-blue-100 text-blue-800 rounded-full text-sm font-medium mb-6">
+          <Icon name="shield" class="w-4 h-4 mr-2" />
+          {lang === 'fi' ? 'Liiketoiminnan jatkuvuus' : 'Business Continuity'}
+        </div>
+        <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+          {lang === 'fi' ? 'Liiketoiminnan jatkuvuuden hallinta' : 'Business Continuity Management'}
+        </h1>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
+          {lang === 'fi' 
+            ? 'Varmista liiketoimintasi kestävyys ja nopea toipuminen häiriötilanteista. Rakennamme kattavan BCMS:n strategioista harjoituksiin.'
+            : 'Ensure business resilience and rapid recovery from disruptions. We build comprehensive BCMS from strategies to exercises.'
+          }
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <Button href="/contact" variant="primary" size="lg">
+            {lang === 'fi' ? 'Aloita BCMS-projekti' : 'Start BCMS Project'}
+          </Button>
+          <Button href="/demo" variant="outline" size="lg">
+            {lang === 'fi' ? 'Tutustu palveluun' : 'Explore Service'}
+          </Button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BCMS Components Section -->
+  <section class="py-20 bg-white">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">
+          {lang === 'fi' ? 'BCMS:n keskeiset komponentit' : 'Core BCMS Components'}
+        </h2>
+        <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+          {lang === 'fi' 
+            ? 'Kattava liiketoiminnan jatkuvuuden hallintajärjestelmä koostuu neljästä keskeisestä elementistä'
+            : 'A comprehensive business continuity management system consists of four core elements'
+          }
+        </p>
+      </div>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {bcmsComponents.map((component) => (
+          <div class="bg-gray-50 rounded-lg p-6 text-center hover:shadow-lg transition-shadow">
+            <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mx-auto mb-4">
+              <Icon name={component.icon} class="w-6 h-6 text-blue-600" />
+            </div>
+            <h3 class="text-lg font-semibold text-gray-900 mb-2">
+              {lang === 'fi' ? component.titleFi : component.titleEn}
+            </h3>
+            <p class="text-gray-600 text-sm">
+              {lang === 'fi' ? component.descFi : component.descEn}
+            </p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- BIA Process Section -->
+  <section class="py-20 bg-gray-50">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">
+          {lang === 'fi' ? 'Liiketoimintavaikutusanalyysi (BIA)' : 'Business Impact Analysis (BIA)'}
+        </h2>
+        <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+          {lang === 'fi' 
+            ? 'Systemaattinen prosessi kriittisten liiketoimintafunktioiden tunnistamiseksi ja häiriövaikutusten arvioimiseksi'
+            : 'Systematic process for identifying critical business functions and assessing disruption impacts'
+          }
+        </p>
+      </div>
+
+      <div class="grid lg:grid-cols-3 gap-8">
+        {bcProcesses.map((process) => (
+          <div class="bg-white rounded-lg p-8 shadow-lg">
+            <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-6">
+              <Icon name={process.icon} class="w-6 h-6 text-blue-600" />
+            </div>
+            <h3 class="text-xl font-semibold text-gray-900 mb-3">
+              {lang === 'fi' ? process.titleFi : process.titleEn}
+            </h3>
+            <p class="text-gray-600 mb-4">
+              {lang === 'fi' ? process.descFi : process.descEn}
+            </p>
+            <ul class="space-y-2">
+              {(lang === 'fi' ? process.detailsFi : process.detailsEn).map((detail) => (
+                <li class="flex items-center text-sm text-gray-600">
+                  <Icon name="check" class="w-4 h-4 text-green-500 mr-2 flex-shrink-0" />
+                  {detail}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Plan Types Section -->
+  <section class="py-20 bg-white">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">
+          {lang === 'fi' ? 'Jatkuvuussuunnitelmien tyypit' : 'Types of Continuity Plans'}
+        </h2>
+        <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+          {lang === 'fi' 
+            ? 'Kattava suunnitelmisto eri kriisitilanteisiin ja toipumisvaiheisiin'
+            : 'Comprehensive plan portfolio for different crisis situations and recovery phases'
+          }
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8">
+        {planTypes.map((planType) => (
+          <div class="bg-gradient-to-br from-gray-50 to-blue-50 rounded-lg p-8">
+            <h3 class="text-xl font-semibold text-gray-900 mb-4">
+              {lang === 'fi' ? planType.titleFi : planType.titleEn}
+            </h3>
+            <ul class="space-y-3">
+              {(lang === 'fi' ? planType.itemsFi : planType.itemsEn).map((item) => (
+                <li class="flex items-start">
+                  <Icon name="arrow-right" class="w-4 h-4 text-blue-600 mr-3 mt-1 flex-shrink-0" />
+                  <span class="text-gray-700">{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Exercise Types Section -->
+  <section class="py-20 bg-gray-50">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">
+          {lang === 'fi' ? 'Harjoitustyypit ja testaus' : 'Exercise Types and Testing'}
+        </h2>
+        <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+          {lang === 'fi' 
+            ? 'Säännölliset harjoitukset varmistavat suunnitelmien toimivuuden ja henkilöstön valmiuden'
+            : 'Regular exercises ensure plan effectiveness and staff readiness'
+          }
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {exerciseTypes.map((exercise) => (
+          <div class="bg-white rounded-lg p-6 text-center shadow-lg hover:shadow-xl transition-shadow">
+            <div class="w-16 h-16 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-lg flex items-center justify-center mx-auto mb-4">
+              <Icon name={exercise.icon} class="w-8 h-8 text-white" />
+            </div>
+            <h3 class="text-lg font-semibold text-gray-900 mb-2">
+              {lang === 'fi' ? exercise.titleFi : exercise.titleEn}
+            </h3>
+            <p class="text-gray-600 text-sm">
+              {lang === 'fi' ? exercise.descFi : exercise.descEn}
+            </p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Implementation Process Section -->
+  <section class="py-20 bg-white">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">
+          {lang === 'fi' ? 'Toteutusprosessi' : 'Implementation Process'}
+        </h2>
+        <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+          {lang === 'fi' 
+            ? 'Viiden vaiheen metodologia BCMS:n rakentamiseen ja ylläpitoon'
+            : 'Five-phase methodology for building and maintaining BCMS'
+          }
+        </p>
+      </div>
+
+      <div class="space-y-8">
+        {implementationSteps.map((step, index) => (
+          <div class="flex items-start space-x-6">
+            <div class="flex-shrink-0">
+              <div class="w-12 h-12 bg-blue-600 text-white rounded-lg flex items-center justify-center font-bold text-lg">
+                {step.step}
+              </div>
+            </div>
+            <div class="flex-1">
+              <h3 class="text-xl font-semibold text-gray-900 mb-2">
+                {lang === 'fi' ? step.fi : step.en}
+              </h3>
+              <p class="text-gray-600">
+                {lang === 'fi' ? step.fiDesc : step.enDesc}
+              </p>
+            </div>
+            {index < implementationSteps.length - 1 && (
+              <div class="hidden lg:block w-8 h-8 text-gray-300">
+                <Icon name="arrow-down" class="w-full h-full" />
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-20 bg-gradient-to-r from-blue-600 to-indigo-700">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl font-bold text-white mb-4">
+        {lang === 'fi' ? 'Valmis rakentamaan kestävää liiketoimintaa?' : 'Ready to Build Resilient Business?'}
+      </h2>
+      <p class="text-xl text-blue-100 mb-8">
+        {lang === 'fi' 
+          ? 'Ota yhteyttä ja keskustellaan BCMS-tarpeistasi ja toteutuksesta.'
+          : 'Contact us to discuss your BCMS needs and implementation.'
+        }
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <Button href="/contact" variant="secondary" size="lg">
+          {lang === 'fi' ? 'Ota yhteyttä' : 'Contact Us'}
+        </Button>
+        <Button href="/demo" variant="outline-white" size="lg">
+          {lang === 'fi' ? 'Varaa demo' : 'Book Demo'}
+        </Button>
+      </div>
     </div>
   </section>
 </Layout>

@@ -1,0 +1,75 @@
+<svg width="400" height="300" viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Hospital Building -->
+  <rect x="120" y="60" width="160" height="160" fill="#374151" rx="4"/>
+  
+  <!-- Windows -->
+  <rect x="140" y="80" width="15" height="15" fill="#64748b"/>
+  <rect x="165" y="80" width="15" height="15" fill="#64748b"/>
+  <rect x="220" y="80" width="15" height="15" fill="#64748b"/>
+  <rect x="245" y="80" width="15" height="15" fill="#64748b"/>
+  
+  <rect x="140" y="105" width="15" height="15" fill="#64748b"/>
+  <rect x="165" y="105" width="15" height="15" fill="#64748b"/>
+  <rect x="220" y="105" width="15" height="15" fill="#64748b"/>
+  <rect x="245" y="105" width="15" height="15" fill="#64748b"/>
+  
+  <rect x="140" y="130" width="15" height="15" fill="#64748b"/>
+  <rect x="165" y="130" width="15" height="15" fill="#64748b"/>
+  <rect x="220" y="130" width="15" height="15" fill="#64748b"/>
+  <rect x="245" y="130" width="15" height="15" fill="#64748b"/>
+  
+  <!-- Main Entrance -->
+  <rect x="185" y="180" width="30" height="40" fill="#475569"/>
+  
+  <!-- Medical Cross -->
+  <rect x="195" y="70" width="10" height="40" fill="#9ca3af"/>
+  <rect x="185" y="80" width="30" height="10" fill="#9ca3af"/>
+  
+  <!-- Ambulance -->
+  <g transform="translate(50, 180)">
+    <rect width="60" height="25" fill="#374151" rx="3"/>
+    <rect x="35" y="0" width="25" height="15" fill="#475569" rx="2"/>
+    <circle cx="15" cy="25" r="8" fill="#64748b"/>
+    <circle cx="45" cy="25" r="8" fill="#64748b"/>
+    <circle cx="15" cy="25" r="4" fill="#9ca3af"/>
+    <circle cx="45" cy="25" r="4" fill="#9ca3af"/>
+    <!-- Small cross on ambulance -->
+    <rect x="18" y="8" width="3" height="10" fill="#9ca3af"/>
+    <rect x="15" y="11" width="9" height="3" fill="#9ca3af"/>
+  </g>
+  
+  <!-- Medical Equipment/Stethoscope -->
+  <g transform="translate(320, 100)">
+    <circle cx="15" cy="15" r="12" fill="none" stroke="#64748b" stroke-width="2"/>
+    <circle cx="15" cy="35" r="12" fill="none" stroke="#64748b" stroke-width="2"/>
+    <path d="M15 47 Q15 65 25 75 Q35 85 45 75" stroke="#64748b" stroke-width="2" fill="none"/>
+    <circle cx="45" cy="75" r="6" fill="#475569"/>
+  </g>
+  
+  <!-- DNA Helix -->
+  <g transform="translate(320, 180)">
+    <path d="M0 0 Q10 5 0 10 Q-10 15 0 20 Q10 25 0 30 Q-10 35 0 40" stroke="#64748b" stroke-width="2" fill="none"/>
+    <path d="M20 0 Q10 5 20 10 Q30 15 20 20 Q10 25 20 30 Q30 35 20 40" stroke="#64748b" stroke-width="2" fill="none"/>
+    <line x1="0" y1="5" x2="20" y2="5" stroke="#9ca3af" stroke-width="1"/>
+    <line x1="0" y1="15" x2="20" y2="15" stroke="#9ca3af" stroke-width="1"/>
+    <line x1="0" y1="25" x2="20" y2="25" stroke="#9ca3af" stroke-width="1"/>
+    <line x1="0" y1="35" x2="20" y2="35" stroke="#9ca3af" stroke-width="1"/>
+  </g>
+  
+  <!-- Medical Chart/Data -->
+  <g transform="translate(80, 80)">
+    <rect width="25" height="35" fill="#475569" rx="2"/>
+    <rect x="3" y="5" width="19" height="2" fill="#9ca3af"/>
+    <rect x="3" y="9" width="15" height="2" fill="#9ca3af"/>
+    <rect x="3" y="13" width="12" height="2" fill="#9ca3af"/>
+    <rect x="3" y="17" width="18" height="2" fill="#9ca3af"/>
+    <rect x="3" y="21" width="10" height="2" fill="#9ca3af"/>
+    <rect x="3" y="25" width="16" height="2" fill="#9ca3af"/>
+  </g>
+  
+  <!-- Heart Rate Monitor -->
+  <g transform="translate(60, 40)">
+    <rect width="80" height="25" fill="#374151" rx="3" stroke="#64748b" stroke-width="1"/>
+    <path d="M10 12 L15 12 L18 7 L22 17 L26 2 L30 22 L34 12 L70 12" stroke="#9ca3af" stroke-width="2" fill="none"/>
+  </g>
+</svg>

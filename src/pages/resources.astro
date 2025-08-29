@@ -11,8 +11,8 @@ const heroContent = {
   title: "Free Cybersecurity Resources & Knowledge Hub",
   subtitle: "Expert insights, practical guides, and proven tools for cybersecurity success.",
   description: "Access our comprehensive library of resources designed to help you understand, implement, and maintain robust security and compliance programs.",
-  primaryCTA: { text: "Browse Resources", href: "#resources" },
-  secondaryCTA: { text: "Download Featured Guides", href: "/downloads" }
+  primaryCTA: { text: "Browse All Resources", href: "/resources/guides" },
+  secondaryCTA: { text: "Contact Us", href: "/contact" }
 };
 
 const resourceCategories = [
@@ -20,7 +20,7 @@ const resourceCategories = [
     title: "Featured Guides & Toolkits",
     description: "Complete implementation guides and practical toolkits for major compliance frameworks.",
     icon: "bookOpen",
-    href: "/downloads",
+    href: "/frameworks",
     count: "5+ Guides",
     resources: [
       "ISO 27001 Complete Implementation Guide - 45 pages • Updated January 2024",
@@ -33,7 +33,7 @@ const resourceCategories = [
     title: "Templates & Toolkits",
     description: "Ready-to-use templates and tools for immediate implementation.",
     icon: "library",
-    href: "/downloads",
+    href: "/services",
     count: "50+ Templates",
     resources: [
       "ISO 27001 Policy Library (50+ documents)",
@@ -46,7 +46,7 @@ const resourceCategories = [
     title: "Quick Reference Materials",
     description: "Essential checklists and quick reference guides for compliance frameworks.",
     icon: "document",
-    href: "/downloads",
+    href: "/contact",
     count: "10+ Checklists",
     resources: [
       "ISO 27001 Quick Start Guide - 25-page implementation roadmap",
@@ -114,14 +114,14 @@ const featuredResources = [
     title: "NIS2 Directive Compliance Guide",
     type: "Whitepaper",
     description: "Complete guide to understanding and implementing NIS2 directive requirements.",
-    downloadLink: "/downloads/nis2-compliance-guide.pdf",
+    downloadLink: "/frameworks/nis2",
     date: "March 2024"
   },
   {
     title: "ISO 27001 Fast-Track Implementation",
     type: "Case Study",
     description: "How a tech startup achieved ISO 27001 certification in just 90 days.",
-    downloadLink: "/downloads/iso-27001-case-study.pdf",
+    downloadLink: "/frameworks/iso-27001",
     date: "February 2024"
   },
   {
@@ -204,9 +204,9 @@ const featuredResources = [
               class="inline-flex items-center text-teal-600 hover:text-teal-700 font-medium"
             >
               <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-4-4m4 4l4-4m-4 8a9 9 0 100-18 9 9 0 000 18z"></path>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
               </svg>
-              {resource.type === 'Tool' ? 'Access Tool' : 'Download'}
+              {resource.type === 'Tool' ? 'Access Tool' : 'Learn More'}
             </a>
           </div>
         ))}

@@ -372,25 +372,25 @@ export const menu = [
           {
             label_fi: "DataNova Core",
             label_en: "DataNova Core",
-            href: "/downloads/datanova-core",
+            href: "/platform/datanova-core",
             children: []
           },
           {
             label_fi: "Editions",
             label_en: "Editions",
-            href: "/downloads/editions",
+            href: "/platform/editions",
             children: []
           },
           {
             label_fi: "Licensing",
             label_en: "Licensing",
-            href: "/downloads/subscription-licensing",
+            href: "/contact?service=licensing",
             children: []
           },
           {
             label_fi: "Request Quote",
             label_en: "Request Quote",
-            href: "/downloads/request-quote",
+            href: "/contact",
             children: []
           }
         ]

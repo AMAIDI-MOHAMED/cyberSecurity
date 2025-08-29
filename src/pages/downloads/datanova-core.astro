@@ -3,8 +3,8 @@ import Layout from "../../layouts/Layout.astro";
 import Icon from "@ui/icons/Icon.astro";
 
 // Hero
-const preTitle = "Download";
-const title = "Download a fully functional trial version of the CyberSecurity Finland Core";
+const preTitle = "Get Started";
+const title = "Get started with CyberSecurity Finland Core";
 const subTitle =
   "The CyberSecurity Finland Core comes in two editions: Essential and Advanced. Choose the one that fits your goals to unlock your security's full potential. Upgrading is simple when you're ready to grow.";
 
@@ -20,8 +20,8 @@ const essentialTier = {
   description:
     "Unlock your data’s potential with robust analytics tools, including 30+ statistical models and 25+ visualization templates to turn insights into action.",
   cta: {
-    text: "Download Essential",
-    link: "#",
+    text: "Learn About Essential",
+    link: "/contact?service=essential-edition",
   },
 };
 
@@ -30,8 +30,8 @@ const advancedTier = {
   description:
     "Experience unparalleled AI-powered analytics with automated pattern recognition, anomaly detection, and advanced forecasting tools to stay ahead.",
   cta: {
-    text: "Download Advanced",
-    link: "#",
+    text: "Learn About Advanced",
+    link: "/contact?service=advanced-edition",
   },
 };
 
@@ -199,7 +199,6 @@ const pageTitle = title; // Use hero title for layout
             <a
               class={`${index === 1 ? "mt-5" : ""} group inline-flex w-fit items-center gap-x-2 font-medium text-slate-700 transition duration-300 hover:text-slate-400 focus:outline-hidden`}
               href={link.href}
-              download={index === 0 ? link.href.split("/").pop() : undefined}
               aria-label={link.ariaLabel}
             >
               {link.text}

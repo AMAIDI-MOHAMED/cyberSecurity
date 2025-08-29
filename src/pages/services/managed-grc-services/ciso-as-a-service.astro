@@ -1,13 +1,377 @@
 ---
 import Layout from '@/layouts/Layout.astro';
-const title = 'CISO-as-a-Service';
-const description = 'Expert leadership on demand: strategy, roadmap, governance, metrics, and board reporting.';
+import Icon from '@/components/ui/icons/Icon.astro';
+import Button from '@/components/ui/Button.astro';
+
+const currentPath = Astro.url.pathname;
+const lang = currentPath.startsWith('/fi') ? 'fi' : 'en';
+
+const title = lang === 'fi' ? 'CISO-palveluna' : 'CISO-as-a-Service';
+const description = lang === 'fi' 
+  ? 'Asiantuntijajohtoinen tietoturvajohtaminen: strategia, roadmap, mittarit ja sidosryhmäraportointi.'
+  : 'Expert leadership on demand: strategy, roadmap, governance, metrics, and board reporting.';
+
+const cisoServices = [
+  {
+    icon: 'target',
+    titleFi: 'Strateginen johtaminen',
+    titleEn: 'Strategic Leadership',
+    descFi: 'Tietoturvastrategian kehittäminen ja toimeenpano',
+    descEn: 'Security strategy development and execution'
+  },
+  {
+    icon: 'map',
+    titleFi: 'Roadmap-suunnittelu',
+    titleEn: 'Roadmap Planning',
+    descFi: 'Pitkän aikavälin tietoturvasuunnitelmien laatiminen',
+    descEn: 'Long-term security planning and roadmaps'
+  },
+  {
+    icon: 'bar-chart',
+    titleFi: 'Mittarit ja raportointi',
+    titleEn: 'Metrics & Reporting',
+    descFi: 'KPI-seuranta ja johtoryhmäraportointi',
+    descEn: 'KPI tracking and executive reporting'
+  },
+  {
+    icon: 'users',
+    titleFi: 'Sidosryhmähallinta',
+    titleEn: 'Stakeholder Management',
+    descFi: 'Hallituksen ja johdon viestintä',
+    descEn: 'Board and executive communication'
+  }
+];
+
+const leadershipAreas = [
+  {
+    icon: 'shield',
+    titleFi: 'Governance & Compliance',
+    titleEn: 'Governance & Compliance',
+    descFi: 'ISMS-hallinta ja säädösten noudattaminen',
+    descEn: 'ISMS management and regulatory compliance',
+    detailsFi: ['ISO 27001 -hallinta', 'GDPR-vaatimustenmukaisuus', 'SOC 2 -valmistelu', 'Riskinhallintakehys'],
+    detailsEn: ['ISO 27001 management', 'GDPR compliance', 'SOC 2 preparation', 'Risk management framework']
+  },
+  {
+    icon: 'trending-up',
+    titleFi: 'Strateginen kehittäminen',
+    titleEn: 'Strategic Development',
+    descFi: 'Tietoturva-arkkitehtuurin ja -ohjelman kehittäminen',
+    descEn: 'Security architecture and program development',
+    detailsFi: ['Zero Trust -arkkitehtuuri', 'Cloud-turvallisuus', 'DevSecOps-integraatio', 'Modernisointihankkeet'],
+    detailsEn: ['Zero Trust architecture', 'Cloud security', 'DevSecOps integration', 'Modernization projects']
+  },
+  {
+    icon: 'users',
+    titleFi: 'Tiimin johtaminen',
+    titleEn: 'Team Leadership',
+    descFi: 'Tietoturvatiimin kehittäminen ja johtaminen',
+    descEn: 'Security team development and leadership',
+    detailsFi: ['Osaamisen kehittäminen', 'Rekrytointi-strategia', 'Tiimin rakenne', 'Suorituksen johtaminen'],
+    detailsEn: ['Skill development', 'Recruitment strategy', 'Team structure', 'Performance management']
+  }
+];
+
+const deliverables = [
+  {
+    categoryFi: 'Strategiset dokumentit',
+    categoryEn: 'Strategic Documents',
+    itemsFi: ['Tietoturvastrategia', 'Vuosisuunnitelma', 'Teknologia-roadmap', 'Budjetti ja resurssit'],
+    itemsEn: ['Security strategy', 'Annual plan', 'Technology roadmap', 'Budget and resources']
+  },
+  {
+    categoryFi: 'Hallinnolliset dokumentit',
+    categoryEn: 'Governance Documents',
+    itemsFi: ['Politiikat ja prosessit', 'Riskirekisteri', 'Compliance-matriisi', 'Toimintamallit'],
+    itemsEn: ['Policies and processes', 'Risk register', 'Compliance matrix', 'Operating models']
+  },
+  {
+    categoryFi: 'Raportointi',
+    categoryEn: 'Reporting',
+    itemsFi: ['Kuukausiraportit', 'Neljännesvuosikatsaukset', 'Hallitusesitykset', 'Mittaristot'],
+    itemsEn: ['Monthly reports', 'Quarterly reviews', 'Board presentations', 'Dashboards']
+  },
+  {
+    categoryFi: 'Toiminnallinen tuki',
+    categoryEn: 'Operational Support',
+    itemsFi: ['Incident-koordinointi', 'Toimittajahalinta', 'Projektien ohjaus', 'Koulutusohjelmat'],
+    itemsEn: ['Incident coordination', 'Vendor management', 'Project oversight', 'Training programs']
+  }
+];
+
+const engagementModels = [
+  {
+    titleFi: 'Täyden palvelun CISO',
+    titleEn: 'Full-Service CISO',
+    timeFi: '3-5 päivää/viikko',
+    timeEn: '3-5 days/week',
+    descFi: 'Kokonaisvaltainen tietoturvajohdon vastuu',
+    descEn: 'Comprehensive security leadership responsibility',
+    suitedFi: 'Keskisuurille yrityksille',
+    suitedEn: 'Mid-size enterprises'
+  },
+  {
+    titleFi: 'Strateginen CISO',
+    titleEn: 'Strategic CISO',
+    timeFi: '1-2 päivää/viikko',
+    timeEn: '1-2 days/week',
+    descFi: 'Strateginen ohjaus ja johtoryhmätyöskentely',
+    descEn: 'Strategic guidance and executive leadership',
+    suitedFi: 'Kypsille organisaatioille',
+    suitedEn: 'Mature organizations'
+  },
+  {
+    titleFi: 'Projekti-CISO',
+    titleEn: 'Project CISO',
+    timeFi: 'Projektikohtainen',
+    timeEn: 'Project-based',
+    descFi: 'Määräaikainen johtaminen erityishankkeissa',
+    descEn: 'Interim leadership for special projects',
+    suitedFi: 'Transformaatiohankkeille',
+    suitedEn: 'Transformation projects'
+  }
+];
+
+const outcomes = [
+  { metricFi: 'Kyberturvallisuuskypsyys', metricEn: 'Cybersecurity Maturity', improvementFi: '+40% vuodessa', improvementEn: '+40% annually' },
+  { metricFi: 'Säädöstenmukaisuus', metricEn: 'Regulatory Compliance', improvementFi: '99% vaatimuksista', improvementEn: '99% of requirements' },
+  { metricFi: 'Incidentien hallinta', metricEn: 'Incident Management', improvementFi: '-60% käsittelyajassa', improvementEn: '-60% resolution time' },
+  { metricFi: 'Johdon tyytyväisyys', metricEn: 'Executive Satisfaction', improvementFi: '9.2/10 arvosana', improvementEn: '9.2/10 rating' }
+];
 ---
 <Layout title={title} description={description}>
-  <section class="py-16 bg-white">
-    <div class="max-w-3xl mx-auto px-4">
-      <h1 class="text-3xl font-bold text-slate-900">{title}</h1>
-      <p class="mt-4 text-slate-600">{description}</p>
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-br from-blue-50 to-indigo-100 py-20">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center">
+        <div class="inline-flex items-center px-4 py-2 bg-blue-100 text-blue-800 rounded-full text-sm font-medium mb-6">
+          <Icon name="user-check" class="w-4 h-4 mr-2" />
+          {lang === 'fi' ? 'CISO-palveluna' : 'CISO-as-a-Service'}
+        </div>
+        <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+          {lang === 'fi' ? 'Asiantuntijajohtoinen tietoturvajohtaminen' : 'Expert Security Leadership on Demand'}
+        </h1>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
+          {lang === 'fi' 
+            ? 'Saat käyttöösi kokeneen CISO:n osaamisen ja johtajuuden ilman kokoaikaista rekrytointia. Strategiasta toteutukseen.'
+            : 'Access experienced CISO expertise and leadership without full-time recruitment. From strategy to execution.'
+          }
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <Button href="/contact" variant="primary" size="lg">
+            {lang === 'fi' ? 'Keskustele tarpeista' : 'Discuss Your Needs'}
+          </Button>
+          <Button href="/demo" variant="outline" size="lg">
+            {lang === 'fi' ? 'Tutustu palveluun' : 'Explore Service'}
+          </Button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Core Services Section -->
+  <section class="py-20 bg-white">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">
+          {lang === 'fi' ? 'CISO-palvelun keskeiset alueet' : 'Core CISO Service Areas'}
+        </h2>
+        <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+          {lang === 'fi' 
+            ? 'Kattava tietoturvajohtaminen strategisesta suunnittelusta päivittäiseen operatiiviseen johtamiseen'
+            : 'Comprehensive security leadership from strategic planning to daily operational management'
+          }
+        </p>
+      </div>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {cisoServices.map((service) => (
+          <div class="bg-gray-50 rounded-lg p-6 text-center hover:shadow-lg transition-shadow">
+            <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mx-auto mb-4">
+              <Icon name={service.icon} class="w-6 h-6 text-blue-600" />
+            </div>
+            <h3 class="text-lg font-semibold text-gray-900 mb-2">
+              {lang === 'fi' ? service.titleFi : service.titleEn}
+            </h3>
+            <p class="text-gray-600 text-sm">
+              {lang === 'fi' ? service.descFi : service.descEn}
+            </p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Leadership Areas Section -->
+  <section class="py-20 bg-gray-50">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">
+          {lang === 'fi' ? 'Johtamisen osa-alueet' : 'Leadership Areas'}
+        </h2>
+        <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+          {lang === 'fi' 
+            ? 'Kolme keskeistä aluetta, joissa CISO-palvelu tuottaa merkittävää lisäarvoa organisaatiollesi'
+            : 'Three key areas where CISO service delivers significant value to your organization'
+          }
+        </p>
+      </div>
+
+      <div class="grid lg:grid-cols-3 gap-8">
+        {leadershipAreas.map((area) => (
+          <div class="bg-white rounded-lg p-8 shadow-lg">
+            <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-6">
+              <Icon name={area.icon} class="w-6 h-6 text-blue-600" />
+            </div>
+            <h3 class="text-xl font-semibold text-gray-900 mb-3">
+              {lang === 'fi' ? area.titleFi : area.titleEn}
+            </h3>
+            <p class="text-gray-600 mb-4">
+              {lang === 'fi' ? area.descFi : area.descEn}
+            </p>
+            <ul class="space-y-2">
+              {(lang === 'fi' ? area.detailsFi : area.detailsEn).map((detail) => (
+                <li class="flex items-center text-sm text-gray-600">
+                  <Icon name="check" class="w-4 h-4 text-green-500 mr-2 flex-shrink-0" />
+                  {detail}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Deliverables Section -->
+  <section class="py-20 bg-white">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">
+          {lang === 'fi' ? 'Toimitukset ja tulokset' : 'Deliverables and Outcomes'}
+        </h2>
+        <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+          {lang === 'fi' 
+            ? 'Konkreettiset toimitukset ja mitattavat tulokset CISO-palvelusta'
+            : 'Concrete deliverables and measurable outcomes from CISO service'
+          }
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8">
+        {deliverables.map((category) => (
+          <div class="bg-gradient-to-br from-gray-50 to-blue-50 rounded-lg p-8">
+            <h3 class="text-xl font-semibold text-gray-900 mb-4">
+              {lang === 'fi' ? category.categoryFi : category.categoryEn}
+            </h3>
+            <ul class="space-y-3">
+              {(lang === 'fi' ? category.itemsFi : category.itemsEn).map((item) => (
+                <li class="flex items-start">
+                  <Icon name="arrow-right" class="w-4 h-4 text-blue-600 mr-3 mt-1 flex-shrink-0" />
+                  <span class="text-gray-700">{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Engagement Models Section -->
+  <section class="py-20 bg-gray-50">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">
+          {lang === 'fi' ? 'Toimeksiantomoodit' : 'Engagement Models'}
+        </h2>
+        <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+          {lang === 'fi' 
+            ? 'Valitse organisaatiosi tarpeisiin sopivin CISO-palvelumalli'
+            : 'Choose the CISO service model that best fits your organization\'s needs'
+          }
+        </p>
+      </div>
+
+      <div class="grid lg:grid-cols-3 gap-8">
+        {engagementModels.map((model) => (
+          <div class="bg-white rounded-lg p-8 shadow-lg hover:shadow-xl transition-shadow">
+            <div class="text-center">
+              <h3 class="text-xl font-semibold text-gray-900 mb-2">
+                {lang === 'fi' ? model.titleFi : model.titleEn}
+              </h3>
+              <div class="text-2xl font-bold text-blue-600 mb-4">
+                {lang === 'fi' ? model.timeFi : model.timeEn}
+              </div>
+              <p class="text-gray-600 mb-4">
+                {lang === 'fi' ? model.descFi : model.descEn}
+              </p>
+              <div class="bg-blue-50 rounded-lg p-3">
+                <p class="text-sm text-blue-800 font-medium">
+                  {lang === 'fi' ? 'Sopii: ' : 'Suited for: '}
+                  {lang === 'fi' ? model.suitedFi : model.suitedEn}
+                </p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Outcomes Section -->
+  <section class="py-20 bg-white">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">
+          {lang === 'fi' ? 'Mitattavat tulokset' : 'Measurable Outcomes'}
+        </h2>
+        <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+          {lang === 'fi' 
+            ? 'Tyypilliset parannukset asiakasorganisaatioissa CISO-palvelun käyttöönoton jälkeen'
+            : 'Typical improvements in client organizations after CISO service implementation'
+          }
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {outcomes.map((outcome) => (
+          <div class="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-lg p-6 text-center">
+            <h3 class="text-lg font-semibold text-gray-900 mb-2">
+              {lang === 'fi' ? outcome.metricFi : outcome.metricEn}
+            </h3>
+            <div class="text-3xl font-bold text-blue-600 mb-2">
+              {lang === 'fi' ? outcome.improvementFi : outcome.improvementEn}
+            </div>
+            <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center mx-auto">
+              <Icon name="trending-up" class="w-4 h-4 text-blue-600" />
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-20 bg-gradient-to-r from-blue-600 to-indigo-700">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl font-bold text-white mb-4">
+        {lang === 'fi' ? 'Tarvitsetko asiantuntijajohtoista tietoturvajohtamista?' : 'Need Expert Security Leadership?'}
+      </h2>
+      <p class="text-xl text-blue-100 mb-8">
+        {lang === 'fi' 
+          ? 'Keskustellaan organisaatiosi tarpeista ja sopivimmasta CISO-palvelumallista.'
+          : 'Let\'s discuss your organization\'s needs and the most suitable CISO service model.'
+        }
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <Button href="/contact" variant="secondary" size="lg">
+          {lang === 'fi' ? 'Ota yhteyttä' : 'Contact Us'}
+        </Button>
+        <Button href="/demo" variant="outline-white" size="lg">
+          {lang === 'fi' ? 'Varaa konsultaatio' : 'Book Consultation'}
+        </Button>
+      </div>
     </div>
   </section>
 </Layout>

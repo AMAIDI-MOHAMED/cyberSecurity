@@ -10,10 +10,94 @@ const title = lang === 'fi' ? 'Auditointien valmistelu ja sisäiset auditoinnit'
 const description = lang === 'fi' ? 'Valmistelemme ja johdamme auditoinnit (ISO 27001, SOC 2, NIS2/DORA) ilman yllätyksiä.' : 'We prepare and lead audits (ISO 27001, SOC 2, NIS2/DORA) with no surprises.';
 
 const offerings = [
-  { icon:'check', fi:'Aukkoanalyysi ja korjaukset', en:'Gap analysis and remediation' },
-  { icon:'document', fi:'Evidenssien hallinta', en:'Evidence management' },
-  { icon:'user', fi:'Auditoijan koordinointi', en:'Auditor coordination' },
-  { icon:'shield', fi:'Sisäinen auditointi', en:'Internal auditing' }
+  { 
+    icon:'check', 
+    fi:'Aukkoanalyysi ja korjaukset', 
+    en:'Gap analysis and remediation',
+    fiDesc: 'Tunnistamme puutteet ja korjaamme ne ennen auditointia',
+    enDesc: 'Identify gaps and remediate them before the audit'
+  },
+  { 
+    icon:'document', 
+    fi:'Evidenssien hallinta', 
+    en:'Evidence management',
+    fiDesc: 'Dokumentaatio ja todistusaineisto kunnossa',
+    enDesc: 'Documentation and evidence properly organized'
+  },
+  { 
+    icon:'user', 
+    fi:'Auditoijan koordinointi', 
+    en:'Auditor coordination',
+    fiDesc: 'Sujuva kommunikaatio ja aikataulutus',
+    enDesc: 'Smooth communication and scheduling'
+  },
+  { 
+    icon:'shield', 
+    fi:'Sisäinen auditointi', 
+    en:'Internal auditing',
+    fiDesc: 'Ennakkoauditointi ja valmistautuminen',
+    enDesc: 'Pre-audit and preparation activities'
+  }
+];
+
+const standards = [
+  {
+    icon: 'shield-check',
+    titleFi: 'ISO 27001',
+    titleEn: 'ISO 27001',
+    descFi: 'Tietoturvan hallintajärjestelmän sertifiointi',
+    descEn: 'Information Security Management System certification'
+  },
+  {
+    icon: 'building',
+    titleFi: 'SOC 2',
+    titleEn: 'SOC 2',
+    descFi: 'SOC 2 Type I ja Type II raportit',
+    descEn: 'SOC 2 Type I and Type II reports'
+  },
+  {
+    icon: 'globe',
+    titleFi: 'NIS2 & DORA',
+    titleEn: 'NIS2 & DORA',
+    descFi: 'EU:n kyberturva- ja rahoitussääntely',
+    descEn: 'EU cybersecurity and financial regulation'
+  },
+  {
+    icon: 'award',
+    titleFi: 'ISO 22301',
+    titleEn: 'ISO 22301',
+    descFi: 'Liiketoiminnan jatkuvuuden hallinta',
+    descEn: 'Business Continuity Management'
+  }
+];
+
+const auditPhases = [
+  {
+    titleFi: 'Ennakkovalmistelu',
+    titleEn: 'Pre-preparation',
+    itemsFi: ['Vaatimusten kartoitus', 'Aukkoanalyysi', 'Korjaustoimenpiteet', 'Evidenssien keruu'],
+    itemsEn: ['Requirements mapping', 'Gap analysis', 'Remediation actions', 'Evidence collection']
+  },
+  {
+    titleFi: 'Valmistelu',
+    titleEn: 'Preparation',
+    itemsFi: ['Dokumentaation organisointi', 'Henkilöstön koulutus', 'Prosessien testaus', 'Sisäinen auditointi'],
+    itemsEn: ['Documentation organization', 'Staff training', 'Process testing', 'Internal audit']
+  },
+  {
+    titleFi: 'Auditointi',
+    titleEn: 'Audit',
+    itemsFi: ['Auditoijan tuki', 'Haastattelu-tuki', 'Dokumentaatio-apu', 'Tekninen tuki'],
+    itemsEn: ['Auditor support', 'Interview support', 'Documentation assistance', 'Technical support']
+  }
+];
+
+const process = [
+  { step: '1', fi: 'Alkukartoitus', en: 'Initial Assessment', fiDesc: 'Nykytilan ja tavoitteiden määrittely', enDesc: 'Current state and objectives definition' },
+  { step: '2', fi: 'Aukkoanalyysi', en: 'Gap Analysis', fiDesc: 'Puutteiden tunnistaminen ja priorisointi', enDesc: 'Gap identification and prioritization' },
+  { step: '3', fi: 'Korjaussuunnitelma', en: 'Remediation Plan', fiDesc: 'Toimenpidesuunnitelma ja aikataulu', enDesc: 'Action plan and timeline' },
+  { step: '4', fi: 'Toteutus', en: 'Implementation', fiDesc: 'Kontrollien käyttöönotto ja testaus', enDesc: 'Control implementation and testing' },
+  { step: '5', fi: 'Valmius', en: 'Readiness', fiDesc: 'Lopullinen valmistelu ja auditointi', enDesc: 'Final preparation and audit' }
 ];
 
 ---
@@ -30,11 +114,79 @@ const offerings = [
 
   <section class="py-20 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-slate-900 mb-4">{lang==='fi' ? 'Auditointivalmistelu' : 'Audit Preparation'}</h2>
+        <p class="text-xl text-slate-600 max-w-3xl mx-auto">{lang==='fi' ? 'Varmistamme, että auditointinne sujuu ongelmitta ja tavoitteet saavutetaan.' : 'We ensure your audit proceeds smoothly and objectives are achieved.'}</p>
+      </div>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
         {offerings.map(o => (
           <div class="bg-gradient-to-br from-slate-50 to-white p-8 rounded-xl border border-slate-200 hover:shadow-xl transition-all duration-300">
             <div class="w-16 h-16 bg-blue-100 rounded-xl flex items-center justify-center mb-6"><Icon name={o.icon} className="w-8 h-8 text-blue-600" /></div>
-            <h3 class="text-lg font-bold text-slate-900">{lang==='fi'?o.fi:o.en}</h3>
+            <h3 class="text-lg font-bold text-slate-900 mb-2">{lang==='fi'?o.fi:o.en}</h3>
+            <p class="text-slate-600 text-sm">{lang==='fi'?o.fiDesc:o.enDesc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-slate-900 mb-4">{lang==='fi' ? 'Tuetut standardit' : 'Supported Standards'}</h2>
+        <p class="text-xl text-slate-600 max-w-3xl mx-auto">{lang==='fi' ? 'Autamme valmistautumaan kaikkiin keskeisimpiin kyberturva- ja compliance-auditointeihin.' : 'We help prepare for all major cybersecurity and compliance audits.'}</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {standards.map(s => (
+          <div class="bg-white p-6 rounded-xl border border-slate-200 hover:shadow-lg transition-all duration-300">
+            <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
+              <Icon name={s.icon} className="w-6 h-6 text-blue-600" />
+            </div>
+            <h3 class="text-lg font-bold text-slate-900 mb-2">{lang==='fi' ? s.titleFi : s.titleEn}</h3>
+            <p class="text-slate-600 text-sm">{lang==='fi' ? s.descFi : s.descEn}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-slate-900 mb-4">{lang==='fi' ? 'Auditointivaiheet' : 'Audit Phases'}</h2>
+        <p class="text-xl text-slate-600 max-w-3xl mx-auto">{lang==='fi' ? 'Jokaisessa vaiheessa tuemme organisaatiotanne menestyksekkään auditoinnin saavuttamiseksi.' : 'We support your organization at each phase to achieve a successful audit.'}</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {auditPhases.map((phase, index) => (
+          <div class="bg-gradient-to-br from-slate-50 to-white p-8 rounded-xl border border-slate-200">
+            <div class="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center mb-4 text-white font-bold">{index + 1}</div>
+            <h3 class="text-xl font-bold text-slate-900 mb-4">{lang==='fi' ? phase.titleFi : phase.titleEn}</h3>
+            <ul class="space-y-2">
+              {(lang==='fi' ? phase.itemsFi : phase.itemsEn).map(item => (
+                <li class="flex items-start">
+                  <Icon name="check" className="w-5 h-5 text-green-600 mt-0.5 mr-3 flex-shrink-0" />
+                  <span class="text-slate-600">{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-slate-900 mb-4">{lang==='fi' ? 'Valmisteluprosessi' : 'Preparation Process'}</h2>
+        <p class="text-xl text-slate-600 max-w-3xl mx-auto">{lang==='fi' ? 'Systemaattinen lähestymistapa auditointimenestykseen.' : 'Systematic approach to audit success.'}</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-5 gap-6">
+        {process.map(p => (
+          <div class="text-center">
+            <div class="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-4 text-white text-xl font-bold">{p.step}</div>
+            <h3 class="text-lg font-semibold text-slate-900 mb-1">{lang==='fi' ? p.fi : p.en}</h3>
+            <p class="text-slate-600 text-sm">{lang==='fi' ? p.fiDesc : p.enDesc}</p>
           </div>
         ))}
       </div>

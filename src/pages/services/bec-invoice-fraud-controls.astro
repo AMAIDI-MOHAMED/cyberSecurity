@@ -10,10 +10,94 @@ const title = lang === 'fi' ? 'BEC/Laskupetosten kontrollit' : 'BEC/Invoice Frau
 const description = lang === 'fi' ? 'Estä sähköpostin kaappaukset ja laskupetokset prosessi‑, teknologia‑ ja ihmiskontrolleilla.' : 'Prevent BEC and invoice fraud with process, technology and people controls.';
 
 const controls = [
-  { icon:'user', fi:'Kaksivaiheinen vahvistus', en:'Dual‑control approvals' },
-  { icon:'mail', fi:'Maksuviestien tarkistukset', en:'Payment communication checks' },
-  { icon:'lock', fi:'Domain ja SPF/DMARC', en:'Domain and SPF/DMARC' },
-  { icon:'document', fi:'Soittopaluu ja todentaminen', en:'Call‑back and verification' }
+  { 
+    icon:'user', 
+    fi:'Kaksivaiheinen vahvistus', 
+    en:'Dual‑control approvals',
+    fiDesc: 'Nelisilmäperiaate kaikille maksuille ja toimittajatietojen muutoksille',
+    enDesc: 'Four-eyes principle for all payments and vendor detail changes'
+  },
+  { 
+    icon:'mail', 
+    fi:'Maksuviestien tarkistukset', 
+    en:'Payment communication checks',
+    fiDesc: 'Sähköpostiviestien alkuperän ja aitouden varmistaminen',
+    enDesc: 'Email origin and authenticity verification'
+  },
+  { 
+    icon:'lock', 
+    fi:'Domain ja SPF/DMARC', 
+    en:'Domain and SPF/DMARC',
+    fiDesc: 'Tekninen suojaus domain-väärentämistä vastaan',
+    enDesc: 'Technical protection against domain spoofing'
+  },
+  { 
+    icon:'document', 
+    fi:'Soittopaluu ja todentaminen', 
+    en:'Call‑back and verification',
+    fiDesc: 'Puhelinvahvistus muutoksille ja suurille maksuille',
+    enDesc: 'Phone verification for changes and large payments'
+  }
+];
+
+const becScenarios = [
+  {
+    icon: 'alert-triangle',
+    titleFi: 'CEO Fraud',
+    titleEn: 'CEO Fraud',
+    descFi: 'Johdon tunnuksilla tehdyt väärät maksupyynnöt',
+    descEn: 'False payment requests using executive credentials'
+  },
+  {
+    icon: 'mail',
+    titleFi: 'Toimittajan kaappaus',
+    titleEn: 'Vendor Impersonation',
+    descFi: 'Olemassa olevan toimittajan pankkitietojen vaihto',
+    descEn: 'Banking detail changes for existing vendors'
+  },
+  {
+    icon: 'file-text',
+    titleFi: 'Väärät laskut',
+    titleEn: 'Fraudulent Invoices',
+    descFi: 'Väärennetyt laskut olemattomista tilauksista',
+    descEn: 'Fake invoices for non-existent orders'
+  },
+  {
+    icon: 'phone',
+    titleFi: 'Puhelinmanipulointi',
+    titleEn: 'Phone Manipulation',
+    descFi: 'Puhelinpetokset maksupyyntöjen tueksi',
+    descEn: 'Phone fraud supporting payment requests'
+  }
+];
+
+const protectionLayers = [
+  {
+    titleFi: 'Tekninen suojaus',
+    titleEn: 'Technical Protection',
+    itemsFi: ['SPF/DKIM/DMARC konfigurointi', 'Anti-spoofing suodattimet', 'Sähköpostiskannerit', 'Anomalianseuranta'],
+    itemsEn: ['SPF/DKIM/DMARC configuration', 'Anti-spoofing filters', 'Email scanners', 'Anomaly detection']
+  },
+  {
+    titleFi: 'Prosessikontrollit',
+    titleEn: 'Process Controls',
+    itemsFi: ['Nelisilmäperiaate maksuille', 'Toimittajatietojen lukitseminen', 'Muutosprosessien vahvistus', 'Maksurajojen asettaminen'],
+    itemsEn: ['Four-eyes payment approval', 'Vendor data locking', 'Change process verification', 'Payment limit controls']
+  },
+  {
+    titleFi: 'Henkilöstökoulutus',
+    titleEn: 'Staff Training',
+    itemsFi: ['BEC-simulaatiot', 'Varmistusprosessit', 'Raportointikanavat', 'Säännöllinen päivitys'],
+    itemsEn: ['BEC simulations', 'Verification procedures', 'Reporting channels', 'Regular updates']
+  }
+];
+
+const process = [
+  { step: '1', fi: 'Uhka-analyysi', en: 'Threat Analysis', fiDesc: 'BEC-skenaarioiden kartoitus', enDesc: 'BEC scenario mapping' },
+  { step: '2', fi: 'Prosessikatsaus', en: 'Process Review', fiDesc: 'Maksuprosessien arviointi', enDesc: 'Payment process assessment' },
+  { step: '3', fi: 'Tekninen testaus', en: 'Technical Testing', fiDesc: 'Spoofing ja phishing-testit', enDesc: 'Spoofing and phishing tests' },
+  { step: '4', fi: 'Kontrollisuunnittelu', en: 'Control Design', fiDesc: 'Monikerroksisten kontrollien suunnittelu', enDesc: 'Multi-layered control design' },
+  { step: '5', fi: 'Käyttöönotto', en: 'Implementation', fiDesc: 'Kontrollien käyttöönotto ja koulutus', enDesc: 'Control implementation and training' }
 ];
 ---
 
@@ -29,11 +113,79 @@ const controls = [
 
   <section class="py-20 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-slate-900 mb-4">{lang==='fi' ? 'BEC/Laskupetosten kontrollit' : 'BEC/Invoice Fraud Controls'}</h2>
+        <p class="text-xl text-slate-600 max-w-3xl mx-auto">{lang==='fi' ? 'Monikerroksinen suojaus Business Email Compromise ja laskupetoksia vastaan.' : 'Multi-layered protection against Business Email Compromise and invoice fraud.'}</p>
+      </div>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
         {controls.map(c => (
           <div class="bg-gradient-to-br from-slate-50 to-white p-8 rounded-xl border border-slate-200 hover:shadow-xl transition-all duration-300">
             <div class="w-16 h-16 bg-rose-100 rounded-xl flex items-center justify-center mb-6"><Icon name={c.icon} className="w-8 h-8 text-rose-600" /></div>
-            <h3 class="text-lg font-bold text-slate-900">{lang==='fi'?c.fi:c.en}</h3>
+            <h3 class="text-lg font-bold text-slate-900 mb-2">{lang==='fi'?c.fi:c.en}</h3>
+            <p class="text-slate-600 text-sm">{lang==='fi'?c.fiDesc:c.enDesc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-slate-900 mb-4">{lang==='fi' ? 'Yleisimmät BEC-skenaariot' : 'Common BEC Scenarios'}</h2>
+        <p class="text-xl text-slate-600 max-w-3xl mx-auto">{lang==='fi' ? 'Tunne hyökkääjien yleisimmät taktikat ja rakenna suojaus niitä vastaan.' : 'Know the most common attacker tactics and build protection against them.'}</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {becScenarios.map(s => (
+          <div class="bg-white p-6 rounded-xl border border-slate-200 hover:shadow-lg transition-all duration-300">
+            <div class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mb-4">
+              <Icon name={s.icon} className="w-6 h-6 text-red-600" />
+            </div>
+            <h3 class="text-lg font-bold text-slate-900 mb-2">{lang==='fi' ? s.titleFi : s.titleEn}</h3>
+            <p class="text-slate-600 text-sm">{lang==='fi' ? s.descFi : s.descEn}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-slate-900 mb-4">{lang==='fi' ? 'Suojauskerrokset' : 'Protection Layers'}</h2>
+        <p class="text-xl text-slate-600 max-w-3xl mx-auto">{lang==='fi' ? 'Tehokas BEC-suojaus vaatii teknisten, prosessuaalisten ja henkilöstöön liittyvien kontrollien yhdistämistä.' : 'Effective BEC protection requires combining technical, process, and human controls.'}</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {protectionLayers.map((layer, index) => (
+          <div class="bg-gradient-to-br from-slate-50 to-white p-8 rounded-xl border border-slate-200">
+            <div class="w-12 h-12 bg-rose-600 rounded-lg flex items-center justify-center mb-4 text-white font-bold">{index + 1}</div>
+            <h3 class="text-xl font-bold text-slate-900 mb-4">{lang==='fi' ? layer.titleFi : layer.titleEn}</h3>
+            <ul class="space-y-2">
+              {(lang==='fi' ? layer.itemsFi : layer.itemsEn).map(item => (
+                <li class="flex items-start">
+                  <Icon name="check" className="w-5 h-5 text-green-600 mt-0.5 mr-3 flex-shrink-0" />
+                  <span class="text-slate-600">{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-slate-900 mb-4">{lang==='fi' ? 'Toteutusprosessi' : 'Implementation Process'}</h2>
+        <p class="text-xl text-slate-600 max-w-3xl mx-auto">{lang==='fi' ? 'Systemaattinen lähestymistapa BEC-suojauksen rakentamiseen.' : 'Systematic approach to building BEC protection.'}</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-5 gap-6">
+        {process.map(p => (
+          <div class="text-center">
+            <div class="w-16 h-16 bg-rose-600 rounded-full flex items-center justify-center mx-auto mb-4 text-white text-xl font-bold">{p.step}</div>
+            <h3 class="text-lg font-semibold text-slate-900 mb-1">{lang==='fi' ? p.fi : p.en}</h3>
+            <p class="text-slate-600 text-sm">{lang==='fi' ? p.fiDesc : p.enDesc}</p>
           </div>
         ))}
       </div>

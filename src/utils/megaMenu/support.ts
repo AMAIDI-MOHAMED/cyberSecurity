@@ -11,7 +11,7 @@ export const supportMenu = [
       {
         icon: "documentChartBar",
         title: "Security Templates",
-        description: "Download sample security templates and compliance checklists.",
+        description: "Access sample security templates and compliance checklists.",
         href: "/support/security-templates",
       },
       {

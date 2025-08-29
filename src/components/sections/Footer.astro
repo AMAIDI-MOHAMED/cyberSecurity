@@ -22,9 +22,6 @@ const menu = footerMenu[lang];
 
 // UI text
 const newsletterTitle = isFi ? 'Pysy ajan tasalla' : 'Stay updated';
-const themeLabel = isFi ? 'Teema' : 'Theme';
-const contrastLabel = isFi ? 'Korkea kontrasti' : 'High contrast';
-const fontSizeLabel = isFi ? 'Tekstin koko' : 'Font size';
 ---
 
 <footer class="mt-auto w-full bg-linear-to-t/oklch from-teal-200 via-transparent to-white pt-12 pb-10 border-t border-teal-100">
@@ -42,20 +39,6 @@ const fontSizeLabel = isFi ? 'Tekstin koko' : 'Font size';
           <div><a href={`tel:${contactDetails.phone}`} class="hover:text-teal-700" data-track="footer-contact" data-contact-type="phone">{contactDetails.phone}</a></div>
           <div><a href={`mailto:${contactDetails.email}`} class="hover:text-teal-700" data-track="footer-contact" data-contact-type="email">{contactDetails.email}</a></div>
           <div>{isFi ? 'Y-tunnus' : 'Business ID'}: {contactDetails.businessId}</div>
-        </div>
-        <!-- Theme & Accessibility Controls -->
-        <div class="pt-4 space-y-3">
-          <div class="flex items-center gap-3">
-            <span class="text-xs font-semibold uppercase tracking-wide text-slate-500">{themeLabel}</span>
-            <button id="contrast-toggle" class="text-xs px-2 py-1 rounded bg-slate-800 text-white hover:bg-teal-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-500" data-state="default" data-track="pref-contrast">{contrastLabel}</button>
-          </div>
-          <div class="flex items-center gap-3">
-            <span class="text-xs font-semibold uppercase tracking-wide text-slate-500">{fontSizeLabel}</span>
-            <div class="flex gap-1">
-              <button data-font="base" class="text-xs px-2 py-1 rounded bg-slate-800 text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 aria-[pressed=true]:bg-teal-700" aria-pressed="true" data-track="pref-font" data-font-size="base">A</button>
-              <button data-font="lg" class="text-xs px-2 py-1 rounded bg-slate-700 text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-500" data-track="pref-font" data-font-size="lg">A+</button>
-            </div>
-          </div>
         </div>
       </div>
 
@@ -101,31 +84,7 @@ const fontSizeLabel = isFi ? 'Tekstin koko' : 'Font size';
     const fontButtons = document.querySelectorAll('[data-font]');
 
     try {
-      const storedContrast = localStorage.getItem('pref:contrast');
-      if (storedContrast === 'high') {
-        document.documentElement.classList.add('high-contrast');
-        const toggle = document.getElementById('contrast-toggle');
-        toggle?.setAttribute('data-state','high');
-      }
-      const storedFont = localStorage.getItem('pref:font');
-      if (storedFont) {
-        document.documentElement.style.setProperty('--base-font-size', storedFont === 'lg' ? '18px' : '16px');
-        document.querySelectorAll('[data-font]').forEach(b => {
-          b.setAttribute('aria-pressed', b.getAttribute('data-font') === storedFont ? 'true' : 'false');
-        });
-      }
-      document.getElementById('contrast-toggle')?.addEventListener('click', (e) => {
-        const btn = e.currentTarget as HTMLElement;
-        const state = btn.getAttribute('data-state');
-        const next = state === 'default' ? 'high' : 'default';
-        localStorage.setItem('pref:contrast', next);
-      });
-      document.querySelectorAll('[data-font]').forEach(btn => {
-        btn.addEventListener('click', () => {
-          const size = btn.getAttribute('data-font') || 'base';
-          localStorage.setItem('pref:font', size);
-        });
-      });
+
     } catch (e) { /* ignore */ }
 
     // Analytics for footer
@@ -169,11 +128,6 @@ const fontSizeLabel = isFi ? 'Tekstin koko' : 'Font size';
 </script>
 
 <style>
-  :root { --base-font-size: 16px; }
-  html { font-size: var(--base-font-size); }
-  .high-contrast body { background:#000; color:#fff; }
-  .high-contrast a { color:#00ffd8 !important; }
-
   @media (min-width: 640px) {
     [data-footer-list] { display:block !important; }
   }
