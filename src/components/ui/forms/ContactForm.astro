@@ -32,7 +32,7 @@ const formStrings = {
       </label>
     </div>
 
-      {/* Email input field */}
+    {/* Email input field */}
     <div class="relative">
       <input
         type="email"
@@ -53,7 +53,68 @@ const formStrings = {
       </label>
     </div>
 
-      {/* Message textarea field */}
+    {/* Company input field */}
+    <div class="relative">
+      <input
+        type="text"
+        id="input-company"
+        class="peer block w-full rounded-lg border border-transparent p-4 text-sm placeholder:text-transparent focus:border-teal-700/80 focus:outline-hidden focus:ring-2 focus:ring-teal-700/80"
+        placeholder="Company"
+        aria-labelledby="input-company-label"
+      />
+      <label
+        id="input-company-label"
+        for="input-company"
+        class="pointer-events-none absolute start-0 top-0 h-full truncate border border-transparent p-4 text-slate-600 transition duration-100 ease-in-out peer-focus:-translate-y-1.5 peer-focus:text-xs peer-focus:text-slate-600 peer-not-placeholder-shown:-translate-y-1.5 peer-not-placeholder-shown:text-xs peer-not-placeholder-shown:text-slate-600"
+      >
+        Company
+      </label>
+    </div>
+
+    {/* Phone input field */}
+    <div class="relative">
+      <input
+        type="tel"
+        id="input-phone"
+        class="peer block w-full rounded-lg border border-transparent p-4 text-sm placeholder:text-transparent focus:border-teal-700/80 focus:outline-hidden focus:ring-2 focus:ring-teal-700/80"
+        placeholder="Phone"
+        aria-labelledby="input-phone-label"
+      />
+      <label
+        id="input-phone-label"
+        for="input-phone"
+        class="pointer-events-none absolute start-0 top-0 h-full truncate border border-transparent p-4 text-slate-600 transition duration-100 ease-in-out peer-focus:-translate-y-1.5 peer-focus:text-xs peer-focus:text-slate-600 peer-not-placeholder-shown:-translate-y-1.5 peer-not-placeholder-shown:text-xs peer-not-placeholder-shown:text-slate-600"
+      >
+        Phone
+      </label>
+    </div>
+
+    {/* Service select field */}
+    <div class="relative">
+      <select
+        id="input-service"
+        class="peer block w-full rounded-lg border border-transparent p-4 text-sm focus:border-teal-700/80 focus:outline-hidden focus:ring-2 focus:ring-teal-700/80"
+        aria-labelledby="input-service-label"
+      >
+        <option value="">Select a service</option>
+        <option value="CISO-as-a-Service">CISO-as-a-Service</option>
+        <option value="ISO 27001">ISO 27001</option>
+        <option value="GDPR">GDPR</option>
+        <option value="NIS2">NIS2</option>
+        <option value="DORA">DORA</option>
+        <option value="SOC 2">SOC 2</option>
+        <option value="Other">Other</option>
+      </select>
+      <label
+        id="input-service-label"
+        for="input-service"
+        class="pointer-events-none absolute start-0 top-0 h-full truncate border border-transparent p-4 text-slate-600 transition duration-100 ease-in-out peer-focus:-translate-y-1.5 peer-focus:text-xs peer-focus:text-slate-600 peer-not-placeholder-shown:-translate-y-1.5 peer-not-placeholder-shown:text-xs peer-not-placeholder-shown:text-slate-600"
+      >
+        Service
+      </label>
+    </div>
+
+    {/* Message textarea field */}
     <div class="relative">
       <textarea
         id="input-message"
@@ -83,4 +144,46 @@ const formStrings = {
     </button>
   </div>
 </form>
+
+<script>
+document.querySelector('form')?.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const nameInput = document.getElementById('input-name') as HTMLInputElement | null;
+  const emailInput = document.getElementById('input-email') as HTMLInputElement | null;
+  const companyInput = document.getElementById('input-company') as HTMLInputElement | null;
+  const phoneInput = document.getElementById('input-phone') as HTMLInputElement | null;
+  const serviceInput = document.getElementById('input-service') as HTMLSelectElement | null;
+  const messageInput = document.getElementById('input-message') as HTMLTextAreaElement | null;
+
+  if (!nameInput || !emailInput || !messageInput || !companyInput || !phoneInput || !serviceInput) {
+    alert('Form fields missing. Please reload the page.');
+    return;
+  }
+
+  const name = nameInput.value;
+  const email = emailInput.value;
+  const company = companyInput.value;
+  const phone = phoneInput.value;
+  const service = serviceInput.value;
+  const message = messageInput.value;
+
+  const payload = { name, email, company, phone, service, message };
+
+  try {
+    const res = await fetch('/api/contact', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+    const result = await res.json();
+    if (result.success) {
+      alert('Message sent successfully!');
+    } else {
+      alert('There was an error sending your message. Please try again.');
+    }
+  } catch (err) {
+    alert('Network error. Please try again later.');
+  }
+});
+</script>
 
