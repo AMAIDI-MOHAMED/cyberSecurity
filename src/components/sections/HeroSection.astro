@@ -51,13 +51,12 @@ const { content, showPromoBanner = false, showTypewriter = false, showAnimation 
         <div class="space-y-6">
           {showTypewriter ? (
             <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-slate-900 leading-tight">
-              <span class="block">Secure Your</span>
               <span class="block relative">
-                <span class="bg-gradient-to-r from-teal-600 via-cyan-600 to-blue-600 bg-clip-text text-transparent">
-                  <span id="typewriter" class="typewriter-text font-mono tracking-tight"></span>
+                <span class="bg-gradient-to-r from-teal-600 via-cyan-600 to-blue-600 bg-clip-text text-transparent font-bold">
+                  <span id="typewriter" class="typewriter-text tracking-normal"></span>
                 </span>
                 <span class="typewriter-cursor"></span>
-                <div id="typewriter-underline" class="absolute bottom-0 left-0 h-1 bg-gradient-to-r from-teal-500 to-cyan-500"></div>
+                <div id="typewriter-underline" class="absolute bottom-0 left-0 h-2 bg-gradient-to-r from-teal-500 to-cyan-500 rounded-full shadow-lg"></div>
               </span>
             </h1>
           ) : (
@@ -116,41 +115,40 @@ const { content, showPromoBanner = false, showTypewriter = false, showAnimation 
 
 {showTypewriter && (
   <style>
-    /* Minimal typewriter styles (Tailwind utilities used for layout/colors) */
-    .typewriter-text { display: inline-block; min-width: 20ch; }
+    .typewriter-text { 
+      display: inline-block; 
+      min-width: 22ch;
+      font-weight: 700;
+    }
     .typewriter-cursor {
       display: inline-block;
-      width: 2px; height: 1.05em; margin-left: 6px; vertical-align: text-bottom;
+      width: 3px; 
+      height: 1.1em; 
+      margin-left: 8px; 
+      vertical-align: text-bottom;
       background: linear-gradient(180deg, #14b8a6, #06b6d4);
-      animation: cursor-blink 1.1s steps(1, end) infinite;
-      border-radius: 1px;
+      animation: cursor-blink 1s steps(1, end) infinite;
+      border-radius: 2px;
+      box-shadow: 0 0 10px rgba(20, 184, 166, 0.5);
     }
-    @keyframes cursor-blink { 0%, 49% { opacity: 1 } 50%, 100% { opacity: .15 } }
+    @keyframes cursor-blink { 
+      0%, 49% { opacity: 1; transform: scale(1); } 
+      50%, 100% { opacity: 0.3; transform: scale(0.9); } 
+    }
   </style>
 )}
 
 {showTypewriter && (
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      /** @type {HTMLElement | null} */
       const el = document.getElementById('typewriter');
-      /** @type {HTMLElement | null} */
       const underline = document.getElementById('typewriter-underline');
       if (!el || !underline) return;
 
-      const phrases = [
-        'Digital Future',
-        'Cyber Defense',
-        'Zero Trust Security',
-        'Threat Intelligence',
-        'Data Protection',
-        'Cloud Security'
-      ];
-
-      const cfg = { type: 55, erase: 38, hold: 1400, gap: 280 };
+      const phrases = ['Cyber Security Finland'];
+      const cfg = { type: 100, hold: 3000, gap: 1000 };
       let pi = 0, ci = 0, del = false;
 
-      const ui = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       function setUnderlineWidth() {
         if (!el || !underline) return;
         const rect = el.getBoundingClientRect();
@@ -160,12 +158,12 @@ const { content, showPromoBanner = false, showTypewriter = false, showAnimation 
       function tick() {
         if (!el || !underline) return;
         const word = phrases[pi];
+        
         if (!del) {
           ci++;
           el.textContent = word.slice(0, ci);
           setUnderlineWidth();
           if (ci === word.length) {
-            if (ui) return setTimeout(nextWord, cfg.hold);
             return setTimeout(() => { del = true; tick(); }, cfg.hold);
           }
           setTimeout(tick, cfg.type);
@@ -174,23 +172,20 @@ const { content, showPromoBanner = false, showTypewriter = false, showAnimation 
           el.textContent = word.slice(0, Math.max(ci, 0));
           setUnderlineWidth();
           if (ci <= 0) {
-            del = false; ci = 0; pi = (pi + 1) % phrases.length;
+            del = false; 
+            ci = 0; 
+            pi = (pi + 1) % phrases.length;
             return setTimeout(tick, cfg.gap);
           }
-          setTimeout(tick, cfg.erase);
+          setTimeout(tick, 50);
         }
       }
-      function nextWord() { del = true; tick(); }
 
-      // Initial kick
       el.textContent = '';
       setUnderlineWidth();
-      setTimeout(tick, 300);
+      setTimeout(tick, 800);
 
       window.addEventListener('resize', setUnderlineWidth);
-      document.addEventListener('visibilitychange', () => {
-        if (document.hidden) return; setUnderlineWidth();
-      });
     });
   </script>
 )}

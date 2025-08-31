@@ -1,0 +1,322 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Icon from '@/components/ui/icons/Icon.astro';
+import Button from '@/components/ui/Button.astro';
+
+const currentPath = Astro.url.pathname;
+const lang = currentPath.startsWith('/fi') ? 'fi' : 'en';
+
+const title = lang === 'fi' ? 'Resurssikeskus' : 'Resource Hub';
+const description = lang === 'fi' 
+  ? 'Kattava kokoelma kyberturvallisuuden oppaita, työkaluja ja resursseja. Ilmaiset mallit, tarkistuslistat ja asiantuntija-artikkelit.'
+  : 'Comprehensive collection of cybersecurity guides, tools and resources. Free templates, checklists and expert articles.';
+
+const resourceCategories = [
+  {
+    icon: 'book-open',
+    titleFi: 'Oppaat ja artikkelit',
+    titleEn: 'Guides & Articles',
+    descFi: 'Syvälliset toteutusoppaat ja asiantuntija-artikkelit',
+    descEn: 'In-depth implementation guides and expert articles',
+    href: '/blog',
+    countFi: '50+ artikkelia',
+    countEn: '50+ articles',
+    features: [
+      { fi: 'ISO 27001 toteutusopas', en: 'ISO 27001 implementation guide' },
+      { fi: 'NIS2-direktiivin käsikirja', en: 'NIS2 directive handbook' },
+      { fi: 'GDPR tietosuoja-opas', en: 'GDPR privacy guide' },
+      { fi: 'SOC 2 valmiusopas', en: 'SOC 2 readiness guide' }
+    ]
+  },
+  {
+    icon: 'shield',
+    titleFi: 'Säädöskehikot',
+    titleEn: 'Regulatory Frameworks',
+    descFi: 'Yksityiskohtaiset kuvaukset tärkeimmistä säädöksistä',
+    descEn: 'Detailed descriptions of key regulations',
+    href: '/regulatory',
+    countFi: '6 säädöstä',
+    countEn: '6 frameworks',
+    features: [
+      { fi: 'NIS2-direktiivi', en: 'NIS2 Directive' },
+      { fi: 'GDPR tietosuoja-asetus', en: 'GDPR Regulation' },
+      { fi: 'DORA resilienssisääntely', en: 'DORA resilience regulation' },
+      { fi: 'eIDAS luottamuspalvelut', en: 'eIDAS trust services' }
+    ]
+  },
+  {
+    icon: 'settings',
+    titleFi: 'Standardit ja kehikot',
+    titleEn: 'Standards & Frameworks',
+    descFi: 'Kansainväliset turvallisuusstandardit ja parhaat käytännöt',
+    descEn: 'International security standards and best practices',
+    href: '/frameworks',
+    countFi: '7 standardia',
+    countEn: '7 standards',
+    features: [
+      { fi: 'ISO 27001 tietoturvallisuus', en: 'ISO 27001 information security' },
+      { fi: 'SOC 2 palvelukontrollit', en: 'SOC 2 service controls' },
+      { fi: 'Common Criteria arviointi', en: 'Common Criteria evaluation' },
+      { fi: 'Cyber Essentials perusteet', en: 'Cyber Essentials fundamentals' }
+    ]
+  },
+  {
+    icon: 'tool',
+    titleFi: 'Tuki ja työkalut',
+    titleEn: 'Support & Tools',
+    descFi: 'Käytännön työkalut ja tukimateriaalit',
+    descEn: 'Practical tools and support materials',
+    href: '/support',
+    countFi: '100+ työkalua',
+    countEn: '100+ tools',
+    features: [
+      { fi: 'Ilmaiset Excel-mallit', en: 'Free Excel templates' },
+      { fi: 'Tarkistuslistat PDF:nä', en: 'Checklists as PDFs' },
+      { fi: 'Riskinarviointityökalut', en: 'Risk assessment tools' },
+      { fi: 'Compliance-dashboardit', en: 'Compliance dashboards' }
+    ]
+  },
+  {
+    icon: 'monitor',
+    titleFi: 'Alusta ja teknologia',
+    titleEn: 'Platform & Technology',
+    descFi: 'DataNova-alustan ominaisuudet ja teknologia',
+    descEn: 'DataNova platform features and technology',
+    href: '/platform',
+    countFi: 'SaaS-alusta',
+    countEn: 'SaaS platform',
+    features: [
+      { fi: 'Automaattinen compliance-seuranta', en: 'Automated compliance monitoring' },
+      { fi: 'Riskinhallinta-dashboard', en: 'Risk management dashboard' },
+      { fi: 'Audit-valmistelut', en: 'Audit preparations' },
+      { fi: 'Raportointi ja analytiikka', en: 'Reporting and analytics' }
+    ]
+  },
+  {
+    icon: 'users',
+    titleFi: 'Koulutus ja tuki',
+    titleEn: 'Training & Support',
+    descFi: 'Asiantuntijatuki ja koulutusmateriaalit',
+    descEn: 'Expert support and training materials',
+    href: '/support/knowledge-base',
+    countFi: 'Tukipalvelut',
+    countEn: 'Support services',
+    features: [
+      { fi: 'Tietopankki ja FAQ', en: 'Knowledge base and FAQ' },
+      { fi: 'Webinaarit ja koulutukset', en: 'Webinars and training' },
+      { fi: 'Asiantuntijatuki', en: 'Expert support' },
+      { fi: 'Yhteisöfoorumi', en: 'Community forum' }
+    ]
+  }
+];
+
+const featuredResources = [
+  {
+    titleFi: 'NIS2-direktiivin pikaopas',
+    titleEn: 'NIS2 Directive Quick Guide',
+    descFi: 'Kattava 25-sivuinen opas NIS2-direktiivin vaatimuksista ja toteutuksesta',
+    descEn: 'Comprehensive 25-page guide to NIS2 directive requirements and implementation',
+    type: 'PDF',
+    pages: '25',
+    updated: '2024-12',
+    href: '/resources/guides/nis2-implementation-finland'
+  },
+  {
+    titleFi: 'ISO 27001 ja NIS2 yhteensovitus',
+    titleEn: 'ISO 27001 & NIS2 Alignment',
+    descFi: 'Käytännön opas standardien ja direktiivin yhteensovittamiseen',
+    descEn: 'Practical guide to aligning standards and directive',
+    type: 'PDF',
+    pages: '18',
+    updated: '2024-11',
+    href: '/resources/guides/iso27001-nis2-alignment'
+  },
+  {
+    titleFi: 'DORA compliance tarkistuslista',
+    titleEn: 'DORA Compliance Checklist',
+    descFi: 'Vaiheittainen tarkistuslista digitaalisen resilienssisääntelyn noudattamiseen',
+    descEn: 'Step-by-step checklist for digital operational resilience compliance',
+    type: 'PDF',
+    pages: '12',
+    updated: '2024-10',
+    href: '/resources/guides/dora-compliance-checklist'
+  }
+];
+
+const stats = [
+  { valueFi: '500+', valueEn: '500+', labelFi: 'Ilmaista resurssia', labelEn: 'Free resources' },
+  { valueFi: '50k+', valueEn: '50k+', labelFi: 'Latausta kuukaudessa', labelEn: 'Downloads per month' },
+  { valueFi: '25+', valueEn: '25+', labelFi: 'Asiantuntija-artikkelia', labelEn: 'Expert articles' },
+  { valueFi: '98%', valueEn: '98%', labelFi: 'Asiakastyytyväisyys', labelEn: 'Customer satisfaction' }
+];
+---
+
+<Layout title={title} description={description}>
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-br from-blue-50 to-indigo-100 py-20">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center">
+        <div class="inline-flex items-center px-4 py-2 bg-blue-100 text-blue-800 rounded-full text-sm font-medium mb-6">
+          <Icon name="book-open" class="w-4 h-4 mr-2" />
+          {lang === 'fi' ? 'Ilmaiset resurssit' : 'Free Resources'}
+        </div>
+        <h1 class="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
+          {lang === 'fi' ? 'Kyberturvallisuuden resurssikeskus' : 'Cybersecurity Resource Hub'}
+        </h1>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
+          {lang === 'fi' 
+            ? 'Kattava kokoelma asiantuntija-oppaita, työkaluja ja malleja. Kaikki tarvitsemasi kyberturvallisuuden ja compliance-toteutusten tueksi.'
+            : 'Comprehensive collection of expert guides, tools and templates. Everything you need to support cybersecurity and compliance implementations.'
+          }
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <Button href="#categories" variant="primary">
+            {lang === 'fi' ? 'Selaa resursseja' : 'Browse Resources'}
+          </Button>
+          <Button href="/contact" variant="secondary">
+            {lang === 'fi' ? 'Pyydä neuvoja' : 'Get Expert Help'}
+          </Button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Section -->
+  <section class="py-16 bg-white">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+        {stats.map((stat) => (
+          <div class="text-center">
+            <div class="text-3xl md:text-4xl font-bold text-blue-600 mb-2">
+              {lang === 'fi' ? stat.valueFi : stat.valueEn}
+            </div>
+            <div class="text-gray-600">
+              {lang === 'fi' ? stat.labelFi : stat.labelEn}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Resources -->
+  <section class="py-20 bg-gray-50">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">
+          {lang === 'fi' ? 'Suosituimmat resurssit' : 'Featured Resources'}
+        </h2>
+        <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+          {lang === 'fi' 
+            ? 'Uusimmat ja suosituimmat oppaat ja työkalut heti ladattavissa'
+            : 'Latest and most popular guides and tools ready for download'
+          }
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        {featuredResources.map((resource) => (
+          <div class="bg-white rounded-lg p-8 shadow-lg hover:shadow-xl transition-shadow">
+            <div class="flex items-start justify-between mb-4">
+              <div class="flex items-center space-x-2">
+                <Icon name="file-text" class="w-5 h-5 text-blue-600" />
+                <span class="text-sm font-medium text-blue-600">{resource.type}</span>
+              </div>
+              <div class="text-sm text-gray-500">
+                {resource.pages} {lang === 'fi' ? 'sivua' : 'pages'}
+              </div>
+            </div>
+            <h3 class="text-xl font-semibold text-gray-900 mb-3">
+              {lang === 'fi' ? resource.titleFi : resource.titleEn}
+            </h3>
+            <p class="text-gray-600 mb-4">
+              {lang === 'fi' ? resource.descFi : resource.descEn}
+            </p>
+            <div class="flex items-center justify-between">
+              <span class="text-sm text-gray-500">
+                {lang === 'fi' ? 'Päivitetty' : 'Updated'} {resource.updated}
+              </span>
+              <Button href={resource.href} variant="secondary">
+                {lang === 'fi' ? 'Lataa' : 'Download'}
+              </Button>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Resource Categories -->
+  <section id="categories" class="py-20 bg-white">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">
+          {lang === 'fi' ? 'Resurssi kategoriat' : 'Resource Categories'}
+        </h2>
+        <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+          {lang === 'fi' 
+            ? 'Löydä tarvitsemasi resurssit helposti kategorioiden avulla'
+            : 'Find the resources you need easily through categories'
+          }
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {resourceCategories.map((category) => (
+          <div class="bg-gradient-to-br from-gray-50 to-blue-50 rounded-lg p-8 hover:shadow-lg transition-shadow">
+            <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-6">
+              <Icon name={category.icon} class="w-6 h-6 text-blue-600" />
+            </div>
+            <h3 class="text-xl font-semibold text-gray-900 mb-3">
+              {lang === 'fi' ? category.titleFi : category.titleEn}
+            </h3>
+            <p class="text-gray-600 mb-4">
+              {lang === 'fi' ? category.descFi : category.descEn}
+            </p>
+            <div class="text-sm font-medium text-blue-600 mb-4">
+              {lang === 'fi' ? category.countFi : category.countEn}
+            </div>
+            
+            <ul class="space-y-2 mb-6">
+              {category.features.map((feature) => (
+                <li class="flex items-start text-sm text-gray-600">
+                  <Icon name="check" class="w-4 h-4 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
+                  {lang === 'fi' ? feature.fi : feature.en}
+                </li>
+              ))}
+            </ul>
+            
+            <Button href={category.href} variant="secondary" className="w-full">
+              {lang === 'fi' ? 'Selaa resursseja' : 'Browse Resources'}
+            </Button>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter Signup -->
+  <section class="py-20 bg-gradient-to-r from-blue-600 to-indigo-700">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl font-bold text-white mb-4">
+        {lang === 'fi' ? 'Pysy ajan tasalla' : 'Stay Updated'}
+      </h2>
+      <p class="text-xl text-blue-100 mb-8">
+        {lang === 'fi' 
+          ? 'Saa uusimmat kyberturvallisuusresurssit ja -oivallukset suoraan sähköpostiisi'
+          : 'Get the latest cybersecurity resources and insights delivered to your inbox'
+        }
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto">
+        <input 
+          type="email" 
+          placeholder={lang === 'fi' ? 'Sähköpostiosoitteesi' : 'Your email address'}
+          class="flex-1 px-4 py-3 rounded-lg border-0 focus:ring-2 focus:ring-blue-300"
+        />
+        <Button variant="secondary">
+          {lang === 'fi' ? 'Tilaa' : 'Subscribe'}
+        </Button>
+      </div>
+    </div>
+  </section>
+</Layout>

@@ -1,4 +1,4 @@
----
+﻿---
 import Layout from '@/layouts/Layout.astro';
 import HeroSection from '@/components/sections/HeroSection.astro';
 import CTA from '@/components/sections/CTA.astro';
@@ -12,7 +12,7 @@ const lang = currentPath.startsWith('/fi') ? 'fi' : 'en';
 const isHomepage = Astro.url.pathname === '/' || Astro.url.pathname === '';
 
 const heroContent = {
-  title: isHomepage ? "🏛️ NIS2 Network and Information Security Directive" : "NIS2 Network and Information Security Directive",
+  title: isHomepage ? "NIS2 Network and Information Security Directive" : "NIS2 Network and Information Security Directive",
   subtitle: isHomepage ? "Comprehensive EU cybersecurity compliance for critical infrastructure and essential service providers" : "EU cybersecurity compliance for critical infrastructure and essential service providers",
   description: isHomepage ? "Cybersecurity.fi specializes in NIS2 Directive implementation, helping Finnish organizations achieve full compliance with enhanced cybersecurity requirements while building resilient digital infrastructure that protects critical operations and ensures regulatory alignment across the EU." : "Expert NIS2 Directive implementation helping Finnish organizations achieve compliance with enhanced cybersecurity requirements while building resilient digital infrastructure.",
   primaryCTA: { text: "Start NIS2 Compliance Journey", href: "/contact" },
@@ -22,12 +22,12 @@ const heroContent = {
 
 const keyBenefits = [
   {
-    title: "🎯 Regulatory Compliance Assurance",
+    title: "� Regulatory Compliance Assurance",
     description: "Achieve full NIS2 compliance with expert guidance through complex EU cybersecurity requirements, ensuring your organization meets all mandatory obligations and avoids significant penalties.",
     icon: "target"
   },
   {
-    title: "🇫🇮 Finnish Market Specialization",
+    title: "�� Finnish Market Specialization",
     description: "Deep understanding of Finnish implementation of EU directives, local business context, and Traficom (Finnish Transport and Communications Agency) requirements and reporting procedures.",
     icon: "flag"
   },
@@ -37,12 +37,12 @@ const keyBenefits = [
     icon: "lightning"
   },
   {
-    title: "🚨 24/7 Incident Response",
+    title: "24/7 Incident Response",
     description: "Robust incident detection, reporting, and response capabilities meeting EU cybersecurity requirements with 24-hour, 72-hour, and monthly reporting timelines to authorities.",
     icon: "bell"
   },
   {
-    title: "🔒 Risk-Based Security Framework",
+    title: "Risk-Based Security Framework",
     description: "Comprehensive risk assessment and management aligned with NIS2 requirements, integrating cybersecurity risk management with business strategy and operational resilience.",
     icon: "shield"
   },
@@ -55,7 +55,7 @@ const keyBenefits = [
 
 const nis2Requirements = [
   {
-    requirement: "🎯 Cybersecurity Risk Management",
+    requirement: "� Cybersecurity Risk Management",
     description: "Implement comprehensive cybersecurity risk management framework with policies, procedures, and continuous monitoring",
     controls: [
       "Risk analysis and information system security policies",
@@ -69,7 +69,7 @@ const nis2Requirements = [
     penalty: "Up to €10M or 2% annual turnover"
   },
   {
-    requirement: "🚨 ICT-Related Incident Management",
+    requirement: "ICT-Related Incident Management",
     description: "Establish 24/7 incident detection, response, and regulatory reporting capabilities with specific timelines",
     controls: [
       "Computer security incident detection and response",
@@ -83,7 +83,7 @@ const nis2Requirements = [
     penalty: "Personal liability for senior management"
   },
   {
-    requirement: "🔒 Technical & Organizational Measures",
+    requirement: "Technical & Organizational Measures",
     description: "Deploy appropriate technical and organizational cybersecurity measures proportionate to identified risks",
     controls: [
       "Multi-factor authentication and secure communications",
@@ -125,7 +125,7 @@ const nis2Requirements = [
     penalty: "Compliance monitoring and audit requirements"
   },
   {
-    requirement: "📊 Information Sharing & Reporting",
+    requirement: "Information Sharing & Reporting",
     description: "Participate in cybersecurity information sharing and maintain comprehensive documentation",
     controls: [
       "Cyber threat intelligence sharing arrangements",
@@ -142,7 +142,7 @@ const nis2Requirements = [
 
 const implementationPhases = [
   {
-    phase: "Phase 1: Scope Assessment & Legal Analysis 🔍",
+    phase: "Phase 1: Scope Assessment & Legal Analysis ",
     duration: "Months 1-2",
     activities: [
       "NIS2 applicability determination and entity classification (Essential vs Important)",
@@ -162,7 +162,7 @@ const implementationPhases = [
     ]
   },
   {
-    phase: "Phase 2: Cybersecurity Framework Design 🛠️",
+    phase: "Phase 2: Cybersecurity Framework Design ",
     duration: "Months 3-4",
     activities: [
       "Cybersecurity governance framework development with board oversight",
@@ -182,7 +182,7 @@ const implementationPhases = [
     ]
   },
   {
-    phase: "Phase 3: Technical Implementation & Controls Deployment 🔧",
+    phase: "Phase 3: Technical Implementation & Controls Deployment �",
     duration: "Months 5-6",
     activities: [
       "Technical security controls implementation across all systems",
@@ -202,7 +202,7 @@ const implementationPhases = [
     ]
   },
   {
-    phase: "Phase 4: Compliance Validation & Certification 📋",
+    phase: "Phase 4: Compliance Validation & Certification ",
     duration: "Months 7-8",
     activities: [
       "Comprehensive compliance testing and validation against NIS2 requirements",

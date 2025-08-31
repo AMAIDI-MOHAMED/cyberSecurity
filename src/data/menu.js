@@ -63,6 +63,12 @@ export const menu = [
             label_en: "Common Criteria",
             href: "/services/standards-and-certifications/common-criteria",
             children: []
+          },
+          {
+            label_fi: "ISO/IEC 20000-1",
+            label_en: "ISO/IEC 20000-1",
+            href: "/services/standards-and-certifications/iso-iec-20000-1",
+            children: []
           }
         ]
       },

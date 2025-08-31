@@ -302,7 +302,9 @@ const currentContent = content[lang];
   </div>
 
       <div class="bg-white p-8 rounded-xl shadow-sm">
-        <form class="space-y-6">
+        <form id="contactForm" class="space-y-6">
+          <div id="formMessage" class="hidden p-4 rounded-lg"></div>
+          
           <div class="grid md:grid-cols-2 gap-6">
             <div>
               <label for="name" class="block text-sm font-medium text-slate-700 mb-2">
@@ -376,6 +378,10 @@ const currentContent = content[lang];
               <option value="dora">DORA Compliance</option>
               <option value="gdpr">GDPR Compliance</option>
               <option value="eidas">eIDAS Services</option>
+              <option value="soc2">SOC 2 Compliance</option>
+              <option value="risk-assessment">Risk Assessment</option>
+              <option value="penetration-testing">Penetration Testing</option>
+              <option value="consulting">Security Consulting</option>
               <option value="other">{lang === 'fi' ? 'Muu' : 'Other'}</option>
             </select>
           </div>
@@ -401,9 +407,17 @@ const currentContent = content[lang];
           <div class="text-center">
             <button
               type="submit"
-              class="bg-teal-600 hover:bg-teal-700 text-white font-semibold py-3 px-8 rounded-lg text-lg transition duration-300"
+              id="submitBtn"
+              class="bg-teal-600 hover:bg-teal-700 text-white font-semibold py-3 px-8 rounded-lg text-lg transition duration-300 disabled:bg-slate-400 disabled:cursor-not-allowed"
             >
-              {currentContent.form.submit}
+              <span id="submitText">{currentContent.form.submit}</span>
+              <span id="submitLoader" class="hidden">
+                <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white inline" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                  <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                  <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+                {lang === 'fi' ? 'Lähetetään...' : 'Sending...'}
+              </span>
             </button>
           </div>
         </form>
@@ -430,3 +444,78 @@ const currentContent = content[lang];
   </section>
 </Layout>
 
+<script is:inline>
+document.addEventListener('DOMContentLoaded', function() {
+  const form = document.getElementById('contactForm');
+  const submitBtn = document.getElementById('submitBtn');
+  const submitText = document.getElementById('submitText');
+  const submitLoader = document.getElementById('submitLoader');
+  const formMessage = document.getElementById('formMessage');
+
+  if (form) {
+    form.addEventListener('submit', async function(e) {
+      e.preventDefault();
+
+      // Show loading state
+      submitBtn.disabled = true;
+      submitText.classList.add('hidden');
+      submitLoader.classList.remove('hidden');
+      formMessage.classList.add('hidden');
+
+      // Get form data
+      const formData = new FormData(form);
+      const data = {
+        name: formData.get('name'),
+        email: formData.get('email'),
+        company: formData.get('company'),
+        phone: formData.get('phone'),
+        service: formData.get('service'),
+        message: formData.get('message')
+      };
+
+      try {
+        const response = await fetch('/api/contact', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data)
+        });
+
+        const result = await response.json();
+
+        if (result.success) {
+          // Show success message
+          formMessage.textContent = window.location.pathname.startsWith('/fi') 
+            ? 'Kiitos viestistäsi! Vastaamme sinulle 24 tunnin sisällä.'
+            : 'Thank you for your message! We\'ll get back to you within 24 hours.';
+          formMessage.className = 'p-4 rounded-lg bg-green-100 text-green-800 border border-green-200';
+          formMessage.classList.remove('hidden');
+          
+          // Reset form
+          form.reset();
+        } else {
+          // Show error message
+          formMessage.textContent = result.error || (window.location.pathname.startsWith('/fi')
+            ? 'Viestin lähettämisessä tapahtui virhe. Yritä uudelleen.'
+            : 'There was an error sending your message. Please try again.');
+          formMessage.className = 'p-4 rounded-lg bg-red-100 text-red-800 border border-red-200';
+          formMessage.classList.remove('hidden');
+        }
+      } catch (error) {
+        console.error('Error submitting form:', error);
+        formMessage.textContent = window.location.pathname.startsWith('/fi')
+          ? 'Viestin lähettämisessä tapahtui virhe. Yritä uudelleen.'
+          : 'There was an error sending your message. Please try again.';
+        formMessage.className = 'p-4 rounded-lg bg-red-100 text-red-800 border border-red-200';
+        formMessage.classList.remove('hidden');
+      } finally {
+        // Reset loading state
+        submitBtn.disabled = false;
+        submitText.classList.remove('hidden');
+        submitLoader.classList.add('hidden');
+      }
+    });
+  }
+});
+</script>

@@ -1,34 +1,292 @@
 ---
 import Layout from '@/layouts/Layout.astro';
+import Button from '@/components/ui/Button.astro';
 
-const title = 'ISO/IEC 20000-1 IT Service Management Services';
-const description = 'Comprehensive IT Service Management implementation with ISO/IEC 20000-1. Improve IT service delivery, quality, and customer satisfaction through structured ITSM processes.';
+const title = 'ISO/IEC 20000-1';
+const description = 'IT service management alignment for MSSP processes and SLAs.';
+
+const services = [
+  {
+    title: 'MSSP Process Alignment',
+    description: 'Align your managed security service provider processes with ISO/IEC 20000-1 standards',
+    features: [
+      'Security operations center (SOC) process optimization',
+      'Incident response workflow standardization',
+      'Threat monitoring service alignment',
+      'Security event management processes'
+    ]
+  },
+  {
+    title: 'SLA Framework Development',
+    description: 'Develop comprehensive service level agreements that meet ISO/IEC 20000-1 requirements',
+    features: [
+      'Security service level objectives (SLOs)',
+      'Response time guarantees',
+      'Availability and uptime commitments',
+      'Performance measurement frameworks'
+    ]
+  },
+  {
+    title: 'Service Management Implementation',
+    description: 'Complete IT service management system implementation for security services',
+    features: [
+      'Service catalog development',
+      'Change management processes',
+      'Configuration management database (CMDB)',
+      'Problem and incident management'
+    ]
+  },
+  {
+    title: 'Continuous Improvement',
+    description: 'Establish continuous service improvement processes for managed security services',
+    features: [
+      'Service performance monitoring',
+      'Customer satisfaction measurement',
+      'Process optimization initiatives',
+      'Regular service reviews and updates'
+    ]
+  }
+];
+
+const msspBenefits = [
+  {
+    title: 'Enhanced Service Quality',
+    description: 'Standardized processes ensure consistent, high-quality security service delivery'
+  },
+  {
+    title: 'Improved SLA Compliance',
+    description: 'Meet and exceed service level agreements with structured management processes'
+  },
+  {
+    title: 'Better Risk Management',
+    description: 'Integrated risk management across all IT and security service operations'
+  },
+  {
+    title: 'Customer Confidence',
+    description: 'Demonstrate commitment to service excellence through international certification'
+  }
+];
+
+const keyProcesses = [
+  'Service Level Management',
+  'Availability Management', 
+  'Capacity Management',
+  'Information Security Management',
+  'Incident Management',
+  'Problem Management',
+  'Change Management',
+  'Release Management',
+  'Configuration Management',
+  'Supplier Management',
+  'Service Continuity Management',
+  'Service Reporting'
+];
 ---
 
 <Layout title={title} description={description}>
   <!-- Hero Section -->
-  <section class="bg-gradient-to-br from-indigo-50 via-white to-purple-50 py-16">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  <section class="py-20 bg-gradient-to-br from-indigo-50 via-white to-purple-50">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center">
-        <h1 class="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
-          ISO/IEC 20000-1 IT Service Management
+        <div class="inline-flex items-center px-4 py-2 bg-indigo-100 text-indigo-800 rounded-full text-sm font-medium mb-6">
+          <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h6a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h6a2 2 0 002-2v-4a2 2 0 00-2-2m8-8a2 2 0 012 2v4a2 2 0 01-2 2"></path>
+          </svg>
+          IT Service Management Excellence
+        </div>
+        <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+          {title}
         </h1>
-        <p class="text-xl text-slate-600 max-w-3xl mx-auto mb-8">
-          IT service management excellence through internationally recognized standards. Improve service delivery, reduce costs, and enhance customer satisfaction.
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
+          {description}
         </p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <a href="/contact" class="inline-flex items-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 transition-colors">
-            Optimize IT Services
-          </a>
-          <a href="/services" class="inline-flex items-center px-8 py-3 border border-slate-300 text-base font-medium rounded-md text-slate-700 bg-white hover:bg-slate-50 transition-colors">
-            View Our Services
-          </a>
+          <Button href="/contact" variant="primary">
+            Start ITSM Alignment
+          </Button>
+          <Button href="#services" variant="secondary">
+            Learn More
+          </Button>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Key Benefits -->
+  <!-- Services Grid -->
+  <section id="services" class="py-20 bg-white">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">
+          MSSP Service Management Solutions
+        </h2>
+        <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+          Comprehensive IT service management alignment for managed security service providers
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8">
+        {services.map((service) => (
+          <div class="bg-gradient-to-br from-gray-50 to-indigo-50 rounded-lg p-8 hover:shadow-lg transition-shadow">
+            <div class="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center mb-6">
+              <svg class="w-6 h-6 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold text-gray-900 mb-3">
+              {service.title}
+            </h3>
+            <p class="text-gray-600 mb-4">
+              {service.description}
+            </p>
+            <ul class="space-y-2">
+              {service.features.map((feature) => (
+                <li class="flex items-start text-sm text-gray-600">
+                  <svg class="w-4 h-4 text-green-500 mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                  </svg>
+                  {feature}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Key Processes -->
+  <section class="py-20 bg-gray-50">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">
+          ISO/IEC 20000-1 Key Processes
+        </h2>
+        <p class="text-lg text-gray-600">
+          Comprehensive coverage of all required service management processes
+        </p>
+      </div>
+      <div class="grid md:grid-cols-3 lg:grid-cols-4 gap-4">
+        {keyProcesses.map((process) => (
+          <div class="bg-white p-4 rounded-lg border border-gray-200 hover:shadow-md transition-shadow">
+            <div class="flex items-center">
+              <svg class="w-5 h-5 text-indigo-600 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+              </svg>
+              <span class="text-gray-700 text-sm font-medium">{process}</span>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- MSSP Benefits -->
+  <section class="py-20 bg-white">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">
+          Benefits for MSSPs
+        </h2>
+        <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+          Why ISO/IEC 20000-1 certification is essential for managed security service providers
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {msspBenefits.map((benefit) => (
+          <div class="text-center">
+            <div class="w-16 h-16 bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-4">
+              <svg class="w-8 h-8 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+            </div>
+            <h3 class="text-lg font-semibold text-gray-900 mb-2">
+              {benefit.title}
+            </h3>
+            <p class="text-gray-600 text-sm">
+              {benefit.description}
+            </p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Implementation Approach -->
+  <section class="py-20 bg-gradient-to-r from-indigo-600 to-purple-700">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <h2 class="text-3xl font-bold text-white mb-6">
+            Our Implementation Approach
+          </h2>
+          <div class="space-y-4">
+            <div class="flex items-start">
+              <div class="w-8 h-8 bg-purple-200 rounded-full flex items-center justify-center mr-4 mt-1">
+                <span class="text-purple-800 font-bold text-sm">1</span>
+              </div>
+              <div>
+                <h3 class="text-lg font-semibold text-white mb-1">Assessment & Gap Analysis</h3>
+                <p class="text-purple-100">Evaluate current MSSP processes against ISO/IEC 20000-1 requirements</p>
+              </div>
+            </div>
+            <div class="flex items-start">
+              <div class="w-8 h-8 bg-purple-200 rounded-full flex items-center justify-center mr-4 mt-1">
+                <span class="text-purple-800 font-bold text-sm">2</span>
+              </div>
+              <div>
+                <h3 class="text-lg font-semibold text-white mb-1">Process Design & Documentation</h3>
+                <p class="text-purple-100">Design and document service management processes tailored for security services</p>
+              </div>
+            </div>
+            <div class="flex items-start">
+              <div class="w-8 h-8 bg-purple-200 rounded-full flex items-center justify-center mr-4 mt-1">
+                <span class="text-purple-800 font-bold text-sm">3</span>
+              </div>
+              <div>
+                <h3 class="text-lg font-semibold text-white mb-1">SLA Development & Integration</h3>
+                <p class="text-purple-100">Create comprehensive SLAs that align with service management objectives</p>
+              </div>
+            </div>
+            <div class="flex items-start">
+              <div class="w-8 h-8 bg-purple-200 rounded-full flex items-center justify-center mr-4 mt-1">
+                <span class="text-purple-800 font-bold text-sm">4</span>
+              </div>
+              <div>
+                <h3 class="text-lg font-semibold text-white mb-1">Implementation & Training</h3>
+                <p class="text-purple-100">Deploy processes, train staff, and establish monitoring mechanisms</p>
+              </div>
+            </div>
+            <div class="flex items-start">
+              <div class="w-8 h-8 bg-purple-200 rounded-full flex items-center justify-center mr-4 mt-1">
+                <span class="text-purple-800 font-bold text-sm">5</span>
+              </div>
+              <div>
+                <h3 class="text-lg font-semibold text-white mb-1">Certification & Continuous Improvement</h3>
+                <p class="text-purple-100">Support certification process and establish ongoing improvement cycles</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="lg:text-center">
+          <div class="bg-white/10 backdrop-blur-sm rounded-lg p-8">
+            <svg class="w-20 h-20 text-purple-200 mx-auto mb-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path>
+            </svg>
+            <h3 class="text-2xl font-bold text-white mb-4">Ready to Enhance Your MSSP Services?</h3>
+            <p class="text-purple-100 mb-6">
+              Achieve ISO/IEC 20000-1 certification and demonstrate your commitment to service excellence
+            </p>
+            <Button href="/contact" variant="secondary">
+              Start Your Journey
+            </Button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Additional Benefits Section -->
   <section class="py-16 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-12">
@@ -97,259 +355,6 @@ const description = 'Comprehensive IT Service Management implementation with ISO
           </div>
           <h3 class="text-lg font-semibold text-slate-900 mb-2">Compliance & Governance</h3>
           <p class="text-slate-600">Meet regulatory requirements and establish strong IT governance with documented, auditable processes.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Core ITSM Processes -->
-  <section class="py-16 bg-slate-50">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl font-bold text-slate-900 mb-4">Core ISO/IEC 20000-1 Processes</h2>
-        <p class="text-xl text-slate-600 max-w-3xl mx-auto">
-          Comprehensive IT service management processes covering the complete service lifecycle.
-        </p>
-      </div>
-      
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <div class="bg-white p-6 rounded-xl shadow-sm">
-          <div class="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center mb-4">
-            <svg class="w-6 h-6 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path>
-            </svg>
-          </div>
-          <h3 class="text-lg font-semibold text-slate-900 mb-2">Service Level Management</h3>
-          <p class="text-slate-600">Define, monitor, and report on service level agreements and operational level agreements.</p>
-        </div>
-        
-        <div class="bg-white p-6 rounded-xl shadow-sm">
-          <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
-            <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 100 4m0-4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 100 4m0-4v2m0-6V4"></path>
-            </svg>
-          </div>
-          <h3 class="text-lg font-semibold text-slate-900 mb-2">Incident & Problem Management</h3>
-          <p class="text-slate-600">Restore services quickly and prevent recurring incidents through root cause analysis.</p>
-        </div>
-        
-        <div class="bg-white p-6 rounded-xl shadow-sm">
-          <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
-            <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
-            </svg>
-          </div>
-          <h3 class="text-lg font-semibold text-slate-900 mb-2">Change Management</h3>
-          <p class="text-slate-600">Control and coordinate changes to minimize service disruption and business risk.</p>
-        </div>
-        
-        <div class="bg-white p-6 rounded-xl shadow-sm">
-          <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4">
-            <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
-            </svg>
-          </div>
-          <h3 class="text-lg font-semibold text-slate-900 mb-2">Configuration Management</h3>
-          <p class="text-slate-600">Maintain accurate information about IT infrastructure and service components.</p>
-        </div>
-        
-        <div class="bg-white p-6 rounded-xl shadow-sm">
-          <div class="w-12 h-12 bg-teal-100 rounded-lg flex items-center justify-center mb-4">
-            <svg class="w-6 h-6 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"></path>
-            </svg>
-          </div>
-          <h3 class="text-lg font-semibold text-slate-900 mb-2">Release & Deployment</h3>
-          <p class="text-slate-600">Plan, build, test, and deploy releases into the live environment safely and efficiently.</p>
-        </div>
-        
-        <div class="bg-white p-6 rounded-xl shadow-sm">
-          <div class="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mb-4">
-            <svg class="w-6 h-6 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z"></path>
-            </svg>
-          </div>
-          <h3 class="text-lg font-semibold text-slate-900 mb-2">Service Desk</h3>
-          <p class="text-slate-600">Provide single point of contact for users and coordinate incident resolution.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Implementation Process -->
-  <section class="py-16 bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl font-bold text-slate-900 mb-4">ISO/IEC 20000-1 Implementation Process</h2>
-        <p class="text-xl text-slate-600 max-w-3xl mx-auto">
-          Structured approach to implementing comprehensive IT Service Management System (SMS).
-        </p>
-      </div>
-      
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-        <div class="text-center">
-          <div class="w-16 h-16 bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-4">
-            <span class="text-2xl font-bold text-indigo-600">1</span>
-          </div>
-          <h3 class="text-lg font-semibold text-slate-900 mb-2">Current State Assessment</h3>
-          <p class="text-slate-600">Evaluate existing IT service management processes and identify improvement opportunities.</p>
-        </div>
-        
-        <div class="text-center">
-          <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
-            <span class="text-2xl font-bold text-purple-600">2</span>
-          </div>
-          <h3 class="text-lg font-semibold text-slate-900 mb-2">Process Design</h3>
-          <p class="text-slate-600">Design and document IT service management processes aligned with ISO/IEC 20000-1 requirements.</p>
-        </div>
-        
-        <div class="text-center">
-          <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-            <span class="text-2xl font-bold text-blue-600">3</span>
-          </div>
-          <h3 class="text-lg font-semibold text-slate-900 mb-2">Implementation & Training</h3>
-          <p class="text-slate-600">Implement processes, tools, and provide comprehensive training to IT service management teams.</p>
-        </div>
-        
-        <div class="text-center">
-          <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-            <span class="text-2xl font-bold text-green-600">4</span>
-          </div>
-          <h3 class="text-lg font-semibold text-slate-900 mb-2">Continuous Improvement</h3>
-          <p class="text-slate-600">Monitor performance, conduct regular reviews, and continuously improve service management maturity.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Key Services -->
-  <section class="py-16 bg-slate-50">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl font-bold text-slate-900 mb-4">Comprehensive ITSM Services</h2>
-      </div>
-      
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        <div class="bg-white p-8 rounded-xl shadow-sm">
-          <h3 class="text-xl font-bold text-slate-900 mb-4">SMS Development & Implementation</h3>
-          <ul class="space-y-3 text-slate-600">
-            <li class="flex items-start">
-              <svg class="w-5 h-5 text-green-500 mt-0.5 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-              </svg>
-              Service management system design
-            </li>
-            <li class="flex items-start">
-              <svg class="w-5 h-5 text-green-500 mt-0.5 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-              </svg>
-              Process documentation and procedures
-            </li>
-            <li class="flex items-start">
-              <svg class="w-5 h-5 text-green-500 mt-0.5 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-              </svg>
-              Service level agreement development
-            </li>
-            <li class="flex items-start">
-              <svg class="w-5 h-5 text-green-500 mt-0.5 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-              </svg>
-              ITSM tool selection and configuration
-            </li>
-            <li class="flex items-start">
-              <svg class="w-5 h-5 text-green-500 mt-0.5 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-              </svg>
-              Performance measurement framework
-            </li>
-          </ul>
-        </div>
-        
-        <div class="bg-white p-8 rounded-xl shadow-sm">
-          <h3 class="text-xl font-bold text-slate-900 mb-4">Training & Continuous Improvement</h3>
-          <ul class="space-y-3 text-slate-600">
-            <li class="flex items-start">
-              <svg class="w-5 h-5 text-green-500 mt-0.5 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-              </svg>
-              ITSM process training programs
-            </li>
-            <li class="flex items-start">
-              <svg class="w-5 h-5 text-green-500 mt-0.5 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-              </svg>
-              Service management maturity assessments
-            </li>
-            <li class="flex items-start">
-              <svg class="w-5 h-5 text-green-500 mt-0.5 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-              </svg>
-              Performance monitoring and reporting
-            </li>
-            <li class="flex items-start">
-              <svg class="w-5 h-5 text-green-500 mt-0.5 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-              </svg>
-              Internal audit programs
-            </li>
-            <li class="flex items-start">
-              <svg class="w-5 h-5 text-green-500 mt-0.5 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-              </svg>
-              Certification support and guidance
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ITIL Integration -->
-  <section class="py-16 bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl font-bold text-slate-900 mb-4">ITIL Framework Integration</h2>
-        <p class="text-xl text-slate-600 max-w-3xl mx-auto">
-          Leverage ITIL best practices within the ISO/IEC 20000-1 implementation for comprehensive service management excellence.
-        </p>
-      </div>
-      
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-        <div class="text-center">
-          <div class="w-16 h-16 bg-indigo-100 rounded-lg flex items-center justify-center mx-auto mb-3">
-            <svg class="w-8 h-8 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path>
-            </svg>
-          </div>
-          <h3 class="text-sm font-semibold text-slate-900">ITIL 4 Foundation</h3>
-        </div>
-        
-        <div class="text-center">
-          <div class="w-16 h-16 bg-purple-100 rounded-lg flex items-center justify-center mx-auto mb-3">
-            <svg class="w-8 h-8 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
-            </svg>
-          </div>
-          <h3 class="text-sm font-semibold text-slate-900">Service Value Chain</h3>
-        </div>
-        
-        <div class="text-center">
-          <div class="w-16 h-16 bg-blue-100 rounded-lg flex items-center justify-center mx-auto mb-3">
-            <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-            </svg>
-          </div>
-          <h3 class="text-sm font-semibold text-slate-900">Continual Improvement</h3>
-        </div>
-        
-        <div class="text-center">
-          <div class="w-16 h-16 bg-green-100 rounded-lg flex items-center justify-center mx-auto mb-3">
-            <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
-            </svg>
-          </div>
-          <h3 class="text-sm font-semibold text-slate-900">Best Practice Guidance</h3>
         </div>
       </div>
     </div>

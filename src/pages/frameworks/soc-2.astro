@@ -1,4 +1,4 @@
----
+﻿---
 import Layout from '@/layouts/Layout.astro';
 import HeroSection from '@/components/sections/HeroSection.astro';
 import CTA from '@/components/sections/CTA.astro';
@@ -9,7 +9,7 @@ const currentPath = Astro.url.pathname;
 const lang = currentPath.startsWith('/fi') ? 'fi' : 'en';
 
 const heroContent = {
-  title: "📊 SOC 2 Trust Service Excellence Framework",
+  title: "SOC 2 Trust Service Excellence Framework",
   subtitle: "Comprehensive SOC 2 Type I and Type II compliance for SaaS, cloud, and technology companies",
   description: "Cybersecurity.fi specializes in SOC 2 compliance preparation, helping Finnish and Nordic technology organizations achieve certification across all Trust Service Criteria while building customer confidence through demonstrated security, availability, processing integrity, confidentiality, and privacy excellence.",
   primaryCTA: { text: "Start SOC 2 Compliance Journey", href: "/contact" },
@@ -19,17 +19,17 @@ const heroContent = {
 
 const keyBenefits = [
   {
-    title: "🎯 Customer Trust Acceleration",
+    title: "� Customer Trust Acceleration",
     description: "Build immediate credibility with enterprise customers requiring SOC 2 certification, accelerating sales cycles and enabling access to larger deals and enterprise markets.",
     icon: "target"
   },
   {
-    title: "🚀 Competitive Differentiation",
+    title: "Competitive Differentiation",
     description: "Distinguish your organization from competitors through independently verified security and privacy controls, creating sustainable competitive advantage in B2B markets.",
     icon: "rocket"
   },
   {
-    title: "🔒 Comprehensive Control Framework",
+    title: "Comprehensive Control Framework",
     description: "Implement robust, auditor-approved control framework covering all five Trust Service Criteria with customization for your specific business model and risk profile.",
     icon: "shield"
   },
@@ -39,7 +39,7 @@ const keyBenefits = [
     icon: "lightning"
   },
   {
-    title: "🌐 Nordic Market Expertise",
+    title: "� Nordic Market Expertise",
     description: "Deep understanding of Nordic business practices, GDPR alignment, and cultural considerations for seamless SOC 2 implementation in European markets.",
     icon: "globe"
   },
@@ -52,7 +52,7 @@ const keyBenefits = [
 
 const trustServiceCriteria = [
   {
-    criterion: "🔒 Security (Mandatory for all SOC 2 reports)",
+    criterion: "Security (Mandatory for all SOC 2 reports)",
     description: "Protection against unauthorized access, use, disclosure, disruption, modification, or destruction of information and systems",
     controls: [
       "Logical and physical access controls with multi-factor authentication",
@@ -65,7 +65,7 @@ const trustServiceCriteria = [
     auditFocus: "64 common criteria controls - foundation for all SOC 2 reports"
   },
   {
-    criterion: "🟢 Availability (Optional - Service level commitments)",
+    criterion: "Availability (Optional - Service level commitments)",
     description: "Systems, products, and services are available for operation and use as committed or agreed with stakeholders",
     controls: [
       "Business continuity and disaster recovery planning and testing",
@@ -78,7 +78,7 @@ const trustServiceCriteria = [
     auditFocus: "13 additional controls - proves uptime and availability commitments"
   },
   {
-    criterion: "✅ Processing Integrity (Optional - Data accuracy commitments)",
+    criterion: "Processing Integrity (Optional - Data accuracy commitments)",
     description: "System processing is complete, valid, accurate, timely, and authorized to meet entity's objectives",
     controls: [
       "Data validation and input controls with error detection",
@@ -91,7 +91,7 @@ const trustServiceCriteria = [
     auditFocus: "11 additional controls - validates data processing accuracy and completeness"
   },
   {
-    criterion: "🤐 Confidentiality (Optional - Sensitive data protection)",
+    criterion: "�Confidentiality (Optional - Sensitive data protection)",
     description: "Information designated as confidential is protected as committed or agreed through collection, use, retention, and disposal",
     controls: [
       "Data classification and confidentiality labeling systems",
@@ -104,7 +104,7 @@ const trustServiceCriteria = [
     auditFocus: "8 additional controls - protects confidential and proprietary information"
   },
   {
-    criterion: "🛡️ Privacy (Optional - Personal data protection)",
+    criterion: "Privacy (Optional - Personal data protection)",
     description: "Personal information is collected, used, retained, disclosed, and disposed of in conformity with entity's privacy notice and GAPP principles",
     controls: [
       "Privacy policies and notice management with consent tracking",

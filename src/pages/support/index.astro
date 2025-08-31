@@ -1,0 +1,335 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Icon from '@/components/ui/icons/Icon.astro';
+import Button from '@/components/ui/Button.astro';
+
+const currentPath = Astro.url.pathname;
+const lang = currentPath.startsWith('/fi') ? 'fi' : 'en';
+
+const title = lang === 'fi' ? 'Tuki ja työkalut' : 'Support & Tools';
+const description = lang === 'fi' 
+  ? 'Kattava valikoima tukipalveluja, työkaluja ja resursseja. Ilmaiset mallit, tarkistuslistat ja asiantuntijatuki.'
+  : 'Comprehensive range of support services, tools and resources. Free templates, checklists and expert support.';
+
+const supportCategories = [
+  {
+    icon: 'book',
+    titleFi: 'Tietopankki',
+    titleEn: 'Knowledge Base',
+    descFi: 'Kattava dokumentaatio, ohjeet ja usein kysytyt kysymykset',
+    descEn: 'Comprehensive documentation, guides and frequently asked questions',
+    href: '/support/knowledge-base',
+    features: [
+      { fi: 'Asennusoppaat', en: 'Installation guides' },
+      { fi: 'Ongelmanratkaisu', en: 'Troubleshooting' },
+      { fi: 'Usein kysytyt kysymykset', en: 'Frequently asked questions' },
+      { fi: 'Video-ohjeet', en: 'Video tutorials' }
+    ]
+  },
+  {
+    icon: 'file-text',
+    titleFi: 'Artikkelit ja viite',
+    titleEn: 'Articles & Reference',
+    descFi: 'Asiantuntija-artikkelit ja viitemateriaali compliance-työhön',
+    descEn: 'Expert articles and reference materials for compliance work',
+    href: '/support/articles',
+    features: [
+      { fi: 'Toteutusartikkelit', en: 'Implementation articles' },
+      { fi: 'Parhaiden käytäntöjen oppaat', en: 'Best practices guides' },
+      { fi: 'Säädösten selitykset', en: 'Regulation explanations' },
+      { fi: 'Tekninen dokumentaatio', en: 'Technical documentation' }
+    ]
+  },
+  {
+    icon: 'download',
+    titleFi: 'Ladattavat resurssit',
+    titleEn: 'Downloadable Resources',
+    descFi: 'Ilmaiset mallit, tarkistuslistat ja työkalut Excel/PDF-muodossa',
+    descEn: 'Free templates, checklists and tools in Excel/PDF format',
+    href: '/support/sample-spreadsheets',
+    features: [
+      { fi: 'Excel-työkalut ja -mallit', en: 'Excel tools and templates' },
+      { fi: 'PDF-tarkistuslistat', en: 'PDF checklists' },
+      { fi: 'Riskinarviointityökalut', en: 'Risk assessment tools' },
+      { fi: 'Audit-valmistelumallit', en: 'Audit preparation templates' }
+    ]
+  },
+  {
+    icon: 'file-plus',
+    titleFi: 'Valkoiset kirjat',
+    titleEn: 'White Papers',
+    descFi: 'Syvälliset tutkimukset ja analyysit kyberturvallisuusaiheista',
+    descEn: 'In-depth research and analysis on cybersecurity topics',
+    href: '/support/whitepapers',
+    features: [
+      { fi: 'Toimialakohtaiset analyysit', en: 'Industry-specific analyses' },
+      { fi: 'Säädösvaikutustutkimukset', en: 'Regulatory impact studies' },
+      { fi: 'Teknologiatrendit', en: 'Technology trends' },
+      { fi: 'Uhka-analyysit', en: 'Threat analyses' }
+    ]
+  }
+];
+
+const tools = [
+  {
+    icon: 'check-square',
+    titleFi: 'ISO 27001 Tarkistuslista',
+    titleEn: 'ISO 27001 Checklist',
+    descFi: 'Kattava 114-kohtainen tarkistuslista ISO 27001 toteutukseen',
+    descEn: 'Comprehensive 114-point checklist for ISO 27001 implementation',
+    format: 'Excel',
+    pages: '15',
+    updated: '2024-12',
+    downloadCount: '5.2k',
+    href: '/downloads/iso27001-checklist.xlsx'
+  },
+  {
+    icon: 'shield',
+    titleFi: 'NIS2 Valmiusarviointi',
+    titleEn: 'NIS2 Readiness Assessment',
+    descFi: 'Itsearviointityökalu NIS2-direktiivin valmiuden kartoittamiseen',
+    descEn: 'Self-assessment tool for mapping NIS2 directive readiness',
+    format: 'Excel',
+    pages: '8',
+    updated: '2024-11',
+    downloadCount: '3.8k',
+    href: '/downloads/nis2-readiness-tool.xlsx'
+  },
+  {
+    icon: 'bar-chart',
+    titleFi: 'Riskinarviointimalli',
+    titleEn: 'Risk Assessment Template',
+    descFi: 'Automaattinen riskinarviointityökalu laskennalla ja visualisoinnilla',
+    descEn: 'Automated risk assessment tool with calculations and visualization',
+    format: 'Excel',
+    pages: '12',
+    updated: '2024-10',
+    downloadCount: '7.1k',
+    href: '/downloads/risk-assessment-template.xlsx'
+  },
+  {
+    icon: 'calendar',
+    titleFi: 'GDPR Compliance Kalenteri',
+    titleEn: 'GDPR Compliance Calendar',
+    descFi: 'Vuosittainen suunnitelma GDPR-vaatimusten ylläpitoon',
+    descEn: 'Annual plan for maintaining GDPR requirements',
+    format: 'PDF',
+    pages: '6',
+    updated: '2024-09',
+    downloadCount: '2.9k',
+    href: '/downloads/gdpr-compliance-calendar.pdf'
+  }
+];
+
+const supportChannels = [
+  {
+    icon: 'message-circle',
+    titleFi: 'Chat-tuki',
+    titleEn: 'Chat Support',
+    descFi: 'Reaaliaikainen keskustelu asiantuntijoiden kanssa',
+    descEn: 'Real-time chat with experts',
+    availability: '9-17 arkisin',
+    availabilityEn: '9-17 weekdays',
+    response: '< 5 min'
+  },
+  {
+    icon: 'mail',
+    titleFi: 'Sähköpostituki',
+    titleEn: 'Email Support',
+    descFi: 'Yksityiskohtainen apu ja dokumentaatio sähköpostitse',
+    descEn: 'Detailed help and documentation via email',
+    availability: '24/7',
+    availabilityEn: '24/7',
+    response: '< 4h'
+  },
+  {
+    icon: 'phone',
+    titleFi: 'Puhelintuki',
+    titleEn: 'Phone Support',
+    descFi: 'Suora yhteys senior-asiantuntijoihimme',
+    descEn: 'Direct connection to our senior experts',
+    availability: '9-17 arkisin',
+    availabilityEn: '9-17 weekdays',
+    response: 'Välitön'
+  },
+  {
+    icon: 'video',
+    titleFi: 'Videoneuvottelu',
+    titleEn: 'Video Consultation',
+    descFi: 'Henkilökohtainen neuvonta ja näytön jako',
+    descEn: 'Personal consultation and screen sharing',
+    availability: 'Varauksesta',
+    availabilityEn: 'By appointment',
+    response: 'Samana päivänä'
+  }
+];
+
+const stats = [
+  { valueFi: '98%', valueEn: '98%', labelFi: 'Asiakastyytyväisyys', labelEn: 'Customer satisfaction' },
+  { valueFi: '< 4h', valueEn: '< 4h', labelFi: 'Keskimääräinen vastausaika', labelEn: 'Average response time' },
+  { valueFi: '500+', valueEn: '500+', labelFi: 'Ilmaista työkalua', labelEn: 'Free tools' },
+  { valueFi: '24/7', valueEn: '24/7', labelFi: 'Sähköpostituki', labelEn: 'Email support' }
+];
+---
+
+<Layout title={title} description={description}>
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-br from-green-50 to-teal-100 py-20">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center">
+        <div class="inline-flex items-center px-4 py-2 bg-green-100 text-green-800 rounded-full text-sm font-medium mb-6">
+          <Icon name="headphones" class="w-4 h-4 mr-2" />
+          {lang === 'fi' ? 'Tuki ja työkalut' : 'Support & Tools'}
+        </div>
+        <h1 class="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
+          {lang === 'fi' ? 'Saa apua ja työkaluja' : 'Get Help & Tools'}
+        </h1>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
+          {lang === 'fi' 
+            ? 'Kattava tukipalvelujen ja ilmaisten työkalujen valikoima. Asiantuntija-apua, dokumentaatiota ja valmiita malleja compliance-työhösi.'
+            : 'Comprehensive range of support services and free tools. Expert help, documentation and ready-made templates for your compliance work.'
+          }
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <Button href="#tools" variant="primary">
+            {lang === 'fi' ? 'Selaa työkaluja' : 'Browse Tools'}
+          </Button>
+          <Button href="/contact" variant="secondary">
+            {lang === 'fi' ? 'Ota yhteyttä' : 'Contact Support'}
+          </Button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Section -->
+  <section class="py-16 bg-white">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+        {stats.map((stat) => (
+          <div class="text-center">
+            <div class="text-3xl md:text-4xl font-bold text-green-600 mb-2">
+              {lang === 'fi' ? stat.valueFi : stat.valueEn}
+            </div>
+            <div class="text-gray-600">
+              {lang === 'fi' ? stat.labelFi : stat.labelEn}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Support Categories -->
+  <section class="py-20 bg-white">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">
+          {lang === 'fi' ? 'Tukipalvelut' : 'Support Services'}
+        </h2>
+        <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+          {lang === 'fi' 
+            ? 'Löydä oikea tukimuoto tarpeisiisi - dokumentaatiosta henkilökohtaiseen neuvontaan'
+            : 'Find the right type of support for your needs - from documentation to personal consultation'
+          }
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8">
+        {supportCategories.map((category) => (
+          <div class="bg-gradient-to-br from-gray-50 to-green-50 rounded-lg p-8">
+            <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-6">
+              <Icon name={category.icon} class="w-6 h-6 text-green-600" />
+            </div>
+            <h3 class="text-xl font-semibold text-gray-900 mb-3">
+              {lang === 'fi' ? category.titleFi : category.titleEn}
+            </h3>
+            <p class="text-gray-600 mb-6">
+              {lang === 'fi' ? category.descFi : category.descEn}
+            </p>
+            
+            <ul class="space-y-2 mb-6">
+              {category.features.map((feature) => (
+                <li class="flex items-start text-sm text-gray-600">
+                  <Icon name="check" class="w-4 h-4 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
+                  {lang === 'fi' ? feature.fi : feature.en}
+                </li>
+              ))}
+            </ul>
+            
+            <Button href={category.href} variant="secondary" className="w-full">
+              {lang === 'fi' ? 'Tutustu sisältöön' : 'Explore Content'}
+            </Button>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Support Channels -->
+  <section class="py-20 bg-gray-50">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">
+          {lang === 'fi' ? 'Tukikanavat' : 'Support Channels'}
+        </h2>
+        <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+          {lang === 'fi' 
+            ? 'Valitse sinulle sopivin tapa ottaa yhteyttä asiantuntijoihimme'
+            : 'Choose the most suitable way to contact our experts'
+          }
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {supportChannels.map((channel) => (
+          <div class="bg-white rounded-lg p-6 text-center shadow-lg hover:shadow-xl transition-shadow">
+            <div class="w-16 h-16 bg-gradient-to-br from-green-500 to-teal-600 rounded-lg flex items-center justify-center mx-auto mb-4">
+              <Icon name={channel.icon} class="w-8 h-8 text-white" />
+            </div>
+            <h3 class="text-lg font-semibold text-gray-900 mb-2">
+              {lang === 'fi' ? channel.titleFi : channel.titleEn}
+            </h3>
+            <p class="text-gray-600 text-sm mb-4">
+              {lang === 'fi' ? channel.descFi : channel.descEn}
+            </p>
+            <div class="space-y-2 text-sm">
+              <div class="flex justify-between">
+                <span class="text-gray-500">{lang === 'fi' ? 'Saatavuus:' : 'Availability:'}</span>
+                <span class="font-medium">{lang === 'fi' ? channel.availability : channel.availabilityEn}</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-gray-500">{lang === 'fi' ? 'Vastausaika:' : 'Response:'}</span>
+                <span class="font-medium text-green-600">{channel.response}</span>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-20 bg-gradient-to-r from-green-600 to-teal-700">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl font-bold text-white mb-4">
+        {lang === 'fi' ? 'Tarvitsetko henkilökohtaista apua?' : 'Need Personal Help?'}
+      </h2>
+      <p class="text-xl text-green-100 mb-8">
+        {lang === 'fi' 
+          ? 'Ota yhteyttä asiantuntijoihimme saadaksesi räätälöityä tukea ja neuvontaa.'
+          : 'Contact our experts to get tailored support and consultation.'
+        }
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <Button href="/contact" variant="secondary">
+          {lang === 'fi' ? 'Ota yhteyttä' : 'Contact Us'}
+        </Button>
+        <Button href="/demo" variant="tertiary">
+          {lang === 'fi' ? 'Varaa demo' : 'Book Demo'}
+        </Button>
+      </div>
+    </div>
+  </section>
+</Layout>

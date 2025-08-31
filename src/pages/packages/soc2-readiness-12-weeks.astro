@@ -1,4 +1,4 @@
----
+﻿---
 import Layout from '@/layouts/Layout.astro';
 import HeroSection from '@/components/sections/HeroSection.astro';
 import CTA from '@/components/sections/CTA.astro';
@@ -8,7 +8,7 @@ const currentPath = Astro.url.pathname;
 const lang = currentPath.startsWith('/fi') ? 'fi' : 'en';
 
 const heroContent = {
-  title: "📊 SOC 2 Readiness in 12 Weeks - Trust Service Excellence",
+  title: "SOC 2 Readiness in 12 Weeks - Trust Service Excellence",
   subtitle: "Achieve SOC 2 Type I and Type II readiness with comprehensive trust service criteria implementation and audit preparation",
   description: "Cybersecurity.fi's SOC 2 Readiness Program delivers complete preparation for successful SOC 2 audits, ensuring your organization meets all Trust Service Criteria while building customer confidence through demonstrated security, availability, processing integrity, confidentiality, and privacy controls.",
   primaryCTA: { text: "Start SOC 2 Readiness Program", href: "/contact?package=soc2-readiness" },
@@ -17,14 +17,14 @@ const heroContent = {
 
 const trustServiceCriteria = [
   {
-    criterion: "🔒 Security (Mandatory)",
+    criterion: "Security (Mandatory)",
     description: "Protection of system resources against unauthorized access, use, disclosure, disruption, modification, or destruction",
     focus: "Access controls, logical and physical security, network security, system boundaries, data protection, change management, risk assessment and mitigation",
     weeks: "Weeks 1-4",
     controlCount: "64 common criteria controls"
   },
   {
-    criterion: "🟢 Availability (Optional)",
+    criterion: "Availability (Optional)",
     description: "System availability for operation and use as committed or agreed, typically 99.9% or higher uptime requirements",
     focus: "System monitoring, backup procedures, incident response, capacity management, disaster recovery, business continuity planning, performance monitoring",
     weeks: "Weeks 5-6",
@@ -38,14 +38,14 @@ const trustServiceCriteria = [
     controlCount: "11 additional criteria controls"
   },
   {
-    criterion: "🤐 Confidentiality (Optional)",
+    criterion: "�Confidentiality (Optional)",
     description: "Information designated as confidential is protected as committed or agreed through its collection, use, retention, disclosure, and disposal",
     focus: "Data classification, encryption, access restrictions, confidentiality agreements, secure disposal, data loss prevention, information handling policies",
     weeks: "Weeks 9-10",
     controlCount: "8 additional criteria controls"
   },
   {
-    criterion: "🛡️ Privacy (Optional)",
+    criterion: "Privacy (Optional)",
     description: "Personal information is collected, used, retained, disclosed, and disposed of in conformity with the entity's privacy notice and criteria set forth in Generally Accepted Privacy Principles (GAPP)",
     focus: "Privacy policies, consent management, data retention, privacy controls, data subject rights, cross-border transfers, privacy impact assessments",
     weeks: "Weeks 11-12",
@@ -55,7 +55,7 @@ const trustServiceCriteria = [
 
 const programPhases = [
   {
-    phase: "Weeks 1-2: Foundation & Assessment 🔍",
+    phase: "Weeks 1-2: Foundation & Assessment ",
     title: "SOC 2 Readiness Assessment & Scoping",
     activities: [
       "Comprehensive current state assessment against all applicable Trust Service Criteria",
@@ -74,7 +74,7 @@ const programPhases = [
     ]
   },
   {
-    phase: "Weeks 3-6: Security Foundation & Core Controls 🔒",
+    phase: "Weeks 3-6: Security Foundation & Core Controls ",
     title: "Mandatory Security Controls Design & Implementation",
     activities: [
       "Access management and identity governance system implementation",
@@ -93,7 +93,7 @@ const programPhases = [
     ]
   },
   {
-    phase: "Weeks 7-8: Additional Trust Service Criteria Implementation 🎯",
+    phase: "Weeks 7-8: Additional Trust Service Criteria Implementation �",
     title: "Availability, Processing Integrity, Confidentiality & Privacy Controls",
     activities: [
       "Availability monitoring and incident response capabilities implementation",
@@ -112,7 +112,7 @@ const programPhases = [
     ]
   },
   {
-    phase: "Weeks 9-10: Policy Development & Documentation 📋",
+    phase: "Weeks 9-10: Policy Development & Documentation ",
     title: "SOC 2 Compliant Policies, Procedures & Evidence Repository",
     activities: [
       "Comprehensive SOC 2 compliant policy suite development and approval",
@@ -131,7 +131,7 @@ const programPhases = [
     ]
   },
   {
-    phase: "Weeks 11-12: Audit Preparation & Readiness Validation ✅",
+    phase: "Weeks 11-12: Audit Preparation & Readiness Validation ",
     title: "Internal Testing, Audit Preparation & Certification Readiness",
     activities: [
       "Comprehensive internal control testing and effectiveness validation",
@@ -187,25 +187,25 @@ const deliverables = [
 
 const packageOptions = [
   {
-    name: "🔒 Essential (Security Only)",
+    name: "Essential (Security Only)",
     criteria: ["Security (64 controls)"],
     suitable: "Small to medium SaaS companies, basic SOC 2 Type I compliance needs",
     includes: "Security controls, policies, evidence collection, Type I audit prep"
   },
   {
-    name: "🟢 Standard (Security + Availability)",
+    name: "Standard (Security + Availability)",
     criteria: ["Security (64 controls)", "Availability (13 controls)"],
     suitable: "Growing companies with uptime commitments and SLA requirements",
     includes: "Security + Availability controls, monitoring, incident response, Type I/II prep"
   },
   {
-    name: "🏆 Comprehensive (All 5 Criteria)",
+    name: "� Comprehensive (All 5 Criteria)",
     criteria: ["Security", "Availability", "Processing Integrity", "Confidentiality", "Privacy"],
     suitable: "Enterprise organizations, financial services, healthcare, full compliance requirements",
     includes: "All Trust Service Criteria, comprehensive controls (115+ total), Type I/II audit readiness"
   },
   {
-    name: "🚀 Enterprise Plus (All Criteria + Ongoing)",
+    name: "Enterprise Plus (All Criteria + Ongoing)",
     criteria: ["All 5 Criteria + 12 months ongoing support"],
     suitable: "Large enterprises requiring continuous compliance management and support",
     includes: "Complete implementation + 12 months ongoing compliance monitoring and support"

@@ -1,0 +1,322 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Icon from '@/components/ui/icons/Icon.astro';
+import Button from '@/components/ui/Button.astro';
+
+const currentPath = Astro.url.pathname;
+const lang = currentPath.startsWith('/fi') ? 'fi' : 'en';
+
+const title = lang === 'fi' ? 'Säädöskehikot' : 'Regulatory Frameworks';
+const description = lang === 'fi' 
+  ? 'Kattava kokoelma tärkeimmistä kyberturvallisuuden säädöksistä ja standardeista. Yksityiskohtaiset oppaat toteutukseen ja noudattamiseen.'
+  : 'Comprehensive collection of key cybersecurity regulations and standards. Detailed guides for implementation and compliance.';
+
+const frameworks = [
+  {
+    icon: 'shield',
+    titleFi: 'NIS2-direktiivi',
+    titleEn: 'NIS2 Directive',
+    descFi: 'EU:n verkko- ja tietoturvadirektiivin toinen versio',
+    descEn: 'European Union Network and Information Security Directive v2',
+    href: '/frameworks/nis2',
+    status: 'active',
+    deadline: '2024-10-17',
+    scope: 'EU',
+    sectors: ['Energy', 'Transport', 'Banking', 'Health', 'Digital Infrastructure'],
+    keyRequirements: [
+      { fi: 'Kyberturvallisuusriskien hallinta', en: 'Cybersecurity risk management' },
+      { fi: 'Incidenttien raportointi', en: 'Incident reporting' },
+      { fi: 'Toimitusketjun turvallisuus', en: 'Supply chain security' },
+      { fi: 'Henkilöstön koulutus', en: 'Staff training' }
+    ]
+  },
+  {
+    icon: 'building',
+    titleFi: 'DORA-asetus',
+    titleEn: 'DORA Regulation',
+    descFi: 'Digitaalinen operatiivinen resilienssisääntely rahoitusalalla',
+    descEn: 'Digital Operational Resilience Act for financial sector',
+    href: '/frameworks/dora',
+    status: 'active',
+    deadline: '2025-01-17',
+    scope: 'EU',
+    sectors: ['Banking', 'Insurance', 'Investment', 'Payment Services'],
+    keyRequirements: [
+      { fi: 'ICT-riskinhallinta', en: 'ICT risk management' },
+      { fi: 'Kolmannen osapuolen riskien hallinta', en: 'Third-party risk management' },
+      { fi: 'Digitaalinen operatiivinen kestävyys', en: 'Digital operational resilience' },
+      { fi: 'Testaus ja harjoitukset', en: 'Testing and exercises' }
+    ]
+  },
+  {
+    icon: 'user-check',
+    titleFi: 'GDPR-asetus',
+    titleEn: 'GDPR Regulation',
+    descFi: 'Yleinen tietosuoja-asetus henkilötietojen käsittelyyn',
+    descEn: 'General Data Protection Regulation for personal data processing',
+    href: '/frameworks/gdpr',
+    status: 'active',
+    deadline: '2018-05-25',
+    scope: 'EU + Global',
+    sectors: ['All sectors processing personal data'],
+    keyRequirements: [
+      { fi: 'Tietosuojan vaikutusarvioinnit', en: 'Data protection impact assessments' },
+      { fi: 'Henkilötietojen suoja', en: 'Personal data protection' },
+      { fi: 'Tietomurtojen ilmoittaminen', en: 'Data breach notification' },
+      { fi: 'Henkilöiden oikeudet', en: 'Individual rights' }
+    ]
+  },
+  {
+    icon: 'key',
+    titleFi: 'eIDAS-asetus',
+    titleEn: 'eIDAS Regulation',
+    descFi: 'Sähköinen tunnistaminen ja luottamuspalvelut',
+    descEn: 'Electronic identification and trust services',
+    href: '/frameworks/eidas',
+    status: 'active',
+    deadline: '2016-07-01',
+    scope: 'EU',
+    sectors: ['Digital Services', 'Public Services', 'E-commerce'],
+    keyRequirements: [
+      { fi: 'Sähköiset allekirjoitukset', en: 'Electronic signatures' },
+      { fi: 'Sähköiset sinetatut asiakirjat', en: 'Electronic sealed documents' },
+      { fi: 'Aikaleimaus', en: 'Time stamping' },
+      { fi: 'Tunnistautumispalvelut', en: 'Authentication services' }
+    ]
+  },
+  {
+    icon: 'award',
+    titleFi: 'ISO 27001',
+    titleEn: 'ISO 27001',
+    descFi: 'Kansainvälinen tietoturvallisuuden hallintajärjestelmästandardi',
+    descEn: 'International information security management system standard',
+    href: '/frameworks/iso-27001',
+    status: 'active',
+    deadline: 'Ongoing',
+    scope: 'Global',
+    sectors: ['All sectors'],
+    keyRequirements: [
+      { fi: 'Tietoturvallisuuspolitiikka', en: 'Information security policy' },
+      { fi: 'Riskinarviointiprosessi', en: 'Risk assessment process' },
+      { fi: 'Turvallisuuskontrollit', en: 'Security controls' },
+      { fi: 'Jatkuva parantaminen', en: 'Continuous improvement' }
+    ]
+  },
+  {
+    icon: 'check-circle',
+    titleFi: 'SOC 2',
+    titleEn: 'SOC 2',
+    descFi: 'Palvelujärjestelmien kontrolliauditointi',
+    descEn: 'Service organization control auditing',
+    href: '/frameworks/soc-2',
+    status: 'active',
+    deadline: 'Ongoing',
+    scope: 'Global',
+    sectors: ['SaaS', 'Cloud Services', 'Data Centers'],
+    keyRequirements: [
+      { fi: 'Turvallisuus (Security)', en: 'Security' },
+      { fi: 'Käytettävyys (Availability)', en: 'Availability' },
+      { fi: 'Käsittelyn eheys (Processing Integrity)', en: 'Processing Integrity' },
+      { fi: 'Luottamuksellisuus (Confidentiality)', en: 'Confidentiality' }
+    ]
+  }
+];
+
+const stats = [
+  { valueFi: '6+', valueEn: '6+', labelFi: 'Tärkeintä säädöstä', labelEn: 'Major regulations' },
+  { valueFi: '100+', valueEn: '100+', labelFi: 'Vaatimusta katettu', labelEn: 'Requirements covered' },
+  { valueFi: '25+', valueEn: '25+', labelFi: 'Toimialaa tuettu', labelEn: 'Industries supported' },
+  { valueFi: '98%', valueEn: '98%', labelFi: 'Compliance-onnistuminen', labelEn: 'Compliance success rate' }
+];
+
+const implementationSteps = [
+  { step: '1', fi: 'Nykytilanteen kartoitus', en: 'Current state assessment', icon: 'search' },
+  { step: '2', fi: 'Vaatimusten analysointi', en: 'Requirements analysis', icon: 'list' },
+  { step: '3', fi: 'Toteutussuunnitelman laadinta', en: 'Implementation planning', icon: 'map' },
+  { step: '4', fi: 'Käytännön toteutus', en: 'Practical implementation', icon: 'tool' },
+  { step: '5', fi: 'Auditointi ja sertifiointi', en: 'Audit and certification', icon: 'award' }
+];
+---
+
+<Layout title={title} description={description}>
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-br from-purple-50 to-indigo-100 py-20">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center">
+        <div class="inline-flex items-center px-4 py-2 bg-purple-100 text-purple-800 rounded-full text-sm font-medium mb-6">
+          <Icon name="book" class="w-4 h-4 mr-2" />
+          {lang === 'fi' ? 'Säädöskehikot' : 'Regulatory Frameworks'}
+        </div>
+        <h1 class="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
+          {lang === 'fi' ? 'Kyberturvallisuuden säädöskehikot' : 'Cybersecurity Regulatory Frameworks'}
+        </h1>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
+          {lang === 'fi' 
+            ? 'Kattava kokoelma tärkeimmistä kyberturvallisuuden säädöksistä ja standardeista. Yksityiskohtaiset toteutusoppaat ja compliance-tuet.'
+            : 'Comprehensive collection of key cybersecurity regulations and standards. Detailed implementation guides and compliance support.'
+          }
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <Button href="#frameworks" variant="primary">
+            {lang === 'fi' ? 'Selaa säädöksiä' : 'Browse Regulations'}
+          </Button>
+          <Button href="/contact" variant="secondary">
+            {lang === 'fi' ? 'Pyydä asiantuntija-apua' : 'Get Expert Help'}
+          </Button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Section -->
+  <section class="py-16 bg-white">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+        {stats.map((stat) => (
+          <div class="text-center">
+            <div class="text-3xl md:text-4xl font-bold text-purple-600 mb-2">
+              {lang === 'fi' ? stat.valueFi : stat.valueEn}
+            </div>
+            <div class="text-gray-600">
+              {lang === 'fi' ? stat.labelFi : stat.labelEn}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Implementation Process -->
+  <section class="py-20 bg-gray-50">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">
+          {lang === 'fi' ? 'Toteutusprosessi' : 'Implementation Process'}
+        </h2>
+        <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+          {lang === 'fi' 
+            ? 'Viiden vaiheen metodologia säädösten ja standardien onnistuneeseen toteutukseen'
+            : 'Five-phase methodology for successful implementation of regulations and standards'
+          }
+        </p>
+      </div>
+
+      <div class="flex flex-col lg:flex-row items-center justify-between space-y-8 lg:space-y-0 lg:space-x-4">
+        {implementationSteps.map((step, index) => (
+          <div class="flex-1 text-center">
+            <div class="w-16 h-16 bg-purple-600 text-white rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">
+              {step.step}
+            </div>
+            <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mx-auto mb-4">
+              <Icon name={step.icon} class="w-6 h-6 text-purple-600" />
+            </div>
+            <h3 class="text-lg font-semibold text-gray-900 mb-2">
+              {lang === 'fi' ? step.fi : step.en}
+            </h3>
+            {index < implementationSteps.length - 1 && (
+              <div class="hidden lg:block absolute top-8 left-full w-4 h-4">
+                <Icon name="arrow-right" class="w-full h-full text-purple-300" />
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Frameworks Grid -->
+  <section id="frameworks" class="py-20 bg-white">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">
+          {lang === 'fi' ? 'Tuetut säädöskehikot' : 'Supported Regulatory Frameworks'}
+        </h2>
+        <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+          {lang === 'fi' 
+            ? 'Kattava tuki tärkeimmille kyberturvallisuuden säädöksille ja standardeille'
+            : 'Comprehensive support for key cybersecurity regulations and standards'
+          }
+        </p>
+      </div>
+
+      <div class="grid lg:grid-cols-2 gap-8">
+        {frameworks.map((framework) => (
+          <div class="bg-gradient-to-br from-gray-50 to-purple-50 rounded-lg p-8 hover:shadow-lg transition-shadow">
+            <div class="flex items-start justify-between mb-6">
+              <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
+                <Icon name={framework.icon} class="w-6 h-6 text-purple-600" />
+              </div>
+              <div class="text-right">
+                <div class="text-sm font-medium text-purple-600 mb-1">{framework.scope}</div>
+                <div class="text-xs text-gray-500">
+                  {lang === 'fi' ? 'Voimassa' : 'Active'}: {framework.deadline}
+                </div>
+              </div>
+            </div>
+            
+            <h3 class="text-xl font-semibold text-gray-900 mb-3">
+              {lang === 'fi' ? framework.titleFi : framework.titleEn}
+            </h3>
+            <p class="text-gray-600 mb-4">
+              {lang === 'fi' ? framework.descFi : framework.descEn}
+            </p>
+            
+            <div class="mb-4">
+              <h4 class="text-sm font-semibold text-gray-700 mb-2">
+                {lang === 'fi' ? 'Keskeiset vaatimukset:' : 'Key requirements:'}
+              </h4>
+              <ul class="space-y-1">
+                {framework.keyRequirements.map((req) => (
+                  <li class="flex items-start text-sm text-gray-600">
+                    <Icon name="check" class="w-4 h-4 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
+                    {lang === 'fi' ? req.fi : req.en}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            
+            <div class="mb-6">
+              <div class="text-sm font-semibold text-gray-700 mb-2">
+                {lang === 'fi' ? 'Toimialat:' : 'Sectors:'}
+              </div>
+              <div class="flex flex-wrap gap-2">
+                {framework.sectors.map((sector) => (
+                  <span class="px-2 py-1 bg-purple-100 text-purple-700 rounded text-xs">
+                    {sector}
+                  </span>
+                ))}
+              </div>
+            </div>
+            
+            <Button href={framework.href} variant="secondary" className="w-full">
+              {lang === 'fi' ? 'Lue lisää' : 'Learn More'}
+            </Button>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-20 bg-gradient-to-r from-purple-600 to-indigo-700">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl font-bold text-white mb-4">
+        {lang === 'fi' ? 'Aloita compliance-matka' : 'Start Your Compliance Journey'}
+      </h2>
+      <p class="text-xl text-purple-100 mb-8">
+        {lang === 'fi' 
+          ? 'Ota yhteyttä asiantuntijoihimme ja saa räätälöity toteutussuunnitelma.'
+          : 'Contact our experts and get a tailored implementation plan.'
+        }
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <Button href="/contact" variant="secondary">
+          {lang === 'fi' ? 'Ota yhteyttä' : 'Contact Us'}
+        </Button>
+        <Button href="/demo" variant="tertiary">
+          {lang === 'fi' ? 'Varaa demo' : 'Book Demo'}
+        </Button>
+      </div>
+    </div>
+  </section>
+</Layout>

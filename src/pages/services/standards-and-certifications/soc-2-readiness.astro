@@ -1,13 +1,132 @@
 ---
 import Layout from '@/layouts/Layout.astro';
+import Button from '@/components/ui/Button.astro';
+import Icon from '@/components/ui/icons/Icon.astro';
+
 const title = 'SOC 2 Readiness';
-const description = 'Prepare for SOC 2 Type I/II with controls mapping, evidence collection, and auditor engagement.';
+const description = 'Map controls to Trust Services Criteria, collect evidence, and prepare for Type I/II audits.';
+
+const services = [
+  {
+    title: 'Controls Mapping',
+    description: 'Map your existing controls to SOC 2 Trust Services Criteria',
+    features: [
+      'Security controls assessment',
+      'Availability controls review',
+      'Processing integrity evaluation',
+      'Confidentiality controls mapping'
+    ],
+    icon: 'map'
+  },
+  {
+    title: 'Evidence Collection',
+    description: 'Systematic evidence gathering and documentation for audit readiness',
+    features: [
+      'Evidence identification and collection',
+      'Documentation standardization',
+      'Control testing procedures',
+      'Evidence repository setup'
+    ],
+    icon: 'folder'
+  },
+  {
+    title: 'Type I Preparation',
+    description: 'Prepare for SOC 2 Type I audit focusing on control design',
+    features: [
+      'Control design assessment',
+      'Policy and procedure review',
+      'Gap analysis and remediation',
+      'Pre-audit readiness check'
+    ],
+    icon: 'clipboard'
+  },
+  {
+    title: 'Type II Preparation',
+    description: 'Full operational effectiveness testing for Type II audit',
+    features: [
+      'Operating effectiveness testing',
+      'Continuous monitoring setup',
+      'Exception management',
+      'Auditor engagement support'
+    ],
+    icon: 'shield-check'
+  }
+];
 ---
+
 <Layout title={title} description={description}>
-  <section class="py-16 bg-white">
-    <div class="max-w-3xl mx-auto px-4">
-      <h1 class="text-3xl font-bold text-slate-900">{title}</h1>
-      <p class="mt-4 text-slate-600">{description}</p>
+  <!-- Hero Section -->
+  <section class="py-20 bg-gradient-to-br from-purple-50 to-pink-100">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center">
+        <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+          {title}
+        </h1>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
+          {description}
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <Button href="/contact" variant="primary">
+            Start Assessment
+          </Button>
+          <Button href="#services" variant="secondary">
+            Learn More
+          </Button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Grid -->
+  <section id="services" class="py-20 bg-white">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">
+          Our SOC 2 Readiness Services
+        </h2>
+        <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+          Comprehensive preparation for successful SOC 2 Type I and Type II audits
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8">
+        {services.map((service) => (
+          <div class="bg-gradient-to-br from-gray-50 to-purple-50 rounded-lg p-8 hover:shadow-lg transition-shadow">
+            <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-6">
+              <Icon name={service.icon} class="w-6 h-6 text-purple-600" />
+            </div>
+            <h3 class="text-xl font-semibold text-gray-900 mb-3">
+              {service.title}
+            </h3>
+            <p class="text-gray-600 mb-4">
+              {service.description}
+            </p>
+            <ul class="space-y-2">
+              {service.features.map((feature) => (
+                <li class="flex items-start text-sm text-gray-600">
+                  <Icon name="check" class="w-4 h-4 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
+                  {feature}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-20 bg-gradient-to-r from-purple-600 to-pink-600">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl font-bold text-white mb-4">
+        Ready for SOC 2 Certification?
+      </h2>
+      <p class="text-xl text-purple-100 mb-8">
+        Get expert guidance to ensure audit success
+      </p>
+      <Button href="/contact" variant="secondary">
+        Contact Our Experts
+      </Button>
     </div>
   </section>
 </Layout>
