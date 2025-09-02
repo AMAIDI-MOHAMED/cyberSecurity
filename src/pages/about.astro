@@ -3,9 +3,35 @@ import Layout from '@/layouts/Layout.astro';
 import HeroSection from '@/components/sections/HeroSection.astro';
 import CTA from '@/components/sections/CTA.astro';
 
-const title = "About Us";
 const currentPath = Astro.url.pathname;
 const lang = currentPath.startsWith('/fi') ? 'fi' : 'en';
+
+// SEO Configuration
+const seoConfig = {
+  title: lang === 'fi' 
+    ? "Tietoa meistä | Kyberturvallisuuden asiantuntijat Suomessa"
+    : "About Us | Cybersecurity Experts in Finland",
+  description: lang === 'fi'
+    ? "Cyber Security Finland on johtava kyberturvallisuuden ja vaatimustenmukaisuuden asiantuntijayritys. Kokemusta ISO 27001, NIS2 ja GDPR -toteutuksista."
+    : "Cyber Security Finland is a leading cybersecurity and compliance consulting firm. Experienced in ISO 27001, NIS2, and GDPR implementations across industries.",
+  keywords: lang === 'fi'
+    ? "kyberturvallisuusyritys suomi, ISO 27001 konsultit, vaatimustenmukaisuus asiantuntijat, tietoturva konsultointi suomi"
+    : "cybersecurity company finland, ISO 27001 consultants, compliance experts, information security consulting finland",
+  type: "website" as const,
+  schema: {
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    "name": "About Cyber Security Finland",
+    "description": "Learn about our cybersecurity and compliance expertise, team, and commitment to protecting Finnish businesses.",
+    "mainEntity": {
+      "@type": "Organization",
+      "name": "Cyber Security Finland",
+      "foundingDate": "2020",
+      "description": "Expert cybersecurity and compliance services for Finnish businesses",
+      "knowsAbout": ["ISO 27001", "NIS2 Directive", "GDPR Compliance", "Information Security", "Risk Management"]
+    }
+  }
+};
 
 const heroContent = {
   title: "About Cybersecurity.fi",
@@ -89,7 +115,7 @@ const certifications = [
 ];
 ---
 
-<Layout title={title}>
+<Layout {...seoConfig}>
   <HeroSection content={heroContent} />
   
   <section id="story" class="py-16 bg-white">

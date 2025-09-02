@@ -1,2 +1,25 @@
 User-agent: *
 Allow: /
+
+# Disallow admin and private areas
+Disallow: /admin/
+Disallow: /api/
+Disallow: /_astro/
+Disallow: /search
+
+# Allow important pages
+Allow: /services/
+Allow: /packages/
+Allow: /industries/
+Allow: /resources/
+Allow: /about/
+Allow: /contact/
+Allow: /webinars/
+Allow: /frameworks/
+
+# Sitemap
+Sitemap: https://cybersecurity.fi/sitemap.xml
+Sitemap: https://cybersecurity.fi/sitemap-index.xml
+
+# Crawl-delay for respectful crawling
+Crawl-delay: 1

@@ -4,9 +4,40 @@ import HeroSection from '@/components/sections/HeroSection.astro';
 import CTA from '@/components/sections/CTA.astro';
 import Button from '@/components/ui/Button.astro';
 
-const title = "Home";
 const currentPath = Astro.url.pathname;
 const lang = currentPath.startsWith('/fi') ? 'fi' : 'en';
+
+// SEO Configuration
+const seoConfig = {
+  title: lang === 'fi' 
+    ? "Kyberturvallisuuden asiantuntijat Suomessa | ISO 27001, NIS2, GDPR"
+    : "Cybersecurity Experts Finland | ISO 27001, NIS2, GDPR Compliance",
+  description: lang === 'fi'
+    ? "Kyberturvallisuuden ja vaatimustenmukaisuuden asiantuntijat Suomessa. ISO 27001, NIS2, GDPR ja DORA -toteutus 90 päivässä. Ilmainen arviointi."
+    : "Expert cybersecurity and compliance services in Finland. ISO 27001, NIS2, GDPR, and DORA implementation in 90 days. Free assessment included.",
+  keywords: lang === 'fi'
+    ? "kyberturvallisuus suomi, ISO 27001 suomi, NIS2 vaatimustenmukaisuus, GDPR asiantuntija, DORA toteutus, tietoturva konsultointi"
+    : "cybersecurity finland, ISO 27001 compliance, NIS2 directive, GDPR expert, DORA implementation, information security consulting",
+  type: "website" as const,
+  schema: {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Cyber Security Finland",
+    "url": "https://cybersecurity.fi",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://cybersecurity.fi/search?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    },
+    "provider": {
+      "@type": "Organization",
+      "name": "Cyber Security Finland",
+      "description": "Expert cybersecurity and compliance services for Finnish businesses",
+      "serviceType": ["Cybersecurity Consulting", "Compliance Services", "Risk Management"],
+      "areaServed": "Finland"
+    }
+  }
+};
 
 const heroContent = {
   title: "Cybersecurity Compliance Made Simple for Finnish Businesses",
@@ -110,7 +141,7 @@ const latestResources = [
 ];
 ---
 
-<Layout title={title}>
+<Layout {...seoConfig}>
   <!-- Hero Section -->
   <HeroSection content={heroContent} showPromoBanner={true} showTypewriter={true} showAnimation={true} />
   
