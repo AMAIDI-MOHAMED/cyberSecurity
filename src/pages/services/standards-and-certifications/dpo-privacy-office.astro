@@ -1,25 +1,243 @@
 ---
 import Layout from '@/layouts/Layout.astro';
+import Icon from '@/components/ui/icons/Icon.astro';
+import Button from '@/components/ui/Button.astro';
+
+const currentPath = Astro.url.pathname;
+const lang = currentPath.startsWith('/fi') ? 'fi' : 'en';
+
 const title = "DPO/Privacy Office-as-a-Service";
-const description = "Outsourced DPO; DPIAs, RoPAs, privacy governance, and breach liaison.";
+const description = "Expert outsourced Data Protection Officer services including DPIAs, RoPAs, privacy governance, and breach management for GDPR compliance.";
+
+const features = [
+  {
+    title: "Outsourced DPO Services",
+    description: "Qualified Data Protection Officer providing expert privacy oversight and regulatory compliance",
+    icon: "users"
+  },
+  {
+    title: "Data Protection Impact Assessments",
+    description: "Comprehensive DPIAs for high-risk processing activities and new projects",
+    icon: "clipboard"
+  },
+  {
+    title: "Records of Processing Activities",
+    description: "Creation and maintenance of detailed RoPAs for GDPR Article 30 compliance",
+    icon: "document"
+  },
+  {
+    title: "Privacy Governance & Policies",
+    description: "Development of privacy frameworks, policies, and governance structures",
+    icon: "shield"
+  },
+  {
+    title: "Breach Management & Response",
+    description: "Incident response, breach assessment, and regulatory notification support",
+    icon: "alert"
+  },
+  {
+    title: "Regulatory Liaison",
+    description: "Direct communication with supervisory authorities and regulatory representation",
+    icon: "network"
+  }
+];
+
+const benefits = [
+  "Meet GDPR DPO appointment requirements",
+  "Expert privacy guidance without full-time costs",
+  "Reduced regulatory risk and potential fines",
+  "Professional breach response capabilities",
+  "Enhanced customer and stakeholder trust"
+];
+
+const deliverables = [
+  "Qualified DPO appointment and services",
+  "Privacy program assessment and roadmap",
+  "Data Protection Impact Assessments (DPIAs)",
+  "Records of Processing Activities (RoPAs)",
+  "Privacy policies and procedures framework",
+  "Data breach response procedures",
+  "Staff privacy training programs",
+  "Regulatory correspondence and liaison"
+];
+
+const gdprServices = [
+  "Article 30 RoPA Creation",
+  "Article 35 DPIA Execution",
+  "Article 37 DPO Appointment",
+  "Article 33/34 Breach Notification",
+  "Article 13/14 Privacy Notices",
+  "Article 7 Consent Management"
+];
+
+const engagementTypes = [
+  {
+    type: "Virtual DPO",
+    commitment: "Part-time",
+    description: "Remote DPO services with regular check-ins and oversight"
+  },
+  {
+    type: "On-site DPO",
+    commitment: "Flexible",
+    description: "Regular on-site presence for complex organizations"
+  },
+  {
+    type: "Project-based",
+    commitment: "As needed",
+    description: "Specific privacy projects and assessments"
+  }
+];
 ---
 
-<Layout title={title}>
+<Layout title={title} description={description}>
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-br from-cyan-50 via-white to-blue-50 py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-4xl">
+        <h1 class="text-4xl lg:text-5xl font-bold text-slate-900 mb-6">
+          {title}
+        </h1>
+        <p class="text-xl text-slate-600 mb-8">
+          Expert outsourced Data Protection Officer services providing comprehensive privacy governance, GDPR compliance, and regulatory liaison
+        </p>
+        <p class="text-lg text-slate-500 mb-10">
+          Our qualified DPO-as-a-Service provides organizations with expert privacy leadership without the cost of a full-time executive. We handle all aspects of data protection compliance from DPIAs to breach management.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4">
+          <Button href="/contact?service=dpo" variant="primary">
+            Get DPO Support
+          </Button>
+          <Button href="/contact?consultation=true" variant="secondary">
+            Book Consultation
+          </Button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Overview Section -->
   <section class="py-16 bg-white">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h1 class="text-3xl font-bold text-slate-900 mb-6">DPO/Privacy Office-as-a-Service</h1>
-      <p class="text-lg text-slate-600 mb-8">Outsourced DPO; DPIAs, RoPAs, privacy governance, and breach liaison.</p>
-      <h2 class="text-2xl font-semibold text-slate-900 mb-4">Overview</h2>
-      <p class="text-slate-700 mb-6">Our DPO/Privacy Office-as-a-Service provides organizations with expert outsourced Data Protection Officer support, including DPIAs, RoPAs, privacy governance, and breach management. We help you meet regulatory requirements and maintain robust privacy programs.</p>
-      <h2 class="text-2xl font-semibold text-slate-900 mb-4">Our Services</h2>
-      <ul class="list-disc pl-6 text-slate-700 mb-8">
-        <li>Outsourced DPO services</li>
-        <li>Data Protection Impact Assessments (DPIAs)</li>
-        <li>Records of Processing Activities (RoPAs)</li>
-        <li>Privacy governance and policy development</li>
-        <li>Breach management and regulatory liaison</li>
-      </ul>
-      <p class="text-slate-700">Contact us for DPO/Privacy Office-as-a-Service support.</p>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl font-bold text-slate-900 mb-8">Overview</h2>
+        <div class="bg-gradient-to-r from-cyan-50 to-blue-50 rounded-xl p-8 border border-cyan-200">
+          <p class="text-lg text-slate-700 mb-6">
+            Under GDPR Article 37, many organizations are required to appoint a Data Protection Officer. Our DPO-as-a-Service provides qualified, experienced privacy professionals who can serve as your organization's DPO, ensuring compliance while providing strategic privacy guidance.
+          </p>
+          <p class="text-lg text-slate-700">
+            We offer flexible engagement models from virtual DPO services to on-site support, tailored to your organization's specific privacy needs and regulatory requirements.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Engagement Types -->
+  <section class="py-16 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-slate-900 mb-4">Service Models</h2>
+        <p class="text-xl text-slate-600 max-w-3xl mx-auto mb-8">
+          Flexible DPO services tailored to your organization's needs
+        </p>
+      </div>
+      <div class="grid md:grid-cols-3 gap-8">
+        {engagementTypes.map((engagement) => (
+          <div class="bg-white p-8 rounded-xl shadow-lg border border-slate-100">
+            <h3 class="text-xl font-bold text-slate-900 mb-2">{engagement.type}</h3>
+            <p class="text-cyan-600 font-medium mb-4">{engagement.commitment}</p>
+            <p class="text-slate-700">{engagement.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- GDPR Services -->
+  <section class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-slate-900 mb-4">GDPR Article Compliance</h2>
+        <p class="text-xl text-slate-600 max-w-3xl mx-auto mb-8">
+          Comprehensive coverage of key GDPR requirements
+        </p>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {gdprServices.map((service) => (
+          <div class="bg-gradient-to-br from-cyan-50 to-blue-50 p-6 rounded-lg border border-cyan-200 text-center">
+            <h3 class="font-semibold text-slate-900">{service}</h3>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Grid -->
+  <section class="py-16 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-slate-900 mb-4">Our DPO Services</h2>
+        <p class="text-xl text-slate-600 max-w-3xl mx-auto">
+          Comprehensive privacy services covering all aspects of data protection compliance
+        </p>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {features.map((feature) => (
+          <div class="bg-white p-8 rounded-xl shadow-lg border border-slate-100">
+            <div class="flex items-center mb-4">
+              <Icon name={feature.icon} class="h-8 w-8 text-cyan-600" />
+              <h3 class="text-xl font-bold text-slate-900 ml-3">{feature.title}</h3>
+            </div>
+            <p class="text-slate-600">{feature.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Deliverables Section -->
+  <section class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-12 items-start">
+        <div>
+          <h2 class="text-3xl font-bold text-slate-900 mb-8">What You Get</h2>
+          <ul class="space-y-4">
+            {deliverables.map((deliverable) => (
+              <li class="flex items-start">
+                <Icon name="check" class="h-6 w-6 text-green-600 mr-3 mt-0.5 flex-shrink-0" />
+                <span class="text-slate-700">{deliverable}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div>
+          <h2 class="text-3xl font-bold text-slate-900 mb-8">Key Benefits</h2>
+          <ul class="space-y-4">
+            {benefits.map((benefit) => (
+              <li class="flex items-start">
+                <Icon name="star" class="h-6 w-6 text-cyan-600 mr-3 mt-0.5 flex-shrink-0" />
+                <span class="text-slate-700">{benefit}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-16 bg-cyan-600 text-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-4xl font-bold mb-4">Need Expert Privacy Leadership?</h2>
+      <p class="text-xl mb-8">Contact us today to discuss your DPO and privacy compliance requirements</p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <Button href="/contact?service=dpo" variant="white">
+          Get Started
+        </Button>
+        <Button href="/contact?consultation=true" variant="outline-white">
+          Schedule Consultation
+        </Button>
+      </div>
     </div>
   </section>
 </Layout>

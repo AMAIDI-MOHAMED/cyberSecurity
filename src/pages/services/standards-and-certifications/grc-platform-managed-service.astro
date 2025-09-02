@@ -1,24 +1,245 @@
 ---
 import Layout from '@/layouts/Layout.astro';
+import Icon from '@/components/ui/icons/Icon.astro';
+import Button from '@/components/ui/Button.astro';
+
+const currentPath = Astro.url.pathname;
+const lang = currentPath.startsWith('/fi') ? 'fi' : 'en';
+
 const title = "GRC Platform Managed Service";
-const description = "GRC Platform Admin; workflows, integrations, reporting, user support.";
+const description = "Expert GRC Platform Administration including workflow design, integrations, reporting, and user support for maximum platform ROI.";
+
+const features = [
+  {
+    title: "Workflow Design & Management",
+    description: "Custom workflow creation and optimization for risk assessments, audits, and compliance processes",
+    icon: "flow"
+  },
+  {
+    title: "System Integrations",
+    description: "Integration with business systems, security tools, and third-party applications",
+    icon: "network"
+  },
+  {
+    title: "Reporting & Dashboards",
+    description: "Executive dashboards, compliance reports, and risk analytics configuration",
+    icon: "chart"
+  },
+  {
+    title: "User Support & Training",
+    description: "Comprehensive user support, training programs, and adoption facilitation",
+    icon: "users"
+  },
+  {
+    title: "Platform Optimization",
+    description: "Continuous platform optimization and performance improvement initiatives",
+    icon: "cog"
+  },
+  {
+    title: "Data Management",
+    description: "Data quality management, migration support, and backup strategies",
+    icon: "database"
+  }
+];
+
+const benefits = [
+  "Maximum ROI from GRC platform investment",
+  "Expert configuration and optimization",
+  "Reduced internal administration overhead",
+  "Improved user adoption and satisfaction",
+  "Enhanced compliance and reporting capabilities"
+];
+
+const deliverables = [
+  "Platform configuration and setup",
+  "Custom workflow development",
+  "Integration architecture and implementation",
+  "Executive dashboard and reporting suite",
+  "User training and documentation",
+  "Ongoing platform administration",
+  "Performance monitoring and optimization",
+  "Regular platform updates and maintenance"
+];
+
+const platforms = [
+  "ServiceNow GRC",
+  "RSA Archer",
+  "MetricStream",
+  "LogicGate",
+  "Resolver",
+  "SAP GRC",
+  "Thomson Reuters",
+  "Custom Solutions"
+];
+
+const serviceAreas = [
+  {
+    area: "Risk Management",
+    description: "Risk register, assessments, treatment plans, monitoring"
+  },
+  {
+    area: "Compliance Management", 
+    description: "Compliance frameworks, assessments, evidence collection"
+  },
+  {
+    area: "Audit Management",
+    description: "Audit planning, execution, findings tracking, remediation"
+  },
+  {
+    area: "Policy Management",
+    description: "Policy lifecycle, approval workflows, attestation tracking"
+  }
+];
 ---
 
-<Layout title={title}>
+<Layout title={title} description={description}>
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-br from-violet-50 via-white to-purple-50 py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-4xl">
+        <h1 class="text-4xl lg:text-5xl font-bold text-slate-900 mb-6">
+          {title}
+        </h1>
+        <p class="text-xl text-slate-600 mb-8">
+          Expert GRC Platform Administration services to maximize your platform investment with professional workflow design, integrations, and user support
+        </p>
+        <p class="text-lg text-slate-500 mb-10">
+          Our GRC Platform Managed Service provides comprehensive administration of your Governance, Risk, and Compliance platforms, ensuring optimal configuration, user adoption, and business value delivery.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4">
+          <Button href="/contact?service=grc-platform" variant="primary">
+            Get Platform Support
+          </Button>
+          <Button href="/contact?consultation=true" variant="secondary">
+            Book Consultation
+          </Button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Overview Section -->
   <section class="py-16 bg-white">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h1 class="text-3xl font-bold text-slate-900 mb-6">GRC Platform Managed Service</h1>
-      <p class="text-lg text-slate-600 mb-8">GRC Platform Admin; workflows, integrations, reporting, user support.</p>
-      <h2 class="text-2xl font-semibold text-slate-900 mb-4">Overview</h2>
-      <p class="text-slate-700 mb-6">Our GRC Platform Managed Service provides organizations with expert administration of Governance, Risk, and Compliance platforms. We manage workflows, integrations, reporting, and user support to ensure your GRC platform delivers value and compliance.</p>
-      <h2 class="text-2xl font-semibold text-slate-900 mb-4">Our Services</h2>
-      <ul class="list-disc pl-6 text-slate-700 mb-8">
-        <li>Workflow design and management</li>
-        <li>Integration with business systems</li>
-        <li>Reporting and dashboard setup</li>
-        <li>User support and training</li>
-      </ul>
-      <p class="text-slate-700">Contact us for GRC Platform Managed Service support.</p>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl font-bold text-slate-900 mb-8">Overview</h2>
+        <div class="bg-gradient-to-r from-violet-50 to-purple-50 rounded-xl p-8 border border-violet-200">
+          <p class="text-lg text-slate-700 mb-6">
+            GRC platforms are powerful tools for managing governance, risk, and compliance, but they require expert configuration and ongoing administration to deliver value. Many organizations struggle with platform complexity, low user adoption, and suboptimal configurations.
+          </p>
+          <p class="text-lg text-slate-700">
+            Our GRC Platform Managed Service provides dedicated platform expertise to handle administration, optimization, and user support, ensuring your investment delivers maximum business value and compliance effectiveness.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Service Areas -->
+  <section class="py-16 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-slate-900 mb-4">GRC Service Areas</h2>
+        <p class="text-xl text-slate-600 max-w-3xl mx-auto mb-8">
+          Comprehensive platform administration across all GRC domains
+        </p>
+      </div>
+      <div class="grid md:grid-cols-2 gap-8">
+        {serviceAreas.map((area) => (
+          <div class="bg-white p-8 rounded-xl shadow-lg border border-slate-100">
+            <h3 class="text-xl font-bold text-slate-900 mb-3">{area.area}</h3>
+            <p class="text-slate-600">{area.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Platforms Section -->
+  <section class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-slate-900 mb-4">Supported Platforms</h2>
+        <p class="text-xl text-slate-600 max-w-3xl mx-auto mb-8">
+          Expert administration across leading GRC platforms and custom solutions
+        </p>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {platforms.map((platform) => (
+          <div class="bg-gradient-to-br from-violet-50 to-purple-50 p-6 rounded-lg border border-violet-200 text-center">
+            <h3 class="font-semibold text-slate-900">{platform}</h3>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Grid -->
+  <section class="py-16 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-slate-900 mb-4">Our Platform Services</h2>
+        <p class="text-xl text-slate-600 max-w-3xl mx-auto">
+          Comprehensive GRC platform management covering all aspects of administration and optimization
+        </p>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {features.map((feature) => (
+          <div class="bg-white p-8 rounded-xl shadow-lg border border-slate-100">
+            <div class="flex items-center mb-4">
+              <Icon name={feature.icon} class="h-8 w-8 text-violet-600" />
+              <h3 class="text-xl font-bold text-slate-900 ml-3">{feature.title}</h3>
+            </div>
+            <p class="text-slate-600">{feature.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Deliverables Section -->
+  <section class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-12 items-start">
+        <div>
+          <h2 class="text-3xl font-bold text-slate-900 mb-8">What You Get</h2>
+          <ul class="space-y-4">
+            {deliverables.map((deliverable) => (
+              <li class="flex items-start">
+                <Icon name="check" class="h-6 w-6 text-green-600 mr-3 mt-0.5 flex-shrink-0" />
+                <span class="text-slate-700">{deliverable}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div>
+          <h2 class="text-3xl font-bold text-slate-900 mb-8">Key Benefits</h2>
+          <ul class="space-y-4">
+            {benefits.map((benefit) => (
+              <li class="flex items-start">
+                <Icon name="star" class="h-6 w-6 text-violet-600 mr-3 mt-0.5 flex-shrink-0" />
+                <span class="text-slate-700">{benefit}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-16 bg-violet-600 text-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-4xl font-bold mb-4">Maximize Your GRC Platform ROI</h2>
+      <p class="text-xl mb-8">Contact us today to optimize your GRC platform performance</p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <Button href="/contact?service=grc-platform" variant="white">
+          Get Started
+        </Button>
+        <Button href="/contact?consultation=true" variant="outline-white">
+          Schedule Consultation
+        </Button>
+      </div>
     </div>
   </section>
 </Layout>

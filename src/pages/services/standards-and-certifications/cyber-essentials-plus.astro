@@ -1,24 +1,248 @@
 ---
 import Layout from '@/layouts/Layout.astro';
-const title = "Cyber Essentials / Plus";
-const description = "Rapid hardening, testing, and certification preparation.";
+import Icon from '@/components/ui/icons/Icon.astro';
+import Button from '@/components/ui/Button.astro';
+
+const currentPath = Astro.url.pathname;
+const lang = currentPath.startsWith('/fi') ? 'fi' : 'en';
+
+const title = "Cyber Essentials / Plus Certification";
+const description = "Rapid hardening, testing, and certification preparation for UK Cyber Essentials and Cyber Essentials Plus schemes.";
+
+const features = [
+  {
+    title: "Rapid Hardening & Implementation",
+    description: "Fast-track implementation of Cyber Essentials controls with minimal business disruption",
+    icon: "shield"
+  },
+  {
+    title: "Pre-Assessment Testing",
+    description: "Comprehensive testing and validation of controls before formal certification assessment",
+    icon: "clipboard"
+  },
+  {
+    title: "Certification Preparation",
+    description: "Complete preparation for both Cyber Essentials and Cyber Essentials Plus assessments",
+    icon: "award"
+  },
+  {
+    title: "Gap Analysis & Remediation",
+    description: "Detailed gap analysis with prioritized remediation plans for quick compliance",
+    icon: "wrench"
+  },
+  {
+    title: "Documentation & Evidence",
+    description: "Comprehensive documentation and evidence collection for certification requirements",
+    icon: "document"
+  },
+  {
+    title: "Ongoing Compliance",
+    description: "Annual renewal support and continuous compliance monitoring",
+    icon: "monitor"
+  }
+];
+
+const benefits = [
+  "Meet UK government contract requirements",
+  "Demonstrate basic cybersecurity competence",
+  "Reduce cyber insurance premiums",
+  "Competitive advantage in UK markets",
+  "Fast-track certification in 30-60 days"
+];
+
+const deliverables = [
+  "Cyber Essentials readiness assessment",
+  "Control implementation and hardening",
+  "Pre-assessment testing and validation",
+  "Certification application support",
+  "Evidence documentation package",
+  "Staff training and awareness materials",
+  "Annual renewal preparation",
+  "Continuous monitoring procedures"
+];
+
+const controls = [
+  "Firewalls and Gateway Protection",
+  "Secure Configuration",
+  "User Access Control",
+  "Malware Protection",
+  "Software Security Updates"
+];
+
+const certificationTypes = [
+  {
+    type: "Cyber Essentials",
+    description: "Self-assessment questionnaire demonstrating basic controls",
+    timeframe: "30-45 days",
+    testing: "Self-declaration"
+  },
+  {
+    type: "Cyber Essentials Plus",
+    description: "Independent technical verification of implemented controls",
+    timeframe: "45-60 days", 
+    testing: "External testing"
+  }
+];
 ---
 
-<Layout title={title}>
+<Layout title={title} description={description}>
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-br from-red-50 via-white to-blue-50 py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-4xl">
+        <h1 class="text-4xl lg:text-5xl font-bold text-slate-900 mb-6">
+          {title}
+        </h1>
+        <p class="text-xl text-slate-600 mb-8">
+          Fast-track UK Cyber Essentials certification with expert rapid hardening, testing, and certification preparation services
+        </p>
+        <p class="text-lg text-slate-500 mb-10">
+          Cyber Essentials and Cyber Essentials Plus are UK government-backed cybersecurity schemes that demonstrate your organization has secure defenses against the most common cyber attacks. Our rapid implementation approach gets you certified quickly.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4">
+          <Button href="/contact?service=cyber-essentials" variant="primary">
+            Get Certified Fast
+          </Button>
+          <Button href="/contact?consultation=true" variant="secondary">
+            Book Consultation
+          </Button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Overview Section -->
   <section class="py-16 bg-white">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h1 class="text-3xl font-bold text-slate-900 mb-6">Cyber Essentials / Plus</h1>
-      <p class="text-lg text-slate-600 mb-8">Rapid hardening, testing, and certification preparation.</p>
-      <h2 class="text-2xl font-semibold text-slate-900 mb-4">Overview</h2>
-      <p class="text-slate-700 mb-6">Cyber Essentials and Cyber Essentials Plus are UK government-backed schemes for basic cybersecurity controls. We provide rapid hardening, testing, and certification preparation to help organizations achieve compliance and certification.</p>
-      <h2 class="text-2xl font-semibold text-slate-900 mb-4">Our Services</h2>
-      <ul class="list-disc pl-6 text-slate-700 mb-8">
-        <li>Rapid hardening and control implementation</li>
-        <li>Testing and evidence collection</li>
-        <li>Certification preparation and support</li>
-        <li>Remediation planning</li>
-      </ul>
-      <p class="text-slate-700">Contact us for Cyber Essentials and Plus certification support.</p>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl font-bold text-slate-900 mb-8">Overview</h2>
+        <div class="bg-gradient-to-r from-red-50 to-blue-50 rounded-xl p-8 border border-red-200">
+          <p class="text-lg text-slate-700 mb-6">
+            Cyber Essentials is a UK government-backed certification scheme that helps organizations demonstrate they have implemented basic cybersecurity controls. The scheme covers five key technical controls that protect against the most common cyber attacks.
+          </p>
+          <p class="text-lg text-slate-700">
+            Our rapid implementation methodology gets organizations from assessment to certification in just 30-60 days, with minimal business disruption and maximum efficiency.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Certification Types -->
+  <section class="py-16 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-slate-900 mb-4">Certification Options</h2>
+        <p class="text-xl text-slate-600 max-w-3xl mx-auto mb-8">
+          Choose the level of certification that meets your requirements
+        </p>
+      </div>
+      <div class="grid md:grid-cols-2 gap-8">
+        {certificationTypes.map((cert) => (
+          <div class="bg-white p-8 rounded-xl shadow-lg border border-slate-100">
+            <h3 class="text-xl font-bold text-slate-900 mb-3">{cert.type}</h3>
+            <p class="text-slate-600 mb-4">{cert.description}</p>
+            <div class="space-y-2 text-sm">
+              <div class="flex justify-between">
+                <span class="text-slate-500">Timeframe:</span>
+                <span class="font-medium text-slate-700">{cert.timeframe}</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-slate-500">Testing:</span>
+                <span class="font-medium text-slate-700">{cert.testing}</span>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Controls Section -->
+  <section class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-slate-900 mb-4">Five Essential Controls</h2>
+        <p class="text-xl text-slate-600 max-w-3xl mx-auto mb-8">
+          The core security controls covered by Cyber Essentials certification
+        </p>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {controls.map((control) => (
+          <div class="bg-gradient-to-br from-red-50 to-blue-50 p-6 rounded-lg border border-red-200 text-center">
+            <h3 class="font-semibold text-slate-900">{control}</h3>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Grid -->
+  <section class="py-16 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-slate-900 mb-4">Our Cyber Essentials Services</h2>
+        <p class="text-xl text-slate-600 max-w-3xl mx-auto">
+          Comprehensive certification services for rapid Cyber Essentials compliance
+        </p>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {features.map((feature) => (
+          <div class="bg-white p-8 rounded-xl shadow-lg border border-slate-100">
+            <div class="flex items-center mb-4">
+              <Icon name={feature.icon} class="h-8 w-8 text-red-600" />
+              <h3 class="text-xl font-bold text-slate-900 ml-3">{feature.title}</h3>
+            </div>
+            <p class="text-slate-600">{feature.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Deliverables Section -->
+  <section class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-12 items-start">
+        <div>
+          <h2 class="text-3xl font-bold text-slate-900 mb-8">What You Get</h2>
+          <ul class="space-y-4">
+            {deliverables.map((deliverable) => (
+              <li class="flex items-start">
+                <Icon name="check" class="h-6 w-6 text-green-600 mr-3 mt-0.5 flex-shrink-0" />
+                <span class="text-slate-700">{deliverable}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div>
+          <h2 class="text-3xl font-bold text-slate-900 mb-8">Key Benefits</h2>
+          <ul class="space-y-4">
+            {benefits.map((benefit) => (
+              <li class="flex items-start">
+                <Icon name="star" class="h-6 w-6 text-red-600 mr-3 mt-0.5 flex-shrink-0" />
+                <span class="text-slate-700">{benefit}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-16 bg-red-600 text-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-4xl font-bold mb-4">Get Cyber Essentials Certified Fast</h2>
+      <p class="text-xl mb-8">Contact us today to start your rapid certification journey</p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <Button href="/contact?service=cyber-essentials" variant="white">
+          Get Started
+        </Button>
+        <Button href="/contact?consultation=true" variant="outline-white">
+          Schedule Assessment
+        </Button>
+      </div>
     </div>
   </section>
 </Layout>

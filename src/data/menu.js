@@ -235,26 +235,51 @@ export const menu = [
     href: "/resources",
     children: [
       {
-        label_fi: "Blog & Guides",
-        label_en: "Blog & Guides",
+        label_fi: "All Resources",
+        label_en: "All Resources",
+        href: "/resources/all",
+        children: []
+      },
+      {
+        label_fi: "Webinars",
+        label_en: "Webinars",
+        href: "/webinars",
+        children: []
+      },
+      {
+        label_fi: "Downloads",
+        label_en: "Downloads",
+        href: "/resources/downloads",
+        children: [
+          {
+            label_fi: "ISO 27001 Guide",
+            label_en: "ISO 27001 Guide",
+            href: "/downloads/iso-27001-quick-start-guide.pdf",
+            children: []
+          },
+          {
+            label_fi: "NIS2 Checklist",
+            label_en: "NIS2 Checklist",
+            href: "/downloads/nis2-compliance-checklist.pdf",
+            children: []
+          },
+          {
+            label_fi: "GDPR Template",
+            label_en: "GDPR Template",
+            href: "/downloads/gdpr-pia-template.pdf",
+            children: []
+          }
+        ]
+      },
+      {
+        label_fi: "Blog & Articles",
+        label_en: "Blog & Articles",
         href: "/blog",
         children: [
           {
             label_fi: "Case Studies",
             label_en: "Case Studies",
             href: "/blog/case-studies",
-            children: []
-          },
-          {
-            label_fi: "Webinars & Events",
-            label_en: "Webinars & Events",
-            href: "/blog/webinars-and-events",
-            children: []
-          },
-          {
-            label_fi: "Compliance Guides",
-            label_en: "Compliance Guides",
-            href: "/resources/guides",
             children: []
           }
         ]

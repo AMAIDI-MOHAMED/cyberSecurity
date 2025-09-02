@@ -61,15 +61,16 @@ const lang = 'en';
         aria-label="Go to homepage - Cybersecurity Finland"
       >
         <img 
-          src="/Cyber Security Finland.jpg" 
+          src="/logo.png" 
           alt="Cybersecurity Finland" 
           class="block h-8 sm:h-7 lg:h-9 w-auto object-contain group-hover:scale-110 group-hover:rotate-2 transition-all duration-500 relative z-10" 
           decoding="async" 
           loading="eager" 
+          style="filter: drop-shadow(0 0 1px rgba(0,0,0,0.25)) contrast(1.1) brightness(0.9);" 
         />
-        <div class="absolute -inset-1 bg-gradient-to-r from-blue-500 to-blue-600 rounded-lg blur opacity-0 group-hover:opacity-20 transition-all duration-500"></div>
-        <div class="absolute inset-0 bg-gradient-to-r from-blue-50/50 to-blue-100/50 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-md"></div>
-        <div class="absolute inset-0 rounded-md border-2 border-transparent group-hover:border-blue-200 transition-all duration-500"></div>
+        <div class="absolute -inset-1 bg-gradient-to-r from-teal-500 to-cyan-500 rounded-lg blur opacity-0 group-hover:opacity-30 transition-all duration-500"></div>
+        <div class="absolute inset-0 bg-gradient-to-r from-teal-50/50 to-cyan-50/50 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-md"></div>
+        <div class="absolute inset-0 rounded-md border-2 border-transparent group-hover:border-teal-200 transition-all duration-500"></div>
       </a>
 
       <!-- Desktop Navigation -->
@@ -150,16 +151,10 @@ const lang = 'en';
   </div>
 </header>
 
-<!-- Enhanced Mobile Menu - Slide-out panel with backdrop -->
-<div 
-  id="mobile-menu-backdrop"
-  class="lg:hidden fixed inset-0 bg-black/25 backdrop-blur-sm z-[9998] opacity-0 invisible transition-all duration-500 ease-out"
-  aria-hidden="true"
-></div>
-
+<!-- Enhanced Mobile Menu with improved animations and accessibility -->
 <div 
   id="mobile-menu" 
-  class="lg:hidden fixed top-0 right-0 w-[85%] max-w-none h-screen bg-white z-[9999] transform translate-x-full transition-all duration-500 ease-out overflow-y-auto overscroll-contain touch-pan-y shadow-2xl border-l border-slate-200" 
+  class="lg:hidden fixed inset-0 w-screen h-screen bg-white z-[9999] transform translate-x-full transition-all duration-500 ease-out hidden overflow-y-auto overscroll-contain touch-pan-y backdrop-blur-sm shadow-2xl" 
   aria-hidden="true" 
   role="dialog" 
   aria-modal="true"

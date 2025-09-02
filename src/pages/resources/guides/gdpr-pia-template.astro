@@ -1,0 +1,244 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import HeroSection from '@/components/sections/HeroSection.astro';
+import CTA from '@/components/sections/CTA.astro';
+
+const title = "GDPR Privacy Impact Assessment Template";
+const currentPath = Astro.url.pathname;
+const lang = currentPath.startsWith('/fi') ? 'fi' : 'en';
+
+const heroContent = {
+  title: "GDPR Privacy Impact Assessment Template",
+  subtitle: "Ready-to-use PIA framework",
+  description: "Professional GDPR-compliant Privacy Impact Assessment template designed to help organizations identify and mitigate privacy risks in their data processing activities.",
+  primaryCTA: { text: "Download PDF", href: "/downloads/gdpr-pia-template.pdf" },
+  secondaryCTA: { text: "Get GDPR Help", href: "/contact" }
+};
+---
+
+<Layout title={title} description="Download our free GDPR Privacy Impact Assessment Template - a ready-to-use PIA framework for privacy regulation compliance.">
+  <HeroSection content={heroContent} />
+  
+  <!-- Template Overview -->
+  <section class="py-24 bg-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-12 items-start">
+        <div>
+          <h2 class="text-3xl font-bold text-gray-900 mb-6">Template Features</h2>
+          <div class="space-y-6">
+            <div class="flex items-center space-x-4">
+              <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
+                <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                </svg>
+              </div>
+              <div>
+                <h3 class="font-semibold text-gray-900">GDPR Compliant</h3>
+                <p class="text-gray-600">Fully aligned with GDPR Article 35 requirements</p>
+              </div>
+            </div>
+            
+            <div class="flex items-center space-x-4">
+              <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
+                <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v6a2 2 0 002 2h6a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path>
+                </svg>
+              </div>
+              <div>
+                <h3 class="font-semibold text-gray-900">Ready-to-Use</h3>
+                <p class="text-gray-600">Pre-formatted template with clear instructions</p>
+              </div>
+            </div>
+            
+            <div class="flex items-center space-x-4">
+              <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
+                <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+              </div>
+              <div>
+                <h3 class="font-semibold text-gray-900">Risk Assessment</h3>
+                <p class="text-gray-600">Comprehensive privacy risk evaluation framework</p>
+              </div>
+            </div>
+            
+            <div class="flex items-center space-x-4">
+              <div class="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center">
+                <svg class="w-6 h-6 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
+                </svg>
+              </div>
+              <div>
+                <h3 class="font-semibold text-gray-900">Mitigation Strategies</h3>
+                <p class="text-gray-600">Practical recommendations for risk reduction</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div>
+          <h2 class="text-3xl font-bold text-gray-900 mb-6">Template Sections</h2>
+          <div class="bg-gray-50 rounded-lg p-6">
+            <ul class="space-y-3">
+              <li class="flex items-start space-x-3">
+                <span class="text-purple-600 font-semibold">1.</span>
+                <span class="text-gray-700">Project Description</span>
+              </li>
+              <li class="flex items-start space-x-3">
+                <span class="text-purple-600 font-semibold">2.</span>
+                <span class="text-gray-700">Data Processing Activities</span>
+              </li>
+              <li class="flex items-start space-x-3">
+                <span class="text-purple-600 font-semibold">3.</span>
+                <span class="text-gray-700">Legal Basis Assessment</span>
+              </li>
+              <li class="flex items-start space-x-3">
+                <span class="text-purple-600 font-semibold">4.</span>
+                <span class="text-gray-700">Necessity and Proportionality</span>
+              </li>
+              <li class="flex items-start space-x-3">
+                <span class="text-purple-600 font-semibold">5.</span>
+                <span class="text-gray-700">Data Subject Rights</span>
+              </li>
+              <li class="flex items-start space-x-3">
+                <span class="text-purple-600 font-semibold">6.</span>
+                <span class="text-gray-700">Privacy Risk Identification</span>
+              </li>
+              <li class="flex items-start space-x-3">
+                <span class="text-purple-600 font-semibold">7.</span>
+                <span class="text-gray-700">Risk Assessment Matrix</span>
+              </li>
+              <li class="flex items-start space-x-3">
+                <span class="text-purple-600 font-semibold">8.</span>
+                <span class="text-gray-700">Mitigation Measures</span>
+              </li>
+              <li class="flex items-start space-x-3">
+                <span class="text-purple-600 font-semibold">9.</span>
+                <span class="text-gray-700">Consultation Requirements</span>
+              </li>
+              <li class="flex items-start space-x-3">
+                <span class="text-purple-600 font-semibold">10.</span>
+                <span class="text-gray-700">Monitoring and Review</span>
+              </li>
+            </ul>
+          </div>
+          
+          <div class="mt-6 p-4 bg-blue-50 border border-blue-200 rounded-lg">
+            <div class="flex items-start space-x-3">
+              <svg class="w-5 h-5 text-blue-600 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+              <div>
+                <h4 class="font-semibold text-blue-800">When to Use</h4>
+                <p class="text-blue-700 text-sm">Required for high-risk data processing under GDPR Article 35</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Use Cases -->
+  <section class="py-20 bg-gray-50">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-bold text-gray-900 text-center mb-12">When You Need a PIA</h2>
+      <div class="grid md:grid-cols-2 gap-8">
+        <div class="bg-white rounded-lg p-6 shadow-lg">
+          <h3 class="text-lg font-semibold text-gray-900 mb-4">High-Risk Processing</h3>
+          <ul class="space-y-2 text-gray-600">
+            <li class="flex items-start space-x-2">
+              <span class="text-purple-500">•</span>
+              <span>Large-scale processing of special categories</span>
+            </li>
+            <li class="flex items-start space-x-2">
+              <span class="text-purple-500">•</span>
+              <span>Systematic monitoring of public areas</span>
+            </li>
+            <li class="flex items-start space-x-2">
+              <span class="text-purple-500">•</span>
+              <span>Automated decision-making with legal effects</span>
+            </li>
+            <li class="flex items-start space-x-2">
+              <span class="text-purple-500">•</span>
+              <span>Processing vulnerable individuals' data</span>
+            </li>
+          </ul>
+        </div>
+        
+        <div class="bg-white rounded-lg p-6 shadow-lg">
+          <h3 class="text-lg font-semibold text-gray-900 mb-4">New Technologies</h3>
+          <ul class="space-y-2 text-gray-600">
+            <li class="flex items-start space-x-2">
+              <span class="text-purple-500">•</span>
+              <span>AI and machine learning systems</span>
+            </li>
+            <li class="flex items-start space-x-2">
+              <span class="text-purple-500">•</span>
+              <span>IoT devices and sensors</span>
+            </li>
+            <li class="flex items-start space-x-2">
+              <span class="text-purple-500">•</span>
+              <span>Biometric processing systems</span>
+            </li>
+            <li class="flex items-start space-x-2">
+              <span class="text-purple-500">•</span>
+              <span>Blockchain implementations</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Download Section -->
+  <section class="py-24 bg-gradient-to-br from-purple-50 to-indigo-100">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl font-bold text-gray-900 mb-6">Conduct Professional Privacy Impact Assessments</h2>
+      <p class="text-lg text-gray-700 mb-8">Download our GDPR-compliant PIA template and ensure your data processing activities meet privacy requirements.</p>
+      
+      <div class="bg-white rounded-2xl shadow-xl p-8">
+        <div class="flex items-center justify-center mb-6">
+          <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center">
+            <svg class="w-8 h-8 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+            </svg>
+          </div>
+        </div>
+        
+        <h3 class="text-xl font-semibold text-gray-900 mb-4">GDPR PIA Template</h3>
+        <p class="text-gray-600 mb-6">12 pages • PDF format • Updated November 2024</p>
+        
+        <a 
+          href="/downloads/gdpr-pia-template.pdf" 
+          class="inline-flex items-center justify-center px-8 py-4 text-white bg-purple-600 hover:bg-purple-700 rounded-lg font-semibold transition-colors duration-300 transform hover:scale-105"
+          download
+        >
+          <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+          </svg>
+          Download Free Template
+        </a>
+        
+        <p class="text-sm text-gray-500 mt-4">
+          No email required • Instant download • 100% free
+        </p>
+      </div>
+      
+      <div class="mt-8">
+        <p class="text-gray-600 mb-4">Need help with GDPR compliance?</p>
+        <a 
+          href="/contact" 
+          class="inline-flex items-center px-6 py-3 text-purple-600 hover:text-purple-700 font-medium transition-colors duration-300"
+        >
+          Get Expert GDPR Consultation
+          <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+  
+  <CTA />
+</Layout>

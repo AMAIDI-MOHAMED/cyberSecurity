@@ -1,0 +1,198 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import HeroSection from '@/components/sections/HeroSection.astro';
+import CTA from '@/components/sections/CTA.astro';
+import Icon from '@/components/ui/icons/Icon.astro';
+
+const title = "Webinars";
+const currentPath = Astro.url.pathname;
+const lang = currentPath.startsWith('/fi') ? 'fi' : 'en';
+
+const heroContent = {
+  title: "Expert-Led Cybersecurity Webinars",
+  subtitle: "Free Educational Sessions for Cybersecurity Professionals",
+  description: "Join our expert-led webinars to stay updated on the latest cybersecurity regulations, standards, and best practices. All sessions are free and include Q&A opportunities.",
+  primaryCTA: { text: "View Upcoming Webinars", href: "#upcoming" },
+  secondaryCTA: { text: "Browse Past Sessions", href: "#past" }
+};
+
+const upcomingWebinars = [
+  {
+    title: 'NIS2 Implementation: What Finnish Companies Need to Know',
+    date: 'September 15, 2025',
+    time: '14:00 - 15:30',
+    speaker: 'Maria Korhonen, CISO',
+    attendees: '250+',
+    description: 'Essential guidance for organizations preparing for NIS2 compliance requirements.',
+    href: '/webinars/nis2-implementation'
+  },
+  {
+    title: 'DORA Compliance for Financial Services',
+    date: 'September 22, 2025',
+    time: '13:00 - 14:30',
+    speaker: 'Jukka Virtanen, Lead Consultant',
+    attendees: '180+',
+    description: 'Preparing financial institutions for digital operational resilience requirements.',
+    href: '/webinars/dora-financial'
+  },
+  {
+    title: 'ISO 27001:2022 Changes and Impact',
+    date: 'September 29, 2025',
+    time: '15:00 - 16:00',
+    speaker: 'Anna Salminen, Senior Security Advisor',
+    attendees: '200+',
+    description: 'Understanding the latest updates and their implications for your organization.',
+    href: '/webinars/iso27001-updates'
+  }
+];
+
+const pastWebinars = [
+  {
+    title: 'GDPR Compliance: Three Years Later',
+    date: 'June 15, 2025',
+    speaker: 'Compliance Team',
+    views: '850+',
+    description: 'Lessons learned and best practices from three years of GDPR implementation.',
+    href: '#'
+  },
+  {
+    title: 'Cyber Essentials Plus: Implementation Guide',
+    date: 'May 20, 2025',
+    speaker: 'Technical Team',
+    views: '650+',
+    description: 'Step-by-step guide to implementing Cyber Essentials Plus controls.',
+    href: '#'
+  },
+  {
+    title: 'SOC 2 Type II: Audit Preparation',
+    date: 'April 18, 2025',
+    speaker: 'Audit Specialists',
+    views: '920+',
+    description: 'Comprehensive guide to preparing for SOC 2 Type II audits.',
+    href: '#'
+  }
+];
+---
+
+<Layout title={title} description="Join our free expert-led cybersecurity webinars. Learn about NIS2, DORA, ISO 27001, and other compliance requirements from industry experts.">
+  <HeroSection content={heroContent} />
+  
+  <!-- Upcoming Webinars -->
+  <section class="py-24 bg-white" id="upcoming">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-bold text-gray-900 mb-4">Upcoming Webinars</h2>
+        <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+          Join our upcoming expert-led sessions covering the latest cybersecurity regulations and best practices.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        {upcomingWebinars.map((webinar) => (
+          <div class="bg-gradient-to-br from-blue-50 to-indigo-100 rounded-xl p-8 border border-blue-200 hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+            <div class="flex items-start justify-between mb-6">
+              <div class="flex items-center space-x-2">
+                <div class="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
+                  <Icon name="video" class="w-4 h-4 text-white" />
+                </div>
+                <span class="text-sm font-medium text-blue-600">Live Webinar</span>
+              </div>
+              <div class="text-right">
+                <div class="text-sm font-semibold text-blue-600">{webinar.date}</div>
+                <div class="text-xs text-blue-500">{webinar.time}</div>
+              </div>
+            </div>
+            
+            <h3 class="text-xl font-semibold text-gray-900 mb-3">{webinar.title}</h3>
+            <p class="text-gray-700 mb-4">{webinar.description}</p>
+            
+            <div class="flex items-center justify-between mb-6">
+              <div class="flex items-center space-x-2">
+                <Icon name="user" class="w-4 h-4 text-gray-500" />
+                <span class="text-sm text-gray-600">{webinar.speaker}</span>
+              </div>
+              <div class="flex items-center space-x-2">
+                <Icon name="users" class="w-4 h-4 text-gray-500" />
+                <span class="text-sm text-gray-600">{webinar.attendees}</span>
+              </div>
+            </div>
+            
+            <a 
+              href={webinar.href} 
+              class="inline-flex items-center justify-center w-full px-6 py-3 text-center font-medium text-white bg-blue-600 hover:bg-blue-700 rounded-lg transition-colors duration-300"
+            >
+              <Icon name="calendar" class="w-4 h-4 mr-2" />
+              Register Now
+            </a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+  
+  <!-- Past Webinars -->
+  <section class="py-24 bg-gray-50" id="past">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-bold text-gray-900 mb-4">Past Webinars</h2>
+        <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+          Catch up on our previous sessions. All recorded webinars are available for on-demand viewing.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        {pastWebinars.map((webinar) => (
+          <div class="bg-white rounded-xl p-8 border border-gray-200 hover:shadow-lg transition-all duration-300 transform hover:scale-105">
+            <div class="flex items-start justify-between mb-6">
+              <div class="flex items-center space-x-2">
+                <div class="w-8 h-8 bg-gray-600 rounded-lg flex items-center justify-center">
+                  <Icon name="play" class="w-4 h-4 text-white" />
+                </div>
+                <span class="text-sm font-medium text-gray-600">Recorded</span>
+              </div>
+              <div class="text-right">
+                <div class="text-sm font-semibold text-gray-600">{webinar.date}</div>
+                <div class="text-xs text-gray-500">{webinar.views} views</div>
+              </div>
+            </div>
+            
+            <h3 class="text-xl font-semibold text-gray-900 mb-3">{webinar.title}</h3>
+            <p class="text-gray-700 mb-4">{webinar.description}</p>
+            
+            <div class="flex items-center justify-between mb-6">
+              <div class="flex items-center space-x-2">
+                <Icon name="user" class="w-4 h-4 text-gray-500" />
+                <span class="text-sm text-gray-600">{webinar.speaker}</span>
+              </div>
+              <div class="flex items-center space-x-2">
+                <Icon name="eye" class="w-4 h-4 text-gray-500" />
+                <span class="text-sm text-gray-600">{webinar.views}</span>
+              </div>
+            </div>
+            
+            <a 
+              href={webinar.href} 
+              class="inline-flex items-center justify-center w-full px-6 py-3 text-center font-medium text-gray-700 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors duration-300"
+            >
+              <Icon name="play" class="w-4 h-4 mr-2" />
+              Watch Recording
+            </a>
+          </div>
+        ))}
+      </div>
+      
+      <div class="text-center mt-12">
+        <p class="text-gray-600 mb-4">Looking for more cybersecurity training resources?</p>
+        <a 
+          href="/resources" 
+          class="inline-flex items-center px-6 py-3 text-blue-600 hover:text-blue-700 font-medium transition-colors duration-300"
+        >
+          Browse All Resources
+          <Icon name="arrow-right" class="w-4 h-4 ml-2" />
+        </a>
+      </div>
+    </div>
+  </section>
+  
+  <CTA />
+</Layout>

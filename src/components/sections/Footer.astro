@@ -3,7 +3,7 @@ import FooterForm from "@ui/forms/FooterForm.astro";
 import ContactInfo from "@common/ContactInfo.astro";
 import { footerMenu } from '@data/footerMenu.js';
 
-const companyName = "CyberSecurity.fi";
+const companyName = "Cyber Security Finland"; // updated branding
 const companyDescription = "Comprehensive GRC, compliance, and anti-fraud services for Finland and the EU. ISO 27001, NIS2, SOC 2, DORA—delivered on time.";
 const contactDetails = {
   phone: "+358 XX XXX XXXX",
@@ -30,7 +30,7 @@ const newsletterTitle = isFi ? 'Pysy ajan tasalla' : 'Stay updated';
       <!-- Brand + Description -->
       <div class="lg:col-span-4 space-y-6">
         <a href={isFi ? '/fi' : '/'} class="flex-none text-xl font-semibold text-slate-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-500" aria-label={companyName} data-track="footer-brand">
-          <span class="text-teal-700">Cyber</span>Security.fi
+          <span class="text-teal-700">Cyber</span> Security Finland
         </a>
         <p class="text-pretty text-slate-600 text-sm leading-relaxed">
           {companyDescription}

@@ -7,7 +7,7 @@ export interface Props {
   href?: string;
   rel?: string;
   target?: "_self" | "_blank" | "_parent" | "_top";
-  variant?: "primary" | "secondary" | "tertiary";
+  variant?: "primary" | "secondary" | "tertiary" | "white" | "outline-white"; // added legacy variants
   className?: string;
   id?: string;
 }
@@ -17,6 +17,8 @@ export interface Props {
  * - primary: A solid teal button with white text and hover/active effects.
  * - secondary: A bordered button with teal and slate accents with hover effects.
  * - tertiary: A soft teal background with hover effects.
+ * - white: Solid white button for dark backgrounds.
+ * - outline-white: Transparent background with white border/text for dark sections.
  */
 
 const variants = {
@@ -25,6 +27,8 @@ const variants = {
   secondary:
     "hover:border-teal-700 hover:bg-teal-700 border-teal-800 border-2 text-slate-800 hover:text-white",
   tertiary: "bg-teal-50 hover:bg-teal-50/80",
+  white: "bg-white text-slate-900 hover:bg-white/90 border border-white",
+  "outline-white": "bg-transparent text-white border border-white hover:bg-white/10"
 };
 ---
 

@@ -1,24 +1,275 @@
 ---
 import Layout from '@/layouts/Layout.astro';
+import Icon from '@/components/ui/icons/Icon.astro';
+import Button from '@/components/ui/Button.astro';
+
+const currentPath = Astro.url.pathname;
+const lang = currentPath.startsWith('/fi') ? 'fi' : 'en';
+
 const title = "Anti-Fraud Services";
-const description = "Head of Fraud/Risk; BEC/invoice controls, detection, response.";
+const description = "Expert fraud risk management including BEC/invoice controls, detection systems, and incident response to protect against business email compromise and payment fraud.";
+
+const features = [
+  {
+    title: "BEC & Invoice Fraud Controls",
+    description: "Comprehensive controls to prevent business email compromise and invoice fraud attacks",
+    icon: "shield"
+  },
+  {
+    title: "Fraud Detection & Monitoring",
+    description: "Advanced detection systems and monitoring capabilities to identify fraudulent activities",
+    icon: "eye"
+  },
+  {
+    title: "Incident Response & Investigation",
+    description: "Rapid response and thorough investigation of fraud incidents and security breaches",
+    icon: "alert"
+  },
+  {
+    title: "Payment Controls & Verification",
+    description: "Multi-layer payment approval processes and vendor verification systems",
+    icon: "check"
+  },
+  {
+    title: "Security Awareness Training",
+    description: "Comprehensive training programs to educate staff on fraud prevention and recognition",
+    icon: "users"
+  },
+  {
+    title: "Risk Assessment & Monitoring",
+    description: "Ongoing fraud risk assessments and continuous monitoring of threat landscape",
+    icon: "chart"
+  }
+];
+
+const benefits = [
+  "Prevent costly business email compromise attacks",
+  "Protect against invoice and payment fraud",
+  "Reduce financial losses and reputational damage",
+  "Improve staff awareness and fraud detection",
+  "Ensure rapid response to fraud incidents"
+];
+
+const deliverables = [
+  "Fraud risk assessment and gap analysis",
+  "BEC and invoice fraud control framework",
+  "Payment verification and approval processes",
+  "Fraud detection and monitoring systems",
+  "Incident response procedures and playbooks",
+  "Staff training and awareness programs",
+  "Vendor verification and due diligence processes",
+  "Ongoing fraud risk monitoring and reporting"
+];
+
+const fraudTypes = [
+  "Business Email Compromise (BEC)",
+  "Invoice Fraud & Manipulation",
+  "Payment Redirection Fraud",
+  "Vendor Impersonation",
+  "CEO/Executive Fraud",
+  "Wire Transfer Fraud",
+  "Procurement Fraud",
+  "Social Engineering Attacks"
+];
+
+const industries = [
+  "Financial Services",
+  "Manufacturing",
+  "Healthcare",
+  "Professional Services",
+  "Technology",
+  "Retail & E-commerce",
+  "Real Estate",
+  "Government & Public Sector"
+];
+
+const controls = [
+  {
+    control: "Email Security",
+    description: "Advanced email filtering, DMARC, and anti-phishing controls"
+  },
+  {
+    control: "Payment Verification",
+    description: "Multi-factor authentication and out-of-band verification for payments"
+  },
+  {
+    control: "Vendor Management",
+    description: "Secure vendor onboarding and change management processes"
+  },
+  {
+    control: "User Training",
+    description: "Regular phishing simulations and fraud awareness training"
+  }
+];
 ---
 
-<Layout title={title}>
+<Layout title={title} description={description}>
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-br from-amber-50 via-white to-orange-50 py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-4xl">
+        <h1 class="text-4xl lg:text-5xl font-bold text-slate-900 mb-6">
+          {title}
+        </h1>
+        <p class="text-xl text-slate-600 mb-8">
+          Expert fraud risk management services to protect your organization against business email compromise, invoice fraud, and payment scams
+        </p>
+        <p class="text-lg text-slate-500 mb-10">
+          Our Anti-Fraud Services provide comprehensive protection against increasingly sophisticated fraud attacks, with expert controls, detection systems, and rapid response capabilities to safeguard your finances and reputation.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4">
+          <Button href="/contact?service=anti-fraud" variant="primary">
+            Protect Against Fraud
+          </Button>
+          <Button href="/contact?consultation=true" variant="secondary">
+            Book Assessment
+          </Button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Overview Section -->
   <section class="py-16 bg-white">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h1 class="text-3xl font-bold text-slate-900 mb-6">Anti-Fraud Services</h1>
-      <p class="text-lg text-slate-600 mb-8">Head of Fraud/Risk; BEC/invoice controls, detection, response.</p>
-      <h2 class="text-2xl font-semibold text-slate-900 mb-4">Overview</h2>
-      <p class="text-slate-700 mb-6">Our Anti-Fraud Services provide organizations with expert support for business email compromise (BEC) and invoice fraud controls, detection, and response. We help you implement effective controls, monitor for anomalies, and respond to incidents.</p>
-      <h2 class="text-2xl font-semibold text-slate-900 mb-4">Our Services</h2>
-      <ul class="list-disc pl-6 text-slate-700 mb-8">
-        <li>BEC and invoice fraud controls</li>
-        <li>Fraud detection and monitoring</li>
-        <li>Incident response and investigation</li>
-        <li>Training and awareness programs</li>
-      </ul>
-      <p class="text-slate-700">Contact us for Anti-Fraud Services and fraud risk management support.</p>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl font-bold text-slate-900 mb-8">Overview</h2>
+        <div class="bg-gradient-to-r from-amber-50 to-orange-50 rounded-xl p-8 border border-amber-200">
+          <p class="text-lg text-slate-700 mb-6">
+            Business email compromise (BEC) and invoice fraud are among the most costly cyber threats facing organizations today, with losses exceeding billions of dollars annually. These sophisticated attacks target finance and procurement processes to redirect payments to fraudulent accounts.
+          </p>
+          <p class="text-lg text-slate-700">
+            Our Anti-Fraud Services provide comprehensive protection through advanced controls, detection systems, staff training, and rapid incident response to prevent financial losses and protect your organization's reputation.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Fraud Types -->
+  <section class="py-16 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-slate-900 mb-4">Fraud Threats We Address</h2>
+        <p class="text-xl text-slate-600 max-w-3xl mx-auto mb-8">
+          Comprehensive protection against all major fraud attack vectors
+        </p>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {fraudTypes.map((fraud) => (
+          <div class="bg-white p-6 rounded-lg shadow-lg border border-slate-100 text-center">
+            <h3 class="font-semibold text-slate-900">{fraud}</h3>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Control Framework -->
+  <section class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-slate-900 mb-4">Multi-Layer Fraud Controls</h2>
+        <p class="text-xl text-slate-600 max-w-3xl mx-auto mb-8">
+          Comprehensive defense-in-depth approach to fraud prevention
+        </p>
+      </div>
+      <div class="grid md:grid-cols-2 gap-8">
+        {controls.map((control) => (
+          <div class="bg-gradient-to-br from-amber-50 to-orange-50 p-8 rounded-xl border border-amber-200">
+            <h3 class="text-xl font-bold text-slate-900 mb-3">{control.control}</h3>
+            <p class="text-slate-700">{control.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Industries Section -->
+  <section class="py-16 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-slate-900 mb-4">Industries We Protect</h2>
+        <p class="text-xl text-slate-600 max-w-3xl mx-auto mb-8">
+          Specialized fraud protection across high-risk sectors
+        </p>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {industries.map((industry) => (
+          <div class="bg-white p-6 rounded-lg shadow-lg border border-slate-100 text-center">
+            <h3 class="font-semibold text-slate-900">{industry}</h3>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Grid -->
+  <section class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-slate-900 mb-4">Our Anti-Fraud Services</h2>
+        <p class="text-xl text-slate-600 max-w-3xl mx-auto">
+          Comprehensive fraud prevention and response services to protect your organization
+        </p>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {features.map((feature) => (
+          <div class="bg-white p-8 rounded-xl shadow-lg border border-slate-100">
+            <div class="flex items-center mb-4">
+              <Icon name={feature.icon} class="h-8 w-8 text-amber-600" />
+              <h3 class="text-xl font-bold text-slate-900 ml-3">{feature.title}</h3>
+            </div>
+            <p class="text-slate-600">{feature.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Deliverables Section -->
+  <section class="py-16 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-12 items-start">
+        <div>
+          <h2 class="text-3xl font-bold text-slate-900 mb-8">What You Get</h2>
+          <ul class="space-y-4">
+            {deliverables.map((deliverable) => (
+              <li class="flex items-start">
+                <Icon name="check" class="h-6 w-6 text-green-600 mr-3 mt-0.5 flex-shrink-0" />
+                <span class="text-slate-700">{deliverable}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div>
+          <h2 class="text-3xl font-bold text-slate-900 mb-8">Key Benefits</h2>
+          <ul class="space-y-4">
+            {benefits.map((benefit) => (
+              <li class="flex items-start">
+                <Icon name="star" class="h-6 w-6 text-amber-600 mr-3 mt-0.5 flex-shrink-0" />
+                <span class="text-slate-700">{benefit}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-16 bg-amber-600 text-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-4xl font-bold mb-4">Protect Your Organization from Fraud</h2>
+      <p class="text-xl mb-8">Contact us today to strengthen your fraud defenses and response capabilities</p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <Button href="/contact?service=anti-fraud" variant="white">
+          Get Protected
+        </Button>
+        <Button href="/contact?consultation=true" variant="outline-white">
+          Schedule Assessment
+        </Button>
+      </div>
     </div>
   </section>
 </Layout>

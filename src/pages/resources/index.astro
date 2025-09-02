@@ -1,7 +1,6 @@
 ---
 import Layout from '@/layouts/Layout.astro';
 import Icon from '@/components/ui/icons/Icon.astro';
-import Button from '@/components/ui/Button.astro';
 
 const currentPath = Astro.url.pathname;
 const lang = currentPath.startsWith('/fi') ? 'fi' : 'en';
@@ -112,34 +111,109 @@ const resourceCategories = [
 
 const featuredResources = [
   {
-    titleFi: 'NIS2-direktiivin pikaopas',
-    titleEn: 'NIS2 Directive Quick Guide',
-    descFi: 'Kattava 25-sivuinen opas NIS2-direktiivin vaatimuksista ja toteutuksesta',
-    descEn: 'Comprehensive 25-page guide to NIS2 directive requirements and implementation',
-    type: 'PDF',
+    titleFi: 'ISO 27001 pikaopas',
+    titleEn: 'ISO 27001 Quick Start Guide',
+    descFi: '25-sivuinen toteutussuunnitelma ISO 27001 -standardin käyttöönottoon',
+    descEn: '25-page implementation roadmap for ISO 27001 standard deployment',
+    type: 'Guide',
     pages: '25',
     updated: '2024-12',
-    href: '/resources/guides/nis2-implementation-finland'
+    href: '/resources/guides/iso-27001-quick-start',
+    category: 'guide'
   },
   {
-    titleFi: 'ISO 27001 ja NIS2 yhteensovitus',
-    titleEn: 'ISO 27001 & NIS2 Alignment',
-    descFi: 'Käytännön opas standardien ja direktiivin yhteensovittamiseen',
-    descEn: 'Practical guide to aligning standards and directive',
-    type: 'PDF',
+    titleFi: 'NIS2 compliance tarkistuslista',
+    titleEn: 'NIS2 Compliance Checklist',
+    descFi: 'Täydellinen vaatimusten arviointi työkalu NIS2-direktiivin mukaiseen compliance-työhön',
+    descEn: 'Complete requirement assessment tool for NIS2 directive compliance work',
+    type: 'Checklist',
     pages: '18',
+    updated: '2024-12',
+    href: '/resources/guides/nis2-compliance-checklist',
+    category: 'checklist'
+  },
+  {
+    titleFi: 'GDPR tietosuojavaikutusten arviointi malli',
+    titleEn: 'GDPR Privacy Impact Assessment Template',
+    descFi: 'Valmis käyttöön otettava PIA-kehikko tietosuojasääntelyn noudattamiseen',
+    descEn: 'Ready-to-use PIA framework for privacy regulation compliance',
+    type: 'Template',
+    pages: '12',
     updated: '2024-11',
-    href: '/resources/guides/iso27001-nis2-alignment'
+    href: '/resources/guides/gdpr-pia-template',
+    category: 'template'
   },
   {
     titleFi: 'DORA compliance tarkistuslista',
     titleEn: 'DORA Compliance Checklist',
     descFi: 'Vaiheittainen tarkistuslista digitaalisen resilienssisääntelyn noudattamiseen',
     descEn: 'Step-by-step checklist for digital operational resilience compliance',
-    type: 'PDF',
-    pages: '12',
+    type: 'Checklist',
+    pages: '15',
     updated: '2024-10',
-    href: '/resources/guides/dora-compliance-checklist'
+    href: '/resources/guides/dora-compliance-checklist',
+    category: 'checklist'
+  },
+  {
+    titleFi: 'Cyber Essentials arviointi malli',
+    titleEn: 'Cyber Essentials Assessment Template',
+    descFi: 'Valmiiksi täytettävä arviointi malli Cyber Essentials -sertifiointiin',
+    descEn: 'Pre-filled assessment template for Cyber Essentials certification',
+    type: 'Template',
+    pages: '8',
+    updated: '2024-11',
+    href: '/downloads/cyber-essentials-template.xlsx',
+    category: 'template'
+  },
+  {
+    titleFi: 'SOC 2 valmiusopas',
+    titleEn: 'SOC 2 Readiness Guide',
+    descFi: 'Kattava opas SOC 2 -auditin valmisteluun ja läpiviemiseen',
+    descEn: 'Comprehensive guide for SOC 2 audit preparation and execution',
+    type: 'Guide',
+    pages: '32',
+    updated: '2024-10',
+    href: '/downloads/soc2-readiness-guide.pdf',
+    category: 'guide'
+  }
+];
+
+const upcomingWebinars = [
+  {
+    titleFi: 'NIS2 toteutus: Mitä suomalaisten yritysten tulee tietää',
+    titleEn: 'NIS2 Implementation: What Finnish Companies Need to Know',
+    descFi: 'Tärkeää ohjausta organisaatioille, jotka valmistautuvat NIS2-direktiivin compliance-vaatimuksiin.',
+    descEn: 'Essential guidance for organizations preparing for NIS2 compliance requirements.',
+    date: 'September 15, 2025',
+    time: '14:00 - 15:30',
+    duration: '90',
+    speaker: 'Maria Korhonen, CISO',
+    attendees: '250+',
+    registrationLink: '/webinars/nis2-implementation'
+  },
+  {
+    titleFi: 'DORA compliance rahoituspalveluille',
+    titleEn: 'DORA Compliance for Financial Services',
+    descFi: 'Valmistelua rahoituslaitosten digitaalisen toimintakestävyyden vaatimuksiin.',
+    descEn: 'Preparing financial institutions for digital operational resilience requirements.',
+    date: 'September 22, 2025',
+    time: '13:00 - 14:30',
+    duration: '90',
+    speaker: 'Jukka Virtanen, Lead Consultant',
+    attendees: '180+',
+    registrationLink: '/webinars/dora-financial'
+  },
+  {
+    titleFi: 'ISO 27001:2022 muutokset ja vaikutukset',
+    titleEn: 'ISO 27001:2022 Changes and Impact',
+    descFi: 'Uusimpien päivitysten ymmärtäminen ja niiden vaikutukset organisaatiolle.',
+    descEn: 'Understanding the latest updates and their implications for your organization.',
+    date: 'September 29, 2025',
+    time: '15:00 - 16:00',
+    duration: '60',
+    speaker: 'Anna Salminen, Senior Security Advisor',
+    attendees: '200+',
+    registrationLink: '/webinars/iso27001-updates'
   }
 ];
 
@@ -170,12 +244,18 @@ const stats = [
           }
         </p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <Button href="#categories" variant="primary">
+          <a 
+            href="#categories" 
+            class="inline-flex items-center justify-center px-6 py-3 text-center font-medium text-white bg-teal-800 hover:bg-teal-700 rounded-lg transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-teal-500"
+          >
             {lang === 'fi' ? 'Selaa resursseja' : 'Browse Resources'}
-          </Button>
-          <Button href="/contact" variant="secondary">
+          </a>
+          <a 
+            href="/contact" 
+            class="inline-flex items-center justify-center px-6 py-3 text-center font-medium text-slate-800 bg-white hover:bg-slate-50 border-2 border-teal-800 hover:border-teal-700 hover:text-teal-700 rounded-lg transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-teal-500"
+          >
             {lang === 'fi' ? 'Pyydä neuvoja' : 'Get Expert Help'}
-          </Button>
+          </a>
         </div>
       </div>
     </div>
@@ -208,19 +288,37 @@ const stats = [
         </h2>
         <p class="text-lg text-gray-600 max-w-3xl mx-auto">
           {lang === 'fi' 
-            ? 'Uusimmat ja suosituimmat oppaat ja työkalut heti ladattavissa'
-            : 'Latest and most popular guides and tools ready for download'
+            ? 'Uusimmat ja suosituimmat oppaat, tarkistuslistat ja mallit heti ladattavissa'
+            : 'Latest and most popular guides, checklists and templates ready for download'
           }
         </p>
       </div>
 
-      <div class="grid md:grid-cols-3 gap-8">
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
         {featuredResources.map((resource) => (
-          <div class="bg-white rounded-lg p-8 shadow-lg hover:shadow-xl transition-shadow">
+          <div class="bg-white rounded-lg p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
             <div class="flex items-start justify-between mb-4">
               <div class="flex items-center space-x-2">
-                <Icon name="file-text" class="w-5 h-5 text-blue-600" />
-                <span class="text-sm font-medium text-blue-600">{resource.type}</span>
+                <div class={`w-8 h-8 rounded-lg flex items-center justify-center ${
+                  resource.category === 'guide' ? 'bg-blue-100' :
+                  resource.category === 'checklist' ? 'bg-green-100' :
+                  resource.category === 'template' ? 'bg-purple-100' : 'bg-gray-100'
+                }`}>
+                  <Icon name={
+                    resource.category === 'guide' ? 'book-open' :
+                    resource.category === 'checklist' ? 'check-square' :
+                    resource.category === 'template' ? 'file-text' : 'file'
+                  } class={`w-4 h-4 ${
+                    resource.category === 'guide' ? 'text-blue-600' :
+                    resource.category === 'checklist' ? 'text-green-600' :
+                    resource.category === 'template' ? 'text-purple-600' : 'text-gray-600'
+                  }`} />
+                </div>
+                <span class={`text-sm font-medium ${
+                  resource.category === 'guide' ? 'text-blue-600' :
+                  resource.category === 'checklist' ? 'text-green-600' :
+                  resource.category === 'template' ? 'text-purple-600' : 'text-gray-600'
+                }`}>{resource.type}</span>
               </div>
               <div class="text-sm text-gray-500">
                 {resource.pages} {lang === 'fi' ? 'sivua' : 'pages'}
@@ -229,19 +327,112 @@ const stats = [
             <h3 class="text-xl font-semibold text-gray-900 mb-3">
               {lang === 'fi' ? resource.titleFi : resource.titleEn}
             </h3>
-            <p class="text-gray-600 mb-4">
+            <p class="text-gray-600 mb-6">
               {lang === 'fi' ? resource.descFi : resource.descEn}
             </p>
             <div class="flex items-center justify-between">
               <span class="text-sm text-gray-500">
                 {lang === 'fi' ? 'Päivitetty' : 'Updated'} {resource.updated}
               </span>
-              <Button href={resource.href} variant="secondary">
-                {lang === 'fi' ? 'Lataa' : 'Download'}
-              </Button>
+              <a 
+                href={resource.href} 
+                class="inline-flex items-center justify-center px-4 py-2 text-center font-medium text-white bg-teal-800 hover:bg-teal-700 rounded-lg transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-teal-500"
+              >
+                <Icon name="arrow-right" class="w-4 h-4 mr-2" />
+                {lang === 'fi' ? 'Lue lisää' : 'Read more'}
+              </a>
             </div>
           </div>
         ))}
+      </div>
+
+      <div class="text-center mt-12">
+        <a 
+          href="/resources/all" 
+          class="inline-flex items-center justify-center px-6 py-3 text-center font-medium text-slate-800 bg-white hover:bg-slate-50 border-2 border-teal-800 hover:border-teal-700 hover:text-teal-700 rounded-lg transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-teal-500"
+        >
+          {lang === 'fi' ? 'Näytä kaikki resurssit' : 'View All Resources'}
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Upcoming Webinars -->
+  <section class="py-20">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">
+          {lang === 'fi' ? 'Tulevat webinaarit' : 'Upcoming Webinars'}
+        </h2>
+        <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+          {lang === 'fi' 
+            ? 'Osallistu ilmaisiin webinaareihimme ja saa syvällistä tietoa säädösten vaatimuksista'
+            : 'Join our free webinars and get in-depth insights into regulatory requirements'
+          }
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        {upcomingWebinars.map((webinar) => (
+          <div class="bg-gradient-to-br from-blue-50 to-indigo-100 rounded-lg p-8 border border-blue-200">
+            <div class="flex items-start justify-between mb-4">
+              <div class="flex items-center space-x-2">
+                <div class="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
+                  <Icon name="video" class="w-4 h-4 text-white" />
+                </div>
+                <span class="text-sm font-medium text-blue-600">
+                  {lang === 'fi' ? 'Webinaari' : 'Webinar'}
+                </span>
+              </div>
+              <div class="text-right">
+                <div class="text-sm font-semibold text-blue-600">{webinar.date}</div>
+                <div class="text-xs text-blue-500">{webinar.time}</div>
+              </div>
+            </div>
+            <h3 class="text-xl font-semibold text-gray-900 mb-3">
+              {lang === 'fi' ? webinar.titleFi : webinar.titleEn}
+            </h3>
+            <p class="text-gray-700 mb-4">
+              {lang === 'fi' ? webinar.descFi : webinar.descEn}
+            </p>
+            <div class="flex items-center justify-between mb-6">
+              <div class="flex items-center space-x-2">
+                <Icon name="clock" class="w-4 h-4 text-gray-500" />
+                <span class="text-sm text-gray-600">
+                  {webinar.duration} {lang === 'fi' ? 'min' : 'min'}
+                </span>
+              </div>
+              <div class="flex items-center space-x-2">
+                <Icon name="users" class="w-4 h-4 text-gray-500" />
+                <span class="text-sm text-gray-600">
+                  {webinar.attendees} {lang === 'fi' ? 'osallistujaa' : 'attendees'}
+                </span>
+              </div>
+            </div>
+            <a 
+              href={webinar.registrationLink} 
+              class="inline-flex items-center justify-center w-full px-6 py-3 text-center font-medium text-white bg-teal-800 hover:bg-teal-700 rounded-lg transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-teal-500"
+            >
+              <Icon name="calendar" class="w-4 h-4 mr-2" />
+              {lang === 'fi' ? 'Rekisteröidy' : 'Register Now'}
+            </a>
+          </div>
+        ))}
+      </div>
+
+      <div class="text-center mt-12">
+        <p class="text-gray-600 mb-4">
+          {lang === 'fi' 
+            ? 'Kaikki webinaarit tallennetaan ja ovat saatavilla myöhemmin'
+            : 'All webinars are recorded and available for later viewing'
+          }
+        </p>
+        <a 
+          href="/webinars" 
+          class="inline-flex items-center justify-center px-6 py-3 text-center font-medium text-slate-800 bg-white hover:bg-slate-50 border-2 border-teal-800 hover:border-teal-700 hover:text-teal-700 rounded-lg transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-teal-500"
+        >
+          {lang === 'fi' ? 'Katso kaikki webinaarit' : 'View All Webinars'}
+        </a>
       </div>
     </div>
   </section>
@@ -286,9 +477,12 @@ const stats = [
               ))}
             </ul>
             
-            <Button href={category.href} variant="secondary" className="w-full">
+            <a 
+              href={category.href} 
+              class="inline-flex items-center justify-center w-full px-6 py-3 text-center font-medium text-slate-800 bg-white hover:bg-slate-50 border-2 border-teal-800 hover:border-teal-700 hover:text-teal-700 rounded-lg transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-teal-500"
+            >
               {lang === 'fi' ? 'Selaa resursseja' : 'Browse Resources'}
-            </Button>
+            </a>
           </div>
         ))}
       </div>
@@ -313,9 +507,12 @@ const stats = [
           placeholder={lang === 'fi' ? 'Sähköpostiosoitteesi' : 'Your email address'}
           class="flex-1 px-4 py-3 rounded-lg border-0 focus:ring-2 focus:ring-blue-300"
         />
-        <Button variant="secondary">
+        <button 
+          type="button"
+          class="inline-flex items-center justify-center px-6 py-3 text-center font-medium text-slate-800 bg-white hover:bg-slate-50 border-2 border-teal-800 hover:border-teal-700 hover:text-teal-700 rounded-lg transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-teal-500"
+        >
           {lang === 'fi' ? 'Tilaa' : 'Subscribe'}
-        </Button>
+        </button>
       </div>
     </div>
   </section>
