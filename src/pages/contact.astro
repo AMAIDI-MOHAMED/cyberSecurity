@@ -52,38 +52,6 @@ const content = {
       hours: "Business Hours",
       response: "Response Time"
     },
-    locations: {
-      title: "Our Locations",
-      description: "Serving clients across Finland and internationally with local expertise and global standards.",
-      tampere: {
-        city: "Tampere",
-        country: "Finland",
-        phone: "+358 44 5040308",
-        email: "tampere@cybersecurity.fi"
-      }
-    },
-    departments: {
-      title: "Department Contacts",
-      description: "Connect directly with the team that best serves your needs:",
-      sales: {
-        title: "Sales & Business Development",
-        description: "Learn about our services and solutions",
-        email: "sales@cybersecurity.fi",
-        phone: "+358 9 123 4568"
-      },
-      support: {
-        title: "Technical Support",
-        description: "Get help with our platform and services",
-        email: "support@cybersecurity.fi",
-        phone: "+358 9 123 4569"
-      },
-      compliance: {
-        title: "Compliance & Consulting",
-        description: "Expert guidance on regulatory requirements",
-        email: "compliance@cybersecurity.fi",
-        phone: "+358 9 123 4570"
-      }
-    },
     form: {
       title: "Send Us a Message",
       description: "Fill out the form below and we'll get back to you within 24 hours.",
@@ -115,38 +83,6 @@ const content = {
       address: "Osoite",
       hours: "Aukioloajat",
       response: "Vastausaika"
-    },
-    locations: {
-      title: "Sijainnimme",
-      description: "Palvelemme asiakkaita ympäri Suomea ja kansainvälisesti paikallisella asiantuntemuksella ja kansainvälisillä standardeilla.",
-      tampere: {
-        city: "Tampere",
-        country: "Suomi",
-        phone: "+358 44 5040308",
-        email: "tampere@cybersecurity.fi"
-      }
-    },
-    departments: {
-      title: "Osastojen yhteystiedot",
-      description: "Yhdistä suoraan tiimiin, joka parhaiten palvelee tarpeitasi:",
-      sales: {
-        title: "Myynti ja liiketoiminnan kehitys",
-        description: "Lue palveluistamme ja ratkaisuistamme",
-        email: "sales@cybersecurity.fi",
-        phone: "+358 9 123 4568"
-      },
-      support: {
-        title: "Tekninen tuki",
-        description: "Saa apua alustamme ja palveluihimme",
-        email: "support@cybersecurity.fi",
-        phone: "+358 9 123 4569"
-      },
-      compliance: {
-        title: "Yhteensopivuus ja konsultointi",
-        description: "Asiantuntevaa ohjausta sääntelyvaatimuksista",
-        email: "compliance@cybersecurity.fi",
-        phone: "+358 9 123 4570"
-      }
     },
     form: {
       title: "Lähetä meille viesti",
@@ -235,88 +171,6 @@ const currentContent = content[lang];
           <h3 class="text-lg font-semibold text-slate-900 mb-2">
             {currentContent.contactInfo.address}
           </h3>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Locations Section -->
-  <section class="py-16 bg-slate-50">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-16">
-        <h2 class="text-3xl font-bold text-slate-900 mb-4">
-          {currentContent.locations.title}
-        </h2>
-        <p class="text-xl text-slate-600 max-w-3xl mx-auto">
-          {currentContent.locations.description}
-        </p>
-      </div>
-
-      <div class="flex justify-center">
-        <div class="bg-white p-8 rounded-xl shadow-sm max-w-md w-full">
-          <h3 class="text-2xl font-bold text-slate-900 mb-4">
-            {currentContent.locations.tampere.city}
-          </h3>
-          <p class="text-slate-600 mb-4">{currentContent.locations.tampere.country}</p>
-          <div class="space-y-3">
-            <p class="text-slate-600">{currentContent.locations.tampere.phone}</p>
-            <p class="text-slate-600">{currentContent.locations.tampere.email}</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Department Contacts Section -->
-  <section class="py-16 bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-16">
-        <h2 class="text-3xl font-bold text-slate-900 mb-4">
-          {currentContent.departments.title}
-        </h2>
-        <p class="text-xl text-slate-600 max-w-3xl mx-auto">
-          {currentContent.departments.description}
-        </p>
-      </div>
-      
-      <div class="grid md:grid-cols-3 gap-8">
-        <div class="bg-slate-50 p-6 rounded-xl">
-          <h3 class="text-xl font-semibold text-slate-900 mb-3">
-            {currentContent.departments.sales.title}
-          </h3>
-          <p class="text-slate-600 mb-4">
-            {currentContent.departments.sales.description}
-          </p>
-          <div class="space-y-2">
-            <p class="text-slate-600">{currentContent.departments.sales.email}</p>
-            <p class="text-slate-600">{currentContent.departments.sales.phone}</p>
-          </div>
-        </div>
-
-        <div class="bg-slate-50 p-6 rounded-xl">
-          <h3 class="text-xl font-semibold text-slate-900 mb-3">
-            {currentContent.departments.support.title}
-          </h3>
-          <p class="text-slate-600 mb-4">
-            {currentContent.departments.support.description}
-          </p>
-          <div class="space-y-2">
-            <p class="text-slate-600">{currentContent.departments.support.email}</p>
-            <p class="text-slate-600">{currentContent.departments.support.phone}</p>
-          </div>
-        </div>
-        
-        <div class="bg-slate-50 p-6 rounded-xl">
-          <h3 class="text-xl font-semibold text-slate-900 mb-3">
-            {currentContent.departments.compliance.title}
-          </h3>
-          <p class="text-slate-600 mb-4">
-            {currentContent.departments.compliance.description}
-          </p>
-          <div class="space-y-2">
-            <p class="text-slate-600">{currentContent.departments.compliance.email}</p>
-            <p class="text-slate-600">{currentContent.departments.compliance.phone}</p>
-          </div>
         </div>
       </div>
     </div>

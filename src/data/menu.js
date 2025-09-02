@@ -247,31 +247,6 @@ export const menu = [
         children: []
       },
       {
-        label_fi: "Downloads",
-        label_en: "Downloads",
-        href: "/resources/downloads",
-        children: [
-          {
-            label_fi: "ISO 27001 Guide",
-            label_en: "ISO 27001 Guide",
-            href: "/downloads/iso-27001-quick-start-guide.pdf",
-            children: []
-          },
-          {
-            label_fi: "NIS2 Checklist",
-            label_en: "NIS2 Checklist",
-            href: "/downloads/nis2-compliance-checklist.pdf",
-            children: []
-          },
-          {
-            label_fi: "GDPR Template",
-            label_en: "GDPR Template",
-            href: "/downloads/gdpr-pia-template.pdf",
-            children: []
-          }
-        ]
-      },
-      {
         label_fi: "Blog & Articles",
         label_en: "Blog & Articles",
         href: "/blog",
